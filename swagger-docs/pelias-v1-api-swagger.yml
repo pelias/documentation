@@ -1,0 +1,74 @@
+swagger: '2.0'
+################################################################################
+#                              API Information                                 #
+################################################################################
+info:
+  title: Pelias API
+  description: |
+    Search the world with Pelias by Mapzen
+    ----------
+
+
+  version: "1.0.0"
+# the domain of the service
+host: pelias.mapzen.com
+# array of all schemes that your API supports
+schemes:
+  - http
+  - https
+# will be prefixed to all paths
+basePath: /v1
+produces:
+  - application/json
+################################################################################
+#                                 Security                                     #
+################################################################################
+securityDefinitions:
+  api_key:
+    type: apiKey
+    name: api_key
+    in: query
+    description: |
+      Use of Pelias Search by Mapzen service requires an API key. Register for a free API key at the [Mapzen Developer Portal](https://mapzen.com/developer).
+
+      We have generous rate limits, and if you require more capacity, you can [set up your own Pelias](https://github.com/pelias/vagrant) on your own servers, or [get in touch](mailto:pelias@mapzen.com) with the team at Mapzen.
+security:
+  - api_key: []
+
+################################################################################
+#                                 API Calls                                    #
+################################################################################
+paths:
+  /search:
+    get:
+      summary: Geocodes a user's search query
+      parameters:
+        - name: text
+          in: query
+          description: User's search string
+          required: true
+          type: string
+          format: string
+
+        - name: focus.point.lon
+          in: query
+          description: Soft focus latitude
+          required: true
+          type: string
+          format: string
+
+        - name: focus.point.lat
+          in: query
+          description: User's search string
+          required: true
+          type: string
+          format: string
+
+
+
+      security:
+        - api_key: []
+
+      responses:
+        200:
+          description: a GeoJSON FeatureCollection array of geocoded places
