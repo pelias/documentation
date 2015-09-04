@@ -8,6 +8,11 @@ info:
     Search the world with Pelias by Mapzen
     ----------
 
+    Pelias is an experimental, open geocoder from [Mapzen](https://mapzen.com). It's built from the ground up as an open source and open data-friendly geocoder that's designed to operate on top of any new
+
+    This documentation refers specifically to Mapzen Search (//TODO: do we want to call this Mapzen Place Search?), powered by Pelias, but is mirrored in the API of the [Pelias code](https://github.com/pelias/pelias).
+
+
 
   version: "1.0.0"
 # the domain of the service
@@ -19,7 +24,7 @@ schemes:
 # will be prefixed to all paths
 basePath: /v1
 produces:
-  - application/json
+  - application/vnd.geo+json
 ################################################################################
 #                                 Security                                     #
 ################################################################################
@@ -29,9 +34,15 @@ securityDefinitions:
     name: api_key
     in: query
     description: |
-      Use of Pelias Search by Mapzen service requires an API key. Register for a free API key at the [Mapzen Developer Portal](https://mapzen.com/developer).
+      Use of Mapzen Search service requires an API key. Register for a free API key at the [Mapzen Developer Portal](https://mapzen.com/developer).
 
-      We have generous rate limits, and if you require more capacity, you can [set up your own Pelias](https://github.com/pelias/vagrant) on your own servers, or [get in touch](mailto:pelias@mapzen.com) with the team at Mapzen.
+      We have generous rate limits (30,000 requests/day, 3 requests/second), and if you require more capacity, you can [run Pelias](https://github.com/pelias/vagrant) on your own servers, or [get in touch](mailto:pelias@mapzen.com) with the team at Mapzen.
+
+      Use of the Mapzen Place Search API uses API tokens as part of the URL parameters like:
+      <code>
+      https://pelias.mapzen.com/v1/search?text=New York City&api_key=pelias-prod-xxxxxx</code>
+
+      By clicking the Authenticate button above, you can paste your API Key in from the [Mapzen Developer Portal](https://mapzen.com/developer),
 security:
   - api_key: []
 
@@ -41,6 +52,9 @@ security:
 paths:
   /search:
     get:
+      tags:
+        - forward geocoding
+        - search
       summary: Geocodes a user's search query
       parameters:
         - name: text
@@ -52,17 +66,126 @@ paths:
 
         - name: focus.point.lon
           in: query
-          description: Soft focus latitude
-          required: true
-          type: string
-          format: string
+          description: Focal point longitude. Ideally a user's device location, but can also be a focal point. Used to provide results close to the user, while still finding good matches globally. Used in conjunction with `focus.point.lat`. Accepts only WGS84 longitutdes.
+          required: false
+          type: number
+          format: float
 
         - name: focus.point.lat
           in: query
-          description: User's search string
-          required: true
+          description: Focal point latitude. Used to provide results close to the user, while still finding good matches globally. Used in conjunction with `focus.point.lon`. Accepts only WGS84 latitudes.
+          required: false
+          type: number
+          format: float
+
+        - name: focus.viewport.min_lon
+          in: query
+          description: |
+             `focus.viewport` provides focus to user's viewable map area, using the viewable screen to calibrate results relevant for an end-user's area of interest based on what's on screen, where that is located, and the level of zoom.
+
+             This parameter limits the user's viewport latitude (furthest bottom coordinate). Used to provide results close to the user, while still finding good matches globally. Used in conjunction with `focus.viewport.min_lat`, `focus.viewport.min_lon`, `focus.viewport.max_lon`, and `focus.viewport.max_lat`.
+
+             Accepts only WGS84 longitudes.
+          required: false
+          type: number
+          format: float
+
+        - name: focus.viewport.min_lat
+          in: query
+          description: |
+             This parameter limits the user's viewport longitude (furthest left coordinate). Used to provide results close to the user, while still finding good matches globally. Used in conjunction with `focus.viewport.min_lat`, `focus.viewport.min_lon`, `focus.viewport.max_lon`, and `focus.viewport.max_lat`.
+             Accepts only WGS84 latitudes.
+          required: false
+          type: number
+          format: float
+
+        - name: focus.viewport.max_lon
+          in: query
+          description: |
+             This parameter limits the user's viewport latitude (furthest right coordinate). Used to provide results close to the user, while still finding good matches globally. Used in conjunction with `focus.viewport.min_lat`, `focus.viewport.min_lon`, `focus.viewport.max_lon`, and `focus.viewport.max_lat`.
+
+             Accepts only WGS84 longitudes.
+          required: false
+          type: number
+          format: float
+
+        - name: focus.viewport.max_lat
+          in: query
+          description: |
+             This parameter limits the user's viewport longitude (furthest top coordinate). Used to provide results close to the user, while still finding good matches globally. Used in conjunction with `focus.viewport.min_lat`, `focus.viewport.min_lon`, `focus.viewport.max_lon`, and `focus.viewport.max_lat`.
+             Accepts only WGS84 latitudes.
+          required: false
+          type: number
+          format: float
+
+        - name: layer
+          in: query
           type: string
           format: string
+          description: |
+            //TK
+
+            For more than one layer, accepts a comma separated list of valid layers. If any of those layers is invalid, the request will still be honored, but a warning will be thrown in the `geocoding` block of the response.
+          required: false
+          collectionFormat: csv
+
+        - name: source
+          in: query
+          required: false
+          type: string
+          collectionFormat: csv
+          description: tk
+
+
+        - name: boundary.circle.lon
+          in: query
+          required: false
+          type: number
+          format: float
+          description: tk
+          minimum: -180.0
+          maximum: 180.0
+
+        - name: boundary.circle.lat
+          in: query
+          required: false
+          type: number
+          format: float
+          description: tk
+          minimum: -90
+          maximum: 90
+
+        - name: boundary.circle.radius
+          in: query
+          required: false
+          type: number
+          format: float
+          description: Maximum distance in meters from the centroid to search from. Forms the radius of a bounding circle.
+
+        - name: boundary.rect
+          in: query
+          type: number
+
+        - name: boundary.country
+          in: query
+          type: string
+
+        - name: size
+          in: query
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 50
+          default: 10
+          required: no
+
+
+
+
+
+
+
+
 
 
 
@@ -72,3 +195,8 @@ paths:
       responses:
         200:
           description: a GeoJSON FeatureCollection array of geocoded places
+
+
+################################################################################
+#                                Definitions                                   #
+################################################################################
