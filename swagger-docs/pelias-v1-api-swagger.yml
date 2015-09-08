@@ -12,9 +12,17 @@ info:
 
     This documentation refers specifically to Mapzen Search (//TODO: do we want to call this Mapzen Place Search?), powered by Pelias, but is mirrored in the API of the [Pelias code](https://github.com/pelias/pelias).
 
+    # Pelias and Client-Side Javascript on the Web
+    Pelias is designed to easily work with client-side javascript you may write on the web. If you are already using [Leaflet](http://leafletjs.com) to display your map tiles, we provide a [leaflet plugin](https://github.com/pelias/leaflet-geocoder) to simplify the process.
+
+    If you are writing your own code to integrate with Pelias, you should know that Pelias supports [Cross-Resource Origin Sharing (CORS)](https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS), a standard to allow a web page to use a javascript/JSON resource from a domain different than the one you're serving your site from.
+
+    ## Do you support JSONP?
+    Pelias does not currently support JSONP, another standard for
 
 
-  version: "1.0.0"
+
+version: "1.0.0"
 # the domain of the service
 host: pelias.mapzen.com
 # array of all schemes that your API supports
@@ -25,6 +33,7 @@ schemes:
 basePath: /v1
 produces:
   - application/vnd.geo+json
+  - application/json
 ################################################################################
 #                                 Security                                     #
 ################################################################################
