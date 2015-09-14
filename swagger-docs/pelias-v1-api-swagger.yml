@@ -3,26 +3,18 @@ swagger: '2.0'
 #                              API Information                                 #
 ################################################################################
 info:
-  title: Pelias API
+  title: Mapzen Search API
   description: |
-    Search the world with Pelias by Mapzen
+    Searching the world with the Mapzen Search API, powered by [Pelias](https://github.com/pelias/pelias).
     ----------
 
     Pelias is an experimental, open geocoder from [Mapzen](https://mapzen.com). It's built from the ground up as an open source and open data-friendly geocoder that's designed to operate on top of any new
 
     This documentation refers specifically to Mapzen Search (//TODO: do we want to call this Mapzen Place Search?), powered by Pelias, but is mirrored in the API of the [Pelias code](https://github.com/pelias/pelias).
 
-    # Pelias and Client-Side Javascript on the Web
-    Pelias is designed to easily work with client-side javascript you may write on the web. If you are already using [Leaflet](http://leafletjs.com) to display your map tiles, we provide a [leaflet plugin](https://github.com/pelias/leaflet-geocoder) to simplify the process.
-
-    If you are writing your own code to integrate with Pelias, you should know that Pelias supports [Cross-Resource Origin Sharing (CORS)](https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS), a standard to allow a web page to use a javascript/JSON resource from a domain different than the one you're serving your site from.
-
-    ## Do you support JSONP?
-    Pelias does not currently support JSONP, another standard for
 
 
-
-version: "1.0.0"
+  version: "1.0.0"
 # the domain of the service
 host: pelias.mapzen.com
 # array of all schemes that your API supports
@@ -33,7 +25,6 @@ schemes:
 basePath: /v1
 produces:
   - application/vnd.geo+json
-  - application/json
 ################################################################################
 #                                 Security                                     #
 ################################################################################
@@ -43,7 +34,7 @@ securityDefinitions:
     name: api_key
     in: query
     description: |
-      Use of Mapzen Search service requires an API key. Register for a free API key at the [Mapzen Developer Portal](https://mapzen.com/developer).
+      Use of Mapzen Search service requires an API key. Register for a free API key at the [MapzenDeveloper Portal](https://mapzen.com/developer).
 
       We have generous rate limits (30,000 requests/day, 3 requests/second), and if you require more capacity, you can [run Pelias](https://github.com/pelias/vagrant) on your own servers, or [get in touch](mailto:pelias@mapzen.com) with the team at Mapzen.
 
@@ -127,25 +118,23 @@ paths:
           type: number
           format: float
 
-        - name: layer
+        - name: layers
           in: query
           type: string
           format: string
           description: |
-            //TK
-
             For more than one layer, accepts a comma separated list of valid layers. If any of those layers is invalid, the request will still be honored, but a warning will be thrown in the `geocoding` block of the response.
           required: false
           collectionFormat: csv
 
-        - name: source
+        - name: sources
           in: query
           required: false
           type: string
           collectionFormat: csv
           description: tk
 
-
+      # BOUNDARY CIRCLE
         - name: boundary.circle.lon
           in: query
           required: false
@@ -154,7 +143,6 @@ paths:
           description: tk
           minimum: -180.0
           maximum: 180.0
-
         - name: boundary.circle.lat
           in: query
           required: false
@@ -163,7 +151,6 @@ paths:
           description: tk
           minimum: -90
           maximum: 90
-
         - name: boundary.circle.radius
           in: query
           required: false
@@ -171,13 +158,33 @@ paths:
           format: float
           description: Maximum distance in meters from the centroid to search from. Forms the radius of a bounding circle.
 
-        - name: boundary.rect
+        # BOUNDARY RECTANGLE
+        - name: boundary.rect.min_lon
           in: query
           type: number
+          format: float
+        - name: boundary.rect.min_lat
+          in: query
+          type: number
+          format: float
+        - name: boundary.rect.max_lon
+          in: query
+          type: number
+          format: float
+        - name: boundary.rect.max_lat
+          in: query
+          type: number
+          format: float
+
 
         - name: boundary.country
           in: query
+          format: string
           type: string
+          description: |
+            Limits search to only return matches within a specific country. Accepts 2 or 3 letter country codes based on ISO [Alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Current_codes) or [Alpha-3](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Current_codes) abbreviations.
+
+
 
         - name: size
           in: query
@@ -186,16 +193,25 @@ paths:
           minimum: 1
           maximum: 50
           default: 10
-          required: no
+          required: false
+          description: Maximum number of possible matching places to be returned
 
 
+        ## VIEW NOT BEING IMPLEMENTED AT THIS TIME
+        #        - name: view
+        #          in: query
+        #          type: string
+        #          default: "standard"
+        #          enum:
+        #            - "standard"
+        #            - "mobile"
 
-
-
-
-
-
-
+        - name: private
+          in: query
+          type: boolean
+          default: false
+          required: false
+          description: Option to disable query logging in Mapzen Search. Defaults to False.
 
 
       security:
@@ -204,6 +220,134 @@ paths:
       responses:
         200:
           description: a GeoJSON FeatureCollection array of geocoded places
+        400:
+          description: invalid request. Check that you are passing along valid parameters
+        403:
+          description: invalid API key. Register for a valid API key at the [Mapzen Developer Portal](https://mapzen.com/developer).
+
+
+
+
+  /autocomplete:
+    get:
+      summary: Fast response endpoint to provide an end-user suggestions of matching places as they're typing the search string. Returns 10 matching places. Intended for use while the user is typing a response. For searching a complete query (if autocomplete doesn't deliver a match), use the /search endpoint.
+      tags: [search, forward geocoding]
+
+      parameters:
+        - name: text
+          in: query
+          description: User's search string
+          required: true
+          type: string
+          format: string
+
+        - name: focus.point.lon
+          in: query
+          description: Focal point longitude. Ideally a user's device location, but can also be a focal point (like the center of their view). Used to provide results close to the user, while still finding good matches globally. Used in conjunction with `focus.point.lat`. Accepts only WGS84 longitutdes.
+          required: false
+          type: number
+          format: float
+
+        - name: focus.point.lat
+          in: query
+          description: Focal point latitude. Used to provide results close to the user, while still finding good matches globally. Used in conjunction with `focus.point.lon`. Accepts only WGS84 latitudes.
+          required: false
+          type: number
+          format: float
+
+      security:
+        - api_key: []
+
+      responses:
+        200:
+          description: A GeoJSON FeatureCollection array of geocoded places.
+        400:
+          description: Invalid request. Check that you are passing along valid parameters without conflicting options.
+
+  /reverse:
+    get:
+      summary: Takes the coordinates of a location and searches for the name or address of the place it's from.
+
+      parameters:
+        - name: point.lon
+          in: query
+          format: float
+          required: true
+          min: -180
+          max: 180
+
+        - name: point.lat
+          in: query
+          format: float
+          required: true
+          min: -90
+          max: 90
+
+
+        - name: boundary.circle.lon
+          in: query
+          type: number
+          format: float
+          required: false
+          min: -180
+          max: 180
+
+        - name: boundary.circle.lat
+          in: query
+          type: number
+          format: float
+          required: false
+          min: -90
+          max: 180
+
+        - name: boundary.circle.radius
+          in: query
+          type: number
+          format: float
+          required: false
+          description: bounding circle radius (in KM).
+
+        - name: boundary.country
+          in: query
+          type: string
+          format: string
+          required: false
+          description: Limits search to only return matches within a specific country. Accepts 2 or 3 letter country codes based on ISO [Alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Current_codes) or [Alpha-3](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Current_codes) abbreviations.
+
+        - name: layer
+          in: query
+
+
+
+
+
+      responses:
+        200:
+          description: All Good.
+
+      security:
+       - api_key: []
+
+  /place:
+    get:
+      summary: Retrieves the full GeoJSON record for a given place. ID determined from the results of a `/search`, `/autocomplete`, or `/reverse` response.
+
+      parameters:
+        - name: ids
+          in: query
+          format: string
+          type: string
+          description: Place ID from Mapzen Search.
+
+
+
+      responses:
+        200:
+          description: ok
+
+      security:
+        - api_key: []
+
 
 
 ################################################################################
