@@ -27,7 +27,7 @@ You'll always get back `GeoJSON` results, unless something goes terribly wrong, 
 Now you know exactly where on the earth's sufrace **Stinky Beach** is located: `[ 139.86114, -37.33192 ]`
 You've also probably learned from the results of that request that this intriguing beach is located in **Australia**, more specifically in the **South Australia** region. You also have yourself a handy text label to use when talking to other humans about this place: **Stinky Beach, Nora Creina, South Australia**
 
-[Read more about the response format](https://github.com/dianashk/pelias-doc/edit/master/getting-started/response.md
+[Read more about the response format](https://github.com/dianashk/pelias-doc/edit/master/getting-started/response.md)
 
 #### Result count
 
@@ -41,6 +41,15 @@ That's the _default_ number of results the API will return, unless otherwise spe
 **How about 25 results?**
  
 > [/v1/search?text=stinky beach&___size=25___](https://pelias.bigdev.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=stinky beach&size=25)
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
  
  
 ## Looking in a Particular Place (Using Boundaries)
