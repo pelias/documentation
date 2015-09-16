@@ -10,7 +10,17 @@ Geocoding is the process of matching an address to its corresponding geographic 
 ## Looking For Places - Getting Started
 {search text, global, no options}
 
-`https://search.mapzen.com/v1/search?text={123 Fake Street, Springfield}&api_key={YOUR_API_KEY}`
+So, let's say you wanted to find **Stinky Beach**, you'd just do this.
+
+>
+> [/v1/search?___text=stinky beach___](https://search.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=stinky beach)
+>
+
+_Go ahead, and click that link... we'll wait._
+
+Now you know exactly where on the earth sufrace **Strinky Beach** is located: `[ 139.86114, -37.33192 ]`
+You've also probably learned from the results of that request that this questionable beach is located in **Australia**, more specifically in the **South Australia** region. You also have yourself a handy text label to use when talking to other humans about this place: **Stinky Beach, Nora Creina, South Australia**
+
 
 - Response is GeoJSON FeatureCollection
  - The FeatureCollection is an ordered array, ranked in order of likleyhood
