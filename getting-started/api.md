@@ -1,0 +1,23 @@
+API Keys
+=========
+
+# Obtaining an API Key
+
+To use the Mapzen Search service, you must first obtain a free developer API key from Mapzen. Sign in at https://mapzen.com/developers to create and manage your API keys.
+
+Mapzen Search is a free, shared geocoding service. As such, there are limitations on requests to prevent individual users from degrading the overall system performance.
+
+Go to https://mapzen.com/developers.
+Sign in with your GitHub account. If you have not done this before, you need to agree to the terms first.
+Create a new key for Mapzen Search, and optionally, give it a name so you can remember the purpose of the project.
+Keep the web page open so you can copy the key into the code later.
+
+
+# Rate Limits
+As Mapzen Search is a free, shared service, we have rate limits that restrict the maximum number of requests per second and per day.
+
+Our free API keys allow you a maximum of:
+- 3 requests per second
+- 30,000 requests per day
+
+If you need more capacity, you can get in touch with [search@mapzen.com](mailto:search@mapzen.com), or set up your own instance of [Pelias](https://github.com/pelias/pelias), which we provide with access to all of the same data we use to power Mapzen Search.
