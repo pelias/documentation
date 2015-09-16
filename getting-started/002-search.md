@@ -11,34 +11,38 @@ Geocoding is the process of matching an address to its corresponding geographic 
 ## Looking For Places - Getting Started
 _{search text, global, no options}_
 
-##### The most basic scenario
+#### The most basic scenario
 
 Let's say you wanted to find **Stinky Beach**, you would simply query the search API as follows:
 
->
 > [/v1/search?___text=stinky beach___](https://search.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=stinky beach)
->
 
 _...go ahead, and click that link, we'll wait_
+
+#### Results
 
 Now that you're back, you probably saw a `GeoJSON` formatted response on the other side of that click.
 You'll always get back `GeoJSON` results, unless something goes terribly wrong, in which case you'll get a really helpful error.
 
-Now you know exactly where on the earth's sufrace **Strinky Beach** is located: `[ 139.86114, -37.33192 ]`
+Now you know exactly where on the earth's sufrace **Stinky Beach** is located: `[ 139.86114, -37.33192 ]`
 You've also probably learned from the results of that request that this intriguing beach is located in **Australia**, more specifically in the **South Australia** region. You also have yourself a handy text label to use when talking to other humans about this place: **Stinky Beach, Nora Creina, South Australia**
 
+[Read more about the response format](https://github.com/dianashk/pelias-doc/edit/master/getting-started/response.md
 
+#### Result count
 
+You may have noticed that there were **10** places in the results for our **Stinky Beach** search.
+That's the _default_ number of results the API will return, unless otherwise specified. 
 
+**Want a single result?**
 
-- Response is GeoJSON FeatureCollection
- - The FeatureCollection is an ordered array, ranked in order of likleyhood
- - Use directly in your application or test at GeoJSON.io
+> [/v1/search?text=stinky beach&___size=1___](https://pelias.bigdev.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=stinky beach&size=1)
 
-## Sizing Your Results
- - Example: size=1 for batch geocoding
- - Example: size=40 to store lots of results
-
+**How about 25 results?**
+ 
+> [/v1/search?text=stinky beach&___size=25___](https://pelias.bigdev.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=stinky beach&size=25)
+ 
+ 
 ## Looking in a Particular Place (Using Boundaries)
 [Means to limit the scope of where you're looking, and to look only within a particular area. This can be useful if you're looking for places in a particular region, or country, or only want to look in the immediate viscinity of a user with a known location.]
 
