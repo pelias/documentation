@@ -1,25 +1,34 @@
-Search
+`SEARCH`
 =======
-Turning place names we can say into geographic coordinates computers can use
+Turning human recognizable place names into computer recognizable geographic coordinates
 _____________________________________________________________________________________
 
-Geocoding is the process of matching an address to its corresponding geographic coordinates. There's nothing inherent in the words "10 Downing Street, London, United Kingdom" that inherently conveys its location at the coordinates 51.503396, -0.12764. Instead this process [...].
+Geocoding is the process of matching an address to its corresponding geographic coordinates. There's nothing inherent in the words "10 Downing Street, London, United Kingdom" that conveys its location at the coordinates `[ 51.503396,  -0.12764 ]`. Instead this process [...].
+
+:school: :barber: :bank: :us: :house_with_garden: :hospital: ......... :computer:
 
 
-# Using Search
 ## Looking For Places - Getting Started
-{search text, global, no options}
+_{search text, global, no options}_
 
-So, let's say you wanted to find **Stinky Beach**, you'd just do this.
+##### The most basic scenario
+
+Let's say you wanted to find **Stinky Beach**, you would simply query the search API as follows:
 
 >
 > [/v1/search?___text=stinky beach___](https://search.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=stinky beach)
 >
 
-_Go ahead, and click that link... we'll wait._
+_...go ahead, and click that link, we'll wait_
 
-Now you know exactly where on the earth sufrace **Strinky Beach** is located: `[ 139.86114, -37.33192 ]`
-You've also probably learned from the results of that request that this questionable beach is located in **Australia**, more specifically in the **South Australia** region. You also have yourself a handy text label to use when talking to other humans about this place: **Stinky Beach, Nora Creina, South Australia**
+Now that you're back, you probably saw a `GeoJSON` formatted response on the other side of that click.
+You'll always get back `GeoJSON` results, unless something goes terribly wrong, in which case you'll get a really helpful error.
+
+Now you know exactly where on the earth's sufrace **Strinky Beach** is located: `[ 139.86114, -37.33192 ]`
+You've also probably learned from the results of that request that this intriguing beach is located in **Australia**, more specifically in the **South Australia** region. You also have yourself a handy text label to use when talking to other humans about this place: **Stinky Beach, Nora Creina, South Australia**
+
+
+
 
 
 - Response is GeoJSON FeatureCollection
