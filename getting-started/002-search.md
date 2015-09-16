@@ -19,6 +19,20 @@ Let's say you wanted to find **Stinky Beach**, you would simply query the search
 
 _...go ahead, and click that link, we'll wait_
 
+Maybe you'd like to find an **address**, like this:
+
+> [/v1/search?___text=30 west 26th street___](https://search.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=30 west 26th street)
+
+Or even a landmark, like **Yankee Stadium**:
+
+> [/v1/search?___text=yankee stadium___](https://search.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=yankee stadium)
+
+_You may have noticed already that cApiTaliZAtioN isn't a big deal for search._
+_You can type `yankee stadium` or `Yankee Stadium` or even `YANKEE STADIUM` if you're really excited about finding it._
+_See for yourself:_
+
+> [/v1/search?___text=YANKEE STADIUM___](https://search.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=YANKEE STADIUM)
+
 #### Results
 
 Now that you're back, you probably saw a `GeoJSON` formatted response on the other side of that click.
