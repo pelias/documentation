@@ -58,14 +58,17 @@ Mapzen search offers two types of options for selecting the dataset you want bac
 
 ### Selecting Layers
 
+{layer options}
+
+
 ### Coarse Geocoding (Neighborhoods, Cities, States, Countries)
 There are many cases where you're after not a point, but a general area, whether it's the name of a town, a neighborhood, a county, or a country.
 
 
 
-
-
-
+- Coarse general
+- Select cities
+- Select localities in a country (with boundary.country)
 
 
 
