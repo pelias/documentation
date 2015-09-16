@@ -5,8 +5,8 @@ Mapzen Search is a modern geocoding and place search service based on [Pelias](h
 
 [REWRITE]
 Mapzen Search can be used to:
-- geocode addresses, points of interest, neighborhoods, cities, and regions
+- geocode addresses, points of interest, neighbourhood, cities, and regions
 - power real-time search autocomplete for places
 - turn a list of addresses into coordinates to plot
 - Take location coordinates and turn them into human readable places, like an address
-- find the neighborhoods, cities, states, and countries of location coordinates to quickly classify where your data is coming from
+- find the neighbourhood, cities, states, and countries of location coordinates to quickly classify where your data is coming from

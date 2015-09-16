@@ -15,6 +15,7 @@ Geocoding is the process of matching an address to its corresponding geographic 
 - Response is GeoJSON FeatureCollection
  - The FeatureCollection is an ordered array, ranked in order of likleyhood
  - Use directly in your application or test at GeoJSON.io
+ - Show + explain a response block
 
 ## Sizing Your Results
  - Example: size=1 for batch geocoding
@@ -58,7 +59,21 @@ Mapzen search offers two types of options for selecting the dataset you want bac
 
 ### Selecting Layers
 
-{layer options}
+
+|Layer Name|Represents|
+|----|----|
+|`venue`|Points of interest, businesses, things with walls|
+|`address`|Places with a street address|
+|`country`|Places that issue passports, nations, nation-states|
+|`region`|States and provinces|
+|`county`|Official governmental area; usually bigger than a locality, almost always smaller than a region|
+|`locality`|Towns, hamlets, cities, etc.|
+|`localadmin`|    |
+|`neighbourhood`||
+|`coarse`|Alias for simultaneously using `country`, `region`, `county`, `locality`, `localadmin`, and `neighbourhood`||
+
+Our layers are derived from the hierarchy created by the gazetteer [Who's on First](https://github.com/whosonfirst/whosonfirst-placetypes/blob/master/README.md) and can be used to facilitate coarse geocoding.
+
 
 
 ### Coarse Geocoding (Neighborhoods, Cities, States, Countries)
@@ -71,6 +86,5 @@ There are many cases where you're after not a point, but a general area, whether
 - Select localities in a country (with boundary.country)
 
 
-
-
 # Using Autocomplete & Search Together
+For end-user applications, `/autocomplete` is intended to be used alongside `/search` to facilitate real-time feedback for user s
