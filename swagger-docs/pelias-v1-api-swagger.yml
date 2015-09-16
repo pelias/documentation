@@ -123,7 +123,7 @@ paths:
           type: string
           format: string
           description: |
-            For more than one layer, accepts a comma separated list of valid layers. If any of those layers is invalid, the request will still be honored, but a warning will be thrown in the `geocoding` block of the response.
+            For more than one layer, accepts a comma separated list of valid layers. If any of those layers is invalid, the request will still be honored, but a warning will be noted in the `geocoding` block of the response.
           required: false
           collectionFormat: csv
 
@@ -157,25 +157,29 @@ paths:
           type: number
           format: float
           description: Maximum distance in meters from the centroid to search from. Forms the radius of a bounding circle.
-
+        
         # BOUNDARY RECTANGLE
         - name: boundary.rect.min_lon
           in: query
           type: number
           format: float
+          required: false
         - name: boundary.rect.min_lat
           in: query
           type: number
           format: float
+          required: false
         - name: boundary.rect.max_lon
           in: query
           type: number
           format: float
+          required: false
         - name: boundary.rect.max_lat
           in: query
           type: number
           format: float
-
+          required: false
+          
 
         - name: boundary.country
           in: query
@@ -184,7 +188,7 @@ paths:
           description: |
             Limits search to only return matches within a specific country. Accepts 2 or 3 letter country codes based on ISO [Alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Current_codes) or [Alpha-3](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Current_codes) abbreviations.
 
-
+          
 
         - name: size
           in: query
@@ -195,9 +199,9 @@ paths:
           default: 10
           required: false
           description: Maximum number of possible matching places to be returned
-
-
-        ## VIEW NOT BEING IMPLEMENTED AT THIS TIME
+        
+        
+        ## VIEW NOT BEING IMPLEMENTED AT THIS TIME          
         #        - name: view
         #          in: query
         #          type: string
@@ -205,7 +209,7 @@ paths:
         #          enum:
         #            - "standard"
         #            - "mobile"
-
+      
         - name: private
           in: query
           type: boolean
@@ -224,15 +228,15 @@ paths:
           description: invalid request. Check that you are passing along valid parameters
         403:
           description: invalid API key. Register for a valid API key at the [Mapzen Developer Portal](https://mapzen.com/developer).
+        
 
-
-
+  
 
   /autocomplete:
     get:
       summary: Fast response endpoint to provide an end-user suggestions of matching places as they're typing the search string. Returns 10 matching places. Intended for use while the user is typing a response. For searching a complete query (if autocomplete doesn't deliver a match), use the /search endpoint.
       tags: [search, forward geocoding]
-
+      
       parameters:
         - name: text
           in: query
@@ -254,51 +258,56 @@ paths:
           required: false
           type: number
           format: float
-
+        
       security:
         - api_key: []
-
-      responses:
+        
+      responses: 
         200:
           description: A GeoJSON FeatureCollection array of geocoded places.
         400:
           description: Invalid request. Check that you are passing along valid parameters without conflicting options.
-
+  
   /reverse:
     get:
-      summary: Takes the coordinates of a location and searches for the name or address of the place it's from.
+      summary: Searches for the name of a place based on a lon/lat location. Used for address reverse geocoding, point of interest (POI) reverse geocoding, and reverse coarse geocoding.
 
       parameters:
         - name: point.lon
           in: query
-          format: float
+          description: tk
           required: true
-          min: -180
-          max: 180
+          type: number
+          format: float
+          minimum: -180
+          maximum: 180
 
         - name: point.lat
           in: query
-          format: float
+          description: tk
           required: true
-          min: -90
-          max: 90
-
-
-        - name: boundary.circle.lon
-          in: query
           type: number
           format: float
-          required: false
-          min: -180
-          max: 180
+          minimum: -90
+          maximum: 90
+        
+        - name: boundary.circle.lon
+          in: query
+          description: tk
+          type: number
+          format: float
+          required: true
+          minimum: -180
+          maximum: 180
 
         - name: boundary.circle.lat
           in: query
           type: number
           format: float
           required: false
-          min: -90
-          max: 180
+          minimum: -90
+          maximum: 180
+  
 
         - name: boundary.circle.radius
           in: query
@@ -306,6 +315,7 @@ paths:
           format: float
           required: false
           description: bounding circle radius (in KM).
+          minimum: 0.001
 
         - name: boundary.country
           in: query
@@ -314,40 +324,58 @@ paths:
           required: false
           description: Limits search to only return matches within a specific country. Accepts 2 or 3 letter country codes based on ISO [Alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Current_codes) or [Alpha-3](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Current_codes) abbreviations.
 
-        - name: layer
+        - name: layers
           in: query
-
-
-
-
-
+          type: string
+          required: false
+          description: tk
+          collectionFormat: csv
+        
+        - name: sources
+          in: query
+          type: string
+          required: false
+          description: tk
+          collectionFormat: csv
+        
+        - name: size
+          in: query
+          type: integer
+          format: int32
+          required: false
+          default: 10
+          
+    
       responses:
         200:
-          description: All Good.
-
+          description: GeoJSON FeatureCollection
+      
       security:
        - api_key: []
-
+      
+  
+  
+        
   /place:
     get:
       summary: Retrieves the full GeoJSON record for a given place. ID determined from the results of a `/search`, `/autocomplete`, or `/reverse` response.
-
+      
       parameters:
-        - name: ids
+        - name: ids 
           in: query
           format: string
           type: string
           description: Place ID from Mapzen Search.
-
-
-
+          
+          
+          
       responses:
         200:
           description: ok
-
+      
       security:
         - api_key: []
-
+      
 
 
 ################################################################################
