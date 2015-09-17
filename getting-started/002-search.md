@@ -124,11 +124,17 @@ Sometimes it's necessary to limit the search to a portion of the world. This can
  
 In the case where you need to specify the boundary using a rectangle, all we need is a pair of coordinates on earth. Here are a few examples:
 
-**What is you wanted to search within London?**
+**What if you wanted to find museums in London?**
 
-> [/v1/search?api_key={YOUR-KEY}&text=harods&___boundary.rect.min_lat=51.286839&boundary.rect.min_lon=-0.51035&boundary.rect.max_lat=51.692322&boundary.rect.max_lon=0.33403___](https://pelias.bigdev.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=tower&boundary.rect.min_lat=51.286839&boundary.rect.min_lon=-0.51035&boundary.rect.max_lat=51.692322&boundary.rect.max_lon=0.33403)
+> [/v1/search?api_key={YOUR-KEY}&text=museum&___boundary.rect.min_lat=51.286839&boundary.rect.min_lon=-0.51035&boundary.rect.max_lat=51.692322&boundary.rect.max_lon=0.33403___](https://pelias.bigdev.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=tower&boundary.rect.min_lat=51.286839&boundary.rect.min_lon=-0.51035&boundary.rect.max_lat=51.692322&boundary.rect.max_lon=0.33403)
+
+Below is the region that will be searched. Museums located outside of this highlighted region will **NOT** be included in the results. The museums returned will be sorted based on how well they matched the `text` parameter, in this case **museum**.
 
 ![](https://github.com/dianashk/pelias-doc/blob/master/getting-started/boundary_london.png)
+
+**Or you wanted to find an address, such as 28 Main Ave., in New York City?**
+
+> [/v1/search?api_key={YOUR-KEY}&text=28 Main Ave&___boundary.rect.min_lat=51.286839&boundary.rect.min_lon=-74.258904&boundary.rect.max_lat=40.477421&boundary.rect.max_lon=-73.700378___](http://pelias.bigdev.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=28 Main Ave&boundary.rect.min_lat=51.286839&boundary.rect.min_lon=-74.258904&boundary.rect.max_lat=40.477421&boundary.rect.max_lon=-73.700378)
 
  
 #### ...circular region
