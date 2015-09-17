@@ -151,7 +151,7 @@ All this time you've been searching the entire world...
 
 ![](https://github.com/dianashk/pelias-doc/blob/master/getting-started/world_all.png)
 
-### What if you need results from only...
+### What if you need results from only a...
 
 Sometimes it's necessary to limit the search to a portion of the world. This can be useful if you're looking for places in a particular region, or country, or only want to look in the immediate viscinity of a user with a known location. Different usecases call for different specifications of this bounding region. We currently support three types: **rectangle**, **circle**, and **country**.
 
@@ -161,7 +161,8 @@ Sometimes it's necessary to limit the search to a portion of the world. This can
  
 In the case where you need to specify the boundary using a rectangle, all we need is a pair of coordinates on earth. Here are a few examples:
 
-##### What if you wanted to find museums in *London*?
+##### Let's say you wanted to find museums in *London*
+You'd need to set the `boundary.rect.*` parameter grouping to indicate the extent of the boundary.
 
 | parameter | value |
 | :--- | :--- |
@@ -195,8 +196,24 @@ Below is the region that will be searched. Museums located outside of this highl
 #### ...circular region
 
 ![](https://github.com/dianashk/pelias-doc/blob/master/getting-started/world_circle.png)
- 
- 
+
+Sometimes you don't have a rectangle to work with, but you you've got instead a point on earth, for example your location coordinates, and a maximum distance within which acceptable results can be located.
+
+##### Find all *Starbucks* locations within a *3km* radius of a spot in *Madrid*
+This time, we'll use the `boundary.circle.*` parameter grouping to get the job done. `boundary.circle.lat` and `boundary.circle.lon` should be set to your location in **Madrid**, while `boundary.circle.radius` should be set to the acceptable distance from that location. Note that the `boundary.circle.radius` parameter is always specified in **kilometers**.
+
+| parameter | value |
+| :--- | :--- |
+| `text` | starbucks |
+| `boundary.circle.lat` | ***40.414149*** |
+| `boundary.circle.lon` | ***-3.703755*** |
+| `boundary.circle.radius` | ***3*** |
+| `api_key` | [get yours here](https://mapzen.com/developers) |
+
+> [/v1/search?api_key={YOUR-KEY}&text=starbucks&___boundary.circle.lat=40.414149&boundary.circle.lon=-3.703755&boundary.circle.radius=3___](http://pelias.bigdev.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=starbucks&boundary.circle.lat=40.414149&boundary.circle.lon=-3.703755&boundary.circle.radius=3)
+
+
+
 #### ...specific country
 
 ![](https://github.com/dianashk/pelias-doc/blob/master/getting-started/world_country.png)
