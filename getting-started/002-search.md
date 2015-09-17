@@ -34,8 +34,8 @@ ________________________________________________________________________________
 
 | parameter | value |
 | :--- | :--- |
-| text | 30 west 26th street |
-| api_key | [get yours here](https://mapzen.com/developers) |
+| `text` | ***30 west 26th street*** |
+| `api_key` | [get yours here](https://mapzen.com/developers) |
 
 
 > [/v1/search?api_key={YOUR-KEY}&___text=30 west 26th street___](https://search.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=30 west 26th street)
@@ -92,9 +92,7 @@ You will find the following top-level structure to every response:
 For the purposes of getting started quickly, let's keep our focus on the **features** property of the result.
 This is where you will find the list of results that best matched your input parameters.
 
-Each item in this list will contain all the information needed to identify it in human-readable format in the `properties` block, 
-as well as computer friendly coordinates in the `geometry` property. Note the `label` property, which is a human-friendly
-representation of the place, ready to be displayed to an end-user.
+Each item in this list will contain all the information needed to identify it in human-readable format in the `properties` block, as well as computer friendly coordinates in the `geometry` property. Note the `label` property, which is a human-friendly representation of the place, ready to be displayed to an end-user.
 
 ```
 {  
@@ -129,42 +127,46 @@ representation of the place, ready to be displayed to an end-user.
 ```
 
 There is so much more to tell you about the plethora of data being returned for each search,
-we had to split it out into its own document.
+we had to split it out into its own section.
 [Read more about the response format.](https://github.com/dianashk/pelias-doc/edit/master/getting-started/response.md)
 
-#### Result count
+## Result count
 
 You may have noticed that there were **10** places in the results for our **Stinky Beach** search.
 That's the _default_ number of results the API will return, unless otherwise specified. 
 
-**Want a single result?**
+### Want a *single* result?
+_____________________________________________________________________________________
 
 | parameter | value |
 | :--- | :--- |
-| text | stinky beach |
-| size | 1 |
-| api_key | [get yours here](https://mapzen.com/developers) |
+| `text` | stinky beach |
+| `size` | ***1*** |
+| `api_key` | [get yours here](https://mapzen.com/developers) |
 
 > [/v1/search?api_key={YOUR-KEY}&text=stinky beach&___size=1___](https://pelias.bigdev.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=stinky beach&size=1)
+_____________________________________________________________________________________
 
-**How about 25 results?**
+### How about *25* results?
+_____________________________________________________________________________________
 
 | parameter | value |
 | :--- | :--- |
-| text | stinky beach |
-| size | 25 |
-| api_key | [get yours here](https://mapzen.com/developers) |
+| `text` | stinky beach |
+| `size` | ***25*** |
+| `api_key` | [get yours here](https://mapzen.com/developers) |
  
 > [/v1/search?api_key={YOUR-KEY}&text=stinky beach&___size=25___](https://pelias.bigdev.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=stinky beach&size=25)
+_____________________________________________________________________________________
  
  
-### Narrowing your Search
+## Narrowing your Search
 
 All this time you've been searching the entire world...
 
 ![](https://github.com/dianashk/pelias-doc/blob/master/getting-started/world_all.png)
 
-#### What if you need results from only...
+### What if you need results from only...
 
 Sometimes it's necessary to limit the search to a portion of the world. This can be useful if you're looking for places in a particular region, or country, or only want to look in the immediate viscinity of a user with a known location. Different usecases call for different specifications of this bounding region. We currently support three types: **rectangle**, **circle**, and **country**.
 
@@ -174,33 +176,37 @@ Sometimes it's necessary to limit the search to a portion of the world. This can
  
 In the case where you need to specify the boundary using a rectangle, all we need is a pair of coordinates on earth. Here are a few examples:
 
-**What if you wanted to find museums in London?**
+##### What if you wanted to find museums in *London*?
+_____________________________________________________________________________________
 
 | parameter | value |
 | :--- | :--- |
-| text | museum |
-| boundary.rect.min_lat | 51.286839 |
-| boundary.rect.min_lon | -0.51035 |
-| boundary.rect.max_lat | 51.692322 |
-| boundary.rect.max_lon | 0.33403 |
-| api_key | [get yours here](https://mapzen.com/developers) |
+| `text` | museum |
+| `boundary.rect.min_lat` | ***51.286839*** |
+| `boundary.rect.min_lon` | ***-0.51035*** |
+| `boundary.rect.max_lat` | ***51.692322*** |
+| `boundary.rect.max_lon` | ***0.33403*** |
+| `api_key` | [get yours here](https://mapzen.com/developers) |
 
 > [/v1/search?api_key={YOUR-KEY}&text=museum&___boundary.rect.min_lat=51.286839&boundary.rect.min_lon=-0.51035&boundary.rect.max_lat=51.692322&boundary.rect.max_lon=0.33403___](https://pelias.bigdev.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=tower&boundary.rect.min_lat=51.286839&boundary.rect.min_lon=-0.51035&boundary.rect.max_lat=51.692322&boundary.rect.max_lon=0.33403)
+
+_____________________________________________________________________________________
+
 
 Below is the region that will be searched. Museums located outside of this highlighted region will **NOT** be included in the results. The museums returned will be sorted based on how well they matched the `text` parameter, in this case **museum**.
 
 ![](https://github.com/dianashk/pelias-doc/blob/master/getting-started/boundary_london.png)
 
-**Or you wanted to find an address, such as 28 Main Ave., in New York City?**
+#### Or you wanted to find an address, such as *28 Main Ave*, in New York City?
 
 | parameter | value |
 | :--- | :--- |
-| text | 28 Main Ave |
-| boundary.rect.min_lat | 51.286839 |
-| boundary.rect.min_lon | -74.258904 |
-| boundary.rect.max_lat | 40.477421 |
-| boundary.rect.max_lon | -73.700378 |
-| api_key | [get yours here](https://mapzen.com/developers) |
+| `text` | 28 Main Ave |
+| `boundary.rect.min_lat` | ***51.286839*** |
+| `boundary.rect.min_lon` | ***-74.258904*** |
+| `boundary.rect.max_lat` | ***40.477421*** |
+| `boundary.rect.max_lon` | ***-73.700378*** |
+| `api_key` | [get yours here](https://mapzen.com/developers) |
 
 > [/v1/search?api_key={YOUR-KEY}&text=28 Main Ave&___boundary.rect.min_lat=51.286839&boundary.rect.min_lon=-74.258904&boundary.rect.max_lat=40.477421&boundary.rect.max_lon=-73.700378___](http://pelias.bigdev.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=28 Main Ave&boundary.rect.min_lat=51.286839&boundary.rect.min_lon=-74.258904&boundary.rect.max_lat=40.477421&boundary.rect.max_lon=-73.700378)
 
