@@ -101,11 +101,11 @@ That's the _default_ number of results the API will return, unless otherwise spe
 
 **Want a single result?**
 
-> [/v1/search?text=stinky beach&___size=1___](https://pelias.bigdev.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=stinky beach&size=1)
+> [/v1/search?api_key={YOUR-KEY}&text=stinky beach&___size=1___](https://pelias.bigdev.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=stinky beach&size=1)
 
 **How about 25 results?**
  
-> [/v1/search?text=stinky beach&___size=25___](https://pelias.bigdev.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=stinky beach&size=25)
+> [/v1/search?api_key={YOUR-KEY}&text=stinky beach&___size=25___](https://pelias.bigdev.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=stinky beach&size=25)
  
  
 ### Narrowing your Search
@@ -116,13 +116,20 @@ All this time you've been searching the entire world...
 
 #### What if you need results from only...
 
-Sometimes it's necessary to limit the search to a region of the world. This can be useful if you're looking for places in a particular region, or country, or only want to look in the immediate viscinity of a user with a known location. Different usecases call for different specifications of this bounding region. We currently support three types: rectangle, circle, and country.
+Sometimes it's necessary to limit the search to a portion of the world. This can be useful if you're looking for places in a particular region, or country, or only want to look in the immediate viscinity of a user with a known location. Different usecases call for different specifications of this bounding region. We currently support three types: **rectangle**, **circle**, and **country**.
 
 #### ...rectangular region
 
 ![](https://github.com/dianashk/pelias-doc/blob/master/getting-started/world_rect.png)
  
- 
+In the case where you need to specify the boundary using a rectangle, all we need is a pair of coordinates on earth. Here are a few examples:
+
+**What is you wanted to search within London?**
+
+> [/v1/search?api_key={YOUR-KEY}&text=harods&___boundary.rect.min_lat=51.286839&boundary.rect.min_lon=-0.51035&boundary.rect.max_lat=51.692322&boundary.rect.max_lon=0.33403___](https://pelias.bigdev.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=tower&boundary.rect.min_lat=51.286839&boundary.rect.min_lon=-0.51035&boundary.rect.max_lat=51.692322&boundary.rect.max_lon=0.33403)
+
+![](https://github.com/dianashk/pelias-doc/blob/master/getting-started/boundary_london.png)
+
  
 #### ...circular region
 
