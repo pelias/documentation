@@ -10,7 +10,7 @@ Geocoding is the process of matching an address to its corresponding geographic 
 ## Looking For Places - Getting Started
 _{search text, global, no options}_
 
-#### The most basic scenario
+### The most basic scenario
 
 Let's say you wanted to find **Stinky Beach**, you would simply query the search API as follows:
 
@@ -32,7 +32,7 @@ See for yourself:
 
 > [/v1/search?api_key={YOUR-KEY}&___text=YANKEE STADIUM___](https://search.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=YANKEE STADIUM)
 
-#### Results
+### Results
 
 Now that you've seen some examples of search, let's examine the results closer.
 When requesting search results you will always get back `GeoJSON` results, unless something goes terribly wrong, in which case you'll get a really helpful error.
@@ -108,18 +108,38 @@ That's the _default_ number of results the API will return, unless otherwise spe
 > [/v1/search?text=stinky beach&___size=25___](https://pelias.bigdev.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=stinky beach&size=25)
  
  
- 
- 
- 
- 
- 
- 
- 
- 
- 
-## Looking in a Particular Place (Using Boundaries)
-[Means to limit the scope of where you're looking, and to look only within a particular area. This can be useful if you're looking for places in a particular region, or country, or only want to look in the immediate viscinity of a user with a known location.]
+### Narrowing your Search
 
+All this time you've been searching the entire world...
+
+![](https://github.com/dianashk/pelias-doc/blob/master/getting-started/world_all.png)
+
+#### What if you need results from only...
+
+Sometimes it's necessary to limit the search to a region of the world. This can be useful if you're looking for places in a particular region, or country, or only want to look in the immediate viscinity of a user with a known location. Different usecases call for different specifications of this bounding region. We currently support three types: rectangle, circle, and country.
+
+#### ...rectangular region
+
+![](https://github.com/dianashk/pelias-doc/blob/master/getting-started/world_rect.png)
+ 
+ 
+ 
+#### ...circular region
+
+![](https://github.com/dianashk/pelias-doc/blob/master/getting-started/world_circle.png)
+ 
+ 
+#### ...specific country
+
+![](https://github.com/dianashk/pelias-doc/blob/master/getting-started/world_country.png)
+
+
+
+
+
+
+# TBD
+ 
 Boundaries are mutually exclusive
 
 - Country (country code)
