@@ -19,7 +19,7 @@ Let's say you wanted to find **Stinky Beach**, you would simply query the search
 
 _...go ahead, and click that link, we'll wait_
 
-Maybe you'd like to find an **address**, like this:
+Maybe you'd like to find an address, like this:
 
 > [/v1/search?___text=30 west 26th street___](https://search.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=30 west 26th street)
 
@@ -27,21 +27,74 @@ Or even a landmark, like **Yankee Stadium**:
 
 > [/v1/search?___text=yankee stadium___](https://search.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=yankee stadium)
 
-_You may have noticed already that cApiTaliZAtioN isn't a big deal for search._
-_You can type `yankee stadium` or `Yankee Stadium` or even `YANKEE STADIUM` if you're really excited about finding it._
-_See for yourself:_
+You may have noticed already that cApiTaliZAtioN isn't a big deal for search.
+You can type **yankee stadium** or **Yankee Stadium** or even **YANKEE STADIUM** if you're really excited about finding it.
+See for yourself:
 
 > [/v1/search?___text=YANKEE STADIUM___](https://search.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=YANKEE STADIUM)
 
 #### Results
 
-Now that you're back, you probably saw a `GeoJSON` formatted response on the other side of that click.
+Now that you've seen some examples of search, let's examine the results closer.
+When searching for **30 West 26th Street** you got back a `GeoJSON` formatted response.
 You'll always get back `GeoJSON` results, unless something goes terribly wrong, in which case you'll get a really helpful error.
 
-Now you know exactly where on the earth's sufrace **Stinky Beach** is located: `[ 139.86114, -37.33192 ]`
-You've also probably learned from the results of that request that this intriguing beach is located in **Australia**, more specifically in the **South Australia** region. You also have yourself a handy text label to use when talking to other humans about this place: **Stinky Beach, Nora Creina, South Australia**
+You can go [here](link.to.geojson.spec.com) to learn more about the `GeoJSON` data format specification.
+We'll assume you're familiar with the general layout and only point out some important details here.
 
-[Read more about the response format](https://github.com/dianashk/pelias-doc/edit/master/getting-started/response.md)
+You will find the following top-level structure to every response:
+
+```
+{
+  "geocoding":{...},
+  "type":"FeatureCollection",
+  "features":[...],
+  "bbox":[...]
+}
+```
+
+For the purposes of getting started quickly, let's keep our focus on the **features** property of the result.
+This is where you will find the list of results that best matched your input parameters.
+
+Each item in this list will contain all the information needed to identify it in human-readable format in the `properties` block, 
+as well as computer friendly coordinates in the `geometry` property. Note the `label` property, which is a human-friendly
+representation of the place, ready to be displayed to an end-user.
+
+```
+{  
+  "type":"Feature",
+  "properties":{  
+    "gid":"...",
+    "layer":"address",
+    "source":"osm",
+    "name":"30 West 26th Street",
+    "housenumber":"30",
+    "street":"West 26th Street",
+    "postalcode":"10010",
+    "country_a":"USA",
+    "country":"United States",
+    "region":"New York",
+    "region_a":"NY",
+    "county":"New York County",
+    "localadmin":"Manhattan",
+    "locality":"New York",
+    "neighbourhood":"Flatiron District",
+    "confidence":0.9624939994613662,
+    "label":"30 West 26th Street, Manhattan, NY"
+  },
+  "geometry":{  
+    "type":"Point",
+    "coordinates":[  
+      -73.990342,
+      40.744243
+    ]
+  }
+}
+```
+
+There is so much more to tell you about the plethora of data being returned for each search,
+we had to split it out into its own document.
+[Read more about the response format.](https://github.com/dianashk/pelias-doc/edit/master/getting-started/response.md)
 
 #### Result count
 
