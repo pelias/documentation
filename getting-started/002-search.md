@@ -213,13 +213,35 @@ This time, we'll use the `boundary.circle.*` parameter grouping to get the job d
 > [/v1/search?api_key={YOUR-KEY}&text=starbucks&___boundary.circle.lat=40.414149&boundary.circle.lon=-3.703755&boundary.circle.radius=3___](http://pelias.bigdev.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=starbucks&boundary.circle.lat=40.414149&boundary.circle.lon=-3.703755&boundary.circle.radius=3)
 
 
-
 #### ...specific country
 
 ![](https://github.com/dianashk/pelias-doc/blob/master/getting-started/world_country.png)
 
+Sometimes your usecase might require that all the search results are from a particular country. Well, we've got that covered! You just need to set the `boundary.country` parameter value to the **alpha-2** or **alpha-3** [ISO-3166 country code](https://en.wikipedia.org/wiki/ISO_3166-1).
 
+##### Try searching for *San Francisco* in *Columbia*
 
+| parameter | value |
+| :--- | :--- |
+| `text` | san francisco |
+| `boundary.country` | ***COL*** |
+| `api_key` | [get yours here](https://mapzen.com/developers) |
+
+> [/v1/search?api_key={YOUR-KEY}&text=san francisco&___boundary.country=COL___](http://pelias.bigdev.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=san francisco&boundary.country=COL)
+
+Note that all the results have `country` set to **Columbia**.
+
+##### Now try searching for *San Francisco* in the *USA*
+
+| parameter | value |
+| :--- | :--- |
+| `text` | san francisco |
+| `boundary.country` | ***US*** |
+| `api_key` | [get yours here](https://mapzen.com/developers) |
+
+> [/v1/search?api_key={YOUR-KEY}&text=san francisco&___boundary.country=US___](http://pelias.bigdev.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=san francisco&boundary.country=US)
+
+You can see all the results are now from within the US, and the top place is **San Francisco, CA**. Awesome, right?!
 
 
 
