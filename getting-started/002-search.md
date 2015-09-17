@@ -10,11 +10,8 @@ Geocoding is the process of matching an address to its corresponding geographic 
 
 You just set the `text` parameter to whatever you want to find.
 
-### Let's say you wanted to find *Stinky Beach*
-
+#### Let's say you wanted to find *Stinky Beach*
 You would set the following parameters in your query url:
-
-_____________________________________________________________________________________
 
 | parameter | value |
 | :--- | :--- |
@@ -24,26 +21,19 @@ ________________________________________________________________________________
 > [/v1/search?api_key={YOUR-KEY}&___text=stinky beach___](https://search.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=stinky beach)
 
 _...go ahead, and click that link, we'll wait_
-_____________________________________________________________________________________
 
-### Maybe you'd like to find an address
-
+#### Maybe you'd like to find an address
 Here's an example:
-
-_____________________________________________________________________________________
 
 | parameter | value |
 | :--- | :--- |
 | `text` | ***30 west 26th street*** |
 | `api_key` | [get yours here](https://mapzen.com/developers) |
 
-
 > [/v1/search?api_key={YOUR-KEY}&___text=30 west 26th street___](https://search.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=30 west 26th street)
-_____________________________________________________________________________________
 
 
-### Or maybe a landmark, like *Yankee Stadium*
-_____________________________________________________________________________________
+#### Or maybe a landmark, like *Yankee Stadium*
 
 | parameter | value |
 | :--- | :--- |
@@ -52,14 +42,11 @@ ________________________________________________________________________________
 
 
 > [/v1/search?api_key={YOUR-KEY}&___text=yankee stadium___](https://search.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=yankee stadium)
-_____________________________________________________________________________________
 
 
 ### **cApiTaliZAtioN**
-
 You may have noticed already that cApiTaliZAtioN isn't a big deal for search.
 You can type **yankee stadium** or **Yankee Stadium** or even **YANKEE STADIUM** if you're really excited about finding it. See for yourself by comparing the results of the previous search to the following:
-_____________________________________________________________________________________
 
 | parameter | value |
 | :--- | :--- |
@@ -68,10 +55,9 @@ ________________________________________________________________________________
 
 
 > [/v1/search?api_key={YOUR-KEY}&___text=YANKEE STADIUM___](https://search.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=YANKEE STADIUM)
-_____________________________________________________________________________________
+
 
 ## Results
-
 Now that you've seen some examples of search, let's examine the results closer.
 When requesting search results you will always get back `GeoJSON` results, unless something goes terribly wrong, in which case you'll get a really helpful error.
 
@@ -80,7 +66,7 @@ When requesting search results you will always get back `GeoJSON` results, unles
 
 You will find the following top-level structure to every response:
 
-```
+```javascript
 {
   "geocoding":{...},
   "type":"FeatureCollection",
@@ -94,7 +80,7 @@ This is where you will find the list of results that best matched your input par
 
 Each item in this list will contain all the information needed to identify it in human-readable format in the `properties` block, as well as computer friendly coordinates in the `geometry` property. Note the `label` property, which is a human-friendly representation of the place, ready to be displayed to an end-user.
 
-```
+```javascript
 {  
   "type":"Feature",
   "properties":{  
@@ -132,11 +118,12 @@ we had to split it out into its own section.
 
 ## Result count
 
-You may have noticed that there were **10** places in the results for our **Stinky Beach** search.
+You may have noticed that there were **10** places in the results for all the previous search examples.
 That's the _default_ number of results the API will return, unless otherwise specified. 
 
-### Want a *single* result?
-_____________________________________________________________________________________
+#### Want a *single* result?
+
+Just set the `size` parameter to the desired number:
 
 | parameter | value |
 | :--- | :--- |
@@ -145,10 +132,9 @@ ________________________________________________________________________________
 | `api_key` | [get yours here](https://mapzen.com/developers) |
 
 > [/v1/search?api_key={YOUR-KEY}&text=stinky beach&___size=1___](https://pelias.bigdev.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=stinky beach&size=1)
-_____________________________________________________________________________________
 
-### How about *25* results?
-_____________________________________________________________________________________
+
+#### How about *25* results?
 
 | parameter | value |
 | :--- | :--- |
@@ -157,8 +143,7 @@ ________________________________________________________________________________
 | `api_key` | [get yours here](https://mapzen.com/developers) |
  
 > [/v1/search?api_key={YOUR-KEY}&text=stinky beach&___size=25___](https://pelias.bigdev.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=stinky beach&size=25)
-_____________________________________________________________________________________
- 
+
  
 ## Narrowing your Search
 
@@ -177,7 +162,6 @@ Sometimes it's necessary to limit the search to a portion of the world. This can
 In the case where you need to specify the boundary using a rectangle, all we need is a pair of coordinates on earth. Here are a few examples:
 
 ##### What if you wanted to find museums in *London*?
-_____________________________________________________________________________________
 
 | parameter | value |
 | :--- | :--- |
@@ -190,14 +174,11 @@ ________________________________________________________________________________
 
 > [/v1/search?api_key={YOUR-KEY}&text=museum&___boundary.rect.min_lat=51.286839&boundary.rect.min_lon=-0.51035&boundary.rect.max_lat=51.692322&boundary.rect.max_lon=0.33403___](https://pelias.bigdev.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=tower&boundary.rect.min_lat=51.286839&boundary.rect.min_lon=-0.51035&boundary.rect.max_lat=51.692322&boundary.rect.max_lon=0.33403)
 
-_____________________________________________________________________________________
-
-
 Below is the region that will be searched. Museums located outside of this highlighted region will **NOT** be included in the results. The museums returned will be sorted based on how well they matched the `text` parameter, in this case **museum**.
 
 ![](https://github.com/dianashk/pelias-doc/blob/master/getting-started/boundary_london.png)
 
-#### Or you wanted to find an address, such as *28 Main Ave*, in New York City?
+##### Or you wanted to find an address, such as *28 Main Ave*, in New York City?
 
 | parameter | value |
 | :--- | :--- |
