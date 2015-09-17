@@ -1,26 +1,122 @@
-Search
+`SEARCH`
 =======
-Turning place names we can say into geographic coordinates computers can use
+Turning human recognizable place names into computer recognizable geographic coordinates
 _____________________________________________________________________________________
 
-Geocoding is the process of matching an address to its corresponding geographic coordinates. There's nothing inherent in the words "10 Downing Street, London, United Kingdom" that inherently conveys its location at the coordinates 51.503396, -0.12764. Instead this process [...].
+Geocoding is the process of matching an address to its corresponding geographic coordinates. There's nothing inherent in the words "10 Downing Street, London, United Kingdom" that conveys its location at the coordinates `[ 51.503396,  -0.12764 ]`. Instead this process [...].
 
+:school: :barber: :bank: :us: :house_with_garden: :hospital: ......... :computer:
 
-# Using Search
 ## Looking For Places - Getting Started
-{search text, global, no options}
+_{search text, global, no options}_
 
-`https://search.mapzen.com/v1/search?text={123 Fake Street, Springfield}&api_key={YOUR_API_KEY}`
+#### The most basic scenario
 
-- Response is GeoJSON FeatureCollection
- - The FeatureCollection is an ordered array, ranked in order of likleyhood
- - Use directly in your application or test at GeoJSON.io
- - Show + explain a response block
+Let's say you wanted to find **Stinky Beach**, you would simply query the search API as follows:
 
-## Sizing Your Results
- - Example: size=1 for batch geocoding
- - Example: size=40 to store lots of results
+> [/v1/search?api_key={YOUR-KEY}&___text=stinky beach___](https://search.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=stinky beach)
 
+_...go ahead, and click that link, we'll wait_
+
+Maybe you'd like to find an address, like this:
+
+> [/v1/search?api_key={YOUR-KEY}&___text=30 west 26th street___](https://search.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=30 west 26th street)
+
+Or even a landmark, like **Yankee Stadium**:
+
+> [/v1/search?api_key={YOUR-KEY}&___text=yankee stadium___](https://search.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=yankee stadium)
+
+You may have noticed already that cApiTaliZAtioN isn't a big deal for search.
+You can type **yankee stadium** or **Yankee Stadium** or even **YANKEE STADIUM** if you're really excited about finding it.
+See for yourself:
+
+> [/v1/search?api_key={YOUR-KEY}&___text=YANKEE STADIUM___](https://search.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=YANKEE STADIUM)
+
+#### Results
+
+Now that you've seen some examples of search, let's examine the results closer.
+When requesting search results you will always get back `GeoJSON` results, unless something goes terribly wrong, in which case you'll get a really helpful error.
+
+_You can go [here](link.to.geojson.spec.com) to learn more about the `GeoJSON` data format specification.
+We'll assume you're familiar with the general layout and only point out some important details here._
+
+You will find the following top-level structure to every response:
+
+```
+{
+  "geocoding":{...},
+  "type":"FeatureCollection",
+  "features":[...],
+  "bbox":[...]
+}
+```
+
+For the purposes of getting started quickly, let's keep our focus on the **features** property of the result.
+This is where you will find the list of results that best matched your input parameters.
+
+Each item in this list will contain all the information needed to identify it in human-readable format in the `properties` block, 
+as well as computer friendly coordinates in the `geometry` property. Note the `label` property, which is a human-friendly
+representation of the place, ready to be displayed to an end-user.
+
+```
+{  
+  "type":"Feature",
+  "properties":{  
+    "gid":"...",
+    "layer":"address",
+    "source":"osm",
+    "name":"30 West 26th Street",
+    "housenumber":"30",
+    "street":"West 26th Street",
+    "postalcode":"10010",
+    "country_a":"USA",
+    "country":"United States",
+    "region":"New York",
+    "region_a":"NY",
+    "county":"New York County",
+    "localadmin":"Manhattan",
+    "locality":"New York",
+    "neighbourhood":"Flatiron District",
+    "confidence":0.9624939994613662,
+    "label":"30 West 26th Street, Manhattan, NY"
+  },
+  "geometry":{  
+    "type":"Point",
+    "coordinates":[  
+      -73.990342,
+      40.744243
+    ]
+  }
+}
+```
+
+There is so much more to tell you about the plethora of data being returned for each search,
+we had to split it out into its own document.
+[Read more about the response format.](https://github.com/dianashk/pelias-doc/edit/master/getting-started/response.md)
+
+#### Result count
+
+You may have noticed that there were **10** places in the results for our **Stinky Beach** search.
+That's the _default_ number of results the API will return, unless otherwise specified. 
+
+**Want a single result?**
+
+> [/v1/search?text=stinky beach&___size=1___](https://pelias.bigdev.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=stinky beach&size=1)
+
+**How about 25 results?**
+ 
+> [/v1/search?text=stinky beach&___size=25___](https://pelias.bigdev.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=stinky beach&size=25)
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
 ## Looking in a Particular Place (Using Boundaries)
 [Means to limit the scope of where you're looking, and to look only within a particular area. This can be useful if you're looking for places in a particular region, or country, or only want to look in the immediate viscinity of a user with a known location.]
 
