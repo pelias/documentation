@@ -15,32 +15,31 @@ _{search text, global, no options}_
 
 Let's say you wanted to find **Stinky Beach**, you would simply query the search API as follows:
 
-> [/v1/search?___text=stinky beach___](https://search.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=stinky beach)
+> [/v1/search?api_key={YOUR-KEY}&___text=stinky beach___](https://search.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=stinky beach)
 
 _...go ahead, and click that link, we'll wait_
 
 Maybe you'd like to find an address, like this:
 
-> [/v1/search?___text=30 west 26th street___](https://search.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=30 west 26th street)
+> [/v1/search?api_key={YOUR-KEY}&___text=30 west 26th street___](https://search.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=30 west 26th street)
 
 Or even a landmark, like **Yankee Stadium**:
 
-> [/v1/search?___text=yankee stadium___](https://search.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=yankee stadium)
+> [/v1/search?api_key={YOUR-KEY}&___text=yankee stadium___](https://search.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=yankee stadium)
 
 You may have noticed already that cApiTaliZAtioN isn't a big deal for search.
 You can type **yankee stadium** or **Yankee Stadium** or even **YANKEE STADIUM** if you're really excited about finding it.
 See for yourself:
 
-> [/v1/search?___text=YANKEE STADIUM___](https://search.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=YANKEE STADIUM)
+> [/v1/search?api_key={YOUR-KEY}&___text=YANKEE STADIUM___](https://search.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=YANKEE STADIUM)
 
 #### Results
 
 Now that you've seen some examples of search, let's examine the results closer.
-When searching for **30 West 26th Street** you got back a `GeoJSON` formatted response.
-You'll always get back `GeoJSON` results, unless something goes terribly wrong, in which case you'll get a really helpful error.
+When requesting search results you will always get back `GeoJSON` results, unless something goes terribly wrong, in which case you'll get a really helpful error.
 
-You can go [here](link.to.geojson.spec.com) to learn more about the `GeoJSON` data format specification.
-We'll assume you're familiar with the general layout and only point out some important details here.
+_You can go [here](link.to.geojson.spec.com) to learn more about the `GeoJSON` data format specification.
+We'll assume you're familiar with the general layout and only point out some important details here._
 
 You will find the following top-level structure to every response:
 
