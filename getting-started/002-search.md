@@ -1,21 +1,16 @@
-`SEARCH`
+`SEARCH`, or Looking for Places
 =======
-Turning human recognizable place names into computer recognizable geographic coordinates
-_____________________________________________________________________________________
-
-## Looking For Places - Getting Started
 
 Geocoding is the process of matching an address to its corresponding geographic coordinates. There's nothing inherent in the words "10 Downing Street, London, United Kingdom" that conveys its location at the coordinates `[ 51.503396,  -0.12764 ]`. Instead this process [...].
 
 :school: :barber: :bank: :us: :house_with_garden: :hospital: ......... :computer:
 
-_____________________________________________________________________________________
 
-### The most basic scenario
+## The most basic scenario
 
 You just set the `text` parameter to whatever you want to find.
 
-**Let's say you wanted to find Stinky Beach**
+### Let's say you wanted to find *Stinky Beach*
 
 You would set the following parameters in your query url:
 
@@ -31,9 +26,11 @@ ________________________________________________________________________________
 _...go ahead, and click that link, we'll wait_
 _____________________________________________________________________________________
 
-**Maybe you'd like to find an address?**
+### Maybe you'd like to find an address
 
 Here's an example:
+
+_____________________________________________________________________________________
 
 | parameter | value |
 | :--- | :--- |
@@ -42,8 +39,11 @@ Here's an example:
 
 
 > [/v1/search?api_key={YOUR-KEY}&___text=30 west 26th street___](https://search.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=30 west 26th street)
+_____________________________________________________________________________________
 
-**Or maybe a landmark, like Yankee Stadium?**
+
+### Or maybe a landmark, like *Yankee Stadium*
+_____________________________________________________________________________________
 
 | parameter | value |
 | :--- | :--- |
@@ -52,10 +52,14 @@ Here's an example:
 
 
 > [/v1/search?api_key={YOUR-KEY}&___text=yankee stadium___](https://search.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=yankee stadium)
+_____________________________________________________________________________________
 
-**cApiTaliZAtioN**
+
+### **cApiTaliZAtioN**
+
 You may have noticed already that cApiTaliZAtioN isn't a big deal for search.
 You can type **yankee stadium** or **Yankee Stadium** or even **YANKEE STADIUM** if you're really excited about finding it. See for yourself by comparing the results of the previous search to the following:
+_____________________________________________________________________________________
 
 | parameter | value |
 | :--- | :--- |
@@ -64,14 +68,15 @@ You can type **yankee stadium** or **Yankee Stadium** or even **YANKEE STADIUM**
 
 
 > [/v1/search?api_key={YOUR-KEY}&___text=YANKEE STADIUM___](https://search.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=YANKEE STADIUM)
+_____________________________________________________________________________________
 
-### Results
+## Results
 
 Now that you've seen some examples of search, let's examine the results closer.
 When requesting search results you will always get back `GeoJSON` results, unless something goes terribly wrong, in which case you'll get a really helpful error.
 
-_You can go [here](link.to.geojson.spec.com) to learn more about the `GeoJSON` data format specification.
-We'll assume you're familiar with the general layout and only point out some important details here._
+> _You can go [here](link.to.geojson.spec.com) to learn more about the `GeoJSON` data format specification.
+> We'll assume you're familiar with the general layout and only point out some important details here._
 
 You will find the following top-level structure to every response:
 
