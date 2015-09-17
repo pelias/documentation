@@ -3,30 +3,37 @@
 Turning human recognizable place names into computer recognizable geographic coordinates
 _____________________________________________________________________________________
 
+## Looking For Places - Getting Started
+
 Geocoding is the process of matching an address to its corresponding geographic coordinates. There's nothing inherent in the words "10 Downing Street, London, United Kingdom" that conveys its location at the coordinates `[ 51.503396,  -0.12764 ]`. Instead this process [...].
 
 :school: :barber: :bank: :us: :house_with_garden: :hospital: ......... :computer:
 
-## Looking For Places - Getting Started
-_{search text, global, no options}_
+_____________________________________________________________________________________
 
 ### The most basic scenario
 
 You just set the `text` parameter to whatever you want to find.
 
-Let's say you wanted to find **Stinky Beach**, you would simply query the search API as follows:
+**Let's say you wanted to find Stinky Beach**
+
+You would set the following parameters in your query url:
+
+_____________________________________________________________________________________
 
 | parameter | value |
 | :--- | :--- |
-| text | stinky beach |
-| api_key | [get yours here](https://mapzen.com/developers) |
+| `text` | ***stinky beach*** |
+| `api_key` | [get yours here](https://mapzen.com/developers) |
 
 > [/v1/search?api_key={YOUR-KEY}&___text=stinky beach___](https://search.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=stinky beach)
 
 _...go ahead, and click that link, we'll wait_
+_____________________________________________________________________________________
 
-Maybe you'd like to find an address, like this:
+**Maybe you'd like to find an address?**
 
+Here's an example:
 
 | parameter | value |
 | :--- | :--- |
@@ -36,24 +43,24 @@ Maybe you'd like to find an address, like this:
 
 > [/v1/search?api_key={YOUR-KEY}&___text=30 west 26th street___](https://search.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=30 west 26th street)
 
-Or even a landmark, like **Yankee Stadium**:
+**Or maybe a landmark, like Yankee Stadium?**
 
 | parameter | value |
 | :--- | :--- |
-| text | yankee stadium |
-| api_key | [get yours here](https://mapzen.com/developers) |
+| `text` | ***yankee stadium*** |
+| `api_key` | [get yours here](https://mapzen.com/developers) |
 
 
 > [/v1/search?api_key={YOUR-KEY}&___text=yankee stadium___](https://search.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=yankee stadium)
 
+**cApiTaliZAtioN**
 You may have noticed already that cApiTaliZAtioN isn't a big deal for search.
-You can type **yankee stadium** or **Yankee Stadium** or even **YANKEE STADIUM** if you're really excited about finding it.
-See for yourself:
+You can type **yankee stadium** or **Yankee Stadium** or even **YANKEE STADIUM** if you're really excited about finding it. See for yourself by comparing the results of the previous search to the following:
 
 | parameter | value |
 | :--- | :--- |
-| text | YANKEE STADIUM |
-| api_key | [get yours here](https://mapzen.com/developers) |
+| `text` | ***YANKEE STADIUM*** |
+| `api_key` | [get yours here](https://mapzen.com/developers) |
 
 
 > [/v1/search?api_key={YOUR-KEY}&___text=YANKEE STADIUM___](https://search.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=YANKEE STADIUM)
