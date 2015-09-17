@@ -17,7 +17,7 @@ You just set the `text` parameter to whatever you want to find.
 Let's say you wanted to find **Stinky Beach**, you would simply query the search API as follows:
 
 | parameter | value |
-| --- | --- |
+| :--- | :--- |
 | text | stinky beach |
 | api_key | [get yours here](https://mapzen.com/developers) |
 
@@ -29,7 +29,7 @@ Maybe you'd like to find an address, like this:
 
 
 | parameter | value |
-| --- | --- |
+| :--- | :--- |
 | text | 30 west 26th street |
 | api_key | [get yours here](https://mapzen.com/developers) |
 
@@ -39,7 +39,7 @@ Maybe you'd like to find an address, like this:
 Or even a landmark, like **Yankee Stadium**:
 
 | parameter | value |
-| --- | --- |
+| :--- | :--- |
 | text | yankee stadium |
 | api_key | [get yours here](https://mapzen.com/developers) |
 
@@ -51,7 +51,7 @@ You can type **yankee stadium** or **Yankee Stadium** or even **YANKEE STADIUM**
 See for yourself:
 
 | parameter | value |
-| --- | --- |
+| :--- | :--- |
 | text | YANKEE STADIUM |
 | api_key | [get yours here](https://mapzen.com/developers) |
 
@@ -128,7 +128,7 @@ That's the _default_ number of results the API will return, unless otherwise spe
 **Want a single result?**
 
 | parameter | value |
-| --- | --- |
+| :--- | :--- |
 | text | stinky beach |
 | size | 1 |
 | api_key | [get yours here](https://mapzen.com/developers) |
@@ -138,7 +138,7 @@ That's the _default_ number of results the API will return, unless otherwise spe
 **How about 25 results?**
 
 | parameter | value |
-| --- | --- |
+| :--- | :--- |
 | text | stinky beach |
 | size | 25 |
 | api_key | [get yours here](https://mapzen.com/developers) |
@@ -165,7 +165,7 @@ In the case where you need to specify the boundary using a rectangle, all we nee
 **What if you wanted to find museums in London?**
 
 | parameter | value |
-| --- | --- |
+| :--- | :--- |
 | text | museum |
 | boundary.rect.min_lat | 51.286839 |
 | boundary.rect.min_lon | -0.51035 |
@@ -182,7 +182,7 @@ Below is the region that will be searched. Museums located outside of this highl
 **Or you wanted to find an address, such as 28 Main Ave., in New York City?**
 
 | parameter | value |
-| --- | --- |
+| :--- | :--- |
 | text | 28 Main Ave |
 | boundary.rect.min_lat | 51.286839 |
 | boundary.rect.min_lon | -74.258904 |
