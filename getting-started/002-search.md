@@ -250,24 +250,23 @@ If you're going to attempt using multiple boundary types in a single search requ
 ![](https://github.com/dianashk/pelias-doc/blob/master/getting-started/overlapping_boundaries.gif)
 
 
-# TBD
- 
-Boundaries are mutually exclusive
+## Prioritizing Nearby Places
+Many usecases call for the ability to surface nearby results to the front of the list, while still allow important matches from further away to be visible. If that's your conundrum, here's what you've got to do.
 
-- Country (country code)
-- Rectangle (bbox)
-- Circle (point, radius)
+### Focus on a point
+Search will focus on a given point anywhere on earth, and results within **~50km** will be prioritized. Once all the nearby results have been found, additional results will come from the rest of the world.
 
-All results outside of the area will be discarded.
 
-## Focusing Results Near Your End-Users
-Mapzen Search can let your users search globally, while providing them with search results for the closest matching places first. All you have to do is provide Mapzen Search with some location context about where the search should be focused.
 
-In many cases, you may have the location of the user's device (either through Device Location APIs or the HTML5 Location API) or the area of a map that the user is looking at (the map viewport).
+
+
+
+
 
 - focus viewport api example (e.g. union square)
 - focus point api example (NY union square)
 
+# TBD
 
 ### Combining Focused Results with Boundaries
 - Focus within country example
