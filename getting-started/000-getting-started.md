@@ -10,3 +10,8 @@ Mapzen Search can be used to:
 - turn a list of addresses into coordinates to plot
 - Take location coordinates and turn them into human readable places, like an address
 - find the neighbourhood, cities, states, and countries of location coordinates to quickly classify where your data is coming from
+
+Mapzen Search offers:
+- Advanced Geocoding tools
+- Coarse Geocoding
+- 
