@@ -243,6 +243,11 @@ Note that all the results have `country` set to **Columbia**.
 
 You can see all the results are now from within the US, and the top place is **San Francisco, CA**. Awesome, right?!
 
+#### Boundary issues
+
+If you're going to attempt using multiple boundary types in a single search request, be aware that the results will come from the **intersection** of all the boundaries! So if you provide regions that don't overlap, you'll be looking at an empty set of results. You've been warned. Here's a visual of how it works:
+
+![](https://github.com/dianashk/pelias-doc/blob/master/getting-started/overlapping_boundaries.gif)
 
 
 # TBD
