@@ -254,10 +254,20 @@ If you're going to attempt using multiple boundary types in a single search requ
 Many usecases call for the ability to surface nearby results to the front of the list, while still allow important matches from further away to be visible. If that's your conundrum, here's what you've got to do.
 
 ### Focus on a point
-Search will focus on a given point anywhere on earth, and results within **~50km** will be prioritized. Once all the nearby results have been found, additional results will come from the rest of the world.
+Search will focus on a given point anywhere on earth, and results within **~100km** will be prioritized, thereby surfacing highest in the list. Once all the nearby results have been found, additional results will come from the rest of the world, without any further location-based prioritization.
 
+![](https://github.com/dianashk/pelias-doc/blob/master/getting-started/focus_point.png)
 
+#### Let's find *City Hall* near the center of *Washington, DC*
 
+| parameter | value |
+| :--- | :--- |
+| `text` | city hall |
+| `focus.point.lat` | ***38.8993488*** |
+| `focus.point.lon` | ***-77.0145665*** |
+| `api_key` | [get yours here](https://mapzen.com/developers) |
+
+> [/v1/search?api_key={YOUR-KEY}&text=city hall&___focus.point.lat=38.8993488&focus.point.lon=-77.0145665___](http://pelias.bigdev.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=city hall&focus.point.lat=38.8993488&focus.point.lon=-77.0145665)
 
 
 
