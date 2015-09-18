@@ -1,37 +1,48 @@
 `SEARCH`, or Looking for Places
 =======
 
-Geocoding is the process of matching an address to its corresponding geographic coordinates. There's nothing inherent in the words "10 Downing Street, London, United Kingdom" that conveys its location at the coordinates `[ 51.503396,  -0.12764 ]`. Instead this process [...].
+Geospacial search, frequently reffered to as **geocoding** is the process of matching an address to its corresponding geographic coordinates. There's nothing inherent in the words we use to describe an address that conveys its location at some coordinates on earth, i.e. *[lat,lon]*. Making the leap from text to coordinates is an intricate and challenging process. Lucky for you, we've done all the hard work and made it accessible via a really simple and free web service.
 
 :school: :barber: :bank: :us: :house_with_garden: :hospital: ......... :computer:
 
-
 ## The most basic scenario
 
-You just set the `text` parameter to whatever you want to find.
+In the simplest search, all you provide is the text you'd like to match in any part of the location details. So to accomplish this, you just set the `text` parameter to whatever you want to find. Let's see a few examples.
 
-#### Let's say you wanted to find *Stinky Beach*
+#### Find an address
 You would set the following parameters in your query url:
 
 | parameter | value |
 | :--- | :--- |
-| `text` | ***stinky beach*** |
 | `api_key` | [get yours here](https://mapzen.com/developers) |
+| `text` | ***30 West 26th Street, New York, NY*** |
 
-> [/v1/search?api_key={YOUR-KEY}&___text=stinky beach___](https://search.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=stinky beach)
+> [/v1/search?api_key={YOUR-KEY}&___text=30 West 26th Street, New York, NY___](https://search.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=30 West 26th Street, New York, NY)
 
 _...go ahead, and click that link, we'll wait_
 
-#### Maybe you'd like to find an address
-Here's an example:
+You probably saw some cool **GeoJSON**, more on that later, with the following places in the results:
+
+> * 30 West 26th Street, Manhattan, NY
+> * 30 West 26th Street, Manhattan, NY
+> * 30 West 26th Street, Manhattan, NY
+> * 30 West 26th Street, Merced, CA
+> * 307 West 26th Street, Manhattan, NY
+> * 300 West 26th Street, Manhattan, NY
+> * 307 West 26th Street, Manhattan, NY
+> * 301 West 26th Street, Manhattan, NY
+> * 30 East 26th Street, Manhattan, NY
+> * 2 West 26th Street, Manhattan, NY
+
+#### Find a venue
+As mentioned above, query `text` can be a partial or full name of a place we're looking for. So here's an example of another way of finding that address we just searched for:
 
 | parameter | value |
 | :--- | :--- |
-| `text` | ***30 west 26th street*** |
 | `api_key` | [get yours here](https://mapzen.com/developers) |
+| `text` | ***Samsung Accelerator*** |
 
-> [/v1/search?api_key={YOUR-KEY}&___text=30 west 26th street___](https://search.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=30 west 26th street)
-
+> [/v1/search?api_key={YOUR-KEY}&___text=Samsung Accelerator___](https://search.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=Samsung Accelerator)
 
 #### Or maybe a landmark, like *Yankee Stadium*
 
