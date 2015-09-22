@@ -10,18 +10,18 @@ Geospacial search, frequently reffered to as **geocoding** is the process of mat
 In the simplest search, all you provide is the text you'd like to match in any part of the location details. So to accomplish this, you just set the `text` parameter to whatever you want to find. Let's see a few examples.
 
 #### Find a venue
-Let's search for **YMCA**. You would set the following parameters in your query url:
+Let's search for **YMCA**. Here's what you'd need to append to the base URL of the service, **search.mapzen.com**.
+
+> [/v1/search?api_key={YOUR-KEY}&___text=YMCA___](https://search.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=YMCA)
+
+Note the parameter values are set as follows:
 
 | parameter | value |
 | :--- | :--- |
 | `api_key` | [get yours here](https://mapzen.com/developers) |
-| `text` | ***30 West 26th Street, New York, NY*** |
+| `text` | YMCA |
 
-> [/v1/search?api_key={YOUR-KEY}&___text=YMCA___](https://search.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=YMCA)
-
-_...go ahead, and click that link, we'll wait_
-
-You probably saw some cool **GeoJSON**, more on that later, with the following places in the results:
+If you clicked on the query link above, you probably saw some cool **GeoJSON**, more on that later, with the following set of places in the results:
 
 > * YMCA, Bargoed Community, United Kingdom
 * YMCA, Nunspeet, Gelderland
@@ -34,38 +34,164 @@ You probably saw some cool **GeoJSON**, more on that later, with the following p
 * YMCA, Jefferson, OH
 * YMCA, Belleville, IL
 
-#### Find a venue
-As mentioned above, query `text` can be a partial or full name of a place we're looking for. So here's an example of another way of finding that address we just searched for:
+Note that the results are spread out throughout the world. Since we haven't told the service anything about our current location or any other geographic context.
+
+
+## Narrowing your Search
+
+All this time you've been searching the entire world...
+
+![](https://github.com/dianashk/pelias-doc/blob/master/getting-started/world_all.png)
+
+### What if you need results from only a...
+
+Sometimes it's necessary to limit the search to a portion of the world. This can be useful if you're looking for places in a particular region, or country, or only want to look in the immediate viscinity of a user with a known location. Different usecases call for different specifications of this bounding region. We currently support three types: **rectangle**, **circle**, and **country**.
+
+
+#### ...specific country
+
+![](https://github.com/dianashk/pelias-doc/blob/master/getting-started/world_country.png)
+
+Sometimes your usecase might require that all the search results are from a particular country. Well, we've got that covered! You just need to set the `boundary.country` parameter value to the **alpha-2** or **alpha-3** [ISO-3166 country code](https://en.wikipedia.org/wiki/ISO_3166-1).
+
+#### Find **YMCA** only within **Great Britain**
+We'll need to know that the **alpha-3** code for **Great Britain** is ***GBR*** and set the parameters like this:
 
 | parameter | value |
 | :--- | :--- |
 | `api_key` | [get yours here](https://mapzen.com/developers) |
-| `text` | ***Samsung Accelerator*** |
+| `text` | YMCA |
+| `boundary.country` | ***GBR*** |
 
-> [/v1/search?api_key={YOUR-KEY}&___text=Samsung Accelerator___](https://search.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=Samsung Accelerator)
+> [/v1/search?api_key={YOUR-KEY}&text=YMCA&___boundary.country=GBR___](http://pelias.bigdev.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=YMCA&boundary.country=GBR)
 
-#### Or maybe a landmark, like *Yankee Stadium*
+Note that all the results reside within Great Britain:
+
+> * YMCA, Bargoed Community, United Kingdom
+* YMCA, Orpington, Greater London
+* YMCA, Erdington, West Midlands
+* YMCA, Malvern CP, United Kingdom
+* YMCA, Ancoats, Greater Manchester
+* YMCA, Carmarthen Community, United Kingdom
+* YMCA, Halebank, Cheshire
+* YMCA, Brightlingsea CP, United Kingdom
+* YMCA, Lenton Abbey, Nottinghamshire
+* YMCA, Old Clee, Lincolnshire
+
+Now you can try the same search request with different country codes and see the results change.
+
+> [/v1/search?api_key={YOUR-KEY}&text=YMCA&___boundary.country=USA___](http://pelias.bigdev.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=YMCA&boundary.country=USA)
+
+Results in the United States:
+
+> * YMCA, Belleville, IL
+* YMCA, Forest City, IA
+* YMCA, Fargo, ND
+* YMCA, Frisco, TX
+* YMCA, Jefferson, OH
+* YMCA, Belleville, IL
+* YMCA, Chapel Hill, NC
+* YMCA, West Lampeter, PA
+* YMCA, Bremerton, WA
+* YMCA, Westerly, RI
+
+
+
+#### ...rectangular region
+
+![](https://github.com/dianashk/pelias-doc/blob/master/getting-started/world_rect.png)
+ 
+In the case where you need to specify the boundary using a rectangle, all we need is a pair of coordinates on earth. Here are a few examples:
+
+##### Let's say you wanted to find museums in *London*
+You'd need to set the `boundary.rect.*` parameter grouping to indicate the extent of the boundary.
 
 | parameter | value |
 | :--- | :--- |
-| `text` | ***yankee stadium*** |
+| `text` | museum |
+| `boundary.rect.min_lat` | ***51.286839*** |
+| `boundary.rect.min_lon` | ***-0.51035*** |
+| `boundary.rect.max_lat` | ***51.692322*** |
+| `boundary.rect.max_lon` | ***0.33403*** |
 | `api_key` | [get yours here](https://mapzen.com/developers) |
 
+> [/v1/search?api_key={YOUR-KEY}&text=museum&___boundary.rect.min_lat=51.286839&boundary.rect.min_lon=-0.51035&boundary.rect.max_lat=51.692322&boundary.rect.max_lon=0.33403___](https://pelias.bigdev.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=tower&boundary.rect.min_lat=51.286839&boundary.rect.min_lon=-0.51035&boundary.rect.max_lat=51.692322&boundary.rect.max_lon=0.33403)
 
-> [/v1/search?api_key={YOUR-KEY}&___text=yankee stadium___](https://search.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=yankee stadium)
+Below is the region that will be searched. Museums located outside of this highlighted region will **NOT** be included in the results. The museums returned will be sorted based on how well they matched the `text` parameter, in this case **museum**.
 
+![](https://github.com/dianashk/pelias-doc/blob/master/getting-started/boundary_london.png)
 
-### **cApiTaliZAtioN**
-You may have noticed already that cApiTaliZAtioN isn't a big deal for search.
-You can type **yankee stadium** or **Yankee Stadium** or even **YANKEE STADIUM** if you're really excited about finding it. See for yourself by comparing the results of the previous search to the following:
+##### Or you wanted to find an address, such as *28 Main Ave*, in New York City?
 
 | parameter | value |
 | :--- | :--- |
-| `text` | ***YANKEE STADIUM*** |
+| `text` | 28 Main Ave |
+| `boundary.rect.min_lat` | ***51.286839*** |
+| `boundary.rect.min_lon` | ***-74.258904*** |
+| `boundary.rect.max_lat` | ***40.477421*** |
+| `boundary.rect.max_lon` | ***-73.700378*** |
 | `api_key` | [get yours here](https://mapzen.com/developers) |
 
+> [/v1/search?api_key={YOUR-KEY}&text=28 Main Ave&___boundary.rect.min_lat=51.286839&boundary.rect.min_lon=-74.258904&boundary.rect.max_lat=40.477421&boundary.rect.max_lon=-73.700378___](http://pelias.bigdev.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=28 Main Ave&boundary.rect.min_lat=51.286839&boundary.rect.min_lon=-74.258904&boundary.rect.max_lat=40.477421&boundary.rect.max_lon=-73.700378)
 
-> [/v1/search?api_key={YOUR-KEY}&___text=YANKEE STADIUM___](https://search.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=YANKEE STADIUM)
+ 
+#### ...circular region
+
+![](https://github.com/dianashk/pelias-doc/blob/master/getting-started/world_circle.png)
+
+Sometimes you don't have a rectangle to work with, but you you've got instead a point on earth, for example your location coordinates, and a maximum distance within which acceptable results can be located.
+
+##### Find all *Starbucks* locations within a *3km* radius of a spot in *Madrid*
+This time, we'll use the `boundary.circle.*` parameter grouping to get the job done. `boundary.circle.lat` and `boundary.circle.lon` should be set to your location in **Madrid**, while `boundary.circle.radius` should be set to the acceptable distance from that location. Note that the `boundary.circle.radius` parameter is always specified in **kilometers**.
+
+| parameter | value |
+| :--- | :--- |
+| `text` | starbucks |
+| `boundary.circle.lat` | ***40.414149*** |
+| `boundary.circle.lon` | ***-3.703755*** |
+| `boundary.circle.radius` | ***3*** |
+| `api_key` | [get yours here](https://mapzen.com/developers) |
+
+> [/v1/search?api_key={YOUR-KEY}&text=starbucks&___boundary.circle.lat=40.414149&boundary.circle.lon=-3.703755&boundary.circle.radius=3___](http://pelias.bigdev.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=starbucks&boundary.circle.lat=40.414149&boundary.circle.lon=-3.703755&boundary.circle.radius=3)
+
+
+
+#### Boundary issues
+
+If you're going to attempt using multiple boundary types in a single search request, be aware that the results will come from the **intersection** of all the boundaries! So if you provide regions that don't overlap, you'll be looking at an empty set of results. You've been warned. Here's a visual of how it works:
+
+![](https://github.com/dianashk/pelias-doc/blob/master/getting-started/overlapping_boundaries.gif)
+
+
+## Prioritizing Nearby Places
+Many usecases call for the ability to surface nearby results to the front of the list, while still allow important matches from further away to be visible. If that's your conundrum, here's what you've got to do.
+
+### Focus on a point
+Search will focus on a given point anywhere on earth, and results within **~100km** will be prioritized, thereby surfacing highest in the list. Once all the nearby results have been found, additional results will come from the rest of the world, without any further location-based prioritization.
+
+![](https://github.com/dianashk/pelias-doc/blob/master/getting-started/focus_point.png)
+
+#### Let's find *City Hall* near the center of *Washington, DC*
+
+| parameter | value |
+| :--- | :--- |
+| `text` | city hall |
+| `focus.point.lat` | ***38.8993488*** |
+| `focus.point.lon` | ***-77.0145665*** |
+| `api_key` | [get yours here](https://mapzen.com/developers) |
+
+> [/v1/search?api_key={YOUR-KEY}&text=city hall&___focus.point.lat=38.8993488&focus.point.lon=-77.0145665___](http://pelias.bigdev.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=city hall&focus.point.lat=38.8993488&focus.point.lon=-77.0145665)
+
+
+
+
+
+- focus viewport api example (e.g. union square)
+- focus point api example (NY union square)
+
+
+
+
 
 
 ## Results
@@ -156,136 +282,6 @@ Just set the `size` parameter to the desired number:
 > [/v1/search?api_key={YOUR-KEY}&text=stinky beach&___size=25___](https://pelias.bigdev.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=stinky beach&size=25)
 
  
-## Narrowing your Search
-
-All this time you've been searching the entire world...
-
-![](https://github.com/dianashk/pelias-doc/blob/master/getting-started/world_all.png)
-
-### What if you need results from only a...
-
-Sometimes it's necessary to limit the search to a portion of the world. This can be useful if you're looking for places in a particular region, or country, or only want to look in the immediate viscinity of a user with a known location. Different usecases call for different specifications of this bounding region. We currently support three types: **rectangle**, **circle**, and **country**.
-
-#### ...rectangular region
-
-![](https://github.com/dianashk/pelias-doc/blob/master/getting-started/world_rect.png)
- 
-In the case where you need to specify the boundary using a rectangle, all we need is a pair of coordinates on earth. Here are a few examples:
-
-##### Let's say you wanted to find museums in *London*
-You'd need to set the `boundary.rect.*` parameter grouping to indicate the extent of the boundary.
-
-| parameter | value |
-| :--- | :--- |
-| `text` | museum |
-| `boundary.rect.min_lat` | ***51.286839*** |
-| `boundary.rect.min_lon` | ***-0.51035*** |
-| `boundary.rect.max_lat` | ***51.692322*** |
-| `boundary.rect.max_lon` | ***0.33403*** |
-| `api_key` | [get yours here](https://mapzen.com/developers) |
-
-> [/v1/search?api_key={YOUR-KEY}&text=museum&___boundary.rect.min_lat=51.286839&boundary.rect.min_lon=-0.51035&boundary.rect.max_lat=51.692322&boundary.rect.max_lon=0.33403___](https://pelias.bigdev.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=tower&boundary.rect.min_lat=51.286839&boundary.rect.min_lon=-0.51035&boundary.rect.max_lat=51.692322&boundary.rect.max_lon=0.33403)
-
-Below is the region that will be searched. Museums located outside of this highlighted region will **NOT** be included in the results. The museums returned will be sorted based on how well they matched the `text` parameter, in this case **museum**.
-
-![](https://github.com/dianashk/pelias-doc/blob/master/getting-started/boundary_london.png)
-
-##### Or you wanted to find an address, such as *28 Main Ave*, in New York City?
-
-| parameter | value |
-| :--- | :--- |
-| `text` | 28 Main Ave |
-| `boundary.rect.min_lat` | ***51.286839*** |
-| `boundary.rect.min_lon` | ***-74.258904*** |
-| `boundary.rect.max_lat` | ***40.477421*** |
-| `boundary.rect.max_lon` | ***-73.700378*** |
-| `api_key` | [get yours here](https://mapzen.com/developers) |
-
-> [/v1/search?api_key={YOUR-KEY}&text=28 Main Ave&___boundary.rect.min_lat=51.286839&boundary.rect.min_lon=-74.258904&boundary.rect.max_lat=40.477421&boundary.rect.max_lon=-73.700378___](http://pelias.bigdev.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=28 Main Ave&boundary.rect.min_lat=51.286839&boundary.rect.min_lon=-74.258904&boundary.rect.max_lat=40.477421&boundary.rect.max_lon=-73.700378)
-
- 
-#### ...circular region
-
-![](https://github.com/dianashk/pelias-doc/blob/master/getting-started/world_circle.png)
-
-Sometimes you don't have a rectangle to work with, but you you've got instead a point on earth, for example your location coordinates, and a maximum distance within which acceptable results can be located.
-
-##### Find all *Starbucks* locations within a *3km* radius of a spot in *Madrid*
-This time, we'll use the `boundary.circle.*` parameter grouping to get the job done. `boundary.circle.lat` and `boundary.circle.lon` should be set to your location in **Madrid**, while `boundary.circle.radius` should be set to the acceptable distance from that location. Note that the `boundary.circle.radius` parameter is always specified in **kilometers**.
-
-| parameter | value |
-| :--- | :--- |
-| `text` | starbucks |
-| `boundary.circle.lat` | ***40.414149*** |
-| `boundary.circle.lon` | ***-3.703755*** |
-| `boundary.circle.radius` | ***3*** |
-| `api_key` | [get yours here](https://mapzen.com/developers) |
-
-> [/v1/search?api_key={YOUR-KEY}&text=starbucks&___boundary.circle.lat=40.414149&boundary.circle.lon=-3.703755&boundary.circle.radius=3___](http://pelias.bigdev.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=starbucks&boundary.circle.lat=40.414149&boundary.circle.lon=-3.703755&boundary.circle.radius=3)
-
-
-#### ...specific country
-
-![](https://github.com/dianashk/pelias-doc/blob/master/getting-started/world_country.png)
-
-Sometimes your usecase might require that all the search results are from a particular country. Well, we've got that covered! You just need to set the `boundary.country` parameter value to the **alpha-2** or **alpha-3** [ISO-3166 country code](https://en.wikipedia.org/wiki/ISO_3166-1).
-
-##### Try searching for *San Francisco* in *Columbia*
-
-| parameter | value |
-| :--- | :--- |
-| `text` | san francisco |
-| `boundary.country` | ***COL*** |
-| `api_key` | [get yours here](https://mapzen.com/developers) |
-
-> [/v1/search?api_key={YOUR-KEY}&text=san francisco&___boundary.country=COL___](http://pelias.bigdev.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=san francisco&boundary.country=COL)
-
-Note that all the results have `country` set to **Columbia**.
-
-##### Now try searching for *San Francisco* in the *USA*
-
-| parameter | value |
-| :--- | :--- |
-| `text` | san francisco |
-| `boundary.country` | ***US*** |
-| `api_key` | [get yours here](https://mapzen.com/developers) |
-
-> [/v1/search?api_key={YOUR-KEY}&text=san francisco&___boundary.country=US___](http://pelias.bigdev.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=san francisco&boundary.country=US)
-
-You can see all the results are now from within the US, and the top place is **San Francisco, CA**. Awesome, right?!
-
-#### Boundary issues
-
-If you're going to attempt using multiple boundary types in a single search request, be aware that the results will come from the **intersection** of all the boundaries! So if you provide regions that don't overlap, you'll be looking at an empty set of results. You've been warned. Here's a visual of how it works:
-
-![](https://github.com/dianashk/pelias-doc/blob/master/getting-started/overlapping_boundaries.gif)
-
-
-## Prioritizing Nearby Places
-Many usecases call for the ability to surface nearby results to the front of the list, while still allow important matches from further away to be visible. If that's your conundrum, here's what you've got to do.
-
-### Focus on a point
-Search will focus on a given point anywhere on earth, and results within **~100km** will be prioritized, thereby surfacing highest in the list. Once all the nearby results have been found, additional results will come from the rest of the world, without any further location-based prioritization.
-
-![](https://github.com/dianashk/pelias-doc/blob/master/getting-started/focus_point.png)
-
-#### Let's find *City Hall* near the center of *Washington, DC*
-
-| parameter | value |
-| :--- | :--- |
-| `text` | city hall |
-| `focus.point.lat` | ***38.8993488*** |
-| `focus.point.lon` | ***-77.0145665*** |
-| `api_key` | [get yours here](https://mapzen.com/developers) |
-
-> [/v1/search?api_key={YOUR-KEY}&text=city hall&___focus.point.lat=38.8993488&focus.point.lon=-77.0145665___](http://pelias.bigdev.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=city hall&focus.point.lat=38.8993488&focus.point.lon=-77.0145665)
-
-
-
-
-
-- focus viewport api example (e.g. union square)
-- focus point api example (NY union square)
 
 # TBD
 
@@ -336,3 +332,19 @@ There are many cases where you're after not a point, but a general area, whether
 
 # Using Autocomplete & Search Together
 For end-user applications, `/autocomplete` is intended to be used alongside `/search` to facilitate real-time feedback for user s
+
+
+
+### **cApiTaliZAtioN**
+You may have noticed already that cApiTaliZAtioN isn't a big deal for search.
+You can type **yankee stadium** or **Yankee Stadium** or even **YANKEE STADIUM** if you're really excited about finding it. See for yourself by comparing the results of the previous search to the following:
+
+| parameter | value |
+| :--- | :--- |
+| `text` | ***YANKEE STADIUM*** |
+| `api_key` | [get yours here](https://mapzen.com/developers) |
+
+
+> [/v1/search?api_key={YOUR-KEY}&___text=YANKEE STADIUM___](https://search.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=YANKEE STADIUM)
+
+
