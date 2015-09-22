@@ -5,11 +5,14 @@ Geospacial search, frequently reffered to as **geocoding** is the process of mat
 
 :school: :barber: :bank: :us: :house_with_garden: :hospital: ......... :computer:
 
-## The most basic scenario
+## Search the World
+
+![](https://github.com/dianashk/pelias-doc/blob/master/getting-started/world_all.png)
 
 In the simplest search, all you provide is the text you'd like to match in any part of the location details. So to accomplish this, you just set the `text` parameter to whatever you want to find. Let's see a few examples.
 
-#### Find a venue
+#### Example time
+
 Let's search for **YMCA**. Here's what you'd need to append to the base URL of the service, **search.mapzen.com**.
 
 > [/v1/search?api_key={YOUR-KEY}&___text=YMCA___](https://search.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=YMCA)
@@ -36,26 +39,17 @@ If you clicked on the query link above, you probably saw some cool **GeoJSON**, 
 
 Note that the results are spread out throughout the world. Since we haven't told the service anything about our current location or any other geographic context.
 
-
-## Narrowing your Search
-
-All this time you've been searching the entire world...
-
-![](https://github.com/dianashk/pelias-doc/blob/master/getting-started/world_all.png)
-
-### What if you need results from only a...
-
+## Narrowing your Search...
 Sometimes it's necessary to limit the search to a portion of the world. This can be useful if you're looking for places in a particular region, or country, or only want to look in the immediate viscinity of a user with a known location. Different usecases call for different specifications of this bounding region. We currently support three types: **rectangle**, **circle**, and **country**.
 
-
-#### ...specific country
+### ...to a specific country
 
 ![](https://github.com/dianashk/pelias-doc/blob/master/getting-started/world_country.png)
 
 Sometimes your usecase might require that all the search results are from a particular country. Well, we've got that covered! You just need to set the `boundary.country` parameter value to the **alpha-2** or **alpha-3** [ISO-3166 country code](https://en.wikipedia.org/wiki/ISO_3166-1).
 
-#### Find **YMCA** only within **Great Britain**
-We'll need to know that the **alpha-3** code for **Great Britain** is ***GBR*** and set the parameters like this:
+#### Example time
+Let's search for **YMCA** again, but this time only in **Great Britain**. We'll need to know that the **alpha-3** code for **Great Britain** is ***GBR*** and set the parameters like this:
 
 | parameter | value |
 | :--- | :--- |
@@ -96,28 +90,29 @@ Results in the United States:
 * YMCA, Westerly, RI
 
 
-
-#### ...rectangular region
+### ... to a rectangular region
 
 ![](https://github.com/dianashk/pelias-doc/blob/master/getting-started/world_rect.png)
  
 In the case where you need to specify the boundary using a rectangle, all we need is a pair of coordinates on earth. Here are a few examples:
 
-##### Let's say you wanted to find museums in *London*
-You'd need to set the `boundary.rect.*` parameter grouping to indicate the extent of the boundary.
+#### Example time
+Let's say you wanted to find museums in the state of **Texas**. You'd need to set the `boundary.rect.*` parameter grouping to values representing the bounding box around **Texas**: min_lon=-106.65 min_lat=25.84 max_lon=-93.51 max_lat=36.5
+
+***PRO TIP:*** *You can lookup a bounding box for a known region [here](http://boundingbox.klokantech.com/)
 
 | parameter | value |
 | :--- | :--- |
-| `text` | museum |
-| `boundary.rect.min_lat` | ***51.286839*** |
-| `boundary.rect.min_lon` | ***-0.51035*** |
-| `boundary.rect.max_lat` | ***51.692322*** |
-| `boundary.rect.max_lon` | ***0.33403*** |
+| `text` | YMCA |
+| `boundary.rect.min_lat` | ***25.84*** |
+| `boundary.rect.min_lon` | ***-106.65*** |
+| `boundary.rect.max_lat` | ***36.5*** |
+| `boundary.rect.max_lon` | ***-93.51*** |
 | `api_key` | [get yours here](https://mapzen.com/developers) |
 
-> [/v1/search?api_key={YOUR-KEY}&text=museum&___boundary.rect.min_lat=51.286839&boundary.rect.min_lon=-0.51035&boundary.rect.max_lat=51.692322&boundary.rect.max_lon=0.33403___](https://pelias.bigdev.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=tower&boundary.rect.min_lat=51.286839&boundary.rect.min_lon=-0.51035&boundary.rect.max_lat=51.692322&boundary.rect.max_lon=0.33403)
+> [/v1/search?api_key={YOUR-KEY}&text=YMCA&___boundary.rect.min_lat=25.84&boundary.rect.min_lon=-106.65&boundary.rect.max_lat=36.5&boundary.rect.max_lon=-93.51___](https://pelias.bigdev.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=YMCA&boundary.rect.min_lat=25.84&boundary.rect.min_lon=-106.65&boundary.rect.max_lat=36.5&boundary.rect.max_lon=-93.51)
 
-Below is the region that will be searched. Museums located outside of this highlighted region will **NOT** be included in the results. The museums returned will be sorted based on how well they matched the `text` parameter, in this case **museum**.
+Below is the region that will be searched. YMCA located outside of this highlighted region will **NOT** be included in the results. The museums returned will be sorted based on how well they matched the `text` parameter, in this case **museum**.
 
 ![](https://github.com/dianashk/pelias-doc/blob/master/getting-started/boundary_london.png)
 
