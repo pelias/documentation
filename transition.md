@@ -27,10 +27,10 @@ X-ApiaxleProxy-Qps-Left:4
 ```
 
 # Changes to response document
-The response document is still plain vanilla GeoJSON. Dots will still show up without a problem!
+The response document is still plain vanilla GeoJSON. Dots will still show up without a problem! Take a look at our [specification document](https://github.com/pelias/geocodejson-spec/blob/master/draft/README.md) or our [sample response](https://github.com/pelias/geocodejson-spec/blob/master/sample.geo.json?short_path=7cdb999) for further details.
 
 ## Metadata
-The `FeatureCollection` object is now prefixed by a `geocoding` object that has lots of goodies about the request (how Mapzen Search parsed your query, certain explicit errors and all warnings, licensing link). Take a look at our [specification document](https://github.com/pelias/geocodejson-spec/blob/master/draft/README.md) for further details.
+The `FeatureCollection` object is now prefixed by a `geocoding` object that has lots of goodies about the request (how Mapzen Search parsed your query, certain explicit errors and all warnings, licensing link).
 
 ## Features
 The bulk of a valid response is still a `FeatureCollection` array, ordered by result ranking (top result first). Changed feature response elements include:
@@ -173,4 +173,3 @@ Let us know.
 Words go to: [search@mapzen.com](mailto:search@mapzen.com)
 
 Issues go to [Github](https://github.com/pelias/pelias-doc/issues)
-
