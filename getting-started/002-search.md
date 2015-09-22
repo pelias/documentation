@@ -9,30 +9,30 @@ Geospacial search, frequently reffered to as **geocoding** is the process of mat
 
 In the simplest search, all you provide is the text you'd like to match in any part of the location details. So to accomplish this, you just set the `text` parameter to whatever you want to find. Let's see a few examples.
 
-#### Find an address
-You would set the following parameters in your query url:
+#### Find a venue
+Let's search for **YMCA**. You would set the following parameters in your query url:
 
 | parameter | value |
 | :--- | :--- |
 | `api_key` | [get yours here](https://mapzen.com/developers) |
 | `text` | ***30 West 26th Street, New York, NY*** |
 
-> [/v1/search?api_key={YOUR-KEY}&___text=30 West 26th Street, New York, NY___](https://search.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=30 West 26th Street, New York, NY)
+> [/v1/search?api_key={YOUR-KEY}&___text=YMCA___](https://search.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=YMCA)
 
 _...go ahead, and click that link, we'll wait_
 
 You probably saw some cool **GeoJSON**, more on that later, with the following places in the results:
 
-> * 30 West 26th Street, Manhattan, NY
-> * 30 West 26th Street, Manhattan, NY
-> * 30 West 26th Street, Manhattan, NY
-> * 30 West 26th Street, Merced, CA
-> * 307 West 26th Street, Manhattan, NY
-> * 300 West 26th Street, Manhattan, NY
-> * 307 West 26th Street, Manhattan, NY
-> * 301 West 26th Street, Manhattan, NY
-> * 30 East 26th Street, Manhattan, NY
-> * 2 West 26th Street, Manhattan, NY
+> * YMCA, Bargoed Community, United Kingdom
+* YMCA, Nunspeet, Gelderland
+* YMCA, Belleville, IL
+* YMCA, Forest City, IA
+* YMCA, Fargo, ND
+* YMCA, Taipei, Taipei City
+* YMCA, Orpington, Greater London
+* YMCA, Frisco, TX
+* YMCA, Jefferson, OH
+* YMCA, Belleville, IL
 
 #### Find a venue
 As mentioned above, query `text` can be a partial or full name of a place we're looking for. So here's an example of another way of finding that address we just searched for:
