@@ -13,7 +13,7 @@ These changes also affect self-hosted users of Pelias upgrading from the beta to
 The first big change is the introduction of API Keys. Like all other Mapzen APIs, Search now requires a free API key. You can register at the Mapzen Developer Portal for a free API key.
 
 Mapzen Search API keys allow you:
-* 3 requests / second
+* 6 requests / second
 * 30,000 requests / day
 
 To start using an API key, append `&api_key=search-xxxxxx` to all API calls to all endpoints (aside from `/licensing`, which requires no key).
