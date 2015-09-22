@@ -165,7 +165,7 @@ Mapzen Search is set to allow CORS requests from all domains.
 Mapzen Search continues to support HTTPS and traditional HTTP. We encourage you to use HTTPS in lieu of HTTP, especially when handling sensitive personal information (e.g. users' searches, users' location data).
 
 # What's happening to pelias.mapzen.com?
-We're keeping the beta API available at pelias.mapzen.com up through the end of November, 2015. Starting December 1, you will only be able to use search.mapzen.com or your own hosted version of Pelias.
+We're keeping the beta API available at pelias.mapzen.com up through the end of November, 2015. Starting December 1, 2015, you will only be able to use search.mapzen.com or your own hosted version of Pelias.
 
 # Anything Else We're Forgetting?
 Let us know.
