@@ -22,7 +22,7 @@ Note the parameter values are set as follows:
 | parameter | value |
 | :--- | :--- |
 | `api_key` | [get yours here](https://mapzen.com/developers) |
-| `text` | YMCA |
+| `text` | ***YMCA*** |
 
 If you clicked on the query link above, you probably saw some cool **GeoJSON**, more on that later, with the following set of places in the results:
 
@@ -51,13 +51,13 @@ Sometimes your usecase might require that all the search results are from a part
 #### Example time
 Let's search for **YMCA** again, but this time only in **Great Britain**. We'll need to know that the **alpha-3** code for **Great Britain** is ***GBR*** and set the parameters like this:
 
+> [/v1/search?api_key={YOUR-KEY}&text=YMCA&___boundary.country=GBR___](http://pelias.bigdev.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=YMCA&boundary.country=GBR)
+
 | parameter | value |
 | :--- | :--- |
 | `api_key` | [get yours here](https://mapzen.com/developers) |
 | `text` | YMCA |
 | `boundary.country` | ***GBR*** |
-
-> [/v1/search?api_key={YOUR-KEY}&text=YMCA&___boundary.country=GBR___](http://pelias.bigdev.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=YMCA&boundary.country=GBR)
 
 Note that all the results reside within Great Britain:
 
@@ -90,7 +90,7 @@ Results in the United States:
 * YMCA, Westerly, RI
 
 
-### ... to a rectangular region
+### ...to a rectangular region
 
 ![](https://github.com/dianashk/pelias-doc/blob/master/getting-started/world_rect.png)
  
@@ -101,57 +101,51 @@ Let's say you wanted to find museums in the state of **Texas**. You'd need to se
 
 ***PRO TIP:*** *You can lookup a bounding box for a known region [here](http://boundingbox.klokantech.com/)
 
+> [/v1/search?api_key={YOUR-KEY}&text=YMCA&___boundary.rect.min_lat=25.84&boundary.rect.min_lon=-106.65&boundary.rect.max_lat=36.5&boundary.rect.max_lon=-93.51___](https://pelias.bigdev.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=YMCA&boundary.rect.min_lat=25.84&boundary.rect.min_lon=-106.65&boundary.rect.max_lat=36.5&boundary.rect.max_lon=-93.51)
+
 | parameter | value |
 | :--- | :--- |
+| `api_key` | [get yours here](https://mapzen.com/developers) |
 | `text` | YMCA |
 | `boundary.rect.min_lat` | ***25.84*** |
 | `boundary.rect.min_lon` | ***-106.65*** |
 | `boundary.rect.max_lat` | ***36.5*** |
 | `boundary.rect.max_lon` | ***-93.51*** |
-| `api_key` | [get yours here](https://mapzen.com/developers) |
 
-> [/v1/search?api_key={YOUR-KEY}&text=YMCA&___boundary.rect.min_lat=25.84&boundary.rect.min_lon=-106.65&boundary.rect.max_lat=36.5&boundary.rect.max_lon=-93.51___](https://pelias.bigdev.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=YMCA&boundary.rect.min_lat=25.84&boundary.rect.min_lon=-106.65&boundary.rect.max_lat=36.5&boundary.rect.max_lon=-93.51)
+> * YMCA, Austin, TX
+* YMCA, Frisco, TX
+* Y.M.C.A, Fort Worth, TX
+* YMCA, Rockwall, TX
+* YMCA, Missouri City, TX
+* YMCA, Northshore, TX
+* YMCA, Austin, TX
+* YMCA, Tulsa, OK
+* YMCA, Los Alamos, NM
+* YMCA, Tulsa, OK
 
-Below is the region that will be searched. YMCA located outside of this highlighted region will **NOT** be included in the results. The museums returned will be sorted based on how well they matched the `text` parameter, in this case **museum**.
-
-![](https://github.com/dianashk/pelias-doc/blob/master/getting-started/boundary_london.png)
-
-##### Or you wanted to find an address, such as *28 Main Ave*, in New York City?
-
-| parameter | value |
-| :--- | :--- |
-| `text` | 28 Main Ave |
-| `boundary.rect.min_lat` | ***51.286839*** |
-| `boundary.rect.min_lon` | ***-74.258904*** |
-| `boundary.rect.max_lat` | ***40.477421*** |
-| `boundary.rect.max_lon` | ***-73.700378*** |
-| `api_key` | [get yours here](https://mapzen.com/developers) |
-
-> [/v1/search?api_key={YOUR-KEY}&text=28 Main Ave&___boundary.rect.min_lat=51.286839&boundary.rect.min_lon=-74.258904&boundary.rect.max_lat=40.477421&boundary.rect.max_lon=-73.700378___](http://pelias.bigdev.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=28 Main Ave&boundary.rect.min_lat=51.286839&boundary.rect.min_lon=-74.258904&boundary.rect.max_lat=40.477421&boundary.rect.max_lon=-73.700378)
-
+Below is the region that will be searched. YMCA's located outside of this highlighted region will **NOT** be included in the results. The results will be sorted based on how well they matched the `text` parameter.
  
-#### ...circular region
+#### ...to a circular region
 
 ![](https://github.com/dianashk/pelias-doc/blob/master/getting-started/world_circle.png)
 
-Sometimes you don't have a rectangle to work with, but you you've got instead a point on earth, for example your location coordinates, and a maximum distance within which acceptable results can be located.
+Sometimes you don't have a rectangle to work with, but rather you've got a point on earth, for example your location coordinates, and a maximum distance within which acceptable results can be located.
 
-##### Find all *Starbucks* locations within a *3km* radius of a spot in *Madrid*
+#### Example time
+Find all **YMCA** locations within a **35km** radius of a spot in **Ontario, Canada**, 
 This time, we'll use the `boundary.circle.*` parameter grouping to get the job done. `boundary.circle.lat` and `boundary.circle.lon` should be set to your location in **Madrid**, while `boundary.circle.radius` should be set to the acceptable distance from that location. Note that the `boundary.circle.radius` parameter is always specified in **kilometers**.
+
+> [/v1/search?api_key={YOUR_API_KEY}&text=YMCA&__boundary.circle.lon=-79.186484&boundary.circle.lat=43.818156&boundary.circle.radius=35__](http://pelias.bigdev.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=YMCA&boundary.circle.lon=-79.186484&boundary.circle.lat=43.818156&boundary.circle.radius=35)
 
 | parameter | value |
 | :--- | :--- |
-| `text` | starbucks |
-| `boundary.circle.lat` | ***40.414149*** |
-| `boundary.circle.lon` | ***-3.703755*** |
-| `boundary.circle.radius` | ***3*** |
 | `api_key` | [get yours here](https://mapzen.com/developers) |
+| `text` | YMCA |
+| `boundary.circle.lat` | ***43.818156*** |
+| `boundary.circle.lon` | ***-79.186484*** |
+| `boundary.circle.radius` | ***35*** |
 
-> [/v1/search?api_key={YOUR-KEY}&text=starbucks&___boundary.circle.lat=40.414149&boundary.circle.lon=-3.703755&boundary.circle.radius=3___](http://pelias.bigdev.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=starbucks&boundary.circle.lat=40.414149&boundary.circle.lon=-3.703755&boundary.circle.radius=3)
-
-
-
-#### Boundary issues
+### We respect your boundaries
 
 If you're going to attempt using multiple boundary types in a single search request, be aware that the results will come from the **intersection** of all the boundaries! So if you provide regions that don't overlap, you'll be looking at an empty set of results. You've been warned. Here's a visual of how it works:
 
