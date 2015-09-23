@@ -29,7 +29,7 @@ Like other entry points, reverse geocoding can use additional parameters to refi
 
 ### Size
 
-The most basic parameter for filtering is `size` that is used to limit the number of results returned.  In the previous request that returned the Eiffel Tower (or 'Tour Eiffel' to be exact), notice that other results were returned including "Bureau de Gustave Eiffel" (a museum) and "Le Jules Verne" (a restaurant).  To limit a reverse geocode to only the first result, just pass the `size` parameter:
+The most basic parameter for filtering is `size` that is used to limit the number of results returned.  In the previous request that returned the Eiffel Tower (or 'Tour Eiffel', to be exact), notice that other results were returned including "Bureau de Gustave Eiffel" (a museum) and "Le Jules Verne" (a restaurant).  To limit a reverse geocode to only the first result, just pass the `size` parameter:
 
 >[/v1/reverse?api\_key={YOUR-KEY}&point.lat=48.858268&point.lon=2.294471&___size=1___](https://search.mapzen.com/v1/reverse?api_key={YOUR_API_KEY}&point.lat=48.858268&point.lon=2.294471&size=1)
 
@@ -65,13 +65,14 @@ Please note that `UK` is not a valid ISO 3166-1 alpha-2 country code.
 
 Each result returned has an associated confidence score.  Currently confidence scores are calculated based on the distance from the result to the supplied `point.lat` and `point.lon`.  
 
-| meters from `point.lat`/`point.lon` | Confidence Score |
-| < 1 | 1.0 |
-| < 10 | 0.9 |
-| < 100 | 0.8 |
-| < 250 | 0.7 |
-| < 1000 | 0.6 |
-| >= 1000 | 0.5 |
+distance from `point.lat`/`point.lon` | Confidence Score |
+--- | --- |
+| < 1m | 1.0 |
+| < 10m | 0.9 |
+| < 100m | 0.8 |
+| < 250m | 0.7 |
+| < 1km | 0.6 |
+| &gt;= 1km | 0.5 |
 
 Confidence scoring for reverse geocode results is likely to change to take into account different data sources and layers.  
 
@@ -82,9 +83,9 @@ This section provides a quick reference for parameters applicable to reverse geo
 parameter | value | required | default | example |
 --- | --- | --- | --- |
 `api_key` | string | yes | none | [get yours here](https://mapzen.com/developers) |
-`point.lat` | floating point number | yes | none | 48.858268 |
-`point.lon` | floating point number | yes | none | 2.294471 |
-`size` | integer | no | 10 | 3 |
+`point.lat` | floating point number | yes | none | `48.858268` |
+`point.lon` | floating point number | yes | none | `2.294471` |
+`size` | integer | no | `10` | `3` |
 `layers` | comma-delimited string array | no | none (all layers) | `oa,gn` |
 `sources` | comma-delimited string array | no | none (all sources) | `address,locality` |
 `boundary.country` | ISO-3166 alpha-2 or alpha-3 | no | none | `FR`
@@ -93,22 +94,22 @@ parameter | value | required | default | example |
 
 This section shows how the various parameters can be combined to form complex use cases.  
 
-### All results near The Tower of London
+#### All results near The Tower of London
 
 >[/v1/reverse?api\_key={YOUR-KEY}&point.lat=51.5081124&point.lon=-0.0759493](https://search.mapzen.com/v1/reverse?api_key={YOUR_API_KEY}&point.lat=51.5081124&point.lon=-0.0759493)
 
-### Only OpenStreetMap results near The Tower of London
+#### Only OpenStreetMap results near The Tower of London
 
 >[/v1/reverse?api\_key={YOUR-KEY}&point.lat=51.5081124&point.lon=-0.0759493&sources=osm](https://search.mapzen.com/v1/reverse?api_key={YOUR_API_KEY}&point.lat=51.5081124&point.lon=-0.0759493&sources=osm)
 
-### Only street addresses near the Tower of London
+#### Only street addresses near the Tower of London
 
 >[/v1/reverse?api\_key={YOUR-KEY}&point.lat=51.5081124&point.lon=-0.0759493&layers=address](https://search.mapzen.com/v1/reverse?api_key={YOUR_API_KEY}&point.lat=51.5081124&point.lon=-0.0759493&layers=address)
 
-### Only OpenStreetMap street addresses near the Tower of London
+#### Only OpenStreetMap street addresses near the Tower of London
 
 >[/v1/reverse?api\_key={YOUR-KEY}&point.lat=51.5081124&point.lon=-0.0759493&layers=address&sources=osm](https://search.mapzen.com/v1/reverse?api_key={YOUR_API_KEY}&point.lat=51.5081124&point.lon=-0.0759493&layers=address&sources=osm)
 
-### Only the first OpenStreetMap address near the Tower of London
+#### Only the first OpenStreetMap address near the Tower of London
 
 >[/v1/reverse?api\_key={YOUR-KEY}&point.lat=51.5081124&point.lon=-0.0759493&layers=address&sources=osm&size=1](https://search.mapzen.com/v1/reverse?api_key={YOUR_API_KEY}&point.lat=51.5081124&point.lon=-0.0759493&layers=address&sources=osm&size=1)
