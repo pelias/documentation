@@ -65,14 +65,14 @@ Please note that `UK` is not a valid ISO 3166-1 alpha-2 country code.
 
 Each result returned has an associated confidence score.  Currently confidence scores are calculated based on the distance from the result to the supplied `point.lat` and `point.lon`.  
 
-distance from `point.lat`/`point.lon` | Confidence Score |
---- | --- |
-| < 1m | 1.0 |
-| < 10m | 0.9 |
-| < 100m | 0.8 |
-| < 250m | 0.7 |
-| < 1km | 0.6 |
-| &gt;= 1km | 0.5 |
+distance from `point.lat`/`point.lon` | Confidence Score
+--- | ---
+&lt; 1m | 1.0
+&lt; 10m | 0.9
+&lt; 100m | 0.8
+&lt; 250m | 0.7
+&lt; 1km | 0.6
+&gt;= 1km | 0.5
 
 Confidence scoring for reverse geocode results is likely to change to take into account different data sources and layers.  
 
@@ -80,14 +80,14 @@ Confidence scoring for reverse geocode results is likely to change to take into 
 
 This section provides a quick reference for parameters applicable to reverse geocoding requests.  
 
-parameter | value | required | default | example |
---- | --- | --- | --- |
-`api_key` | string | yes | none | [get yours here](https://mapzen.com/developers) |
-`point.lat` | floating point number | yes | none | `48.858268` |
-`point.lon` | floating point number | yes | none | `2.294471` |
-`size` | integer | no | `10` | `3` |
-`layers` | comma-delimited string array | no | none (all layers) | `oa,gn` |
-`sources` | comma-delimited string array | no | none (all sources) | `address,locality` |
+parameter | value | required | default | example
+--- | --- | --- | ---
+`api_key` | string | yes | none | [get yours here](https://mapzen.com/developers)
+`point.lat` | floating point number | yes | none | `48.858268`
+`point.lon` | floating point number | yes | none | `2.294471`
+`size` | integer | no | `10` | `3`
+`layers` | comma-delimited string array | no | none (all layers) | `oa,gn`
+`sources` | comma-delimited string array | no | none (all sources) | `address,locality`
 `boundary.country` | ISO-3166 alpha-2 or alpha-3 | no | none | `FR`
 
 ## Example Requests
