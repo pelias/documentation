@@ -81,7 +81,7 @@ Confidence scoring for reverse geocode results is likely to change to take into 
 This section provides a quick reference for parameters applicable to reverse geocoding requests.  
 
 parameter | value | required | default | example
---- | --- | --- | ---
+--- | --- | --- | --- | ---
 `api_key` | string | yes | none | [get yours here](https://mapzen.com/developers)
 `point.lat` | floating point number | yes | none | `48.858268`
 `point.lon` | floating point number | yes | none | `2.294471`
