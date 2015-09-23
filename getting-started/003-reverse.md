@@ -57,9 +57,9 @@ Let's say you're reverse geocoding close a country boundary but you are only int
 
 >[/v1/reverse?api\_key={YOUR-KEY}&point.lat=47.270521&point.lon=9.530846&___boundary.country=LIE___](https://search.mapzen.com/v1/reverse?api_key={YOUR_API_KEY}&point.lat=47.270521&point.lon=9.530846&boundary.country=LIE)
 
-[ISO 3166-1 alpha-2 and alpha-3 country codes](https://en.wikipedia.org/wiki/ISO_3166-1)
+Please click <a href="https://en.wikipedia.org/wiki/ISO_3166-1" target="\_blank">here</a> for the full list of ISO 3166-1 alpha-2 and alpha-3 country codes.
 
-Please note that `UK` is not a valid ISO 3166-1 alpha-2 country code.  
+Also note that `UK` is not a valid ISO 3166-1 alpha-2 country code.  
 
 ## Confidence Scores
 
@@ -80,7 +80,7 @@ Confidence scoring for reverse geocode results is likely to change to take into 
 
 This section provides a quick reference for parameters applicable to reverse geocoding requests.  
 
-parameter | value | required | default | example
+parameter | type | required | default | example
 --- | --- | --- | --- | ---
 `api_key` | string | yes | none | [get yours here](https://mapzen.com/developers)
 `point.lat` | floating point number | yes | none | `48.858268`
@@ -88,7 +88,7 @@ parameter | value | required | default | example
 `size` | integer | no | `10` | `3`
 `layers` | comma-delimited string array | no | none (all layers) | `oa,gn`
 `sources` | comma-delimited string array | no | none (all sources) | `address,locality`
-`boundary.country` | ISO-3166 alpha-2 or alpha-3 | no | none | `FR`
+`boundary.country` | <a href="https://en.wikipedia.org/wiki/ISO_3166-1" target="\_blank">ISO-3166 alpha-2 or alpha-3</a> | no | none | `FR`
 
 ## Example Requests
 
