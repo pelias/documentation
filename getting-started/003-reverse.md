@@ -82,7 +82,7 @@ This section provides a quick reference for parameters applicable to reverse geo
 
 parameter | type | required | default | example
 --- | --- | --- | --- | ---
-`api_key` | string | yes | none | [get yours here](https://mapzen.com/developers)
+`api_key` | string | yes | none | [get yours here!](https://mapzen.com/developers)
 `point.lat` | floating point number | yes | none | `48.858268`
 `point.lon` | floating point number | yes | none | `2.294471`
 `size` | integer | no | `10` | `3`
@@ -94,11 +94,11 @@ parameter | type | required | default | example
 
 This section shows how the various parameters can be combined to form complex use cases.  
 
-#### All results near The Tower of London
+#### All results near the Tower of London
 
 >[/v1/reverse?api\_key={YOUR-KEY}&point.lat=51.5081124&point.lon=-0.0759493](https://search.mapzen.com/v1/reverse?api_key={YOUR_API_KEY}&point.lat=51.5081124&point.lon=-0.0759493)
 
-#### Only OpenStreetMap results near The Tower of London
+#### Only OpenStreetMap results near the Tower of London
 
 >[/v1/reverse?api\_key={YOUR-KEY}&point.lat=51.5081124&point.lon=-0.0759493&sources=osm](https://search.mapzen.com/v1/reverse?api_key={YOUR_API_KEY}&point.lat=51.5081124&point.lon=-0.0759493&sources=osm)
 
