@@ -99,7 +99,7 @@ In the case where you need to specify the boundary using a rectangle, all we nee
 #### Example time
 Let's say you wanted to find museums in the state of **Texas**. You'd need to set the `boundary.rect.*` parameter grouping to values representing the bounding box around **Texas**: min_lon=-106.65 min_lat=25.84 max_lon=-93.51 max_lat=36.5
 
-***PRO TIP:*** *You can lookup a bounding box for a known region [here](http://boundingbox.klokantech.com/)
+***PRO TIP:*** *You can lookup a bounding box for a known region [here](http://boundingbox.klokantech.com/)*
 
 > [/v1/search?api_key={YOUR-KEY}&text=YMCA&___boundary.rect.min_lat=25.84&boundary.rect.min_lon=-106.65&boundary.rect.max_lat=36.5&boundary.rect.max_lon=-93.51___](https://pelias.bigdev.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=YMCA&boundary.rect.min_lat=25.84&boundary.rect.min_lon=-106.65&boundary.rect.max_lat=36.5&boundary.rect.max_lon=-93.51)
 
@@ -123,8 +123,6 @@ Let's say you wanted to find museums in the state of **Texas**. You'd need to se
 * YMCA, Los Alamos, NM
 * YMCA, Tulsa, OK
 
-Below is the region that will be searched. YMCA's located outside of this highlighted region will **NOT** be included in the results. The results will be sorted based on how well they matched the `text` parameter.
- 
 #### ...to a circular region
 
 ![](https://github.com/dianashk/pelias-doc/blob/master/getting-started/world_circle.png)
@@ -145,6 +143,15 @@ This time, we'll use the `boundary.circle.*` parameter grouping to get the job d
 | `boundary.circle.lon` | ***-79.186484*** |
 | `boundary.circle.radius` | ***35*** |
 
+You can see the results have fewer than the standard 10 items, because there aren't that many YMCA locations in the specified radius:
+
+> * YMCA, Toronto, Ontario
+* YMCA, Markham, Ontario
+* YMCA, Toronto, Ontario
+* Metro Central YMCA, Toronto, Ontario
+* Pinnacle Jr YMCA, Toronto, Ontario
+* Cooper Koo Family Cherry Street YMCA Centre, Toronto, Ontario
+
 ### We respect your boundaries
 
 If you're going to attempt using multiple boundary types in a single search request, be aware that the results will come from the **intersection** of all the boundaries! So if you provide regions that don't overlap, you'll be looking at an empty set of results. You've been warned. Here's a visual of how it works:
@@ -156,20 +163,35 @@ If you're going to attempt using multiple boundary types in a single search requ
 Many usecases call for the ability to surface nearby results to the front of the list, while still allow important matches from further away to be visible. If that's your conundrum, here's what you've got to do.
 
 ### Focus on a point
-Search will focus on a given point anywhere on earth, and results within **~100km** will be prioritized, thereby surfacing highest in the list. Once all the nearby results have been found, additional results will come from the rest of the world, without any further location-based prioritization.
 
 ![](https://github.com/dianashk/pelias-doc/blob/master/getting-started/focus_point.png)
 
-#### Let's find *City Hall* near the center of *Washington, DC*
+Search will focus on a given point anywhere on earth, and results within **~100km** will be prioritized higher, thereby surfacing highest in the list. Once all the nearby results have been found, additional results will come from the rest of the world, without any further location-based prioritization.
+
+#### Example time
+Let's find **YMCA** again, but this time near **Disney World, Florida**
+
+> [/v1/search?api_key={YOUR-KEY}&text=YMCA&___focus.point.lat=-33.856680&focus.point.lon=151.215281___](http://pelias.bigdev.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=YMCA&focus.point.lat=-33.856680&focus.point.lon=151.215281)
 
 | parameter | value |
 | :--- | :--- |
-| `text` | city hall |
-| `focus.point.lat` | ***38.8993488*** |
-| `focus.point.lon` | ***-77.0145665*** |
 | `api_key` | [get yours here](https://mapzen.com/developers) |
+| `text` | YMCA |
+| `focus.point.lat` | ***-33.856680*** |
+| `focus.point.lon` | ***151.215281*** |
 
-> [/v1/search?api_key={YOUR-KEY}&text=city hall&___focus.point.lat=38.8993488&focus.point.lon=-77.0145665___](http://pelias.bigdev.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=city hall&focus.point.lat=38.8993488&focus.point.lon=-77.0145665)
+Looking at the results, you can see that the few locations closer to **Sydney** show up at the top of the list, sorted by distance. You also still get back a significant amount of remote locations, for a well balanced mix. Oh, and since you provided a focus point, we can now compute distance from that point for each result, so check that out in each feature.
+
+> * YMCA, Redfern, New South Wales [distance: 3.836]
+* YMCA, St Ives (NSW), New South Wales [distance: 14.844]
+* YMCA, Epping (NSW), New South Wales [distance: 16.583]
+* YMCA, Revesby, New South Wales [distance: 21.335]
+* YMCA, Kochâang, South Gyeongsang [distance: 8071.436]
+* YMCA, Center, IN [distance: 14882.675]
+* YMCA, Lake Villa, IL [distance: 14847.667]
+* YMCA, Onondaga, NY [distance: 15818.08]
+* YMCA, 's-Gravenhage, Zuid-Holland [distance: 16688.292]
+* YMCA, Loughborough, United Kingdom [distance: 16978.367]
 
 
 
