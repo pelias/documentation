@@ -10,13 +10,13 @@ The changes aren't too drastic and should be implementable in an afternoon or a 
 These changes also affect self-hosted users of Pelias upgrading from the beta to 1.0 (leaving aside API key restrictions), but these users can make the upgrade on their own time.
 
 # API Keys
-The first big change is the introduction of API Keys. Like all other Mapzen APIs, Search now requires a free API key. You can register at the Mapzen Developer Portal for a free API key.
+The first big change is the introduction of API Keys. Like all other Mapzen APIs, Search now requires a free API key. You can register at the Mapzen Developer Portal and generate one (or more) for all your search needs.
 
 Mapzen Search API keys allow you:
 * 6 requests / second
 * 30,000 requests / day
 
-To start using an API key, append `&api_key=search-xxxxxx` to all API calls to all endpoints (aside from `/licensing`, which requires no key).
+To start using an API key, append `&api_key=search-xxxxxx` to all API calls to all endpoints (aside from `/attribution`, which requires no key).
 
 Your API usage limits are displayed in the HTTP headers of any API call.
 
@@ -30,10 +30,10 @@ X-ApiaxleProxy-Qps-Left:4
 The response document is still plain vanilla GeoJSON. Dots will still show up without a problem! Take a look at our [specification document](https://github.com/pelias/geocodejson-spec/blob/master/draft/README.md) or our [sample response](https://github.com/pelias/geocodejson-spec/blob/master/sample.geo.json?short_path=7cdb999) for further details.
 
 ## Metadata
-The `FeatureCollection` object is now prefixed by a `geocoding` object that has lots of goodies about the request (how Mapzen Search parsed your query, certain explicit errors and all warnings, licensing link).
+The GeoJSON result object now contains a `geocoding` property, that has lots of goodies about the request (how Mapzen Search parsed your query, certain explicit errors and warnings, attribution link).
 
 ## Features
-The bulk of a valid response is still a `FeatureCollection` array, ordered by result ranking (top result first). Changed feature response elements include:
+The bulk of a valid response is still an array of `Feature` objects, ordered by result ranking (most relevant result first). Changed feature response elements include:
 
 If the only property you used before was `text` for what to display, you'll just have to change it to `label` and you'll be ready to process responses.
 
@@ -86,12 +86,28 @@ Most parameters (and options) for search have been renamed:
 | `layers=admin` | `layers=coarse` | Shortcut for coarse geocoding layers (see below) |
 | `layers=address` | `layers=address` | |
 
+So the new legitimate `layers` values are:
+* `venue`
+* `address`
+* `neighbourhood`
+* `localadmin`
+* `locality`
+* `county`
+* `region`
+* `country`
+* `coarse`
+
+And the `sources` values are:
+* `openstreetmap` or `osm`
+* `geonames` or `gn`
+* `openaddresses` or `oa`
+* `quattroshapes` or `qs`
 
 
 ## Additions
 | Oooh, shiny! | What's it do? |
 | ------------ | ------------- |
-| `source` parameter | pick the datasource (separate from `layers`) |
+| `sources` parameter | pick the datasource (separate from `layers`) |
 | `boundary.circle` | Bounding circle. Like a bounding box, but circular. Takes, `boundary.circle.lon`, `boundary.circle.lat`, and `boundary.circle.radius` (in kilometers) |
 | `boundary.country` | Search only within a particular country. Takes Alpha-2 or Alpha-3 country code abbreviations.|
 
