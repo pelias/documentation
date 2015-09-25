@@ -321,14 +321,9 @@ Mapzen Search brings together a variety of place types into a single database. W
 |`neighbourhood`|...ehm, neighbourhoods|
 |`coarse`|alias for simultaneously using `country`, `region`, `county`, `locality`, `localadmin`, and `neighbourhood`|
 
-### Coarse Geocoding (Neighborhoods, Cities, States, Countries)
-There are many cases where you're after not a point, but a general area, whether it's the name of a town, a neighborhood, a county, or a country.
+#### Example time
 
-
-
-- Coarse general
-- Select cities
-- Select localities in a country (with boundary.country)
+*** COMING SOON***
 
 
 # Using Autocomplete & Search Together
