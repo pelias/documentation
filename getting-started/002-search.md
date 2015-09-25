@@ -296,33 +296,30 @@ Since OpenAddresses is, as the name suggests, only address data, here's what you
 * 101 Ymca Drive, Kannapolis, NC
 * 31440 Ymca Road, Washington, OH
 
+If you wanted to combine several data sources together, you would simply set `sources` to a comma separated list of desired source names. Note that the order of the comma separated values does not impact sorting order of the results. They are still sorted based on the linguistic match quality to `text` and distance from `focus`, if one was specified.
 
+> [/v1/search?api_key={YOUR-KEY}&text=YMCA&___sources=osm,gn___](http://pelias.bigdev.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=YMCA&sources=oa)
 
+| parameter | value |
+| :--- | :--- |
+| `api_key` | [get yours here](https://mapzen.com/developers) |
+| `text` | YMCA |
+| `sources` | **osm,gn** |
 
-{combine source listing, e.g. open addresses + Geonames}
+### ...by Data Type
+Mapzen Search brings together a variety of place types into a single database. We refer to these place types as `layers`, and think of them as ranging from *fine* to *coarse*. Our layers are derived from the hierarchy created by the gazetteer [Who's on First](https://github.com/whosonfirst/whosonfirst-placetypes/blob/master/README.md) and can be used to facilitate *coarse* geocoding. Here's a list of the types of places you could find in our results, sorted by granularity:
 
-
-
-
-
-### Selecting Layers
-
-
-|Layer Name|Represents|
+|layer|description|
 |----|----|
-|`venue`|Points of interest, businesses, things with walls|
-|`address`|Places with a street address|
-|`country`|Places that issue passports, nations, nation-states|
-|`region`|States and provinces|
-|`county`|Official governmental area; usually bigger than a locality, almost always smaller than a region|
-|`locality`|Towns, hamlets, cities, etc.|
-|`localadmin`|    |
-|`neighbourhood`||
-|`coarse`|Alias for simultaneously using `country`, `region`, `county`, `locality`, `localadmin`, and `neighbourhood`||
-
-Our layers are derived from the hierarchy created by the gazetteer [Who's on First](https://github.com/whosonfirst/whosonfirst-placetypes/blob/master/README.md) and can be used to facilitate coarse geocoding.
-
-
+|`venue`|points of interest, businesses, things with walls|
+|`address`|places with a street address|
+|`country`|places that issue passports, nations, nation-states|
+|`region`|states and provinces|
+|`county`|official governmental area; usually bigger than a locality, almost always smaller than a region|
+|`locality`|towns, hamlets, cities, etc.|
+|`localadmin`|***TBD***|
+|`neighbourhood`|...ehm, neighbourhoods|
+|`coarse`|alias for simultaneously using `country`, `region`, `county`, `locality`, `localadmin`, and `neighbourhood`|
 
 ### Coarse Geocoding (Neighborhoods, Cities, States, Countries)
 There are many cases where you're after not a point, but a general area, whether it's the name of a town, a neighborhood, a county, or a country.
@@ -401,39 +398,31 @@ we had to split it out into its own section.
 You may have noticed that there were **10** places in the results for all the previous search examples.
 That's the _default_ number of results the API will return, unless otherwise specified. 
 
-#### Want a *single* result?
-
-Just set the `size` parameter to the desired number:
+#### Example time
+Want a **single** result? Just set the `size` parameter to the desired number:
 
 | parameter | value |
 | :--- | :--- |
-| `text` | stinky beach |
+| `api_key` | [get yours here](https://mapzen.com/developers) |
+| `text` | YMCA |
 | `size` | ***1*** |
-| `api_key` | [get yours here](https://mapzen.com/developers) |
 
-> [/v1/search?api_key={YOUR-KEY}&text=stinky beach&___size=1___](https://pelias.bigdev.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=stinky beach&size=1)
+> [/v1/search?api_key={YOUR-KEY}&text=stinky beach&___size=1___](https://pelias.bigdev.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=YMCA&size=1)
 
+How about *25* results?
 
-#### How about *25* results?
+> [/v1/search?api_key={YOUR-KEY}&text=YMCA&___size=25___](https://pelias.bigdev.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=YMCA&size=25)
 
 | parameter | value |
 | :--- | :--- |
-| `text` | stinky beach |
-| `size` | ***25*** |
 | `api_key` | [get yours here](https://mapzen.com/developers) |
+| `text` | YMCA |
+| `size` | ***25*** |
  
-> [/v1/search?api_key={YOUR-KEY}&text=stinky beach&___size=25___](https://pelias.bigdev.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=stinky beach&size=25)
 
 ### **cApiTaliZAtioN**
 You may have noticed already that cApiTaliZAtioN isn't a big deal for search.
-You can type **yankee stadium** or **Yankee Stadium** or even **YANKEE STADIUM** if you're really excited about finding it. See for yourself by comparing the results of the previous search to the following:
+You can type **ymca** or **YMCA** or even **yMcA**. See for yourself by comparing the results of the previous search to the following:
 
-| parameter | value |
-| :--- | :--- |
-| `text` | ***YANKEE STADIUM*** |
-| `api_key` | [get yours here](https://mapzen.com/developers) |
-
-
-> [/v1/search?api_key={YOUR-KEY}&___text=YANKEE STADIUM___](https://search.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=YANKEE STADIUM)
-
+> [/v1/search?api_key={YOUR-KEY}&___text=yMcA___](https://search.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=yMcA)
 
