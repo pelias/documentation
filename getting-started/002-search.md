@@ -40,6 +40,7 @@ If you clicked on the query link above, you probably saw some cool **GeoJSON**, 
 Note that the results are spread out throughout the world. Since we haven't told the service anything about our current location or any other geographic context.
 
 ## Narrowing your Search...
+
 Sometimes it's necessary to limit the search to a portion of the world. This can be useful if you're looking for places in a particular region, or country, or only want to look in the immediate viscinity of a user with a known location. Different usecases call for different specifications of this bounding region. We currently support three types: **rectangle**, **circle**, and **country**.
 
 ### ...to a specific country
@@ -162,14 +163,14 @@ If you're going to attempt using multiple boundary types in a single search requ
 ## Prioritizing Nearby Places
 Many usecases call for the ability to surface nearby results to the front of the list, while still allow important matches from further away to be visible. If that's your conundrum, here's what you've got to do.
 
-### Focus on a point
+### ...around a point of focus
 
 ![](https://github.com/dianashk/pelias-doc/blob/master/getting-started/focus_point.png)
 
 Search will focus on a given point anywhere on earth, and results within **~100km** will be prioritized higher, thereby surfacing highest in the list. Once all the nearby results have been found, additional results will come from the rest of the world, without any further location-based prioritization.
 
 #### Example time
-Let's find **YMCA** again, but this time near **Disney World, Florida**
+Let's find **YMCA** again, but this time near **Sydney Opera House, Australia**
 
 > [/v1/search?api_key={YOUR-KEY}&text=YMCA&___focus.point.lat=-33.856680&focus.point.lon=151.215281___](http://pelias.bigdev.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=YMCA&focus.point.lat=-33.856680&focus.point.lon=151.215281)
 
@@ -186,24 +187,155 @@ Looking at the results, you can see that the few locations closer to **Sydney** 
 * YMCA, St Ives (NSW), New South Wales [distance: 14.844]
 * YMCA, Epping (NSW), New South Wales [distance: 16.583]
 * YMCA, Revesby, New South Wales [distance: 21.335]
-* YMCA, Kochâang, South Gyeongsang [distance: 8071.436]
+* YMCA, Kochâang, South Gyeongsang [distance: 8071.436]
 * YMCA, Center, IN [distance: 14882.675]
 * YMCA, Lake Villa, IL [distance: 14847.667]
 * YMCA, Onondaga, NY [distance: 15818.08]
 * YMCA, 's-Gravenhage, Zuid-Holland [distance: 16688.292]
 * YMCA, Loughborough, United Kingdom [distance: 16978.367]
 
+## Prioritizing within Boundaries
+Now that we've seen how to use boundary and focus to narrow down and sort your results, let's examine a few scenarios where they work well together.
+
+### Prioritize within a country
+
+**TBD: insert image here**
+
+#### Example time
+Let's revisit the YMCA search we conducted with a focus around the Sydney Opera House. When providing only `focus.point`, we saw results come back from distant parts of the world, as expected. But say you wanted to only see results from the country in which your focus point lies. Let's combine that same focus point, Sydney Opera House, with the country boundary of Australia. Check this out.
+
+> [/v1/search?api_key={YOUR-KEY}&text=YMCA&___focus.point.lat=-33.856680&focus.point.lon=151.215281___](http://pelias.bigdev.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=YMCA&focus.point.lat=-33.856680&focus.point.lon=151.215281)
+
+| parameter | value |
+| :--- | :--- |
+| `api_key` | [get yours here](https://mapzen.com/developers) |
+| `text` | YMCA |
+| `focus.point.lat` | -33.856680 |
+| `focus.point.lon` | 151.215281 |
+| `boundary.country` | ***AUS*** |
+
+The results below look very different from the ones we saw previously with only a focus point specified. These results are all from within Australia. You'll note the closest results show up at the beginning of the list, which is facilitated by the focus parameter. Pretty spectacular, right!?
+
+> * YMCA, Redfern, New South Wales [distance: 3.836]
+* YMCA, St Ives (NSW), New South Wales [distance: 14.844]
+* YMCA, Epping (NSW), New South Wales [distance: 16.583]
+* YMCA, Revesby, New South Wales [distance: 21.335]
+* YMCA, Larrakeyah, Northern Territory [distance: 3144.296]
+* YMCA, Kepnock, Queensland [distance: 1001.657]
+* YMCA, Kings Meadows, Tasmania [distance: 917.144]
+* YMCA, Katherine East, Northern Territory [distance: 2873.376]
+* YMCA, Sadadeen, Northern Territory [distance: 2026.731]
+* YMCA, Ararat, Victoria [distance: 841.022]
+
+### Prioritize within a circular boundary
+
+**TBD: insert image here**
+
+Let's say you're looking for the **nearest** YMCA locations, and are willing to travel no further than **50km** from your current location. You'd like the results to be sorted by distance from current location, in order to make your selection process easier. We can get this behavior by using `focus.point` in combination with `boundary.circle.*`. We can reuse the `focus.point.*` values as the `boundary.circle.lat` and `boundary.circle.lon`, and simply specify the required `boundary.circle.radius` value in kilometers.
+
+> [/v1/search?api_key={YOUR-KEY}&text=YMCA&focus.point.lat=-33.856680&focus.point.lon=151.215281&___boundary.circle.lat=-33.856680&boundary.circle.lon=151.215281&boundary.circle.radius=50___](http://pelias.bigdev.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=YMCA&focus.point.lat=-33.856680&focus.point.lon=151.215281&boundary.circle.lat=-33.856680&boundary.circle.lon=151.215281&boundary.circle.radius=50)
+
+| parameter | value |
+| :--- | :--- |
+| `api_key` | [get yours here](https://mapzen.com/developers) |
+| `text` | YMCA |
+| `focus.point.lat` | -33.856680 |
+| `focus.point.lon` | 151.215281 |
+| `boundary.circle.lat` | ***-33.856680*** |
+| `boundary.circle.lon` | ***151.215281*** |
+| `boundary.circle.radius` | ***50*** |
+
+Check out the results. They are all less than 50km away from the focus point:
+
+> * YMCA, Redfern, New South Wales [distance: 3.836]
+* YMCA, St Ives (NSW), New South Wales [distance: 14.844]
+* YMCA, Epping (NSW), New South Wales [distance: 16.583]
+* YMCA, Revesby, New South Wales [distance: 21.335]
+* Caringbah YMCA, Caringbah, New South Wales [distance: 22.543]
+* YMCA building, Loftus, New South Wales [distance: 25.756]
+
+## Filtering your Search...
+
+Mapzen search offers two types of options for selecting the dataset you want to search:
+* `sources` : the originating source of the data
+* `layers` : the kind of place you're looking to find
+
+### ...by Data Source
+Mapzen Search brings together data from various open sources. All the search examples we've seen so far, return a mix of results from all the different sources. Here's a list of what we import at this time:
+
+| source | name | short name |
+|---|---|---|
+| [OpenStreetMap](http://www.openstreetmap.org/) | `openstreetmap` | `osm` |
+| [OpenAddresses](http://openaddresses.io/) | `openaddresses` | `oa` |
+| [Quattroshapes](http://quattroshapes.com/) | `quattroshapes` | `qs` |
+| [GeoNames](http://www.geonames.org/) | `geonames` | `ga` |
+
+We've added a helpful `sources` parameter to the Search API, to allow users to select which of these data sources they want to include in their search. So if you're only intersted in searching **OpenAddressses**, for example, your query would look as follows.
+
+#### Example time
+Let's search for **YMCA** again but only within the **OpenAddresses** data source.
+
+> [/v1/search?api_key={YOUR-KEY}&text=YMCA&___sources=oa___](http://pelias.bigdev.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=YMCA&sources=oa)
+
+| parameter | value |
+| :--- | :--- |
+| `api_key` | [get yours here](https://mapzen.com/developers) |
+| `text` | YMCA |
+| `sources` | **oa** |
+
+Since OpenAddresses is, as the name suggests, only address data, here's what you can expect to find:
+
+> * 0 Ymca, New Brunswick
+* 0 Ymca Drive, Cary, NC
+* 14843 Ymca Lane, Cormorant, MN
+* 14660 Ymca Lane, Cormorant, MN
+* 6221 Ymca Lane, Northampton County, VA
+* 6223 Ymca Lane, Northampton County, VA
+* 74 Ymca Road, Wairoa District, Hawke's Bay Region
+* 108 Ymca Drive, Clinton, SC
+* 101 Ymca Drive, Kannapolis, NC
+* 31440 Ymca Road, Washington, OH
 
 
 
 
-- focus viewport api example (e.g. union square)
-- focus point api example (NY union square)
+{combine source listing, e.g. open addresses + Geonames}
 
 
 
 
 
+### Selecting Layers
+
+
+|Layer Name|Represents|
+|----|----|
+|`venue`|Points of interest, businesses, things with walls|
+|`address`|Places with a street address|
+|`country`|Places that issue passports, nations, nation-states|
+|`region`|States and provinces|
+|`county`|Official governmental area; usually bigger than a locality, almost always smaller than a region|
+|`locality`|Towns, hamlets, cities, etc.|
+|`localadmin`|    |
+|`neighbourhood`||
+|`coarse`|Alias for simultaneously using `country`, `region`, `county`, `locality`, `localadmin`, and `neighbourhood`||
+
+Our layers are derived from the hierarchy created by the gazetteer [Who's on First](https://github.com/whosonfirst/whosonfirst-placetypes/blob/master/README.md) and can be used to facilitate coarse geocoding.
+
+
+
+### Coarse Geocoding (Neighborhoods, Cities, States, Countries)
+There are many cases where you're after not a point, but a general area, whether it's the name of a town, a neighborhood, a county, or a country.
+
+
+
+- Coarse general
+- Select cities
+- Select localities in a country (with boundary.country)
+
+
+# Using Autocomplete & Search Together
+For end-user applications, `/autocomplete` is intended to be used alongside `/search` to facilitate real-time feedback for user s
 
 ## Results
 Now that you've seen some examples of search, let's examine the results closer.
@@ -291,60 +423,6 @@ Just set the `size` parameter to the desired number:
 | `api_key` | [get yours here](https://mapzen.com/developers) |
  
 > [/v1/search?api_key={YOUR-KEY}&text=stinky beach&___size=25___](https://pelias.bigdev.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=stinky beach&size=25)
-
- 
-
-# TBD
-
-### Combining Focused Results with Boundaries
-- Focus within country example
-
-- Focus within large bounding box example (e.g. maximum distance a user is willing to travel)
-
-
-## Selecting Datasets
-
-Mapzen search offers two types of options for selecting the dataset you want back:
-1. the originating source of the data (`sources`)
-2. the kind of place you're looking to geocode against (`layers`)
-
-### Selecting `Sources`
-{list sources, not different licenses}
-{combine source listing, e.g. open addresses + Geonames}
-
-### Selecting Layers
-
-
-|Layer Name|Represents|
-|----|----|
-|`venue`|Points of interest, businesses, things with walls|
-|`address`|Places with a street address|
-|`country`|Places that issue passports, nations, nation-states|
-|`region`|States and provinces|
-|`county`|Official governmental area; usually bigger than a locality, almost always smaller than a region|
-|`locality`|Towns, hamlets, cities, etc.|
-|`localadmin`|    |
-|`neighbourhood`||
-|`coarse`|Alias for simultaneously using `country`, `region`, `county`, `locality`, `localadmin`, and `neighbourhood`||
-
-Our layers are derived from the hierarchy created by the gazetteer [Who's on First](https://github.com/whosonfirst/whosonfirst-placetypes/blob/master/README.md) and can be used to facilitate coarse geocoding.
-
-
-
-### Coarse Geocoding (Neighborhoods, Cities, States, Countries)
-There are many cases where you're after not a point, but a general area, whether it's the name of a town, a neighborhood, a county, or a country.
-
-
-
-- Coarse general
-- Select cities
-- Select localities in a country (with boundary.country)
-
-
-# Using Autocomplete & Search Together
-For end-user applications, `/autocomplete` is intended to be used alongside `/search` to facilitate real-time feedback for user s
-
-
 
 ### **cApiTaliZAtioN**
 You may have noticed already that cApiTaliZAtioN isn't a big deal for search.
