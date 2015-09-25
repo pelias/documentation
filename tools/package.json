@@ -1,0 +1,17 @@
+{
+  "name": "tools",
+  "version": "1.0.0",
+  "description": "",
+  "main": "locmux.js",
+  "scripts": {
+    "start": "node locmux.js geojson"
+  },
+  "author": "Diana Shkolnikov <dianashk@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "async": "^1.4.2",
+    "geojsonio-cli": "^0.1.2",
+    "request": "^2.62.0",
+    "text-hex": "0.0.0"
+  }
+}
