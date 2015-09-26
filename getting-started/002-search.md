@@ -146,24 +146,22 @@ You can see the results have fewer than the standard 10 items because there are 
 * Pinnacle Jr YMCA, Toronto, Ontario
 * Cooper Koo Family Cherry Street YMCA Centre, Toronto, Ontario
 
-### We respect your boundaries
+### Specify multiple boundaries
 
-If you're going to attempt using multiple boundary types in a single search request, be aware that the results will come from the **intersection** of all the boundaries! So if you provide regions that don't overlap, you'll be looking at an empty set of results. You've been warned. Here's a visual of how it works:
+If you're going to attempt using multiple boundary types in a single search request, be aware that the results will come from the intersection of all the boundaries. So if you provide regions that don't overlap, you'll be looking at an empty set of results. You've been warned. Here's an image of how it works:
 
 ![](https://github.com/dianashk/pelias-doc/blob/master/getting-started/overlapping_boundaries.gif)
 
+## Prioritize results by proximity
+Many usecases call for the ability to promote nearby results to the top of the list, while still allowing important matches from farther away to be visible. If that's your conundrum, here's what to do.
 
-## Prioritizing Nearby Places
-Many usecases call for the ability to surface nearby results to the front of the list, while still allow important matches from further away to be visible. If that's your conundrum, here's what you've got to do.
-
-### ...around a point of focus
+### Prioritize around a point
 
 ![](https://github.com/dianashk/pelias-doc/blob/master/getting-started/focus_point.png)
 
-Search will focus on a given point anywhere on earth, and results within **~100km** will be prioritized higher, thereby surfacing highest in the list. Once all the nearby results have been found, additional results will come from the rest of the world, without any further location-based prioritization.
+Search will focus on a given point anywhere on earth, and results within 100 kilometers will be prioritized higher, thereby surfacing highest in the list. Once all the nearby results have been found, additional results will come from the rest of the world, without any further location-based prioritization.
 
-#### Example time
-Let's find **YMCA** again, but this time near **Sydney Opera House, Australia**
+To find YMCA again, but this time near the a specific coordinate location (representing the Sydney Opera House) in Sydney, Australia.
 
 > [/v1/search?api_key={YOUR-KEY}&text=YMCA&___focus.point.lat=-33.856680&focus.point.lon=151.215281___](http://pelias.bigdev.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=YMCA&focus.point.lat=-33.856680&focus.point.lon=151.215281)
 
@@ -174,7 +172,7 @@ Let's find **YMCA** again, but this time near **Sydney Opera House, Australia**
 | `focus.point.lat` | ***-33.856680*** |
 | `focus.point.lon` | ***151.215281*** |
 
-Looking at the results, you can see that the few locations closer to **Sydney** show up at the top of the list, sorted by distance. You also still get back a significant amount of remote locations, for a well balanced mix. Oh, and since you provided a focus point, we can now compute distance from that point for each result, so check that out in each feature.
+Looking at the results, you can see that the few locations closer to this location show up at the top of the list, sorted by distance. You also still get back a significant amount of remote locations, for a well balanced mix. Because you provided a focus point, Mapzen Search can compute distance from that point for each resulting feature.
 
 > * YMCA, Redfern, New South Wales [distance: 3.836]
 * YMCA, St Ives (NSW), New South Wales [distance: 14.844]
@@ -187,15 +185,14 @@ Looking at the results, you can see that the few locations closer to **Sydney** 
 * YMCA, 's-Gravenhage, Zuid-Holland [distance: 16688.292]
 * YMCA, Loughborough, United Kingdom [distance: 16978.367]
 
-## Prioritizing within Boundaries
-Now that we've seen how to use boundary and focus to narrow down and sort your results, let's examine a few scenarios where they work well together.
+## Combine boundary search and prioritization
+Now that you have seen how to use boundary and focus to narrow and sort your results, you can examine a few scenarios where they work well together.
 
 ### Prioritize within a country
 
 **TBD: insert image here**
 
-#### Example time
-Let's revisit the YMCA search we conducted with a focus around the Sydney Opera House. When providing only `focus.point`, we saw results come back from distant parts of the world, as expected. But say you wanted to only see results from the country in which your focus point lies. Let's combine that same focus point, Sydney Opera House, with the country boundary of Australia. Check this out.
+Going back to the YMCA search you conducted with a focus around a point in Sydney, the results came back from distant parts of the world, as expected. But say you wanted to only see results from the country in which your focus point lies. You can combine that same focus point in Sydney with the country boundary of Australia like this.
 
 > [/v1/search?api_key={YOUR-KEY}&text=YMCA&___focus.point.lat=-33.856680&focus.point.lon=151.215281___](http://pelias.bigdev.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=YMCA&focus.point.lat=-33.856680&focus.point.lon=151.215281)
 
@@ -207,7 +204,7 @@ Let's revisit the YMCA search we conducted with a focus around the Sydney Opera 
 | `focus.point.lon` | 151.215281 |
 | `boundary.country` | ***AUS*** |
 
-The results below look very different from the ones we saw previously with only a focus point specified. These results are all from within Australia. You'll note the closest results show up at the beginning of the list, which is facilitated by the focus parameter. Pretty spectacular, right!?
+The results below look very different from the ones you saw previously with only a focus point specified. These results are all from within Australia. You'll note the closest results show up at the top of the list, which is facilitated by the focus parameter.
 
 > * YMCA, Redfern, New South Wales [distance: 3.836]
 * YMCA, St Ives (NSW), New South Wales [distance: 14.844]
@@ -220,11 +217,11 @@ The results below look very different from the ones we saw previously with only 
 * YMCA, Sadadeen, Northern Territory [distance: 2026.731]
 * YMCA, Ararat, Victoria [distance: 841.022]
 
-### Prioritize within a circular boundary
+### Prioritize within a circular region
 
 **TBD: insert image here**
 
-Let's say you're looking for the **nearest** YMCA locations, and are willing to travel no further than **50km** from your current location. You'd like the results to be sorted by distance from current location, in order to make your selection process easier. We can get this behavior by using `focus.point` in combination with `boundary.circle.*`. We can reuse the `focus.point.*` values as the `boundary.circle.lat` and `boundary.circle.lon`, and simply specify the required `boundary.circle.radius` value in kilometers.
+If you are looking for the nearest YMCA locations, and are willing to travel no farther than 50 kilometers from your current location, you likely would want the results to be sorted by distance from current location to make your selection process easier. You can get this behavior by using `focus.point` in combination with `boundary.circle.*`. You can use the `focus.point.*` values as the `boundary.circle.lat` and `boundary.circle.lon`, and add the required `boundary.circle.radius` value in kilometers.
 
 > [/v1/search?api_key={YOUR-KEY}&text=YMCA&focus.point.lat=-33.856680&focus.point.lon=151.215281&___boundary.circle.lat=-33.856680&boundary.circle.lon=151.215281&boundary.circle.radius=50___](http://pelias.bigdev.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=YMCA&focus.point.lat=-33.856680&focus.point.lon=151.215281&boundary.circle.lat=-33.856680&boundary.circle.lon=151.215281&boundary.circle.radius=50)
 
@@ -238,7 +235,7 @@ Let's say you're looking for the **nearest** YMCA locations, and are willing to 
 | `boundary.circle.lon` | ***151.215281*** |
 | `boundary.circle.radius` | ***50*** |
 
-Check out the results. They are all less than 50km away from the focus point:
+Looking at these results, they are all less than 50 kilometers away from the focus point:
 
 > * YMCA, Redfern, New South Wales [distance: 3.836]
 * YMCA, St Ives (NSW), New South Wales [distance: 14.844]
@@ -247,7 +244,7 @@ Check out the results. They are all less than 50km away from the focus point:
 * Caringbah YMCA, Caringbah, New South Wales [distance: 22.543]
 * YMCA building, Loftus, New South Wales [distance: 25.756]
 
-## Filtering your Search...
+## Filter your search
 
 Mapzen search offers two types of options for selecting the dataset you want to search:
 * `sources` : the originating source of the data
