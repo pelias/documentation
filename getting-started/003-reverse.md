@@ -1,5 +1,4 @@
-Reverse Geocoding
-==================
+# Reverse geocoding
 
 Reverse geocoding is used for finding places near a latitude/longitude pair.  Think of it as clicking on a map to see what's there when the map doesn't show it otherwise.  For example, picture a map in your mind with building outlines but no labels then clicking on a building and being shown what business is there.  That's reverse geocoding.  
 

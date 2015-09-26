@@ -1,5 +1,4 @@
-Places
-=======
+# Search for places
 
 Place search is for when you have an ID and the source it came from and now you just need the details.  
 
