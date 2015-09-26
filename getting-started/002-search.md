@@ -1,19 +1,17 @@
-`SEARCH`, or Looking for Places
-=======
+# Mapzen Search: Finding places
 
-Geospacial search, frequently reffered to as **geocoding** is the process of matching an address to its corresponding geographic coordinates. There's nothing inherent in the words we use to describe an address that conveys its location at some coordinates on earth, i.e. *[lat,lon]*. Making the leap from text to coordinates is an intricate and challenging process. Lucky for you, we've done all the hard work and made it accessible via a really simple and free web service.
+Geospatial search, frequently referred to as geocoding, is the process of matching an address to its corresponding geographic coordinates. There's nothing inherent in the words we use to describe an address that conveys its location at some coordinates on earth, i.e. *[lat,lon]*. Making the leap from text to coordinates is an intricate and challenging process. Lucky for you, we've done all the hard work and made it accessible though a free web service.
 
-:school: :barber: :bank: :us: :house_with_garden: :hospital: ......... :computer:
+## Build a query
+The Mapzen Search request takes the form of `https://search.mapzen.com/v1/search?api_key={your-api-key}`, where the JSON inputs inside the `{}` include search parameters such as the text to find and filtering options. Note that you must append your own Mapzen Search API key to the URL, following &api_key= at the end.
 
-## Search the World
+## Search the world
 
 ![](https://github.com/dianashk/pelias-doc/blob/master/getting-started/world_all.png)
 
-In the simplest search, all you provide is the text you'd like to match in any part of the location details. So to accomplish this, you just set the `text` parameter to whatever you want to find. Let's see a few examples.
+In the simplest search, you can provide only one parameter, the text you want to match in any part of the location details. To accomplish this, build a query where the `text` is set to the item you want to find.
 
-#### Example time
-
-Let's search for **YMCA**. Here's what you'd need to append to the base URL of the service, **search.mapzen.com**.
+For example, if you want to find a [YMCA](https://en.wikipedia.org/wiki/YMCA) facility, here's what you'd need to append to the base URL of the service, `search.mapzen.com`.
 
 > [/v1/search?api_key={YOUR-KEY}&___text=YMCA___](https://search.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=YMCA)
 
@@ -37,20 +35,19 @@ If you clicked on the query link above, you probably saw some cool **GeoJSON**, 
 * YMCA, Jefferson, OH
 * YMCA, Belleville, IL
 
-Note that the results are spread out throughout the world. Since we haven't told the service anything about our current location or any other geographic context.
+Note that the results are spread out throughout the world because you have not given your current location or provided any other geographic context in which to search.
 
-## Narrowing your Search...
+## Narrow your search
 
-Sometimes it's necessary to limit the search to a portion of the world. This can be useful if you're looking for places in a particular region, or country, or only want to look in the immediate viscinity of a user with a known location. Different usecases call for different specifications of this bounding region. We currently support three types: **rectangle**, **circle**, and **country**.
+If you are looking for places in a particular region, or country, or only want to look in the immediate vicinity of a user with a known location, you can narrow your search to an area. There are different ways of including a region in your query. Mapzen Search currently supports three types: country, rectangle, and country.
 
-### ...to a specific country
+### Search within a particular country
 
 ![](https://github.com/dianashk/pelias-doc/blob/master/getting-started/world_country.png)
 
-Sometimes your usecase might require that all the search results are from a particular country. Well, we've got that covered! You just need to set the `boundary.country` parameter value to the **alpha-2** or **alpha-3** [ISO-3166 country code](https://en.wikipedia.org/wiki/ISO_3166-1).
+Sometimes your work might require that all the search results be from a particular country. To do this, you can set the `boundary.country` parameter value to the alpha-2 or alpha-3 [ISO-3166 country code](https://en.wikipedia.org/wiki/ISO_3166-1).
 
-#### Example time
-Let's search for **YMCA** again, but this time only in **Great Britain**. We'll need to know that the **alpha-3** code for **Great Britain** is ***GBR*** and set the parameters like this:
+Now, you want to search for YMCA again, but this time only in Great Britain. To do this, you will need to know that the alpha-3 code for Great Britain is *GBR* and set the parameters like this:
 
 > [/v1/search?api_key={YOUR-KEY}&text=YMCA&___boundary.country=GBR___](http://pelias.bigdev.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=YMCA&boundary.country=GBR)
 
@@ -73,7 +70,7 @@ Note that all the results reside within Great Britain:
 * YMCA, Lenton Abbey, Nottinghamshire
 * YMCA, Old Clee, Lincolnshire
 
-Now you can try the same search request with different country codes and see the results change.
+If you attempt the same search request with different country codes, you can see how the results change.
 
 > [/v1/search?api_key={YOUR-KEY}&text=YMCA&___boundary.country=USA___](http://pelias.bigdev.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=YMCA&boundary.country=USA)
 
@@ -90,14 +87,12 @@ Results in the United States:
 * YMCA, Bremerton, WA
 * YMCA, Westerly, RI
 
-
-### ...to a rectangular region
+### Search within a rectangular region
 
 ![](https://github.com/dianashk/pelias-doc/blob/master/getting-started/world_rect.png)
- 
+
 In the case where you need to specify the boundary using a rectangle, all we need is a pair of coordinates on earth. Here are a few examples:
 
-#### Example time
 Let's say you wanted to find museums in the state of **Texas**. You'd need to set the `boundary.rect.*` parameter grouping to values representing the bounding box around **Texas**: min_lon=-106.65 min_lat=25.84 max_lon=-93.51 max_lat=36.5
 
 ***PRO TIP:*** *You can lookup a bounding box for a known region [here](http://boundingbox.klokantech.com/)*
@@ -124,14 +119,14 @@ Let's say you wanted to find museums in the state of **Texas**. You'd need to se
 * YMCA, Los Alamos, NM
 * YMCA, Tulsa, OK
 
-#### ...to a circular region
+### Search within a circular region
 
 ![](https://github.com/dianashk/pelias-doc/blob/master/getting-started/world_circle.png)
 
 Sometimes you don't have a rectangle to work with, but rather you've got a point on earth, for example your location coordinates, and a maximum distance within which acceptable results can be located.
 
 #### Example time
-Find all **YMCA** locations within a **35km** radius of a spot in **Ontario, Canada**, 
+Find all **YMCA** locations within a **35km** radius of a spot in **Ontario, Canada**,
 This time, we'll use the `boundary.circle.*` parameter grouping to get the job done. `boundary.circle.lat` and `boundary.circle.lon` should be set to your location in **Madrid**, while `boundary.circle.radius` should be set to the acceptable distance from that location. Note that the `boundary.circle.radius` parameter is always specified in **kilometers**.
 
 > [/v1/search?api_key={YOUR_API_KEY}&text=YMCA&__boundary.circle.lon=-79.186484&boundary.circle.lat=43.818156&boundary.circle.radius=35__](http://pelias.bigdev.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=YMCA&boundary.circle.lon=-79.186484&boundary.circle.lat=43.818156&boundary.circle.radius=35)
@@ -391,7 +386,7 @@ we had to split it out into its own section.
 ## Result count
 
 You may have noticed that there were **10** places in the results for all the previous search examples.
-That's the _default_ number of results the API will return, unless otherwise specified. 
+That's the _default_ number of results the API will return, unless otherwise specified.
 
 #### Example time
 Want a **single** result? Just set the `size` parameter to the desired number:
@@ -413,11 +408,10 @@ How about *25* results?
 | `api_key` | [get yours here](https://mapzen.com/developers) |
 | `text` | YMCA |
 | `size` | ***25*** |
- 
+
 
 ### **cApiTaliZAtioN**
 You may have noticed already that cApiTaliZAtioN isn't a big deal for search.
 You can type **ymca** or **YMCA** or even **yMcA**. See for yourself by comparing the results of the previous search to the following:
 
 > [/v1/search?api_key={YOUR-KEY}&___text=yMcA___](https://search.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=yMcA)
-
