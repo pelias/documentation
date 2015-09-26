@@ -70,7 +70,7 @@ Note that all the results reside within Great Britain:
 * YMCA, Lenton Abbey, Nottinghamshire
 * YMCA, Old Clee, Lincolnshire
 
-If you attempt the same search request with different country codes, you can see how the results change.
+If you attempt the same search request with different country codes, the results change to reflect YMCA locations within the country.
 
 > [/v1/search?api_key={YOUR-KEY}&text=YMCA&___boundary.country=USA___](http://pelias.bigdev.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=YMCA&boundary.country=USA)
 
@@ -91,13 +91,13 @@ Results in the United States:
 
 ![](https://github.com/dianashk/pelias-doc/blob/master/getting-started/world_rect.png)
 
-In the case where you need to specify the boundary using a rectangle, all we need is a pair of coordinates on earth. Here are a few examples:
+To specify the boundary using a rectangle, you need latitude, longitude coordinates for two corners of the bounding box (the mininum and the maximum latitude, longitude).
 
-Let's say you wanted to find museums in the state of **Texas**. You'd need to set the `boundary.rect.*` parameter grouping to values representing the bounding box around **Texas**: min_lon=-106.65 min_lat=25.84 max_lon=-93.51 max_lat=36.5
+For example, to find a YMCA within the state of Texas, you can set the `boundary.rect.*` parameter to values representing the bounding box around Texas: min_lon=-106.65 min_lat=25.84 max_lon=-93.51 max_lat=36.5
 
-***PRO TIP:*** *You can lookup a bounding box for a known region [here](http://boundingbox.klokantech.com/)*
+  Tip: You can look up a bounding box for a known region with this [web tool](http://boundingbox.klokantech.com/)*
 
-> [/v1/search?api_key={YOUR-KEY}&text=YMCA&___boundary.rect.min_lat=25.84&boundary.rect.min_lon=-106.65&boundary.rect.max_lat=36.5&boundary.rect.max_lon=-93.51___](https://pelias.bigdev.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=YMCA&boundary.rect.min_lat=25.84&boundary.rect.min_lon=-106.65&boundary.rect.max_lat=36.5&boundary.rect.max_lon=-93.51)
+ [/v1/search?api_key={YOUR-KEY}&text=YMCA&___boundary.rect.min_lat=25.84&boundary.rect.min_lon=-106.65&boundary.rect.max_lat=36.5&boundary.rect.max_lon=-93.51___](https://pelias.bigdev.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=YMCA&boundary.rect.min_lat=25.84&boundary.rect.min_lon=-106.65&boundary.rect.max_lat=36.5&boundary.rect.max_lon=-93.51)
 
 | parameter | value |
 | :--- | :--- |
@@ -123,11 +123,9 @@ Let's say you wanted to find museums in the state of **Texas**. You'd need to se
 
 ![](https://github.com/dianashk/pelias-doc/blob/master/getting-started/world_circle.png)
 
-Sometimes you don't have a rectangle to work with, but rather you've got a point on earth, for example your location coordinates, and a maximum distance within which acceptable results can be located.
+Sometimes you don't have a rectangle to work with, but rather you have a point on earth&mdash;for example, your location coordinates&mdash;and a maximum distance within which acceptable results can be located.
 
-#### Example time
-Find all **YMCA** locations within a **35km** radius of a spot in **Ontario, Canada**,
-This time, we'll use the `boundary.circle.*` parameter grouping to get the job done. `boundary.circle.lat` and `boundary.circle.lon` should be set to your location in **Madrid**, while `boundary.circle.radius` should be set to the acceptable distance from that location. Note that the `boundary.circle.radius` parameter is always specified in **kilometers**.
+In this example, you want to find all YMCA locations within a 35-kilometer radius of a location in Ontario, Canada. This time, you can use the `boundary.circle.*` parameter group, where `boundary.circle.lat` and `boundary.circle.lon` represents your location in Ontario and `boundary.circle.radius` is the acceptable distance from that location. Note that the `boundary.circle.radius` parameter is always specified in kilometers.
 
 > [/v1/search?api_key={YOUR_API_KEY}&text=YMCA&__boundary.circle.lon=-79.186484&boundary.circle.lat=43.818156&boundary.circle.radius=35__](http://pelias.bigdev.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=YMCA&boundary.circle.lon=-79.186484&boundary.circle.lat=43.818156&boundary.circle.radius=35)
 
@@ -139,7 +137,7 @@ This time, we'll use the `boundary.circle.*` parameter grouping to get the job d
 | `boundary.circle.lon` | ***-79.186484*** |
 | `boundary.circle.radius` | ***35*** |
 
-You can see the results have fewer than the standard 10 items, because there aren't that many YMCA locations in the specified radius:
+You can see the results have fewer than the standard 10 items because there are not that many YMCA locations in the specified radius:
 
 > * YMCA, Toronto, Ontario
 * YMCA, Markham, Ontario
