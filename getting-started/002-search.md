@@ -246,12 +246,14 @@ Looking at these results, they are all less than 50 kilometers away from the foc
 
 ## Filter your search
 
-Mapzen search offers two types of options for selecting the dataset you want to search:
-* `sources` : the originating source of the data
-* `layers` : the kind of place you're looking to find
+Mapzen Search brings together data from multiple open sources and combines a variety of place types into a single database, allowing you options for selecting the dataset you want to search.
 
-### ...by Data Source
-Mapzen Search brings together data from various open sources. All the search examples we've seen so far, return a mix of results from all the different sources. Here's a list of what we import at this time:
+With Mapzen Search, you can filter by:
+* `sources`: the originating source of the data
+* `layers`: the kind of place you want to find
+
+### Filter by data source
+The search examples so far have returned a mix of results from all the data sources available to Mapzen Search. Here are the sources currently being searched:
 
 | source | name | short name |
 |---|---|---|
@@ -260,10 +262,9 @@ Mapzen Search brings together data from various open sources. All the search exa
 | [Quattroshapes](http://quattroshapes.com/) | `quattroshapes` | `qs` |
 | [GeoNames](http://www.geonames.org/) | `geonames` | `ga` |
 
-We've added a helpful `sources` parameter to the Search API, to allow users to select which of these data sources they want to include in their search. So if you're only intersted in searching **OpenAddressses**, for example, your query would look as follows.
+****TO DO: Add a description of each of these.*****
 
-#### Example time
-Let's search for **YMCA** again but only within the **OpenAddresses** data source.
+If you use the `sources` parameter, you can choose which of these data sources to include in your search. So if you're only interested in finding a YMCA in data from OpenAddresses, for example, you can build a query specifying that data source.
 
 > [/v1/search?api_key={YOUR-KEY}&text=YMCA&___sources=oa___](http://pelias.bigdev.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=YMCA&sources=oa)
 
@@ -273,7 +274,7 @@ Let's search for **YMCA** again but only within the **OpenAddresses** data sourc
 | `text` | YMCA |
 | `sources` | **oa** |
 
-Since OpenAddresses is, as the name suggests, only address data, here's what you can expect to find:
+Because OpenAddresses is, as the name suggests, only address data, here's what you can expect to find:
 
 > * 0 Ymca, New Brunswick
 * 0 Ymca Drive, Cary, NC
@@ -286,7 +287,7 @@ Since OpenAddresses is, as the name suggests, only address data, here's what you
 * 101 Ymca Drive, Kannapolis, NC
 * 31440 Ymca Road, Washington, OH
 
-If you wanted to combine several data sources together, you would simply set `sources` to a comma separated list of desired source names. Note that the order of the comma separated values does not impact sorting order of the results. They are still sorted based on the linguistic match quality to `text` and distance from `focus`, if one was specified.
+If you wanted to combine several data sources together, set `sources` to a comma separated list of desired source names. Note that the order of the comma separated values does not impact sorting order of the results; they are still sorted based on the linguistic match quality to `text` and distance from `focus`, if you specified one.
 
 > [/v1/search?api_key={YOUR-KEY}&text=YMCA&___sources=osm,gn___](http://pelias.bigdev.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=YMCA&sources=oa)
 
@@ -296,8 +297,11 @@ If you wanted to combine several data sources together, you would simply set `so
 | `text` | YMCA |
 | `sources` | **osm,gn** |
 
-### ...by Data Type
-Mapzen Search brings together a variety of place types into a single database. We refer to these place types as `layers`, and think of them as ranging from *fine* to *coarse*. Our layers are derived from the hierarchy created by the gazetteer [Who's on First](https://github.com/whosonfirst/whosonfirst-placetypes/blob/master/README.md) and can be used to facilitate *coarse* geocoding. Here's a list of the types of places you could find in our results, sorted by granularity:
+### Filter by data type
+In Mapzen Search, place types are referred to as `layers`, ranging from fine to coarse. The Mapzen Search layers are derived from the hierarchy created by the gazetteer [Who's on First](https://github.com/whosonfirst/whosonfirst-placetypes/blob/master/README.md) and can be used to facilitate coarse geocoding. Here's a list of the types of places you could find in the results, sorted by granularity:
+
+
+****TO DO: Describe fine and coarse geocoding, gazeteer. ***
 
 |layer|description|
 |----|----|
