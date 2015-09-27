@@ -22,7 +22,7 @@ Note the parameter values are set as follows:
 | `api_key` | [get yours here](https://mapzen.com/developers) |
 | `text` | ***YMCA*** |
 
-If you clicked on the query link above, you probably saw some cool **GeoJSON**, more on that later, with the following set of places in the results:
+If you clicked on the query link above, you saw some GeoJSON with the following set of places in the results:
 
 > * YMCA, Bargoed Community, United Kingdom
 * YMCA, Nunspeet, Gelderland
@@ -34,6 +34,10 @@ If you clicked on the query link above, you probably saw some cool **GeoJSON**, 
 * YMCA, Frisco, TX
 * YMCA, Jefferson, OH
 * YMCA, Belleville, IL
+
+Spelling matters, but not capitalization when performing a query with Mapzen Search. You can type `ymca`, `YMCA`, or even `yMcA`. See for yourself by comparing the results of the previous search to the following:
+
+> [/v1/search?api_key={YOUR-KEY}&___text=yMcA___](https://search.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=yMcA)
 
 Note that the results are spread out throughout the world because you have not given your current location or provided any other geographic context in which to search.
 
@@ -300,7 +304,6 @@ If you wanted to combine several data sources together, set `sources` to a comma
 ### Filter by data type
 In Mapzen Search, place types are referred to as `layers`, ranging from fine to coarse. The Mapzen Search layers are derived from the hierarchy created by the gazetteer [Who's on First](https://github.com/whosonfirst/whosonfirst-placetypes/blob/master/README.md) and can be used to facilitate coarse geocoding. Here's a list of the types of places you could find in the results, sorted by granularity:
 
-
 ****TO DO: Describe fine and coarse geocoding, gazeteer. ***
 
 |layer|description|
@@ -315,102 +318,8 @@ In Mapzen Search, place types are referred to as `layers`, ranging from fine to 
 |`neighbourhood`|...ehm, neighbourhoods|
 |`coarse`|alias for simultaneously using `country`, `region`, `county`, `locality`, `localadmin`, and `neighbourhood`|
 
-#### Example time
-
-*** COMING SOON***
+****Add example****
 
 
-# Using Autocomplete & Search Together
-For end-user applications, `/autocomplete` is intended to be used alongside `/search` to facilitate real-time feedback for user s
-
-## Results
-Now that you've seen some examples of search, let's examine the results closer.
-When requesting search results you will always get back `GeoJSON` results, unless something goes terribly wrong, in which case you'll get a really helpful error.
-
-> _You can go [here](link.to.geojson.spec.com) to learn more about the `GeoJSON` data format specification.
-> We'll assume you're familiar with the general layout and only point out some important details here._
-
-You will find the following top-level structure to every response:
-
-```javascript
-{
-  "geocoding":{...},
-  "type":"FeatureCollection",
-  "features":[...],
-  "bbox":[...]
-}
-```
-
-For the purposes of getting started quickly, let's keep our focus on the **features** property of the result.
-This is where you will find the list of results that best matched your input parameters.
-
-Each item in this list will contain all the information needed to identify it in human-readable format in the `properties` block, as well as computer friendly coordinates in the `geometry` property. Note the `label` property, which is a human-friendly representation of the place, ready to be displayed to an end-user.
-
-```javascript
-{  
-  "type":"Feature",
-  "properties":{  
-    "gid":"...",
-    "layer":"address",
-    "source":"osm",
-    "name":"30 West 26th Street",
-    "housenumber":"30",
-    "street":"West 26th Street",
-    "postalcode":"10010",
-    "country_a":"USA",
-    "country":"United States",
-    "region":"New York",
-    "region_a":"NY",
-    "county":"New York County",
-    "localadmin":"Manhattan",
-    "locality":"New York",
-    "neighbourhood":"Flatiron District",
-    "confidence":0.9624939994613662,
-    "label":"30 West 26th Street, Manhattan, NY"
-  },
-  "geometry":{  
-    "type":"Point",
-    "coordinates":[  
-      -73.990342,
-      40.744243
-    ]
-  }
-}
-```
-
-There is so much more to tell you about the plethora of data being returned for each search,
-we had to split it out into its own section.
-[Read more about the response format.](https://github.com/dianashk/pelias-doc/edit/master/getting-started/response.md)
-
-## Result count
-
-You may have noticed that there were **10** places in the results for all the previous search examples.
-That's the _default_ number of results the API will return, unless otherwise specified.
-
-#### Example time
-Want a **single** result? Just set the `size` parameter to the desired number:
-
-| parameter | value |
-| :--- | :--- |
-| `api_key` | [get yours here](https://mapzen.com/developers) |
-| `text` | YMCA |
-| `size` | ***1*** |
-
-> [/v1/search?api_key={YOUR-KEY}&text=stinky beach&___size=1___](https://pelias.bigdev.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=YMCA&size=1)
-
-How about *25* results?
-
-> [/v1/search?api_key={YOUR-KEY}&text=YMCA&___size=25___](https://pelias.bigdev.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=YMCA&size=25)
-
-| parameter | value |
-| :--- | :--- |
-| `api_key` | [get yours here](https://mapzen.com/developers) |
-| `text` | YMCA |
-| `size` | ***25*** |
-
-
-### **cApiTaliZAtioN**
-You may have noticed already that cApiTaliZAtioN isn't a big deal for search.
-You can type **ymca** or **YMCA** or even **yMcA**. See for yourself by comparing the results of the previous search to the following:
-
-> [/v1/search?api_key={YOUR-KEY}&___text=yMcA___](https://search.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=yMcA)
+## Search with autocomplete
+If you are building an end-user application, you can enable `/autocomplete` alongside the `/search` to add real-time feedback to help users find what they are looking for more easily, without requiring them to type the entire search term. Typically, the user starts typing and a drop-down list appears where they can choose the term from the list.
