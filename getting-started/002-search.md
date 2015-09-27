@@ -1,7 +1,7 @@
 `SEARCH`, or Looking for Places
 =======
 
-Geospacial search, frequently reffered to as **geocoding** is the process of matching an address to its corresponding geographic coordinates. There's nothing inherent in the words we use to describe an address that conveys its location at some coordinates on earth, i.e. *[lat,lon]*. Making the leap from text to coordinates is an intricate and challenging process. Lucky for you, we've done all the hard work and made it accessible via a really simple and free web service.
+Geospatial search, frequently referred to as **geocoding** is the process of matching an address to its corresponding geographic coordinates. There's nothing inherent in the words we use to describe an address that conveys its location at some coordinates on earth, i.e. *[lat,lon]*. Making the leap from text to coordinates is an intricate and challenging process. Lucky for you, we've done all the hard work and made it accessible via a really simple and free web service.
 
 :school: :barber: :bank: :us: :house_with_garden: :hospital: ......... :computer:
 
