@@ -1,6 +1,6 @@
 # Mapzen Search: Finding places
 
-Geospatial search, frequently referred to as geocoding, is the process of matching an address to its corresponding geographic coordinates. There's nothing inherent in the words we use to describe an address that conveys its location at some coordinates on earth, i.e. *[lat,lon]*. Making the leap from text to coordinates is an intricate and challenging process. Lucky for you, we've done all the hard work and made it accessible though a free web service.
+Geospatial search, frequently referred to as geocoding, is the process of matching an address to its corresponding geographic coordinates. There's nothing inherent in the words we use to describe an address that conveys its position at some coordinates on earth, such as a latitude,longitude. Making the leap from text to coordinates is an intricate and challenging process. Lucky for you, Mapzen has done all the hard work and made it accessible though a free web service.
 
 ## Build a query
 The Mapzen Search request takes the form of `https://search.mapzen.com/v1/search?api_key={your-api-key}`, where the JSON inputs inside the `{}` include search parameters such as the text to find and filtering options. Note that you must append your own Mapzen Search API key to the URL, following &api_key= at the end.
