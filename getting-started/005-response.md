@@ -55,15 +55,15 @@ Each item in this list will contain all the information needed to identify it in
 
 ## Result count
 
-By default, Mapzen Search results 10 places, unless otherwise specified. If you want a different number of results, set the `size` parameter to the desired number. This example shows returning five results.
+By default, Mapzen Search results 10 places, unless otherwise specified. If you want a different number of results, set the `size` parameter to the desired number. This example shows returning only the first result.
 
 | parameter | value |
 | :--- | :--- |
 | `api_key` | [get yours here](https://mapzen.com/developers) |
 | `text` | YMCA |
-| `size` | ***5*** |
+| `size` | ***1*** |
 
-> [/v1/search?api_key={YOUR-KEY}&text=YMCA&___size=1___](https://pelias.bigdev.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=YMCA&size=5)
+> [/v1/search?api_key={YOUR-KEY}&text=YMCA&___size=1___](https://pelias.bigdev.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=YMCA&size=1)
 
 If you want 25 results, you can build the query where `size` is 25.
 
