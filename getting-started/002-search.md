@@ -1,15 +1,25 @@
 # Mapzen Search: Finding places
 
-Geospatial search, frequently referred to as geocoding, is the process of matching an address to its corresponding geographic coordinates. There's nothing inherent in the words we use to describe an address that conveys its position at some coordinates on earth, such as a latitude,longitude. Making the leap from text to coordinates is an intricate and challenging process. Lucky for you, Mapzen has done all the hard work and made it accessible though a free web service.
+Geospatial search, commonly referred to as geocoding, is the process of matching an address to its corresponding geographic coordinates.
 
-## Build a query
-The Mapzen Search request takes the form of `https://search.mapzen.com/v1/search?api_key={your-api-key}`, where the JSON inputs inside the `{}` include search parameters such as the text to find and filtering options. Note that you must append your own Mapzen Search API key to the URL, following &api_key= at the end.
+There's nothing inherent in the language we use to describe a physical address that allows us to convert that human readable sentence in to a format that a computer can understand, such as latitude & longitude.
+
+Making the leap from text to coordinates is an intricate and challenging process. Lucky for you, Mapzen has done all the hard work and made it accessible though a free web service.
+
+All Mapzen Search requests share the same format:
+
+  ```
+   https://search.mapzen.com/v1/search?text=London&api_key=search-xxxxxx
+   \___/   \_______________/\__/\_____/\__________/\___________________/
+     |            |          /     |        |                |
+  scheme       domain   version  path     query     authentication token
+```
 
 ## Search the world
 
 ![](https://github.com/dianashk/pelias-doc/blob/master/getting-started/world_all.png)
 
-In the simplest search, you can provide only one parameter, the text you want to match in any part of the location details. To accomplish this, build a query where the `text` is set to the item you want to find.
+In the simplest search, you can provide only one parameter, the text you want to match in any part of the location details. To accomplish this, build a query where the `text` parameter is set to the item you want to find.
 
 For example, if you want to find a [YMCA](https://en.wikipedia.org/wiki/YMCA) facility, here's what you'd need to append to the base URL of the service, `search.mapzen.com`.
 
@@ -22,7 +32,11 @@ Note the parameter values are set as follows:
 | `api_key` | [get yours here](https://mapzen.com/developers) |
 | `text` | ***YMCA*** |
 
-If you clicked on the query link above, you saw some GeoJSON with the following set of places in the results:
+Clicking the link above will open a file containing the best matching results for the text `YMCA`. You will notice the data is in a computer-friendly format called [GeoJSON](http://geojson.org/), which may be hard for humans to read in some browsers.
+
+If you are having trouble seeing the JSON in your browser, you can install a browser extension for [Chrome](https://chrome.google.com/webstore/detail/jsonview/chklaanhfefbnpoihckbnefhakgolnmc?hl=en) or [Firefox](https://addons.mozilla.org/en-us/firefox/addon/jsonview/) that will make it easier for you to read.
+
+In the example above, you will find the name of each matched locations in a property named `'label'`. The top 10 labels returned were:
 
 > * YMCA, Bargoed Community, United Kingdom
 * YMCA, Nunspeet, Gelderland
@@ -43,7 +57,7 @@ Note that the results are spread out throughout the world because you have not g
 
 ## Narrow your search
 
-If you are looking for places in a particular region, or country, or only want to look in the immediate vicinity of a user with a known location, you can narrow your search to an area. There are different ways of including a region in your query. Mapzen Search currently supports three types: country, rectangle, and country.
+If you are looking for places in a particular region, or country, or only want to look in the immediate vicinity of a user with a known location, you can narrow your search to an area. There are different ways of including a region in your query. Mapzen Search currently supports three types: country, rectangle, and circle.
 
 ### Search within a particular country
 
@@ -74,7 +88,7 @@ Note that all the results reside within Great Britain:
 * YMCA, Lenton Abbey, Nottinghamshire
 * YMCA, Old Clee, Lincolnshire
 
-If you attempt the same search request with different country codes, the results change to reflect YMCA locations within the country.
+If you attempt the same search request with different country codes, the results change to reflect YMCA locations within this region.
 
 > [/v1/search?api_key={YOUR-KEY}&text=YMCA&___boundary.country=USA___](http://pelias.bigdev.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=YMCA&boundary.country=USA)
 
@@ -95,7 +109,7 @@ Results in the United States:
 
 ![](https://github.com/dianashk/pelias-doc/blob/master/getting-started/world_rect.png)
 
-To specify the boundary using a rectangle, you need latitude, longitude coordinates for two corners of the bounding box (the mininum and the maximum latitude, longitude).
+To specify the boundary using a rectangle, you need latitude, longitude coordinates for two diagonals of the bounding box (the mininum and the maximum latitude, longitude).
 
 For example, to find a YMCA within the state of Texas, you can set the `boundary.rect.*` parameter to values representing the bounding box around Texas: min_lon=-106.65 min_lat=25.84 max_lon=-93.51 max_lat=36.5
 
@@ -157,13 +171,13 @@ If you're going to attempt using multiple boundary types in a single search requ
 ![](https://github.com/dianashk/pelias-doc/blob/master/getting-started/overlapping_boundaries.gif)
 
 ## Prioritize results by proximity
-Many usecases call for the ability to promote nearby results to the top of the list, while still allowing important matches from farther away to be visible. If that's your conundrum, here's what to do.
+Many use cases call for the ability to promote nearby results to the top of the list, while still allowing important matches from farther away to be visible. Mapzen Search allows you to prioritize results within geographic boundaries, including around a point, within a country, or within a region.
 
 ### Prioritize around a point
 
 ![](https://github.com/dianashk/pelias-doc/blob/master/getting-started/focus_point.png)
 
-Search will focus on a given point anywhere on earth, and results within 100 kilometers will be prioritized higher, thereby surfacing highest in the list. Once all the nearby results have been found, additional results will come from the rest of the world, without any further location-based prioritization.
+By specifying a `focus.point`, nearby places will be scored higher depending on how close they are to the `focus.point` so that places with higher scores will appear higher in the results list. The effect of this scoring boost diminishes to zero after 100 kilometers away from the `focus.point`. After all the nearby results have been found, additional results will come from the rest of the world, without any further location-based prioritization.
 
 To find YMCA again, but this time near the a specific coordinate location (representing the Sydney Opera House) in Sydney, Australia.
 
