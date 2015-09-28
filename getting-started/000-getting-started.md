@@ -1,5 +1,4 @@
-Getting Started with Mapzen Search
-===================================
+Get started with Mapzen Search
 
 Mapzen Search is a modern geocoding and place search service based on [Pelias](https://github.com/pelias/pelias), an experimental open geocoder from [Mapzen](https://mapzen.com) and powered by open data. It's used to transform the way people talk about places - with names and addresses - into geographic coordinates.
 
@@ -14,4 +13,4 @@ Mapzen Search can be used to:
 Mapzen Search offers:
 - Advanced Geocoding tools
 - Coarse Geocoding
-- 
+-
