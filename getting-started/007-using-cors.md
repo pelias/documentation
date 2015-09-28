@@ -21,7 +21,7 @@ $.ajax({
   dataType: "json",
   data: {
     "text": "London, UK",
-    "api_key":'search-EEgHGcM'
+    "api_key": "search-EEgHGcM"
   },
   success: function( data, status, jqxhr ){
     console.log( "Request received:", data );
@@ -43,7 +43,7 @@ $http({
   headers: { "Accept": "application/json" },
   params: {
     "text": "London, UK",
-    "api_key":'search-EEgHGcM'
+    "api_key": "search-EEgHGcM"
   },
 })
 .success(function( data, status ) {
