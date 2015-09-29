@@ -8,7 +8,7 @@ Making the leap from text to coordinates is an intricate and challenging process
 
 All Mapzen Search requests share the same format:
 
-  ```
+```
    https://search.mapzen.com/v1/search?text=London&api_key=search-xxxxxx
    \___/   \_______________/\__/\_____/\__________/\___________________/
      |            |          /     |        |                |
