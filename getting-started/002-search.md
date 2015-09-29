@@ -90,7 +90,7 @@ Note that all the results reside within Great Britain:
 
 If you attempt the same search request with different country codes, the results change to reflect YMCA locations within this region.
 
-> [/v1/search?api_key={YOUR-KEY}&text=YMCA&___boundary.country=USA___](http://search.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=YMCA&boundary.country=USA)
+> [/v1/search?api_key={YOUR-KEY}&text=YMCA&___boundary.country=USA___](https://search.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=YMCA&boundary.country=USA)
 
 Results in the United States:
 
@@ -145,7 +145,7 @@ Sometimes you don't have a rectangle to work with, but rather you have a point o
 
 In this example, you want to find all YMCA locations within a 35-kilometer radius of a location in Ontario, Canada. This time, you can use the `boundary.circle.*` parameter group, where `boundary.circle.lat` and `boundary.circle.lon` represents your location in Ontario and `boundary.circle.radius` is the acceptable distance from that location. Note that the `boundary.circle.radius` parameter is always specified in kilometers.
 
-> [/v1/search?api_key={YOUR_API_KEY}&text=YMCA&__boundary.circle.lon=-79.186484&boundary.circle.lat=43.818156&boundary.circle.radius=35__](http://search.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=YMCA&boundary.circle.lon=-79.186484&boundary.circle.lat=43.818156&boundary.circle.radius=35)
+> [/v1/search?api_key={YOUR_API_KEY}&text=YMCA&__boundary.circle.lon=-79.186484&boundary.circle.lat=43.818156&boundary.circle.radius=35__](https://search.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=YMCA&boundary.circle.lon=-79.186484&boundary.circle.lat=43.818156&boundary.circle.radius=35)
 
 | parameter | value |
 | :--- | :--- |
@@ -181,7 +181,7 @@ By specifying a `focus.point`, nearby places will be scored higher depending on 
 
 To find YMCA again, but this time near the a specific coordinate location (representing the Sydney Opera House) in Sydney, Australia.
 
-> [/v1/search?api_key={YOUR-KEY}&text=YMCA&___focus.point.lat=-33.856680&focus.point.lon=151.215281___](http://search.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=YMCA&focus.point.lat=-33.856680&focus.point.lon=151.215281)
+> [/v1/search?api_key={YOUR-KEY}&text=YMCA&___focus.point.lat=-33.856680&focus.point.lon=151.215281___](https://search.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=YMCA&focus.point.lat=-33.856680&focus.point.lon=151.215281)
 
 | parameter | value |
 | :--- | :--- |
@@ -212,7 +212,7 @@ Now that you have seen how to use boundary and focus to narrow and sort your res
 
 Going back to the YMCA search you conducted with a focus around a point in Sydney, the results came back from distant parts of the world, as expected. But say you wanted to only see results from the country in which your focus point lies. You can combine that same focus point in Sydney with the country boundary of Australia like this.
 
-> [/v1/search?api_key={YOUR-KEY}&text=YMCA&___focus.point.lat=-33.856680&focus.point.lon=151.215281___](http://search.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=YMCA&focus.point.lat=-33.856680&focus.point.lon=151.215281)
+> [/v1/search?api_key={YOUR-KEY}&text=YMCA&___focus.point.lat=-33.856680&focus.point.lon=151.215281___](https://search.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=YMCA&focus.point.lat=-33.856680&focus.point.lon=151.215281)
 
 | parameter | value |
 | :--- | :--- |
@@ -241,7 +241,7 @@ The results below look very different from the ones you saw previously with only
 
 If you are looking for the nearest YMCA locations, and are willing to travel no farther than 50 kilometers from your current location, you likely would want the results to be sorted by distance from current location to make your selection process easier. You can get this behavior by using `focus.point` in combination with `boundary.circle.*`. You can use the `focus.point.*` values as the `boundary.circle.lat` and `boundary.circle.lon`, and add the required `boundary.circle.radius` value in kilometers.
 
-> [/v1/search?api_key={YOUR-KEY}&text=YMCA&focus.point.lat=-33.856680&focus.point.lon=151.215281&___boundary.circle.lat=-33.856680&boundary.circle.lon=151.215281&boundary.circle.radius=50___](http://search.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=YMCA&focus.point.lat=-33.856680&focus.point.lon=151.215281&boundary.circle.lat=-33.856680&boundary.circle.lon=151.215281&boundary.circle.radius=50)
+> [/v1/search?api_key={YOUR-KEY}&text=YMCA&focus.point.lat=-33.856680&focus.point.lon=151.215281&___boundary.circle.lat=-33.856680&boundary.circle.lon=151.215281&boundary.circle.radius=50___](https://search.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=YMCA&focus.point.lat=-33.856680&focus.point.lon=151.215281&boundary.circle.lat=-33.856680&boundary.circle.lon=151.215281&boundary.circle.radius=50)
 
 | parameter | value |
 | :--- | :--- |
@@ -284,7 +284,7 @@ The search examples so far have returned a mix of results from all the data sour
 
 If you use the `sources` parameter, you can choose which of these data sources to include in your search. So if you're only interested in finding a YMCA in data from OpenAddresses, for example, you can build a query specifying that data source.
 
-> [/v1/search?api_key={YOUR-KEY}&text=YMCA&___sources=oa___](http://search.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=YMCA&sources=oa)
+> [/v1/search?api_key={YOUR-KEY}&text=YMCA&___sources=oa___](https://search.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=YMCA&sources=oa)
 
 | parameter | value |
 | :--- | :--- |
@@ -307,7 +307,7 @@ Because OpenAddresses is, as the name suggests, only address data, here's what y
 
 If you wanted to combine several data sources together, set `sources` to a comma separated list of desired source names. Note that the order of the comma separated values does not impact sorting order of the results; they are still sorted based on the linguistic match quality to `text` and distance from `focus`, if you specified one.
 
-> [/v1/search?api_key={YOUR-KEY}&text=YMCA&___sources=osm,gn___](http://search.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=YMCA&sources=oa)
+> [/v1/search?api_key={YOUR-KEY}&text=YMCA&___sources=osm,gn___](https://search.mapzen.com/v1/search?api_key={YOUR_API_KEY}&text=YMCA&sources=oa)
 
 | parameter | value |
 | :--- | :--- |
