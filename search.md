@@ -109,7 +109,7 @@ Results in the United States:
 
 ![](/getting-started/images/world_rect.png)
 
-To specify the boundary using a rectangle, you need latitude, longitude coordinates for two diagonals of the bounding box (the mininum and the maximum latitude, longitude).
+To specify the boundary using a rectangle, you need latitude, longitude coordinates for two diagonals of the bounding box (the minimum and the maximum latitude, longitude).
 
 For example, to find a YMCA within the state of Texas, you can set the `boundary.rect.*` parameter to values representing the bounding box around Texas: min_lon=-106.65 min_lat=25.84 max_lon=-93.51 max_lat=36.5
 
