@@ -14,8 +14,6 @@ For example, this `/place` query looks up the Eiffel Tower in OSM:
 
 https://search.mapzen.com/v1/place?api_key=search-XXXXXXX&ids=osm:venue:5013364
 
-*** From Rhonda -- what are some examples of when you would use a /place search? When would you have this info and need to get the details? What would you do with it.***
-
 ## Search for multiple places in a query
 
 To search for more than one `/place` in a request, join multiple values together and separate them with a comma. For example, this /place query looks up the Eiffel Tower in OSM and `30 West 26th St, New York, NY` in OpenAddresses:
