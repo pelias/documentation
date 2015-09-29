@@ -179,7 +179,7 @@ Many use cases call for the ability to promote nearby results to the top of the 
 
 By specifying a `focus.point`, nearby places will be scored higher depending on how close they are to the `focus.point` so that places with higher scores will appear higher in the results list. The effect of this scoring boost diminishes to zero after 100 kilometers away from the `focus.point`. After all the nearby results have been found, additional results will come from the rest of the world, without any further location-based prioritization.
 
-To find YMCA again, but this time near the a specific coordinate location (representing the Sydney Opera House) in Sydney, Australia.
+To find YMCA again, but this time near a specific coordinate location (representing the Sydney Opera House) in Sydney, Australia, use `focus.point`.
 
 > [/v1/search?api_key=search-XXXXXXX&text=YMCA&___focus.point.lat=-33.856680&focus.point.lon=151.215281___](https://search.mapzen.com/v1/search?api_key=search-XXXXXXX&text=YMCA&focus.point.lat=-33.856680&focus.point.lon=151.215281)
 
