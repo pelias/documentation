@@ -81,17 +81,17 @@ Distance from `point.lat`/`point.lon` | Confidence score
 
 This section shows how the various parameters can be combined to form complex use cases.  
 
-* All results near the Tower of London >[/v1/reverse?api\_key={YOUR-KEY}&point.lat=51.5081124&point.lon=-0.0759493](https://search.mapzen.com/v1/reverse?api_key={YOUR_API_KEY}&point.lat=51.5081124&point.lon=-0.0759493)
+* All results near the Tower of London >[/v1/reverse?api\_key={YOUR-API-KEY}&point.lat=51.5081124&point.lon=-0.0759493](https://search.mapzen.com/v1/reverse?api_key={YOUR-API-KEY}&point.lat=51.5081124&point.lon=-0.0759493)
 
 * Only OpenStreetMap results near the Tower of London
->[/v1/reverse?api\_key={YOUR-KEY}&point.lat=51.5081124&point.lon=-0.0759493&sources=osm](https://search.mapzen.com/v1/reverse?api_key={YOUR_API_KEY}&point.lat=51.5081124&point.lon=-0.0759493&sources=osm)
+>[/v1/reverse?api\_key={YOUR-API-KEY}&point.lat=51.5081124&point.lon=-0.0759493&sources=osm](https://search.mapzen.com/v1/reverse?api_key={YOUR-API-KEY}&point.lat=51.5081124&point.lon=-0.0759493&sources=osm)
 
 * Only street addresses near the Tower of London
->[/v1/reverse?api\_key={YOUR-KEY}&point.lat=51.5081124&point.lon=-0.0759493&layers=address](https://search.mapzen.com/v1/reverse?api_key={YOUR_API_KEY}&point.lat=51.5081124&point.lon=-0.0759493&layers=address)
+>[/v1/reverse?api\_key={YOUR-API-KEY}&point.lat=51.5081124&point.lon=-0.0759493&layers=address](https://search.mapzen.com/v1/reverse?api_key={YOUR-API-KEY}&point.lat=51.5081124&point.lon=-0.0759493&layers=address)
 
 * Only OpenStreetMap street addresses near the Tower of London
->[/v1/reverse?api\_key={YOUR-KEY}&point.lat=51.5081124&point.lon=-0.0759493&layers=address&sources=osm](https://search.mapzen.com/v1/reverse?api_key={YOUR_API_KEY}&point.lat=51.5081124&point.lon=-0.0759493&layers=address&sources=osm)
+>[/v1/reverse?api\_key={YOUR-API-KEY}&point.lat=51.5081124&point.lon=-0.0759493&layers=address&sources=osm](https://search.mapzen.com/v1/reverse?api_key={YOUR-API-KEY}&point.lat=51.5081124&point.lon=-0.0759493&layers=address&sources=osm)
 
 * Only the first OpenStreetMap address near the Tower of London
 
->[/v1/reverse?api\_key={YOUR-KEY}&point.lat=51.5081124&point.lon=-0.0759493&layers=address&sources=osm&size=1](https://search.mapzen.com/v1/reverse?api_key={YOUR_API_KEY}&point.lat=51.5081124&point.lon=-0.0759493&layers=address&sources=osm&size=1)
+>[/v1/reverse?api\_key={YOUR-API-KEY}&point.lat=51.5081124&point.lon=-0.0759493&layers=address&sources=osm&size=1](https://search.mapzen.com/v1/reverse?api_key={YOUR-API-KEY}&point.lat=51.5081124&point.lon=-0.0759493&layers=address&sources=osm&size=1)
