@@ -12,7 +12,7 @@ If you have all of those, join them together with semicolon and pass them in wit
 
 For example, this `/place` query looks up the Eiffel Tower in OSM:
 
-https://search.mapzen.com/v1/place?api_key={YOUR-API-KEY}&ids=osm:venue:5013364
+https://search.mapzen.com/v1/place?api_key=search-XXXXXXX&ids=osm:venue:5013364
 
 ***From Rhonda -- looks like this returns a radio station in Michigan? Also need to redo the query to include production server and the reader's API key***
 
@@ -22,7 +22,7 @@ https://search.mapzen.com/v1/place?api_key={YOUR-API-KEY}&ids=osm:venue:5013364
 
 To search for more than one `/place` in a request, join multiple values together and separate them with a comma. For example, this /place query looks up the Eiffel Tower in OSM and `30 West 26th St, New York, NY` in OpenAddresses:
 
-https://search.mapzen.com/v1/place?api_key={YOUR-API-KEY}&ids=osm:country:5013364,oa:address:65cf57e4eb5548eca9bb548fb1461633
+https://search.mapzen.com/v1/place?api_key=search-XXXXXXX&ids=osm:country:5013364,oa:address:65cf57e4eb5548eca9bb548fb1461633
 
 The results are returned in the order requested.  
 
