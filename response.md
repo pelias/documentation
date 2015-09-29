@@ -22,9 +22,9 @@ The `features` property of the result is where you will find the list of results
 Each item in this list will contain all the information needed to identify it in human-readable format in the `properties` block, as well as computer friendly coordinates in the `geometry` property. Note the `label` property, which is a human-friendly representation of the place, ready to be displayed to an end-user.
 
 ```json
-{  
+{
   "type":"Feature",
-  "properties":{  
+  "properties":{
     "gid":"...",
     "layer":"address",
     "source":"osm",
@@ -43,9 +43,9 @@ Each item in this list will contain all the information needed to identify it in
     "confidence":0.9624939994613662,
     "label":"30 West 26th Street, Manhattan, NY"
   },
-  "geometry":{  
+  "geometry":{
     "type":"Point",
-    "coordinates":[  
+    "coordinates":[
       -73.990342,
       40.744243
     ]

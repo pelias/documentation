@@ -171,7 +171,7 @@ https://search.mapzen.com/v1/place?ids=geonames:3544:adm1:fr:fra:paris&api_key=s
 ```
 
 # In-Browser Cross-Site Scripting
-If you were using Pelias from within a browser with client-side javascript (using Pelias on a domain that is different mapzen.com), you should know that Mapzen Search does not support JSONP requests to get around cross-site scripting limitations.
+If you were using Pelias from within a browser with client-side Javascript (using Pelias on a domain that is different mapzen.com), you should know that Mapzen Search does not support JSONP requests to get around cross-site scripting limitations.
 
 Instead, Mapzen Search supports [Cross-Origin Resource Sharing](https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS) (CORS), which enables secure cross-site data transfers.
 
@@ -188,4 +188,4 @@ Let us know.
 
 Words go to: [search@mapzen.com](mailto:search@mapzen.com)
 
-Issues go to [Github](https://github.com/pelias/pelias-doc/issues)
+Issues go to [GitHub](https://github.com/pelias/pelias-doc/issues)

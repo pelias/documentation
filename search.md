@@ -8,7 +8,7 @@ Making the leap from text to coordinates is an intricate and challenging process
 
 All Mapzen Search requests share the same format:
 
-  ```
+```
    https://search.mapzen.com/v1/search?text=London&api_key=search-xxxxxx
    \___/   \_______________/\__/\_____/\__________/\___________________/
      |            |          /     |        |                |
@@ -109,11 +109,11 @@ Results in the United States:
 
 ![](/getting-started/images/world_rect.png)
 
-To specify the boundary using a rectangle, you need latitude, longitude coordinates for two diagonals of the bounding box (the mininum and the maximum latitude, longitude).
+To specify the boundary using a rectangle, you need latitude, longitude coordinates for two diagonals of the bounding box (the minimum and the maximum latitude, longitude).
 
 For example, to find a YMCA within the state of Texas, you can set the `boundary.rect.*` parameter to values representing the bounding box around Texas: min_lon=-106.65 min_lat=25.84 max_lon=-93.51 max_lat=36.5
 
-  Tip: You can look up a bounding box for a known region with this [web tool](http://boundingbox.klokantech.com/)*
+  Tip: You can look up a bounding box for a known region with this [web tool](http://boundingbox.klokantech.com/)
 
  [/v1/search?api_key=search-XXXXXXX&text=YMCA&___boundary.rect.min_lat=25.84&boundary.rect.min_lon=-106.65&boundary.rect.max_lat=36.5&boundary.rect.max_lon=-93.51___](https://search.mapzen.com/v1/search?api_key=search-XXXXXXX&text=YMCA&boundary.rect.min_lat=25.84&boundary.rect.min_lon=-106.65&boundary.rect.max_lat=36.5&boundary.rect.max_lon=-93.51)
 
@@ -179,7 +179,7 @@ Many use cases call for the ability to promote nearby results to the top of the 
 
 By specifying a `focus.point`, nearby places will be scored higher depending on how close they are to the `focus.point` so that places with higher scores will appear higher in the results list. The effect of this scoring boost diminishes to zero after 100 kilometers away from the `focus.point`. After all the nearby results have been found, additional results will come from the rest of the world, without any further location-based prioritization.
 
-To find YMCA again, but this time near the a specific coordinate location (representing the Sydney Opera House) in Sydney, Australia.
+To find YMCA again, but this time near a specific coordinate location (representing the Sydney Opera House) in Sydney, Australia, use `focus.point`.
 
 > [/v1/search?api_key=search-XXXXXXX&text=YMCA&___focus.point.lat=-33.856680&focus.point.lon=151.215281___](https://search.mapzen.com/v1/search?api_key=search-XXXXXXX&text=YMCA&focus.point.lat=-33.856680&focus.point.lon=151.215281)
 
