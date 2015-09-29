@@ -14,8 +14,6 @@ For example, this `/place` query looks up the Eiffel Tower in OSM:
 
 https://search.mapzen.com/v1/place?api_key=search-XXXXXXX&ids=osm:venue:5013364
 
-***From Rhonda -- looks like this returns a radio station in Michigan? Also need to redo the query to include production server and the reader's API key***
-
 *** From Rhonda -- what are some examples of when you would use a /place search? When would you have this info and need to get the details? What would you do with it.***
 
 ## Search for multiple places in a query
