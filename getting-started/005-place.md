@@ -28,7 +28,7 @@ The results are returned in the order requested.
 
 ***From Rhonda -- is there another example where you might do multiple requests at the same time...in other words, more related locations?***
 
-Keep in mind that if you enter a `source:layer:id` combination that cannot be found, then the `features` array in the response contains a different number of elements than the number of requests. This will be most noticeable in requests with multiple IDs, as your request may have three IDs requested but only two results returned. The reason for this is that the `features` section of the response is GeoJSON-compliant and there is currently no way to convey an exception condition (not even an empty JSON element, `{}`). For this reason, if your application is dependent upon the results mapping directly to the individual input requests in order, then you'll have to do your own bookkeeping to handle with exception conditions.  
+Keep in mind that if you enter a `source:layer:id` combination that cannot be found, then the `features` array in the response contains a different number of elements than the number of requests. This will be most noticeable in requests with multiple IDs, as your request may have three IDs requested but only two results returned. The reason for this is that the `features` section of the response is GeoJSON-compliant and there is currently no way to convey an exception condition (not even an empty JSON element, `{}`). For this reason, if your application is dependent upon the results mapping directly to the individual input requests in order, then you'll have to do your own bookkeeping to handle exception conditions.  
 
 ## Valid combinations of place searches
 
