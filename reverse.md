@@ -46,7 +46,7 @@ By default, reverse geocoding returns results from any source available to Mapze
 
 >[/v1/reverse?api\_key={YOUR-KEY}&point.lat=48.858268&point.lon=2.294471&___sources=osm___](https://search.mapzen.com/v1/reverse?api_key={YOUR_API_KEY}&point.lat=48.858268&point.lon=2.294471&sources=osm)
 
-***TO DO: Add correct link**** For more information on the data each source provides, see [this link](http://source link).
+***TO DO: Add correct link*** For more information on the data each source provides, see [this link](http://source link).
 
 ### Filter by layers
 
@@ -54,7 +54,7 @@ Without specifying further, reverse geocoding doesn't restrict results to a part
 
 >[/v1/reverse?api\_key={YOUR-KEY}&point.lat=48.858268&point.lon=2.294471&___layers=locality___](https://search.mapzen.com/v1/reverse?api_key={YOUR_API_KEY}&point.lat=48.858268&point.lon=2.294471&layers=locality)
 
-***TO DO: Add correct link**** For more information on what the different layers mean, see [this link](http://layers link).
+***TO DO: Add correct link*** For more information on what the different layers mean, see [this link](http://layers link).
 
 ### Filter by country
 

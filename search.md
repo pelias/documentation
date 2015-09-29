@@ -113,7 +113,7 @@ To specify the boundary using a rectangle, you need latitude, longitude coordina
 
 For example, to find a YMCA within the state of Texas, you can set the `boundary.rect.*` parameter to values representing the bounding box around Texas: min_lon=-106.65 min_lat=25.84 max_lon=-93.51 max_lat=36.5
 
-  Tip: You can look up a bounding box for a known region with this [web tool](http://boundingbox.klokantech.com/)*
+  Tip: You can look up a bounding box for a known region with this [web tool](http://boundingbox.klokantech.com/)
 
  [/v1/search?api_key=search-XXXXXXX&text=YMCA&___boundary.rect.min_lat=25.84&boundary.rect.min_lon=-106.65&boundary.rect.max_lat=36.5&boundary.rect.max_lon=-93.51___](https://search.mapzen.com/v1/search?api_key=search-XXXXXXX&text=YMCA&boundary.rect.min_lat=25.84&boundary.rect.min_lon=-106.65&boundary.rect.max_lat=36.5&boundary.rect.max_lon=-93.51)
 
