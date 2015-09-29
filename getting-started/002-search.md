@@ -280,7 +280,7 @@ The search examples so far have returned a mix of results from all the data sour
 | [Quattroshapes](http://quattroshapes.com/) | `quattroshapes` | `qs` |
 | [GeoNames](http://www.geonames.org/) | `geonames` | `ga` |
 
-****TO DO: Add a description of each of these.*****
+There is additional information about the properties, licenses, and virtues of each of these sources in our [Data Guide](/007-data-sources.md).
 
 If you use the `sources` parameter, you can choose which of these data sources to include in your search. So if you're only interested in finding a YMCA in data from OpenAddresses, for example, you can build a query specifying that data source.
 
