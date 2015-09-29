@@ -144,7 +144,7 @@ The `/autocomplete` endpoint serves as a renamed `/suggest` to indicate that the
 # `/reverse`
 Reverse geocoding finds the places closest to geospatial coordinates.
 
-```https://search.mapzen.com/v1/reverse?point.lon={longitude}&point.lat={latitude}&api_key={your-api-key}
+```https://search.mapzen.com/v1/reverse?point.lon={longitude}&point.lat={latitude}&api_key=search-XXXXXXX
 ```
 
 Used to be (Beta) | New Parameter (V1) | New Behavior (if any) |
@@ -159,7 +159,7 @@ New parameters:
 ## Reverse Coarse Geocoding
 Reverse coarse geocoding is not a point-in-polygon lookup (finding the hierarchy for the polygon that the point falls in), but instead looks for the hierarchy of points nearby. To use reverse coarse geocoding, use:
 
-```https://search.mapzen.com/v1/reverse?point.lon={longitude}&point.lat={latitude}&layers=coarse&api_key={your-api-key}
+```https://search.mapzen.com/v1/reverse?point.lon={longitude}&point.lat={latitude}&layers=coarse&api_key=search-XXXXXXX
 ```
 
 # `/place` (formerly `/doc`)
@@ -167,7 +167,7 @@ Reverse coarse geocoding is not a point-in-polygon lookup (finding the hierarchy
 
 If a search returns `id: "geonames:3544:adm1:fr:fra:paris"` as the matching ID for a record, the complete underlying place record can be returned with:
 ```
-https://search.mapzen.com/v1/place?ids=geonames:3544:adm1:fr:fra:paris&api_key={your-api-key}
+https://search.mapzen.com/v1/place?ids=geonames:3544:adm1:fr:fra:paris&api_key=search-XXXXXXX
 ```
 
 # In-Browser Cross-Site Scripting
