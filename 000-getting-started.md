@@ -3,11 +3,11 @@ Get started with Mapzen Search
 Mapzen Search is a modern geocoding and place search service based on [Pelias](https://github.com/pelias/pelias), an experimental, open geocoder from [Mapzen](https://mapzen.com) and powered by open data. It's used to transform the way people talk about places - with names and addresses - into geographic coordinates, and to translate geographic coordinates into recognizable names of places.
 
 Mapzen Search can be used to:
-- geocode addresses, points of interest, neighbourhood, cities, and regions
-- power real-time search autocomplete for places
-- turn a list of addresses into coordinates that can be plotted on a map or computed
-- Take location coordinates and turn them into human readable places, like an address
-- find the neighbourhood, cities, states, and countries of location coordinates to quickly classify where your data is coming from
+> - quickly localize your users so they can discover locally relevant content.
+> - provide a super-fast typeahead solution which feels intuitive for non technical users.
+> - improve your database by adding geographic columns, such as `home_city` and `country` to your users table.
+> - store numeric co-ordinate data instead of strings, for later use in reporting, analytics and machine learning.
+> - improve existing geographic data by augmenting it with information about the enveloping `country`, `city` or `state`.
 
 Mapzen Search offers:
 - Forward Geocoding for Addresses + Venues: Used to find a particular place based on the rules of an address, or the name of a landmark or business
