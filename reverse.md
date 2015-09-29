@@ -18,7 +18,7 @@ To get started with reverse geocoding, you need a [free, developer API key](http
 
 Notice that the first result is the Eiffel Tower (well, Tour Eiffel). The output is the standard GeoJSON format.
 
-reverse geocoding
+## Reverse geocoding parameters
 
 Similar to other queries with Mapzen Search, reverse geocoding has optional, additional parameters you can use to refine results.
 
