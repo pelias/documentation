@@ -13,7 +13,7 @@ Mapzen Search is powered by several major open data sets and owes a tremendous d
 - regions (states/provinces)
 - counties
 - localities (cities, towns, hamlets, villages)
-- neighbourhoods (in many places)
+- neighborhoods (in many places)
 
 Originally assembled by Foursquare, Quattroshapes provides not only the organizational hierarchy for nearly any point or address worldwide (town > local government > province > country), but also the borders for each of these places. Mapzen Search uses data from Quattroshapes to apply a consistent hierarchy to our data from other sources, so you can be sure that points of interest have consistent data about the cities, regions, and countries in which they are located.
 
