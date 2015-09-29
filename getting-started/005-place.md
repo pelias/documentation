@@ -12,7 +12,7 @@ If you have all of those, join them together with semicolon and pass them in wit
 
 For example, this `/place` query looks up the Eiffel Tower in OSM:
 
-https://search.mapzen.com/v1/place?api_key=pelias-M7dcnto&ids=osm:venue:5013364
+https://search.mapzen.com/v1/place?api_key={YOUR-API-KEY}&ids=osm:venue:5013364
 
 ***From Rhonda -- looks like this returns a radio station in Michigan? Also need to redo the query to include production server and the reader's API key***
 
