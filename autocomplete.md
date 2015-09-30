@@ -16,26 +16,13 @@ There are two user experience pitfalls to watch out for when implementing a clie
 
 To focus your search based upon a geographical area, such as the center of the user's map or at the device GPS location, supply the parameters `focus.point.lat` and `focus.point.lon`. This boosts locally relevant results higher, for example we can search for `Union Square`:
 
-From San Francisco: https://search.mapzen.com/v1/autocomplete?api_key=pelias-xxxxxx&text=union%20square&focus.point.lat=37.7&focus.point.lon=-122.4
-
+From San Francisco:
 ```javascript
+https://search.mapzen.com/v1/autocomplete?api_key=pelias-xxxxxx&text=union%20square&focus.point.lat=37.7&focus.point.lon=-122.4
+
 {
   "type": "Feature",
   "properties": {
-    "id": "6462006",
-    "gid": "gn:venue:6462006",
-    "layer": "venue",
-    "source": "gn",
-    "name": "Union Square",
-    "country_a": "USA",
-    "country": "United States",
-    "region": "California",
-    "region_a": "CA",
-    "county": "San Francisco County",
-    "locality": "San Francisco",
-    "neighbourhood": "NOMA",
-    "confidence": 0.736,
-    "distance": 9.543,
     "label": "Union Square, San Francisco, CA"
   },
   "geometry": {
@@ -48,26 +35,13 @@ From San Francisco: https://search.mapzen.com/v1/autocomplete?api_key=pelias-xxx
 }
 ```
 
-From New York City: https://search.mapzen.com/v1/autocomplete?api_key=pelias-xxxxxx&text=union%20square&focus.point.lat=40.7&focus.point.lon=-73.9
-
+From New York City:
 ```javascript
+https://search.mapzen.com/v1/autocomplete?api_key=pelias-xxxxxx&text=union%20square&focus.point.lat=40.7&focus.point.lon=-73.9
+
 {
   "type": "Feature",
   "properties": {
-    "id": "8436470",
-    "gid": "gn:neighbourhood:8436470",
-    "layer": "neighbourhood",
-    "source": "gn",
-    "name": "Union Square",
-    "country_a": "USA",
-    "country": "United States",
-    "region": "New York",
-    "region_a": "NY",
-    "county": "New York County",
-    "localadmin": "Manhattan",
-    "locality": "New York",
-    "confidence": 0.943,
-    "distance": 8.624,
     "label": "Union Square, Manhattan, NY"
   },
   "geometry": {
@@ -79,6 +53,53 @@ From New York City: https://search.mapzen.com/v1/autocomplete?api_key=pelias-xxx
   }
 }
 ```
+
+The `/autocomplete` endpoint will return a mix of globally important places and local places, for example searching `McDonalds` with a focus on Berlin:
+```javascript
+https://search.mapzen.com/v1/autocomplete?api_key=pelias-xxxxxx&text=McDonalds&focus.point.lat=52.5&focus.point.lon=13.3
+
+{
+  "type": "Feature",
+  "properties": {
+    "label": "Mcdonald County, MO"
+  },
+  "geometry": {
+    "type": "Point",
+    "coordinates": [
+      -94.348365135014,
+      36.628682617601
+    ]
+  }
+},
+{
+  "type": "Feature",
+  "properties": {
+    "label": "McDonald's, Berlin, Germany"
+  },
+  "geometry": {
+    "type": "Point",
+    "coordinates": [
+      13.33236,
+      52.504232
+    ]
+  }
+},
+{
+  "type": "Feature",
+  "properties": {
+    "label": "McDonald's, Berlin, Germany"
+  },
+  "geometry": {
+    "type": "Point",
+    "coordinates": [
+      13.306792,
+      52.500007
+    ]
+  }
+}
+... etc
+```
+
 ### Parameters
 
 Parameter | Type | Required | Default | Example
