@@ -12,7 +12,7 @@ There are two user experience pitfalls to watch out for when implementing a clie
 
 **Responses are asynchronous**, there is no guarantee that they will be returned in the same order they were requested. If you were to send two queries synchronously, first `'Lo'` then `'London'`, you may find the `'London'` response would arrive before the `'Lo'` response. This will result in a quick flash of `'London'` results followed by the results for `'L'` which can be confuse the user. You must account for this behaviour by storing the `requested_at` timestamps for each request and discarding older results.
 
-### Focus.point.lat and Focus.point.lon
+# Global scope, local focus
 
 To focus your search based upon a geographical area, such as the center of the user's map or at the device GPS location, supply the parameters `focus.point.lat` and `focus.point.lon`. This boosts locally relevant results higher, for example we can search for `Union Square`:
 
