@@ -2,15 +2,15 @@
 
 When you know an identification number and the source it came from, you can use Mapzen Search to get details on the location.
 
-To get started with a place search, you need a [free, developer API key](https://mapzen.com/developers) and these three pieces of information:
+To get started with a `/place` search, you need a [free, developer API key](https://mapzen.com/developers) and these three pieces of information:
 
 * source - the data source, such as OpenStreetMap
-* layer - the type of place, such as a venue, address, country.
+* layer - the type of place, such as a venue, address, or country.
 * id - the identification number of the item
 
 If you have all of those, join them together with semicolon and pass them in with the `ids` parameter.
 
-For example, this `/place` query looks up the Eiffel Tower in OSM:
+For example, this `/place` query looks up the Eiffel Tower in OpenStreetMap (OSM):
 
 https://search.mapzen.com/v1/place?api_key=search-XXXXXXX&ids=osm:venue:5013364
 
@@ -22,13 +22,11 @@ https://search.mapzen.com/v1/place?api_key=search-XXXXXXX&ids=osm:country:501336
 
 The results are returned in the order requested.
 
-***From Rhonda -- is there another example where you might do multiple requests at the same time...in other words, more related locations?***
-
 Keep in mind that if you enter a `source:layer:id` combination that cannot be found, then the `features` array in the response contains a different number of elements than the number of requests. This will be most noticeable in requests with multiple IDs, as your request may have three IDs requested but only two results returned. The reason for this is that the `features` section of the response is GeoJSON-compliant and there is currently no way to convey an exception condition (not even an empty JSON element, `{}`). For this reason, if your application is dependent upon the results mapping directly to the individual input requests in order, then you'll have to do your own bookkeeping to handle exception conditions.
 
 ## Valid combinations of place searches
 
-Some combinations of `sources` and `layers` are valid while others are not. This table shows valid combinations.
+Some combinations of `sources` and `layers` can be used together while others cannot. This table shows valid combinations.
 
 source | layers
 --- | ---
