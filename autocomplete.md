@@ -2,22 +2,19 @@
 
 If you are building an end-user application, you can enable `/autocomplete` alongside the `/search` to add real-time feedback to help users find what they are looking for more easily, without requiring them to type the entire search term. Typically, the user starts typing and a drop-down list appears where they can choose the term from the list.
 
-To get started with autocomplete, you need only a developer key and a `text` parameter,  representing what a user has typed into your application so far.  Optionally, you can specify the number of results to return and where the search should be centered.  
+To build a query with autocomplete, you need [a free, API developer key](https://mapzen.com/developers) and a `text` parameter, representing what a user has typed into your application so far.  Optionally, you can specify the number of results to return and where the search should be centered.  
 
-In the interest of not overloading Mapzen search, please allow a reasonable amount of time between user keystrokes before querying.  That is, a fast typer may have only milliseconds between keystrokes.  Querying Mapzen search on every keystroke would result in a number of requests that would not respond in time to display results before the next request was sent.  A good rule of thumb is to allow a delay of `x` milliseconds before sending the entered text.  
+To avoid overloading the Mapzen Search service, allow a reasonable amount of time between user keystrokes before querying. Querying Mapzen Search on every keystroke would result in a number of requests that would not respond in time to display results before the next request was sent.  A recommended practice is to allow a delay of `x` milliseconds before sending the entered text.  
 
-### Size
+## Available parameters
 
-The default number of results that an autocomplete request will return is 10, but this can be overridden using the `size` parameter.  The default value for `size` is `10` and the maximum value is `40`. Specifying a value greater than `40` will override to `40` and return a warning in the response metadata.  
+To center your search based upon a geographical area, such as a map or the user's current location, supply the parameters `focus.point.lat` and `focus.point.lon`. For example, the following request is centered on northeastern France and is searching for `Strasb`:
 
-### Focus.point.lat and Focus.point.lon
+https://search.mapzen.com/v1/autocomplete?api_key=search-XXXXXXX&text=strasb&focus.point.lat=48.581755&focus.point.lon=7.745843
 
-To center your search based upon a geographical area, such as a map or the user's current location, supply the parameters `focus.point.lat` and `focus.point.lon`.  The following request is centered on northeastern France and is searching for `Strasb`:
+By default, an autocomplete request returns 10 results, but this can be overridden up to a maximum of 40 results by including the `size` parameter. Specifying a `size` value greater than 40 will set the value to 40 and return a warning in the response metadata.  
 
-http://pelias.bigdev.mapzen.com/v1/autocomplete?api_key=pelias-M7dcnto&text=strasb&focus.point.lat=48.581755&focus.point.lon=7.745843
-
-
-### Parameters
+The following parameters are available for a search query with autocomplete.
 
 Parameter | Type | Required | Default | Example
 --- | --- | --- | --- | ---
