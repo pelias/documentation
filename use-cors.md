@@ -1,6 +1,6 @@
-# Loading data from the browser
+# Load data from the browser
 
-For security reasons, web browsers prevent what are called “cross-origin” or “cross-site” requests from one domain to another. JavaScript `XMLHTTPRequests` (commonly called “AJAX” requests) inherit all of the authentication context of the currently logged in user, so a malicious web page could attempt to make malicious requests that cross domain contexts and cause trouble. Historically, that has made it difficult for web developers to build web applications making use of third-party APIs.
+For security reasons, web browsers prevent what are called cross-origin or cross-site requests from one domain to another. JavaScript `XMLHTTPRequests` (commonly called “AJAX” requests) inherit all of the authentication context of the currently logged in user, so a malicious web page could attempt to make malicious requests that cross domain contexts and cause trouble. Historically, that has made it difficult for web developers to build web applications making use of third-party APIs.
 
 Fortunately, techniques have since been developed that allow developers to securely access APIs cross-domain.
 
@@ -58,15 +58,15 @@ interactive demo: http://jsfiddle.net/missinglink/nchh8a9j/
 
 ## Why not JSONP?
 
-Also called “JSON with Padding”, `JSONP` is a technique for fooling a web browser into performing cross-origin requests using a special ``<script>`` tag that uses the `src` attribute that to make a special API request.
+Also called “JSON with Padding”, `JSONP` is a technique for fooling a web browser into performing cross-origin requests using a special `<script>` tag that uses the `src` attribute that to make a special API request.
 
 Instead of responding with just a `JSON` object, the server responds with JavaScript code that calls a client-declared callback function, passing the data as that function’s first parameter.
 
-`JSONP` **is disabled** by default for Mapzen Search as `CORS` is offered as a more modern alternative.
+`JSONP` **is disabled** by default for Mapzen Search, as `CORS` is offered as a more modern alternative.
 
-You can find more information online using the queries `"CORS vs JSONP"` and `"Security risks with JSONP"`.
+You can find more information online by performing a web search for `"CORS vs JSONP"` and `"Security risks with JSONP"`.
 
-If you are having any issues implementing `CORS` with Mapzen Search you can open up an issue on the tracker https://github.com/pelias/pelias, please include the name of any frameworks you are using and some example code :)
+If you are having any issues implementing `CORS` with Mapzen Search, open an issue in the [main Pelias GitHub repository](https://github.com/pelias/pelias/issues). Please include the name of any frameworks you are using and some example code.
 
 ---
 

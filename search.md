@@ -17,7 +17,7 @@ All Mapzen Search requests share the same format:
 
 ## Search the world
 
-![](/getting-started/images/world_all.png)
+![Searching globally](/images/world_all.png)
 
 In the simplest search, you can provide only one parameter, the text you want to match in any part of the location details. To accomplish this, build a query where the `text` parameter is set to the item you want to find.
 
@@ -30,7 +30,7 @@ Note the parameter values are set as follows:
 | parameter | value |
 | :--- | :--- |
 | `api_key` | [get yours here](https://mapzen.com/developers) |
-| `text` | ***YMCA*** |
+| `text` | YMCA |
 
 Clicking the link above will open a file containing the best matching results for the text `YMCA`. You will notice the data is in a computer-friendly format called [GeoJSON](http://geojson.org/), which may be hard for humans to read in some browsers.
 
@@ -61,11 +61,11 @@ If you are looking for places in a particular region, or country, or only want t
 
 ### Search within a particular country
 
-![](/getting-started/images/world_country.png)
+![Searching in a country](/images/world_country.png)
 
 Sometimes your work might require that all the search results be from a particular country. To do this, you can set the `boundary.country` parameter value to the alpha-2 or alpha-3 [ISO-3166 country code](https://en.wikipedia.org/wiki/ISO_3166-1).
 
-Now, you want to search for YMCA again, but this time only in Great Britain. To do this, you will need to know that the alpha-3 code for Great Britain is *GBR* and set the parameters like this:
+Now, you want to search for YMCA again, but this time only in Great Britain. To do this, you will need to know that the alpha-3 code for Great Britain is GBR and set the parameters like this:
 
 > [/v1/search?api_key=search-XXXXXXX&text=YMCA&___boundary.country=GBR___](https://search.mapzen.com/v1/search?api_key=search-XXXXXXX&text=YMCA&boundary.country=GBR)
 
@@ -73,7 +73,7 @@ Now, you want to search for YMCA again, but this time only in Great Britain. To 
 | :--- | :--- |
 | `api_key` | [get yours here](https://mapzen.com/developers) |
 | `text` | YMCA |
-| `boundary.country` | ***GBR*** |
+| `boundary.country` | GBR |
 
 Note that all the results reside within Great Britain:
 
@@ -107,13 +107,13 @@ Results in the United States:
 
 ### Search within a rectangular region
 
-![](/getting-started/images/world_rect.png)
+![Searching in a bounding box](/images/world_rect.png)
 
 To specify the boundary using a rectangle, you need latitude, longitude coordinates for two diagonals of the bounding box (the minimum and the maximum latitude, longitude).
 
 For example, to find a YMCA within the state of Texas, you can set the `boundary.rect.*` parameter to values representing the bounding box around Texas: min_lon=-106.65 min_lat=25.84 max_lon=-93.51 max_lat=36.5
 
-  Tip: You can look up a bounding box for a known region with this [web tool](http://boundingbox.klokantech.com/)
+  Tip: You can look up a bounding box for a known region with this [web tool](http://boundingbox.klokantech.com/).
 
  [/v1/search?api_key=search-XXXXXXX&text=YMCA&___boundary.rect.min_lat=25.84&boundary.rect.min_lon=-106.65&boundary.rect.max_lat=36.5&boundary.rect.max_lon=-93.51___](https://search.mapzen.com/v1/search?api_key=search-XXXXXXX&text=YMCA&boundary.rect.min_lat=25.84&boundary.rect.min_lon=-106.65&boundary.rect.max_lat=36.5&boundary.rect.max_lon=-93.51)
 
@@ -121,10 +121,10 @@ For example, to find a YMCA within the state of Texas, you can set the `boundary
 | :--- | :--- |
 | `api_key` | [get yours here](https://mapzen.com/developers) |
 | `text` | YMCA |
-| `boundary.rect.min_lat` | ***25.84*** |
-| `boundary.rect.min_lon` | ***-106.65*** |
-| `boundary.rect.max_lat` | ***36.5*** |
-| `boundary.rect.max_lon` | ***-93.51*** |
+| `boundary.rect.min_lat` | 25.84 |
+| `boundary.rect.min_lon` | -106.65 |
+| `boundary.rect.max_lat` | 36.5 |
+| `boundary.rect.max_lon` | -93.51 |
 
 > * YMCA, Austin, TX
 * YMCA, Frisco, TX
@@ -139,7 +139,7 @@ For example, to find a YMCA within the state of Texas, you can set the `boundary
 
 ### Search within a circular region
 
-![](/getting-started/images/world_circle.png)
+![Searching within a circle](/images/world_circle.png)
 
 Sometimes you don't have a rectangle to work with, but rather you have a point on earth&mdash;for example, your location coordinates&mdash;and a maximum distance within which acceptable results can be located.
 
@@ -151,9 +151,9 @@ In this example, you want to find all YMCA locations within a 35-kilometer radiu
 | :--- | :--- |
 | `api_key` | [get yours here](https://mapzen.com/developers) |
 | `text` | YMCA |
-| `boundary.circle.lat` | ***43.818156*** |
-| `boundary.circle.lon` | ***-79.186484*** |
-| `boundary.circle.radius` | ***35*** |
+| `boundary.circle.lat` | 43.818156 |
+| `boundary.circle.lon` | -79.186484 |
+| `boundary.circle.radius` | 35 |
 
 You can see the results have fewer than the standard 10 items because there are not that many YMCA locations in the specified radius:
 
@@ -166,16 +166,16 @@ You can see the results have fewer than the standard 10 items because there are 
 
 ### Specify multiple boundaries
 
-If you're going to attempt using multiple boundary types in a single search request, be aware that the results will come from the intersection of all the boundaries. So if you provide regions that don't overlap, you'll be looking at an empty set of results. You've been warned. Here's an image of how it works:
+[Searching within multiple regions](/images/overlapping_boundaries.gif)
 
-![](/getting-started/images/overlapping_boundaries.gif)
+If you're going to attempt using multiple boundary types in a single search request, be aware that the results will come from the intersection of all the boundaries. So, if you provide regions that don't overlap, you'll be looking at an empty set of results.
 
 ## Prioritize results by proximity
 Many use cases call for the ability to promote nearby results to the top of the list, while still allowing important matches from farther away to be visible. Mapzen Search allows you to prioritize results within geographic boundaries, including around a point, within a country, or within a region.
 
 ### Prioritize around a point
 
-![](/getting-started/images/focus_point.png)
+![Searching around a point](/images/focus_point.png)
 
 By specifying a `focus.point`, nearby places will be scored higher depending on how close they are to the `focus.point` so that places with higher scores will appear higher in the results list. The effect of this scoring boost diminishes to zero after 100 kilometers away from the `focus.point`. After all the nearby results have been found, additional results will come from the rest of the world, without any further location-based prioritization.
 
@@ -187,8 +187,8 @@ To find YMCA again, but this time near a specific coordinate location (represent
 | :--- | :--- |
 | `api_key` | [get yours here](https://mapzen.com/developers) |
 | `text` | YMCA |
-| `focus.point.lat` | ***-33.856680*** |
-| `focus.point.lon` | ***151.215281*** |
+| `focus.point.lat` | -33.856680 |
+| `focus.point.lon` | 151.215281 |
 
 Looking at the results, you can see that the few locations closer to this location show up at the top of the list, sorted by distance. You also still get back a significant amount of remote locations, for a well balanced mix. Because you provided a focus point, Mapzen Search can compute distance from that point for each resulting feature.
 
@@ -208,8 +208,6 @@ Now that you have seen how to use boundary and focus to narrow and sort your res
 
 ### Prioritize within a country
 
-**TBD: insert image here**
-
 Going back to the YMCA search you conducted with a focus around a point in Sydney, the results came back from distant parts of the world, as expected. But say you wanted to only see results from the country in which your focus point lies. You can combine that same focus point in Sydney with the country boundary of Australia like this.
 
 > [/v1/search?api_key={YOUR-KEY}&text=YMCA&___focus.point.lat=-33.856680&focus.point.lon=151.215281___](https://search.mapzen.com/v1/search?api_key=search-XXXXXXX&text=YMCA&focus.point.lat=-33.856680&focus.point.lon=151.215281)
@@ -220,7 +218,7 @@ Going back to the YMCA search you conducted with a focus around a point in Sydne
 | `text` | YMCA |
 | `focus.point.lat` | -33.856680 |
 | `focus.point.lon` | 151.215281 |
-| `boundary.country` | ***AUS*** |
+| `boundary.country` | AUS |
 
 The results below look very different from the ones you saw previously with only a focus point specified. These results are all from within Australia. You'll note the closest results show up at the top of the list, which is facilitated by the focus parameter.
 
@@ -237,8 +235,6 @@ The results below look very different from the ones you saw previously with only
 
 ### Prioritize within a circular region
 
-**TBD: insert image here**
-
 If you are looking for the nearest YMCA locations, and are willing to travel no farther than 50 kilometers from your current location, you likely would want the results to be sorted by distance from current location to make your selection process easier. You can get this behavior by using `focus.point` in combination with `boundary.circle.*`. You can use the `focus.point.*` values as the `boundary.circle.lat` and `boundary.circle.lon`, and add the required `boundary.circle.radius` value in kilometers.
 
 > [/v1/search?api_key=search-XXXXXXX&text=YMCA&focus.point.lat=-33.856680&focus.point.lon=151.215281&___boundary.circle.lat=-33.856680&boundary.circle.lon=151.215281&boundary.circle.radius=50___](https://search.mapzen.com/v1/search?api_key=search-XXXXXXX&text=YMCA&focus.point.lat=-33.856680&focus.point.lon=151.215281&boundary.circle.lat=-33.856680&boundary.circle.lon=151.215281&boundary.circle.radius=50)
@@ -249,9 +245,9 @@ If you are looking for the nearest YMCA locations, and are willing to travel no 
 | `text` | YMCA |
 | `focus.point.lat` | -33.856680 |
 | `focus.point.lon` | 151.215281 |
-| `boundary.circle.lat` | ***-33.856680*** |
-| `boundary.circle.lon` | ***151.215281*** |
-| `boundary.circle.radius` | ***50*** |
+| `boundary.circle.lat` | -33.856680 |
+| `boundary.circle.lon` | 151.215281 |
+| `boundary.circle.radius` | 50 |
 
 Looking at these results, they are all less than 50 kilometers away from the focus point:
 
@@ -280,8 +276,6 @@ The search examples so far have returned a mix of results from all the data sour
 | [Quattroshapes](http://quattroshapes.com/) | `quattroshapes` | `qs` |
 | [GeoNames](http://www.geonames.org/) | `geonames` | `ga` |
 
-****TO DO: Add a description of each of these.*****
-
 If you use the `sources` parameter, you can choose which of these data sources to include in your search. So if you're only interested in finding a YMCA in data from OpenAddresses, for example, you can build a query specifying that data source.
 
 > [/v1/search?api_key=search-XXXXXXX&text=YMCA&___sources=oa___](https://search.mapzen.com/v1/search?api_key=search-XXXXXXX&text=YMCA&sources=oa)
@@ -290,7 +284,7 @@ If you use the `sources` parameter, you can choose which of these data sources t
 | :--- | :--- |
 | `api_key` | [get yours here](https://mapzen.com/developers) |
 | `text` | YMCA |
-| `sources` | **oa** |
+| `sources` | oa |
 
 Because OpenAddresses is, as the name suggests, only address data, here's what you can expect to find:
 
@@ -313,12 +307,12 @@ If you wanted to combine several data sources together, set `sources` to a comma
 | :--- | :--- |
 | `api_key` | [get yours here](https://mapzen.com/developers) |
 | `text` | YMCA |
-| `sources` | **osm,gn** |
+| `sources` | osm,gn |
+
+Each of these data sources has properties, licenses, and strengths. You can learn more about the [data sources for Mapzen Search](/data-sources.md).
 
 ### Filter by data type
 In Mapzen Search, place types are referred to as `layers`, ranging from fine to coarse. The Mapzen Search layers are derived from the hierarchy created by the gazetteer [Who's on First](https://github.com/whosonfirst/whosonfirst-placetypes/blob/master/README.md) and can be used to facilitate coarse geocoding. Here's a list of the types of places you could find in the results, sorted by granularity:
-
-****TO DO: Describe fine and coarse geocoding, gazeteer. ***
 
 |layer|description|
 |----|----|
@@ -327,9 +321,7 @@ In Mapzen Search, place types are referred to as `layers`, ranging from fine to 
 |`country`|places that issue passports, nations, nation-states|
 |`region`|states and provinces|
 |`county`|official governmental area; usually bigger than a locality, almost always smaller than a region|
-|`locality`|towns, hamlets, cities, etc.|
-|`localadmin`|***TBD***|
-|`neighbourhood`|...ehm, neighbourhoods|
+|`locality`|towns, hamlets, cities|
+|`localadmin`|local administrative boundaries|
+|`neighbourhood`|social communities, neighbourhoods|
 |`coarse`|alias for simultaneously using `country`, `region`, `county`, `locality`, `localadmin`, and `neighbourhood`|
-
-****Add example****
