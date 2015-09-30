@@ -45,7 +45,7 @@ If the only property you used before was `text` for what to display, you'll have
 | `admin1_abbr` | `region_a` | Region abbreviation (such as NY = New York, usually two characters) |
 | `locality` | `locality` | No change|
 | `neighborhood` | `neighbourhood` | Note change in spelling |
-| `category` | Deprecated | These are in progress and should return soon. |
+| `category` | Deprecated | This functionality is in progress and should be available soon. |
 | `address:{}` | | Address elements are no longer grouped into their own object |
 | `address:{zip}` | `postalcode` | |
 | `address:{number}` | `housenumber` | |
@@ -71,9 +71,9 @@ Most parameters (and options) for search have been renamed:
 | -------------- | ------------ | ---------------- |
 | `layers=geoname` | `sources=geonames` or `sources=gn` | [All manners of places](http://www.geonames.org/export/codes.html) from Geonames |
 | `layers=osmnode` | `layers=venue,address&sources=openstreetmap` | Venues (points of interest) and all places with addresses from OpenStreetMap|
-| `layers=osmway` | `layers=venue,address&sources=openstreetmap` | Streets & Highways with Addresses |
+| `layers=osmway` | `layers=venue,address&sources=openstreetmap` | Streets and highways with addresses |
 | `layers=admin0` | `layers=country` | Countries|
-| `layers=admin1` | `layers=region` | Provinces & States (for the most part) |
+| `layers=admin1` | `layers=region` | Provinces and states (for the most part) |
 | `layers=admin2` | `layers=county` | Things within states that often aren't cities, but sometimes are.|
 | `layers=neighborhood` | `layers=neighbourhood` | Neighbourhoods (within localities, may be [macrohoods](http://whosonfirst.mapzen.com/spelunker/placetypes/macrohood/), neighbourhoods, or [microhoods](http://whosonfirst.mapzen.com/spelunker/placetypes/microhood/)) |
 | `layers=locality` | `layers=locality` | |
