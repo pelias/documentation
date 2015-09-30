@@ -10,7 +10,7 @@ There are two user experience pitfalls to watch out for when implementing a clie
 
 **Requests must be throttled**, the client must only send a maximum of one or two requests per second. Sending requests more frequently than this will result in a sluggish network and laggy user interface for mobile consumers. A general rule of thumb is to account for fast typers by batching their keystrokes and sending the input text no more than twice per second. Mapzen Search limits the amount of requests per second (per api key), so be sure to account for those limits in your throttle code. [interactive demo](http://jsfiddle.net/missinglink/19e2r2we/)
 
-**Responses are asynchronous**, there is no guarantee that they will be returned in the same order they were requested. If you were to send two queries synchronously, first `'Lo'` then `'London'`, you may find the `'London'` response would arrive before the `'Lo'` response. This will result in a quick flash of `'London'` results followed by the results for `'L'` which can be confuse the user. You must account for this behaviour by storing the `requested_at` timestamps for each request and discarding older results.
+**Responses are asynchronous**, there is no guarantee that they will be returned in the same order they were requested. If you were to send two queries synchronously, first `'Lo'` then `'London'`, you may find the `'London'` response would arrive before the `'Lo'` response. This will result in a quick flash of `'London'` results followed by the results for `'L'` which can confuse the user. You must account for this behaviour by storing the `requested_at` timestamps for each request and discarding older results.
 
 # Global scope, local focus
 
