@@ -1,6 +1,10 @@
 Get started with Mapzen Search
 
-Mapzen Search is a modern geocoding and place search service based on [Pelias](https://github.com/pelias/pelias), an experimental, open geocoder from [Mapzen](https://mapzen.com) and powered by open data. It's used to transform the way people talk about places - with names and addresses - into geographic coordinates, and to translate geographic coordinates into recognizable names of places.
+[Mapzen Search](https://mapzen.com/projects/search) is a modern geographic search service based entirely on open-source tools and powered by entirely open data.
+
+The [source code is open](https://github.com/pelias/pelias) to view, modify, and contribute to. It's called Pelias, an experimental, community focused geocoder from Mapzen. Pelias is available for free and licensed for both commercial and non-commercial use.
+
+With Mapzen Search you can transform the natural language that we use to describe places in to geographic coordinates that computer systems can understand. You can also do the opposite and turn a latitude and longitude values in to a list of nearby places.
 
 Mapzen Search can be used to:
 > - quickly localize your users so they can discover locally relevant content.
