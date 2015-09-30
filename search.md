@@ -208,8 +208,6 @@ Now that you have seen how to use boundary and focus to narrow and sort your res
 
 ### Prioritize within a country
 
-**TBD: insert image here**
-
 Going back to the YMCA search you conducted with a focus around a point in Sydney, the results came back from distant parts of the world, as expected. But say you wanted to only see results from the country in which your focus point lies. You can combine that same focus point in Sydney with the country boundary of Australia like this.
 
 > [/v1/search?api_key={YOUR-KEY}&text=YMCA&___focus.point.lat=-33.856680&focus.point.lon=151.215281___](https://search.mapzen.com/v1/search?api_key=search-XXXXXXX&text=YMCA&focus.point.lat=-33.856680&focus.point.lon=151.215281)
@@ -236,8 +234,6 @@ The results below look very different from the ones you saw previously with only
 * YMCA, Ararat, Victoria [distance: 841.022]
 
 ### Prioritize within a circular region
-
-**TBD: insert image here**
 
 If you are looking for the nearest YMCA locations, and are willing to travel no farther than 50 kilometers from your current location, you likely would want the results to be sorted by distance from current location to make your selection process easier. You can get this behavior by using `focus.point` in combination with `boundary.circle.*`. You can use the `focus.point.*` values as the `boundary.circle.lat` and `boundary.circle.lon`, and add the required `boundary.circle.radius` value in kilometers.
 
@@ -331,5 +327,3 @@ In Mapzen Search, place types are referred to as `layers`, ranging from fine to 
 |`localadmin`|***TBD***|
 |`neighbourhood`|...ehm, neighbourhoods|
 |`coarse`|alias for simultaneously using `country`, `region`, `county`, `locality`, `localadmin`, and `neighbourhood`|
-
-****Add example****
