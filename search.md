@@ -307,6 +307,8 @@ If you wanted to combine several data sources together, set `sources` to a comma
 | `text` | YMCA |
 | `sources` | osm,gn |
 
+Each of these data sources has properties, licenses, and strengths. You can learn more about the [data sources for Mapzen Search](/data-sources.md).
+
 ### Filter by data type
 In Mapzen Search, place types are referred to as `layers`, ranging from fine to coarse. The Mapzen Search layers are derived from the hierarchy created by the gazetteer [Who's on First](https://github.com/whosonfirst/whosonfirst-placetypes/blob/master/README.md) and can be used to facilitate coarse geocoding. Here's a list of the types of places you could find in the results, sorted by granularity:
 
