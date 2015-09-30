@@ -2,7 +2,7 @@
 
 If you are building an end-user application, you can enable `/autocomplete` alongside the `/search` to add real-time feedback to help users find what they are looking for more easily, without requiring them to type the entire search term. Typically, the user starts typing and a drop-down list appears where they can choose the term from the list.
 
-To get started with autocomplete, you need only a developer key and a `text` parameter, representing what a user has typed into your application so far. Optionally, you can specify a geographic point where the search is focussed, this will allow users to see more local places in the results.
+To get started with autocomplete, you need only a developer key and a `text` parameter, representing what a user has typed into your application so far. Optionally, you can specify a geographic point where the search is focused, this will allow users to see more local places in the results.
 
 # User experience guidelines
 
