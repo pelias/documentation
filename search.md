@@ -166,6 +166,8 @@ You can see the results have fewer than the standard 10 items because there are 
 
 ### Specify multiple boundaries
 
+[Searching within multiple regions](/images/overlapping_boundaries.gif)
+
 If you're going to attempt using multiple boundary types in a single search request, be aware that the results will come from the intersection of all the boundaries. So, if you provide regions that don't overlap, you'll be looking at an empty set of results.
 
 ## Prioritize results by proximity
