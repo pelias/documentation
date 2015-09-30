@@ -14,7 +14,7 @@ The default number of results that an autocomplete request will return is 10, bu
 
 To center your search based upon a geographical area, such as a map or the user's current location, supply the parameters `focus.point.lat` and `focus.point.lon`.  The following request is centered on northeastern France and is searching for `Strasb`:
 
-http://pelias.bigdev.mapzen.com/v1/autocomplete?api_key=pelias-M7dcnto&text=strasb&focus.point.lat=48.581755&focus.point.lon=7.745843
+http://search.mapzen.com/v1/autocomplete?api_key=search-XXXXXXX&text=strasb&focus.point.lat=48.581755&focus.point.lon=7.745843
 
 
 ### Parameters
