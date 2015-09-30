@@ -18,7 +18,7 @@ To focus your search based upon a geographical area, such as the center of the u
 
 From San Francisco:
 
-https://search.mapzen.com/v1/autocomplete?api_key=pelias-xxxxxx&text=union%20square&**focus.point.lat=37.7**&**focus.point.lon=-122.4**
+> /v1/autocomplete?api_key=pelias-xxxxxx&text=union%20square&**focus.point.lat=37.7**&**focus.point.lon=-122.4**
 
 ```javascript
 {
@@ -38,7 +38,7 @@ https://search.mapzen.com/v1/autocomplete?api_key=pelias-xxxxxx&text=union%20squ
 
 From New York City:
 
-https://search.mapzen.com/v1/autocomplete?api_key=pelias-xxxxxx&text=union%20square&**focus.point.lat=40.7**&**focus.point.lon=-73.9**
+> /v1/autocomplete?api_key=pelias-xxxxxx&text=union%20square&**focus.point.lat=40.7**&**focus.point.lon=-73.9**
 ```javascript
 {
   "type": "Feature",
@@ -57,7 +57,7 @@ https://search.mapzen.com/v1/autocomplete?api_key=pelias-xxxxxx&text=union%20squ
 
 The `/autocomplete` endpoint will return a mix of globally important places and local places, for example searching `McDonalds` with a focus on Berlin:
 
-https://search.mapzen.com/v1/autocomplete?api_key=pelias-xxxxxx&text=McDonalds&**focus.point.lat=52.5**&**focus.point.lon=13.3**
+> /v1/autocomplete?api_key=pelias-xxxxxx&text=McDonalds&**focus.point.lat=52.5**&**focus.point.lon=13.3**
 ```javascript
 {
   "type": "Feature",
