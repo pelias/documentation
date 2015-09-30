@@ -39,6 +39,7 @@ From San Francisco:
 From New York City:
 
 > /v1/autocomplete?api_key=pelias-xxxxxx&text=union%20square&**focus.point.lat=40.7**&**focus.point.lon=-73.9**
+
 ```javascript
 {
   "type": "Feature",
@@ -58,6 +59,7 @@ From New York City:
 The `/autocomplete` endpoint will return a mix of globally important places and local places, for example searching `McDonalds` with a focus on Berlin:
 
 > /v1/autocomplete?api_key=pelias-xxxxxx&text=McDonalds&**focus.point.lat=52.5**&**focus.point.lon=13.3**
+
 ```javascript
 {
   "type": "Feature",
