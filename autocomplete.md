@@ -17,9 +17,10 @@ There are two user experience pitfalls to watch out for when implementing a clie
 To focus your search based upon a geographical area, such as the center of the user's map or at the device GPS location, supply the parameters `focus.point.lat` and `focus.point.lon`. This boosts locally relevant results higher, for example we can search for `Union Square`:
 
 From San Francisco:
-```javascript
-https://search.mapzen.com/v1/autocomplete?api_key=pelias-xxxxxx&text=union%20square&focus.point.lat=37.7&focus.point.lon=-122.4
 
+https://search.mapzen.com/v1/autocomplete?api_key=pelias-xxxxxx&text=union%20square&**focus.point.lat=37.7**&**focus.point.lon=-122.4**
+
+```javascript
 {
   "type": "Feature",
   "properties": {
@@ -36,9 +37,9 @@ https://search.mapzen.com/v1/autocomplete?api_key=pelias-xxxxxx&text=union%20squ
 ```
 
 From New York City:
-```javascript
-https://search.mapzen.com/v1/autocomplete?api_key=pelias-xxxxxx&text=union%20square&focus.point.lat=40.7&focus.point.lon=-73.9
 
+https://search.mapzen.com/v1/autocomplete?api_key=pelias-xxxxxx&text=union%20square&**focus.point.lat=40.7**&**focus.point.lon=-73.9**
+```javascript
 {
   "type": "Feature",
   "properties": {
@@ -55,9 +56,9 @@ https://search.mapzen.com/v1/autocomplete?api_key=pelias-xxxxxx&text=union%20squ
 ```
 
 The `/autocomplete` endpoint will return a mix of globally important places and local places, for example searching `McDonalds` with a focus on Berlin:
-```javascript
-https://search.mapzen.com/v1/autocomplete?api_key=pelias-xxxxxx&text=McDonalds&focus.point.lat=52.5&focus.point.lon=13.3
 
+https://search.mapzen.com/v1/autocomplete?api_key=pelias-xxxxxx&text=McDonalds&**focus.point.lat=52.5**&**focus.point.lon=13.3**
+```javascript
 {
   "type": "Feature",
   "properties": {
