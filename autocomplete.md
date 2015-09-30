@@ -85,5 +85,5 @@ Parameter | Type | Required | Default | Example
 --- | --- | --- | --- | ---
 `api_key` | string | yes | none | [get yours here!](https://mapzen.com/developers)
 `text` | string | yes | none | `Union Square`
-`focus.point.lat` | floating point number | yes | none | `48.581755`
-`focus.point.lon` | floating point number | yes | none | `7.745843`
+`focus.point.lat` | floating point number | no | none | `48.581755`
+`focus.point.lon` | floating point number | no | none | `7.745843`
