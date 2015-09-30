@@ -17,7 +17,7 @@ All Mapzen Search requests share the same format:
 
 ## Search the world
 
-![Searching globally](/getting-started/images/world_all.png)
+![Searching globally](/images/world_all.png)
 
 In the simplest search, you can provide only one parameter, the text you want to match in any part of the location details. To accomplish this, build a query where the `text` parameter is set to the item you want to find.
 
@@ -61,7 +61,7 @@ If you are looking for places in a particular region, or country, or only want t
 
 ### Search within a particular country
 
-![Searching in a country](/getting-started/images/world_country.png)
+![Searching in a country](/images/world_country.png)
 
 Sometimes your work might require that all the search results be from a particular country. To do this, you can set the `boundary.country` parameter value to the alpha-2 or alpha-3 [ISO-3166 country code](https://en.wikipedia.org/wiki/ISO_3166-1).
 
@@ -107,7 +107,7 @@ Results in the United States:
 
 ### Search within a rectangular region
 
-![Searching in a bounding box](/getting-started/images/world_rect.png)
+![Searching in a bounding box](/images/world_rect.png)
 
 To specify the boundary using a rectangle, you need latitude, longitude coordinates for two diagonals of the bounding box (the minimum and the maximum latitude, longitude).
 
@@ -139,7 +139,7 @@ For example, to find a YMCA within the state of Texas, you can set the `boundary
 
 ### Search within a circular region
 
-![Searching within a circle](/getting-started/images/world_circle.png)
+![Searching within a circle](/images/world_circle.png)
 
 Sometimes you don't have a rectangle to work with, but rather you have a point on earth&mdash;for example, your location coordinates&mdash;and a maximum distance within which acceptable results can be located.
 
@@ -173,7 +173,7 @@ Many use cases call for the ability to promote nearby results to the top of the 
 
 ### Prioritize around a point
 
-![Searching around a point](/getting-started/images/focus_point.png)
+![Searching around a point](/images/focus_point.png)
 
 By specifying a `focus.point`, nearby places will be scored higher depending on how close they are to the `focus.point` so that places with higher scores will appear higher in the results list. The effect of this scoring boost diminishes to zero after 100 kilometers away from the `focus.point`. After all the nearby results have been found, additional results will come from the rest of the world, without any further location-based prioritization.
 
