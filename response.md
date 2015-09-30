@@ -61,7 +61,7 @@ By default, Mapzen Search results 10 places, unless otherwise specified. If you 
 | :--- | :--- |
 | `api_key` | [get yours here](https://mapzen.com/developers) |
 | `text` | YMCA |
-| `size` | ***1*** |
+| `size` | 1 |
 
 > [/v1/search?api_key=search-XXXXXXX&text=YMCA&___size=1___](https://search.mapzen.com/v1/search?api_key=search-XXXXXXX&text=YMCA&size=1)
 
