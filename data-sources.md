@@ -31,7 +31,7 @@ Quattroshapes data is licensed [CC BY](http://creativecommons.org/licenses/by/2.
 
 OpenAddresses is by far the largest dataset by number of records used by Mapzen Search, so even though it only contains address data (i.e. no building names or other metadata), it's a great resource for global geocoding.
 
-As Openaddresses is sourced from regional governments, its data is in the public domain.
+As OpenAddresses is sourced from regional governments, its data is in the public domain.
 
 ## Geonames
 

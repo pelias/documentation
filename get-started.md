@@ -1,6 +1,6 @@
 # Get started with Mapzen Search
 
-[Mapzen Search](https://mapzen.com/projects/search) is a modern geographic search service based entirely on open-source tools and powered by entirely open data.
+[Mapzen Search](https://mapzen.com/projects/search) is a modern geographic search service based entirely on open-source tools and powered entirely by open data.
 
 The [source code is open](https://github.com/pelias/pelias) to view, modify, and contribute to. It's called Pelias, an experimental, community focused geocoder from Mapzen. Pelias is available for free and licensed for both commercial and non-commercial use.
 
@@ -20,5 +20,5 @@ Mapzen Search offers:
 - Focusing a search: Searches all known places, but prioritizes places closer to the user (when the user's current location or approximate location is known)
 - Autocomplete searches for forward geocoding: Allows a developer to build interfaces where an end-user can search for places and match against Mapzen Search's data in real-time
 - Limiting results to a particular country: Allows the scoping of results to a particular country
-- Reverse geocoding addresses + venues: Tries to find the name/address of the closest matching place to a geographic coordinate pair (a longitude and latitude). This can be used to take abstract location data (e.g. an end-user's device location) and find the closest address (often used in a weather or deliver app on someone's phone)
-- Coarse reverse geocoding: Converts a geographic coordinate pair into the regional hiearchy for that particular place (e.g neighbourhood > locality (city/town) > Local Administrative Area (County, Prefecture) > Region (state/province) > country). This can be used to determine the general region of geographic data and can be quite useful in filtering for places in non-geographic databases that represent things that happen in places
+- Reverse geocoding addresses + venues: Tries to find the name/address of the closest matching place to a geographic coordinate pair (a longitude and latitude). This can be used to take abstract location data (e.g. an end-user's device location) and find the closest address (often used in a weather or delivery app on someone's phone)
+- Coarse reverse geocoding: Converts a geographic coordinate pair into the regional hierarchy for that particular place (e.g neighbourhood > locality (city/town) > Local Administrative Area (County, Prefecture) > Region (state/province) > country). This can be used to determine the general region of geographic data and can be quite useful in filtering for places in non-geographic databases that represent things that happen in places
