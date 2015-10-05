@@ -11,6 +11,7 @@ These pages offer an introduction to the API and terminology used in Mapzen Sear
  - [`/autocomplete` Endpoint](/autocomplete.md)
  - [`/reverse` Endpoint: from point to place](/reverse.md)
  - [`/place` Endpoint: retrieving additional information](/place.md)
+ - [API responses](/response.md)
  - [Data Sources](/data-sources.md)
  - [Loading Data From the Browser](/use-cors.md)
 - [Transitioning From Beta to 1.0](/transition-from-beta.md)
