@@ -19,7 +19,7 @@ The top-level structure to every response looks like this:
 
 The `features` property of the result is where you will find the list of results that best matched your input parameters.
 
-Each item in this list will contain all the information needed to identify it in human-readable format in the `properties` block, as well as computer friendly coordinates in the `geometry` property. Note the `label` property, which is a human-friendly representation of the place, ready to be displayed to an end-user.
+Each item in this list will contain all the information needed to identify it in human-readable format in the `properties` block, as well as computer friendly coordinates in the `geometry` property.
 
 ```json
 {
@@ -52,6 +52,11 @@ Each item in this list will contain all the information needed to identify it in
   }
 }
 ```
+
+## Notable Features
+
+### Label
+The `label` is a human-friendly representation of the place, ready to be displayed to an end user.  The label field attempts to use a format that is appropriate for the region the result is in, although we only support a few countries at the moment.
 
 ## Result count
 
