@@ -55,6 +55,9 @@ Each item in this list will contain all the information needed to identify it in
 
 ## Notable Features
 
+### GID
+This is a "global id" that can be used to reference a result with the [/place](/place.md) endpoint. It consists of an identifier for the dataset, a layer, and finally an `id` for the individual record. This `id` corresponds to stable ids from datasets wherever possible (such as the ID of an OpenStreetMap Node or Way), but not all datasets have them.
+
 ### Label
 The `label` is a human-friendly representation of the place, ready to be displayed to an end user.  The label field attempts to use a format that is appropriate for the region the result is in, although we only support a few countries at the moment.
 
