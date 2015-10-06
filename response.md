@@ -61,6 +61,11 @@ This is a "global id" that can be used to reference a result with the [/place](/
 ### Label
 The `label` is a human-friendly representation of the place, ready to be displayed to an end user.  The label field attempts to use a format that is appropriate for the region the result is in, although we only support a few countries at the moment.
 
+### Confidence
+The confidence score is an estimation of how accurately this result matches with what you are searching for. It primarily takes into account how well properties in the result match what was expected from parsing the input text. For example, if the input text looks like an address, but the house number of the result doesn't match the house number that was parsed from the input text, the confidence score will be lower.
+
+Additionally, the confidence score can optionally be biased relative to other results, just like test scores in a classroom might be graded on a curve. This takes into account both the property matches described above and the distance between results. This relative scoring is enabled on Mapzen Search, but can be disabled when hosting your own Pelias instance.
+
 ## Result count
 
 By default, Mapzen Search results 10 places, unless otherwise specified. If you want a different number of results, set the `size` parameter to the desired number. This example shows returning only the first result.
