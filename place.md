@@ -8,7 +8,7 @@ To get started with a `/place` search, you need a [free, developer API key](http
 * layer - the type of place, such as a venue, address, or country.
 * id - the identification number of the item
 
-If you have all of those, join them together with semicolon and pass them in with the `ids` parameter.
+If you have all of those, join them together with semicolons and pass them in with the `ids` parameter.
 
 For example, this `/place` query looks up the Eiffel Tower in OpenStreetMap (OSM):
 
@@ -18,7 +18,7 @@ https://search.mapzen.com/v1/place?api_key=search-XXXXXXX&ids=osm:venue:5013364
 
 To search for more than one `/place` in a request, join multiple values together and separate them with a comma. For example, this /place query looks up the Eiffel Tower in OSM and `30 West 26th St, New York, NY` in OpenAddresses:
 
-https://search.mapzen.com/v1/place?api_key=search-XXXXXXX&ids=osm:country:5013364,oa:address:65cf57e4eb5548eca9bb548fb1461633
+https://search.mapzen.com/v1/place?api_key=search-XXXXXXX&ids=osm:venue:5013364,oa:address:65cf57e4eb5548eca9bb548fb1461633
 
 The results are returned in the order requested.
 
