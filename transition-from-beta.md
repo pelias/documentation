@@ -23,12 +23,12 @@ Your API usage limits are displayed in the HTTP headers of any API call, such as
 X-ApiaxleProxy-Qpd-Left:4828
 X-ApiaxleProxy-Qps-Left:4
 ```
-## Changes to Domain + URL Structure:
-Mapzen Search is now hosted on the `search.mapzen.com` domain. The former domain, `pelias.mapzen.com` has been deprecated. To take advantage of the full v1 api, you must use the `search.mapzen.com` endpoint.
+## Changes to domain and URL structure
+Mapzen Search is now hosted on the `search.mapzen.com` domain. The former domain, `pelias.mapzen.com` has been deprecated. To take advantage of the full v1 API, you must use the `search.mapzen.com` endpoint.
 
 Additionally, all endpoints are now under the `/v1` namespace. For example, the full URI to the `/reverse` endpoint is now `https://search.mapzen.com/v1/reverse`.
 
-Requests going to `pelias.mapzen.com` will continue to work until the end of November, 2015, at which point we will be disabling the servers that handle pre-v1 requests.
+Requests going to `pelias.mapzen.com` will continue to work until the end of November, 2015, at which point the servers handling pre-v1 requests will be disabled.
 
 
 ## Changes to response document
