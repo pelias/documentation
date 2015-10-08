@@ -1,24 +1,11 @@
 # Get started with Mapzen Search
 
-[Mapzen Search](https://mapzen.com/projects/search) is a modern geographic search service based entirely on open-source tools and powered entirely by open data.
+[Mapzen Search](https://mapzen.com/projects/search) is a modern, geographic search service based entirely on open-source tools and powered entirely by open data. To start integrating Mapzen Search to your apps, you need a [free, developer API key](/api-keys-rate-limits.md). You might use this functionality in any app that has a geographic component, including ones that deliver goods, locate hotels or venues, or even provide local weather forecasts.
 
-The [source code is open](https://github.com/pelias/pelias) to view, modify, and contribute to. It's called Pelias, an experimental, community focused geocoder from Mapzen. Pelias is available for free and licensed for both commercial and non-commercial use.
+Through a process known as [geocoding](/search.md), Mapzen Search allows you to use natural language to find a particular place by entering an address or the name of a landmark or business, and then translates the result in to the geographic coordinates used by computers. Mapzen Search accesses [global databases](/data-sources.md) of place names and locations, but you can receive more locally relevant search results by limiting the search to a particular radius around a location (such as a cell phone), region, or country. With text [autocompletion capabilities](/autocomplete.md), you can search for places and match against Mapzen Search data in real-time. 
 
-With Mapzen Search you can transform the natural language that we use to describe places in to geographic coordinates that computer systems can understand. You can also do the opposite and turn a latitude and longitude values in to a list of nearby places.
+Mapzen Search also enables the opposite workflow, known as [reverse geocoding](/reverse.md), to transform latitude and longitude values in to a list of places. This process attempts to find the name and address of the place nearest a longitude and latitude pair. For example, you can click a postion on the map to learn which business is located there.
 
-Mapzen Search can be used to:
-> - quickly localize your users so they can discover locally relevant content.
-> - provide a super-fast typeahead solution which feels intuitive for non technical users.
-> - improve your database by adding geographic columns, such as `home_city` and `country` to your users table.
-> - store numeric co-ordinate data instead of strings, for later use in reporting, analytics and machine learning.
-> - improve existing geographic data by augmenting it with information about the enveloping `country`, `city` or `state`.
+Behind the scenes of your app, Mapzen Search can improve the quality of your own data by augmenting it with information where your users are located. You can pass the coordinates returned from Mapzen Search to other services, such as [Mapzen Turn-by-Turn](https://mapzen.com/projects/valhalla) that enables navigation and routing directions between points. The coordinate data obtained is numeric, rather than a string type, which facilitates better reporting, analytics, and machine learning. Mapzen Search can also convert a geographic coordinate pair into the administrative boundary hierarchy containing it, such as a from the neighbourhood to the local administrative area, and on up to the country level. Getting this information can be useful when filtering for places in non-geographic databases.
 
-Mapzen Search offers:
-- Forward Geocoding for Addresses + Venues: Used to find a particular place based on the rules of an address, or the name of a landmark or business
-- Forward Coarse Geocoding for Neighbourhoods, Localities, regions, and countries: Used to find and localize a service to a particular area or region. Searches only for these places, but with worldwide coverage
-- Restricting searches to a known area or radius
-- Focusing a search: Searches all known places, but prioritizes places closer to the user (when the user's current location or approximate location is known)
-- Autocomplete searches for forward geocoding: Allows a developer to build interfaces where an end-user can search for places and match against Mapzen Search's data in real-time
-- Limiting results to a particular country: Allows the scoping of results to a particular country
-- Reverse geocoding addresses + venues: Tries to find the name/address of the closest matching place to a geographic coordinate pair (a longitude and latitude). This can be used to take abstract location data (e.g. an end-user's device location) and find the closest address (often used in a weather or delivery app on someone's phone)
-- Coarse reverse geocoding: Converts a geographic coordinate pair into the regional hierarchy for that particular place (e.g neighbourhood > locality (city/town) > Local Administrative Area (County, Prefecture) > Region (state/province) > country). This can be used to determine the general region of geographic data and can be quite useful in filtering for places in non-geographic databases that represent things that happen in places
+Mapzen Search is powered by Pelias, an experimental, community-focused geocoder from Mapzen, is available for both commercial and non-commercial purposes. The [source code](https://github.com/pelias/pelias) is open to view and modify, and contributions are welcomed.
