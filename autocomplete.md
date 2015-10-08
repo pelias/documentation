@@ -18,89 +18,36 @@ To focus your search based upon a geographical area, such as the center of the u
 
 From San Francisco:
 
-> /v1/autocomplete?api_key=search-XXXXXXX&text=union%20square&focus.point.lat=37.7&focus.point.lon=-122.4
+> /v1/autocomplete?api_key=search-XXXXXXX&focus.point.lat=37.7&focus.point.lon=-122.4&text=union square
 
-```json
-{
-  "type": "Feature",
-  "properties": {
-    "label": "Union Square, San Francisco, CA"
-  },
-  "geometry": {
-    "type": "Point",
-    "coordinates": [
-      -122.40776,
-      37.78576
-    ]
-  }
-}
+```
+1)	Union Square, San Francisco County, CA
+2)	Union Square, New York County, NY
 ```
 
 From New York City:
 
-> /v1/autocomplete?api_key=search-XXXXXXX&text=union%20square&focus.point.lat=40.7&focus.point.lon=-73.9
+> /v1/autocomplete?api_key=search-XXXXXXX&focus.point.lat=40.7&focus.point.lon=-73.9&text=union square
 
-```json
-{
-  "type": "Feature",
-  "properties": {
-    "label": "Union Square, Manhattan, NY"
-  },
-  "geometry": {
-    "type": "Point",
-    "coordinates": [
-      -73.99027,
-      40.73624
-    ]
-  }
-}
+```
+1)	Union Square, New York County, NY
+2)	Union Square, San Francisco County, CA
 ```
 
-The `/autocomplete` endpoint can promote nearby results to the top of the list, while still allowing important matches from farther away to be visible. For example, searching `McDonalds` with a focus on Berlin may result in other global locations being returned.
+The `/autocomplete` endpoint can promote nearby results to the top of the list, while still allowing important matches from farther away to be visible. For example, searching `hard rock cafe` with a focus on Berlin:
 
-> /v1/autocomplete?api_key=search-XXXXXXX&text=McDonalds&focus.point.lat=52.5&focus.point.lon=13.3
+> /v1/autocomplete?api_key=search-XXXXXXX&focus.point.lat=52.5&focus.point.lon=13.3&text=hard rock cafe
 
-```json
-{
-  "type": "Feature",
-  "properties": {
-    "label": "McDonald County, MO"
-  },
-  "geometry": {
-    "type": "Point",
-    "coordinates": [
-      -94.348365135014,
-      36.628682617601
-    ]
-  }
-},
-{
-  "type": "Feature",
-  "properties": {
-    "label": "McDonald's, Berlin, Germany"
-  },
-  "geometry": {
-    "type": "Point",
-    "coordinates": [
-      13.33236,
-      52.504232
-    ]
-  }
-},
-{
-  "type": "Feature",
-  "properties": {
-    "label": "McDonald's, Berlin, Germany"
-  },
-  "geometry": {
-    "type": "Point",
-    "coordinates": [
-      13.306792,
-      52.500007
-    ]
-  }
-}
-[...]
+with `focus.point` you will find the Berlin restaurant first:
+```
+1)	Hard Rock Cafe Berlin, Berlin, Germany
+2)	Hard Rock Café, San Giljan, Malta
+```
+
+without `focus.point` you will find the most popular restaurants first:
+```
+1)	Hard Rock Cafe, Pune, Maharashtra
+2)	Hard Rock Café, San Giljan, Malta
 ```
 
 ## Available autocomplete parameters
