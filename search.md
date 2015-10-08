@@ -55,6 +55,23 @@ Spelling matters, but not capitalization when performing a query with Mapzen Sea
 
 Note that the results are spread out throughout the world because you have not given your current location or provided any other geographic context in which to search.
 
+## Set the number of results returned
+
+By default, Mapzen Search results 10 places, unless otherwise specified. If you want a different number of results, set the `size` parameter to the desired number. This example shows returning only the first result.
+
+| parameter | value |
+| :--- | :--- |
+| `api_key` | [get yours here](https://mapzen.com/developers) |
+| `text` | YMCA |
+| `size` | 1 |
+
+> [/v1/search?api_key=search-XXXXXXX&text=YMCA&___size=1___](https://search.mapzen.com/v1/search?api_key=search-XXXXXXX&text=YMCA&size=1)
+
+If you want 25 results, you can build the query where `size` is 25.
+
+> [/v1/search?api_key=search-XXXXXXX&text=YMCA&___size=25___](https://search.mapzen.com/v1/search?api_key=search-XXXXXXX&text=YMCA&size=25)
+
+
 ## Narrow your search
 
 If you are looking for places in a particular region, or country, or only want to look in the immediate vicinity of a user with a known location, you can narrow your search to an area. There are different ways of including a region in your query. Mapzen Search currently supports three types: country, rectangle, and circle.
