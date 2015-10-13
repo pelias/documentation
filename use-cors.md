@@ -12,6 +12,12 @@ You don’t need to do anything special to use `CORS` with JavaScript in a moder
 
 For a full list of supported browsers see: http://caniuse.com/#feat=cors
 
+### Add a Pelias search box to a Leaflet map
+
+Mapzen provides a plug-in that adds a Pelias search box to any [Leaflet](http://leafletjs.com/)-powered map.
+
+See https://github.com/pelias/leaflet-geocoder for installation instructions and a live demo.
+
 ### Loading data with jQuery
 
 ```javascript
