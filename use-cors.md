@@ -14,7 +14,7 @@ For a full list of supported browsers see: http://caniuse.com/#feat=cors
 
 ### Add a Pelias search box to a Leaflet map
 
-We provide a plugin that adds a Pelias search box to any [Leaflet](http://leafletjs.com/) powered map.
+Mapzen provides a plug-in that adds a Pelias search box to any [Leaflet](http://leafletjs.com/)-powered map.
 
 See https://github.com/pelias/leaflet-geocoder for installation instructions and a live demo.
 
