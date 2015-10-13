@@ -1,18 +1,5 @@
-# Mapzen Search
+[Mapzen Search](https://mapzen.com/projects/search) is a modern, geographic search service based entirely on open-source tools and powered entirely by open data. To start integrating Mapzen Search to your apps, you need a [developer API key](/api-keys-rate-limits.md). You might use this functionality in any app that has a geographic component, including ones that deliver goods, locate hotels or venues, or even provide local weather forecasts.
 
-Geocoding service powered by [Pelias](https://github.com/pelias/pelias) and open data
+Through a process known as [geocoding](/search.md), Mapzen Search allows you to use natural language to find a particular place by entering an address or the name of a landmark or business, and then translates the result in to the geographic coordinates used by computers. Mapzen Search accesses [global databases](/data-sources.md) of place names and locations, but you can receive more locally relevant search results by limiting the search to a particular radius around a location (such as a cell phone), region, or country. With text [autocompletion capabilities](/autocomplete.md), you can search for places and match against Mapzen Search data in real-time. 
 
-These pages offer an introduction to the API and terminology used in Mapzen Search and the accompanying open source geocoder which powers it, Pelias.
-
-- [Get started](/get-started.md)
- - [API keys and rate limits](/api-keys-rate-limits.md)
- - [HTTP status codes](/http-status-codes.md)
- - [`/search` endpoint: finding places](/search.md)
- - [`/autocomplete` endpoint](/autocomplete.md)
- - [`/reverse` endpoint: from point to place](/reverse.md)
- - [`/place` endpoint: retrieving additional information](/place.md)
- - [API responses](/response.md)
- - [Data sources](/data-sources.md)
- - [Loading data from the browser](/use-cors.md)
- - [Terminology](/glossary.md)
-- [Transitioning from beta to 1.0](/transition-from-beta.md)
+Mapzen Search also enables the opposite workflow, known as [reverse geocoding](/reverse.md), to transform latitude and longitude values in to a list of places. This process attempts to find the name and address of the place nearest a longitude and latitude pair. For example, you can click a postion on the map to learn which business is located there.
