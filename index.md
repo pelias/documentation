@@ -6,6 +6,7 @@ These pages offer an introduction to the API and terminology used in Mapzen Sear
 
 - [Get started](/get-started.md)
  - [API keys and rate limits](/api-keys-rate-limits.md)
+ - [HTTP status codes](/http-status-codes.md)
  - [`/search` endpoint: finding places](/search.md)
  - [`/autocomplete` endpoint](/autocomplete.md)
  - [`/reverse` endpoint: from point to place](/reverse.md)
