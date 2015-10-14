@@ -13,6 +13,7 @@ All OpenStreetMap data is licensed under the [ODbL](http://opendatacommons.org/l
 ## Quattroshapes
 
 [Quattroshapes](http://quattroshapes.com/) provides global coverage of location data for:
+
 - countries
 - regions (states/provinces)
 - counties
