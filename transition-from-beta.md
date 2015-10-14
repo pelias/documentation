@@ -12,6 +12,7 @@ These changes also affect self-hosted users of Pelias upgrading from the beta to
 The first big change is the introduction of API keys. Like all other Mapzen APIs, Search now requires a free API key. You can register at the [Mapzen Developer Portal](https://mapzen.com/developers) and generate one (or more) for all your search needs.
 
 Mapzen Search API keys allow you:
+
 * 6 requests per second
 * 30,000 requests per day
 
@@ -92,6 +93,7 @@ Most parameters (and options) for search have been renamed:
 | `layers=address` | `layers=address` | |
 
 So the new, valid `layers` values are:
+
 * `venue`
 * `address`
 * `neighbourhood`
@@ -103,6 +105,7 @@ So the new, valid `layers` values are:
 * `coarse`
 
 And the `sources` values are:
+
 * `openstreetmap` or `osm`
 * `geonames` or `gn`
 * `openaddresses` or `oa`
@@ -143,13 +146,15 @@ The `/autocomplete` endpoint serves as a renamed `/suggest` to indicate that the
 | `details` | Deprecated  | |
 
 ### Deprecated endpoints
+
 - `/suggest/coarse`
 - `/suggest/nearby`
 
 ## `/reverse`
 Reverse geocoding finds the places closest to geospatial coordinates.
 
-```https://search.mapzen.com/v1/reverse?point.lon={longitude}&point.lat={latitude}&api_key=search-xxxxxx
+```
+https://search.mapzen.com/v1/reverse?point.lon={longitude}&point.lat={latitude}&api_key=search-xxxxxx
 ```
 
 Used to be (Beta) | New parameter (V1) | New behavior (if any) |
