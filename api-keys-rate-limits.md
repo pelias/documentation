@@ -13,6 +13,7 @@ To use the Mapzen Search service, you must first obtain a free developer API key
 Because Mapzen Search is a free, shared service, there are limitations on the numbers of requests to prevent individual users from degrading the overall system performance.
 
 Mapzen Search allows you a maximum of:
+
 - 6 requests per second
 - 30,000 requests per day
 
