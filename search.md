@@ -280,6 +280,7 @@ Looking at these results, they are all less than 50 kilometers away from the foc
 Mapzen Search brings together data from multiple open sources and combines a variety of place types into a single database, allowing you options for selecting the dataset you want to search.
 
 With Mapzen Search, you can filter by:
+
 * `sources`: the originating source of the data
 * `layers`: the kind of place you want to find
 
