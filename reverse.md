@@ -42,7 +42,7 @@ The default value for `size` is `10` and the maximum value is `40`. Specifying a
 
 ### Filter by data source
 
-By default, reverse geocoding returns results from any [data source](/data-sources.md) available to Mapzen Search. To filter results by source, specify one or more valid source names in a comma-delimited list using the `sources` parameter. For example, the following request returns only results from OpenStreetMap:
+By default, reverse geocoding returns results from any [data source](data-sources.md) available to Mapzen Search. To filter results by source, specify one or more valid source names in a comma-delimited list using the `sources` parameter. For example, the following request returns only results from OpenStreetMap:
 
 >[/v1/reverse?api_key=search-XXXXXXX&point.lat=48.858268&point.lon=2.294471&___sources=osm___](https://search.mapzen.com/v1/reverse?api_key=search-XXXXXXX&point.lat=48.858268&point.lon=2.294471&sources=osm)
 
