@@ -16,4 +16,4 @@ In all cases above, the response body will be valid geoJSON.
 ## Rate limiter
 The rate limiter returns the status codes `403 Forbidden` and `429 Too Many Requests`.
 
-See [API keys and rate limits](/api-keys-rate-limits.md) for more information.
+See [API keys and rate limits](api-keys-rate-limits.md) for more information.
