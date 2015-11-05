@@ -40,7 +40,7 @@ Now that you have downloaded the required dependent files, you are ready to star
 
 1. At the root level of your working folder, create a file called index.html and open it in a text editor.
 
-    ![New index.html file in folder](images/new-index-file.png)
+    ![New index.html file in folder](images/geocoder-new-index.png)
 
 2. Add the basic HTML tags, including `<!DOCTYPE HTML>`, `<html>`, `<head>`, and `<body>`. Your HTML might look like this:
 
@@ -60,6 +60,9 @@ Now that you have downloaded the required dependent files, you are ready to star
   <meta charset="utf-8">
   ```
 4. Save your edits to the index.html file.
+5. Drag your index.html file onto a web browser tab. It should show your title, `My Geocoding Map`, but the web page canvas is blank.
+
+  ![Blank html page](images/geocoder-blank-tab.png)
 
 You HTML should look like this:
 ```html
@@ -74,25 +77,27 @@ You HTML should look like this:
 </html>
 ```
 
+As you are working, it’s a good idea to save your edits and periodically reload the browser page. This helps you identify problems quicker and trace them back to your most recent changes.
+
 ## Add references to CSS and JavaScript files
 
 Because you are working with several external cascading style sheet (CSS) and JavaScript files, you need to add references to them in your index.html file. These include style sheets and JavaScript files for Leaflet and the Geocoder. You will need to add these into the <head> and <body> sections of the index.html.
 
-1. In index.html, in the `<head>` section, add references to the Leaflet CSS and JavaScript files. You are referencing these from the website, rather than from your machine.
+1. In index.html, at the bottom of the `<head>` section, add references to the Leaflet CSS and JavaScript files. You are referencing these from the website, rather than from a file on your machine.
 
     ```html
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.5/leaflet.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.5/leaflet.js"></script>
     ```
 
-2. In the `<head>` section, immediately after the Leaflet lines, add references to the Geocoder CSS and JavaScript files.
+2. In the `<head>` section, immediately after the Leaflet lines, add references to the geocoder CSS and JavaScript files. These files are from the GitHub repository you copied and are on your own machine.
 
     ```html
     <link rel="stylesheet" href="../geocoding-tutorial/pelias-leaflet-geocoder.css">
     <script src="../geocoding-tutorial/pelias-leaflet-geocoder.js"></script>
     ```
 
-7. Save your edits and refresh the browser.
+7. Save your edits and refresh the browser. It should appear as before because you have not added any code to interact with these references.
 
 After adding these, your index.html file should look something like this.
 
@@ -112,13 +117,11 @@ After adding these, your index.html file should look something like this.
 </html>
 ```
 
-At this point, your browser page is still empty. As you are working, it’s a good idea to save your edits and periodically reload the browser page. This helps you identify problems quicker and trace them back to your most recent changes.
-
 ## Add a map to the page
 
 To display a Leaflet map on a page, you need a `<div>` element with an ID value, as well as a size for the box containing the map. If you want to know more about initializing a Leaflet map, see the [Leaflet getting started documentation](http://leafletjs.com/examples/quick-start.html).
 
-1. At the bottom of the `<head>` section, add a `<style>` tag and the following size attributes to set the size of the map.
+1. At the bottom of the `<head>` section, following the references you added in the previous steps, add a `<style>` tag and the following size attributes to set the size of the map.
 
   ```html
   <style>
@@ -143,7 +146,7 @@ To display a Leaflet map on a page, you need a `<div>` element with an ID value,
       var map = L.map('map').setView([37.804146, -122.275045], 16);
     </script>
     ```
-4. Within the same script tag, add a line to set the data source for the map. This line adds the default OpenStreetMap tiles and an attribution.
+4. Within the same script tag as `var map = `, add a line to set the data source for the map. This line adds the default OpenStreetMap tiles and an attribution.
 
     ```html
     L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
@@ -152,7 +155,7 @@ To display a Leaflet map on a page, you need a `<div>` element with an ID value,
     ```
 5. Save your edits and refresh the browser. You should see a map with OpenStreetMap tiles, zoom controls, and a Leaflet attribution in the bottom corner.
 
-    ![Leaflet canvas map with controls and attribution](images/browser-controls.png)
+    ![Leaflet canvas map with controls and attribution](images/geocoder-osm-leaflet.png)
 
 Your index.html should look something like this:
 
@@ -195,7 +198,13 @@ So far, you have referenced the necessary files, initialized Leaflet with a map 
     ```js
     var geocoder = L.control.geocoder('search-MKZrG6M').addTo(map);
     ```
-2. Save your edits and refresh the browser. You should see a small magnifying glass in the left corner, near the zoom controls.
+2. Save your edits and refresh the browser. You should see a small magnifying glass icon in the left corner, near the zoom controls.
+
+    ![Search icon on the map canvas](images/geocoder-search-icon.png)
+
+3. Click the button to display the Search box on the map. The Search box closes if you click away from it.
+
+    ![Expanded Search box on the map canvas](images/geocoder-search-box.png)
 
 Your `<body>` section should look like this:
 
@@ -216,12 +225,15 @@ Your `<body>` section should look like this:
 
 ## Search for places on the map
 
-1. On the map, type a place name or address in the search box. As you type, the text is being automatically completed to find matching results.
+1. On the map, type a place name or address in the Search box. As you type, the text is being automatically completed to find matching results.
 2. Click a result in the list to zoom and add a point to the map at that location.
+
+    ![Entering an address to find on the map](images/geocoder-address-search.png)
 
 ## Walkthrough summary and next steps
 
-[Add summary] 
+[Add summary]
+
 In this walkthrough, you learned the basics of making a map with the Mapzen Search geocoding engine in a Leaflet map.
 
 You can review the [documentation](https://github.com/valhalla/valhalla-docs/blob/master/api-reference.md) to learn more about routing with Mapzen Turn-by-Turn.
