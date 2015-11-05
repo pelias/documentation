@@ -1,16 +1,16 @@
 # Add Mapzen Search geocoder to a map
 
-[Add some intro text about geocoding]
+[Mapzen Search](https://mapzen.com/projects/search) is a modern, geographic search service based entirely on open-source tools and powered entirely by open data. To start integrating Mapzen Search to your apps, you need a [developer API key](api-keys-rate-limits.md). You might use this functionality in any app that has a geographic component, including ones that deliver goods, locate hotels or venues, or even provide local weather forecasts.
 
-To complete the tutorial, you should have some familiarity with HTML and JavaScript, although all the source code is provided. You will need an [API key](https://mapzen.com/developers) to use Mapzen Search, which requires a GitHub account for authorization. You can use any text editor and operating system, but must maintain an Internet connection while you are working. The tutorial should take about an hour to complete.
+Through a process known as [geocoding](search.md), Mapzen Search allows you to use natural language to find a particular place by entering an address or the name of a landmark or business, and then translates the result in to the geographic coordinates for mapping. Mapzen Search is built on [Pelias](https://github.com/pelias), an open-source geocoding project.
+
+In this walkthrough, you will learn how to make a map with a search box that allows you to enter addresses and place names and locate them on a map. To complete the tutorial, you should have some familiarity with HTML and JavaScript, although all the source code is provided. You will need an [API key](https://mapzen.com/developers) to use Mapzen Search, which requires a GitHub account for authorization. You can use any text editor and operating system, but must maintain an Internet connection while you are working. The tutorial should take about 30 minutes to complete.
 
 ## Sign up for a Mapzen Search API key
 
-***For Maptime Oakland: Note that this section is optional during the Maptime Oakland event. You will be provided with a sample key that will expire following the event. If you want to continue using the Mapzen Search service, you need to get your own API key.***
+***For Maptime Oakland: This section is optional during the meetup. You will be provided with a sample key that will expire following the event. If you want to continue using the Mapzen Search service afterward, you need to get your own API key.***
 
 To use the geocoding service, you must first obtain an API key from Mapzen. Sign in at https://mapzen.com/developers to create and manage your API keys.
-
-Mapzen Search, powered by Pelias, is a shared geocoding service. As such, there are limitations on requests to prevent individual users from degrading the overall system performance.
 
 1. Go to https://mapzen.com/developers.
 2. Sign in with your GitHub account. If you have not done this before, you need to agree to the terms first.
@@ -19,19 +19,20 @@ Mapzen Search, powered by Pelias, is a shared geocoding service. As such, there 
 
 ## Download and install the dependencies
 
-The Leaflet JavaScript library, which provides tools for zooming, displaying attributions, and drawing symbols, is one way you can display the Mapzen Search input box on web and mobile maps. Leaflet is extensible, and developers have built additional tools for Leaflet maps, including the Mapzen Search plug-in.
+The Leaflet JavaScript library, which provides tools for zooming, displaying attributions, and drawing symbols, is one way you can build web and mobile maps. Leaflet is extensible, and developers have built additional tools for Leaflet maps, including the Mapzen Search plug-in.
 
 To set up your development environment for this walkthrough, you need to download the geocoder plug-in.
 
 1. Create a new folder on your machine named `geocoding-tutorial`. You will use this folder as your working directory where you can store the downloaded files.
 3. Download or clone the [leaflet-geocoder GitHub repository](https://github.com/pelias/leaflet-geocoder) to make a copy of it on your local machine. You can click [Download Zip](https://github.com/pelias/leaflet-geocoder/archive/master.zip) on the GitHub repository website.
-4. Unzip any zipped files you downloaded.
+4. Unzip any zipped files.
 5. Navigate to `leaflet-geocoder` folder (`leaflet-geocoder-master`, if you downloaded the zip).
 
     ![Downloaded and unzipped folder](images/geocoder-plug-in-files.png)
 
 6. Navigate inside the `dist` subfolder and copy the images folder, leaflet-geocoder.css, and leaflet-geocoder.js files.
-7. Paste the images folder and two files into your `geocoding-tutorial` folder.
+7. Paste the images folder and the two files into your `geocoding-tutorial` folder.
+
     ![Files needed for the walkthrough](images/geocoder-dist-folder.png)
 
 ## Create an index page
@@ -81,23 +82,23 @@ As you are working, it’s a good idea to save your edits and periodically reloa
 
 ## Add references to CSS and JavaScript files
 
-Because you are working with several external cascading style sheet (CSS) and JavaScript files, you need to add references to them in your index.html file. These include style sheets and JavaScript files for Leaflet and the Geocoder. You will need to add these into the <head> and <body> sections of the index.html.
+Because you are working with several external cascading style sheet (CSS) and JavaScript files, you need to add references to them in your index.html file. These include style sheets and JavaScript files for Leaflet and the geocoder. You will need to add these into the <head> and <body> sections of the index.html.
 
-1. In index.html, at the bottom of the `<head>` section, add references to the Leaflet CSS and JavaScript files. You are referencing these from the website, rather than from a file on your machine.
+1. In index.html, at the bottom of the `<head>` section, add references to the Leaflet CSS and JavaScript files. You are referencing these from a website, rather than from a file on your machine.
 
     ```html
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.5/leaflet.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.5/leaflet.js"></script>
     ```
 
-2. In the `<head>` section, immediately after the Leaflet lines, add references to the geocoder CSS and JavaScript files. These files are from the GitHub repository you copied and are on your own machine.
+2. In the `<head>` section, immediately after the Leaflet lines, add references to the geocoder CSS and JavaScript files. These files are from the GitHub repository you copied to your machine.
 
     ```html
     <link rel="stylesheet" href="../geocoding-tutorial/pelias-leaflet-geocoder.css">
     <script src="../geocoding-tutorial/pelias-leaflet-geocoder.js"></script>
     ```
 
-7. Save your edits and refresh the browser. It should appear as before because you have not added any code to interact with these references.
+3. Save your edits and refresh the browser. It should still appear empty because you have not added any code to interact with these references.
 
 After adding these, your index.html file should look something like this.
 
@@ -121,7 +122,7 @@ After adding these, your index.html file should look something like this.
 
 To display a Leaflet map on a page, you need a `<div>` element with an ID value, as well as a size for the box containing the map. If you want to know more about initializing a Leaflet map, see the [Leaflet getting started documentation](http://leafletjs.com/examples/quick-start.html).
 
-1. At the bottom of the `<head>` section, following the references you added in the previous steps, add a `<style>` tag and the following size attributes to set the size of the map.
+1. At the bottom of the `<head>` section, after the references you added in the previous steps, add a `<style>` tag and the following size attributes to set the size of the map.
 
   ```html
   <style>
@@ -139,14 +140,14 @@ To display a Leaflet map on a page, you need a `<div>` element with an ID value,
     <div id="map"></div>
     ```
 
-3. Immediately after the `<div>`, add the following JavaScript within a `<script>` tag to initialize Leaflet. `L.xxxxx` is a convention used with the Leaflet API. The `setView([37.804146, -122.275045], 16)` sets the center of the map, in decimal degrees, and the zoom level. The map is centered at the Maptime Oakland meeting location, with a zoom level that allows you to see the streets and features of the city. Zoom levels are similar to map scales or resolutions, where a smaller value shows a larger area in less detail, and a larger zoom level value depicts smaller area in great detail.
+3. Immediately after the `<div>`, add this JavaScript code within a `<script>` tag to initialize Leaflet. `L.xxxxx` is a convention used with the Leaflet API. The `setView([37.804146, -122.275045], 16)` sets the center of the map, in decimal degrees, and the zoom level. The map is centered at the Maptime Oakland meeting location, with a zoom level that allows you to see the streets and features of the city. Zoom levels are similar to map scales or resolutions, where a smaller value shows a larger area in less detail, and a larger zoom level value depicts smaller area in great detail.
 
     ```html
     <script>
       var map = L.map('map').setView([37.804146, -122.275045], 16);
     </script>
     ```
-4. Within the same script tag as `var map = `, add a line to set the data source for the map. This line adds the default OpenStreetMap tiles and an attribution.
+4. Within the same `<script>` tag as `var map = `, add a line to set the data source for the map. This line adds the default OpenStreetMap tiles and an attribution.
 
     ```html
     L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
@@ -189,11 +190,11 @@ Your index.html should look something like this:
 </html>
 ```
 
-## Add the geocoder search box
+## Add the Search box
 
-So far, you have referenced the necessary files, initialized Leaflet with a map container on the page, and added data to the map. Now, you are ready to add the search box with the Mapzen Search plug-in.
+So far, you have referenced the necessary files, initialized Leaflet with a map container on the page, and added data to the map. Now, you are ready to add the Search box from the Mapzen Search plug-in.
 
-1. Inside the `<script>` tag, and after the `}).addTo(map);` line, initialize a search box with the following code. You must include a valid Mapzen Search API key to make the map load properly. If you have obtained your own API key from https://mapzen.com/developers, you can paste it here. The key in this tutorial will expire following this event.
+1. Inside the same `<script>` tag, and after the `}).addTo(map);` line, initialize a search box with the following code. You must include a valid Mapzen Search API key to make the map load properly. If you have obtained your own API key from https://mapzen.com/developers, you can paste it here.
 
     ```js
     var geocoder = L.control.geocoder('search-MKZrG6M').addTo(map);
@@ -225,15 +226,15 @@ Your `<body>` section should look like this:
 
 ## Search for places on the map
 
-1. On the map, type a place name or address in the Search box. As you type, the text is being automatically completed to find matching results.
+1. On the map, type a place name or address in the Search box. As you type, the text automatically completes to suggest matching results.
 2. Click a result in the list to zoom and add a point to the map at that location.
 
     ![Entering an address to find on the map](images/geocoder-address-search.png)
 
+Mapzen Search uses a [variety of open data sources](https://mapzen.com/documentation/search/data-sources/), including OpenStreetMap. In some cases, you may be unable to find the location you are expecting, which could be an indicator that the data has limitations. Part of the power of open data is that you are able to correct it. If you want to note a problem, you can add an issue to the [Pelias GitHub repository](https://github.com/pelias/pelias/issues).
+
 ## Walkthrough summary and next steps
 
-[Add summary]
+In this walkthrough, you learned the basics of adding the Mapzen Search geocoding engine to a Leaflet map.
 
-In this walkthrough, you learned the basics of making a map with the Mapzen Search geocoding engine in a Leaflet map.
-
-You can review the [documentation](https://github.com/valhalla/valhalla-docs/blob/master/api-reference.md) to learn more about routing with Mapzen Turn-by-Turn.
+You can review the [documentation](https://mapzen.com/documentation/search/) to learn more about geocoding with Mapzen Search.
