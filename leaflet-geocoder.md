@@ -197,7 +197,7 @@ So far, you have referenced the necessary files, initialized Leaflet with a map 
 1. Inside the same `<script>` tag, and after the `}).addTo(map);` line, initialize a search box with the following code. You must include a valid Mapzen Search API key to make the map load properly. If you have obtained your own API key from https://mapzen.com/developers, you can paste it here.
 
     ```js
-    var geocoder = L.control.geocoder('search-MKZrG6M').addTo(map);
+    var geocoder = L.control.geocoder('search-VzKH_PI').addTo(map);
     ```
 2. Save your edits and refresh the browser. You should see a small magnifying glass icon in the left corner, near the zoom controls.
 
@@ -218,7 +218,7 @@ Your `<body>` section should look like this:
     L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
       attribution: '&copy; <a href="http://openstreetmap.org/copyright">OpenStreetMap contributors</a>'
     }).addTo(map);
-    var geocoder = L.control.geocoder('search-MKZrG6M').addTo(map);
+    var geocoder = L.control.geocoder('search-VzKH_PI').addTo(map);
   </script>
 </body>
 [...]]
