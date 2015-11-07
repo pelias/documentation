@@ -6,17 +6,6 @@ Through a process known as [geocoding](search.md), Mapzen Search allows you to u
 
 In this walkthrough, you will learn how to make a map with a search box that allows you to enter addresses and place names and locate them on a map. To complete the tutorial, you should have some familiarity with HTML and JavaScript, although all the source code is provided. You will need an [API key](https://mapzen.com/developers) to use Mapzen Search, which requires a GitHub account for authorization. You can use any text editor and operating system, but must maintain an Internet connection while you are working. The tutorial should take about 30 minutes to complete.
 
-## Sign up for a Mapzen Search API key
-
-***For Maptime Oakland: This section is optional during the meetup. You will be provided with a sample key that will expire following the event. If you want to continue using the Mapzen Search service afterward, you need to get your own API key.***
-
-To use the geocoding service, you must first obtain an API key from Mapzen. Sign in at https://mapzen.com/developers to create and manage your API keys.
-
-1. Go to https://mapzen.com/developers.
-2. Sign in with your GitHub account. If you have not done this before, you need to agree to the terms first.
-3. Create a new key for Mapzen Search, and optionally, give it a project name so you can remember the purpose of the key.
-4. Keep the web page open so you can copy the key into the source code later.
-
 ## Download and install the dependencies
 
 The Leaflet JavaScript library, which provides tools for zooming, displaying attributions, and drawing symbols, is one way you can build web and mobile maps. Leaflet is extensible, and developers have built additional tools for Leaflet maps, including the Mapzen Search plug-in.
@@ -122,7 +111,7 @@ After adding these, your index.html file should look something like this.
 
 To display a Leaflet map on a page, you need a `<div>` element with an ID value, as well as a size for the box containing the map. If you want to know more about initializing a Leaflet map, see the [Leaflet getting started documentation](http://leafletjs.com/examples/quick-start.html).
 
-1. At the bottom of the `<head>` section, after the references you added in the previous steps, add a `<style>` tag and the following size attributes to set the size of the map.
+1. At the bottom of the `<head>` section, after the references you added in the previous steps, add a `<style>` tag and the following attributes to set the size of the map on your webpage.
 
   ```html
   <style>
@@ -131,6 +120,7 @@ To display a Leaflet map on a page, you need a `<div>` element with an ID value,
       width: 100%;
       position: absolute;
     }
+    html,body{margin: 0; padding: 0}
   </style>
   ```
 
@@ -194,11 +184,13 @@ Your index.html should look something like this:
 
 So far, you have referenced the necessary files, initialized Leaflet with a map container on the page, and added data to the map. Now, you are ready to add the Search box from the Mapzen Search plug-in.
 
-1. Inside the same `<script>` tag, and after the `}).addTo(map);` line, initialize a search box with the following code. You must include a valid Mapzen Search API key to make the map load properly. If you have obtained your own API key from https://mapzen.com/developers, you can paste it here.
+1. Inside the same `<script>` tag, and after the `}).addTo(map);` line, initialize a search box with the following code. 
 
     ```js
     var geocoder = L.control.geocoder('search-VzKH_PI').addTo(map);
     ```
+    The search-VzKH_PI text is the Mapzen Search API key, which is provided for you at MaptimeOAK. Because the search service is provided for free, the key is a way to make sure that the performance is good for everyone. If you want to use Mapzen Search after this event, you need to obtained your own API key from https://mapzen.com/developers. Then, paste it here instead of this one.
+    
 2. Save your edits and refresh the browser. You should see a small magnifying glass icon in the left corner, near the zoom controls.
 
     ![Search icon on the map canvas](images/geocoder-search-icon.png)
