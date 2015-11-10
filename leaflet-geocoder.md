@@ -1,38 +1,36 @@
 # Add Mapzen Search geocoder to a map
 
-[Mapzen Search](https://mapzen.com/projects/search) is a modern, geographic search service based entirely on open-source tools and powered entirely by open data. To start integrating Mapzen Search to your apps, you need a [developer API key](api-keys-rate-limits.md). You might use this functionality in any app that has a geographic component, including ones that deliver goods, locate hotels or venues, or even provide local weather forecasts.
+[Mapzen Search](https://mapzen.com/projects/search) is a modern, geographic search service based entirely on open-source tools and powered entirely by open data. You might use this functionality in any app that has a geographic component, including ones that deliver goods, locate hotels or venues, or even provide local weather forecasts.
 
-Through a process known as [geocoding](search.md), Mapzen Search allows you to use natural language to find a particular place by entering an address or the name of a landmark or business, and then translates the result in to the geographic coordinates for mapping. Mapzen Search is built on [Pelias](https://github.com/pelias), an open-source geocoding project.
+Through a process known as [geocoding](search.md), Mapzen Search allows you to enter an address or the name of a landmark or business, and then it translates the result in to the geographic coordinates for mapping. Mapzen Search is built on [Pelias](https://github.com/pelias), an open-source geocoding project.
 
 In this walkthrough, you will learn how to make a map with a search box that allows you to enter addresses and place names and locate them on a map. To complete the tutorial, you should have some familiarity with HTML and JavaScript, although all the source code is provided. You will need an [API key](https://mapzen.com/developers) to use Mapzen Search, which requires a GitHub account for authorization. You can use any text editor and operating system, but must maintain an Internet connection while you are working. The tutorial should take about 30 minutes to complete.
 
 ## Download and install the dependencies
 
-The Leaflet JavaScript library, which provides tools for zooming, displaying attributions, and drawing symbols, is one way you can build web and mobile maps. Leaflet is extensible, and developers have built additional tools for Leaflet maps, including the Mapzen Search plug-in.
+The Leaflet JavaScript library, which provides tools for zooming, displaying attributions, and drawing symbols, is a framework you can use to build web and mobile maps. Leaflet is extensible, and developers have built additional tools for Leaflet maps, including the Mapzen Search geocoder plug-in.
 
-To set up your development environment for this walkthrough, you need to download the geocoder plug-in.
+To set up your development environment for this walkthrough, you need to download the geocoder plug-in. You do not need to download the Leaflet files because you will be referencing them from a web server.
 
-1. Create a new folder on your machine named `geocoding-tutorial`. You will use this folder as your working directory where you can store the downloaded files.
-3. Download or clone the [leaflet-geocoder GitHub repository](https://github.com/pelias/leaflet-geocoder) to make a copy of it on your local machine. You can click [Download Zip](https://github.com/pelias/leaflet-geocoder/archive/master.zip) on the GitHub repository website.
+1. Create a new folder on your machine named `geocoding-tutorial`. You will use this folder as your working directory.
+3. Download the dependent files necessary to complete the walkthrough. They have been zipped for you.
 4. Unzip any zipped files.
-5. Navigate to `leaflet-geocoder` folder (`leaflet-geocoder-master`, if you downloaded the zip).
 
     ![Downloaded and unzipped folder](images/geocoder-plug-in-files.png)
 
-6. Navigate inside the `dist` subfolder and copy the images folder, leaflet-geocoder.css, and leaflet-geocoder.js files.
-7. Paste the images folder and the two files into your `geocoding-tutorial` folder.
+6. Make sure your geocoding-tutorial folder has an images folder, leaflet-geocoder.css, and leaflet-geocoder.js files, and well as two HTML files.
 
     ![Files needed for the walkthrough](images/geocoder-dist-folder.png)
 
 ## Create an index page
 
-Now that you have downloaded the required dependent files, you are ready to start building your application. This example uses the simplest structure, a single index.html file.
+Now that you have downloaded the required dependent files, you are ready to start building your application. This example uses the simplest structure, a single index.html file. This file was created for you with the basic HTML tags.
 
-1. At the root level of your working folder, create a file called index.html and open it in a text editor.
+`index.html` is the file you will be editing, while `index-complete.html` is a completed version that you can use to check your work or review if you need to troubleshoot an error.
 
-    ![New index.html file in folder](images/geocoder-new-index.png)
+Some common text editor applications include Atom, Notepad++, Sublime, as well as the apps that are installed with your operating system, such as Notepad or TextEdit, although they do not provide indentations or code alignments that are availabl in the other apps. If you do use TextEdit, you need to go to the Format menu and click Make Plain Text to use the plain-text version of the file. You should not use an app with any rich formatting, such as Word or Wordpad.
 
-2. Add the basic HTML tags, including `<!DOCTYPE HTML>`, `<html>`, `<head>`, and `<body>`. Your HTML might look like this:
+1. From your geocoding-tutorial folder, open index.html in a text editor. It should look like this:
 
     ```html
     <!DOCTYPE html>
@@ -45,7 +43,7 @@ Now that you have downloaded the required dependent files, you are ready to star
     ```
 
 3. In the `<head>` tag, add a title, such as `<title>My Geocoding Map</title>`.
-4. On the next line, add a metadata tag to set the character encoding.
+4. On the next line, add a metadata tag so you can properly display diacritics and characters from different languages.
   ```html
   <meta charset="utf-8">
   ```
@@ -184,13 +182,13 @@ Your index.html should look something like this:
 
 So far, you have referenced the necessary files, initialized Leaflet with a map container on the page, and added data to the map. Now, you are ready to add the Search box from the Mapzen Search plug-in.
 
-1. Inside the same `<script>` tag, and after the `}).addTo(map);` line, initialize a search box with the following code. 
+1. Inside the same `<script>` tag, and after the `}).addTo(map);` line, initialize a search box with the following code.
 
     ```js
     var geocoder = L.control.geocoder('search-VzKH_PI').addTo(map);
     ```
     The search-VzKH_PI text is the Mapzen Search API key, which is provided for you at MaptimeOAK. Because the search service is provided for free, the key is a way to make sure that the performance is good for everyone. If you want to use Mapzen Search after this event, you need to obtained your own API key from https://mapzen.com/developers. Then, paste it here instead of this one.
-    
+
 2. Save your edits and refresh the browser. You should see a small magnifying glass icon in the left corner, near the zoom controls.
 
     ![Search icon on the map canvas](images/geocoder-search-icon.png)
