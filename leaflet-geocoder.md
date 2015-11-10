@@ -4,7 +4,7 @@
 
 Through a process known as [geocoding](search.md), Mapzen Search allows you to enter an address or the name of a landmark or business, and then it translates the result in to the geographic coordinates for mapping. Mapzen Search is built on [Pelias](https://github.com/pelias), an open-source geocoding project.
 
-In this walkthrough, you will learn how to make a map with a search box that allows you to enter addresses and place names and locate them on a map. To complete the tutorial, you should have some familiarity with HTML and JavaScript, although all the source code is provided. You will need an [API key](https://mapzen.com/developers) to use Mapzen Search, which requires a GitHub account for authorization. You can use any text editor and operating system, but must maintain an Internet connection while you are working. The tutorial should take about 30 minutes to complete.
+In this walkthrough, you will learn how to make a map with a search box that allows you to enter addresses and place names and locate them on a map. To complete the tutorial, you should have some familiarity with HTML and JavaScript, although all the source code is provided. You will need an [API key](https://mapzen.com/developers) (which is provided for you at MaptimeOAK) to use Mapzen Search, which requires a GitHub account for authorization. You can use any text editor and operating system, but must maintain an Internet connection while you are working. The tutorial should take about 30 minutes to complete.
 
 ## Download and install the dependencies
 
@@ -12,12 +12,9 @@ The Leaflet JavaScript library, which provides tools for zooming, displaying att
 
 To set up your development environment for this walkthrough, you need to download the geocoder plug-in. You do not need to download the Leaflet files because you will be referencing them from a web server.
 
-1. Download the dependent files necessary to complete the walkthrough.
-4. Unzip any zipped files. They should unzip to a folder named geocoding-tutorial.
-
-    ![Downloaded and unzipped folder](images/geocoder-plug-in-files.png)
-
-5. Make sure your geocoding-tutorial folder has an images folder, leaflet-geocoder.css, and leaflet-geocoder.js files, and well as two HTML files.
+1. Download the files from .
+2. Unzip the file you downloaded. It should unzip to a folder named geocoding-tutorial. (Note that some browsers, such as Safari, may unzip it automatically.)
+3. Make sure your geocoding-tutorial folder has leaflet-geocoder.css, leaflet-geocoder, an images folder, and two HTML files.
 
     ![Files needed for the walkthrough](images/geocoder-dist-folder.png)
 
@@ -66,7 +63,7 @@ You HTML should look like this:
 
 ## Add references to CSS and JavaScript files
 
-Because you are working with several cascading style sheet (CSS) and JavaScript files for Leaflet and the geocoder, you need to list them in your index.html file. You will need to add these into the `<head>` and `<body>` sections of the index.html.
+Cascading style sheet (CSS) files style a webpage, including layout and fonts, and JavaScript adds functionality to the page. In your index.html file, you need to list the CSS and JavaScript files used for building a page with Leaflet and the geocoder.
 
 1. In index.html, at the bottom of the `<head>` section, add references to the Leaflet CSS and JavaScript files. You are referencing these from a website, rather than from a file on your machine.
 
@@ -75,14 +72,14 @@ Because you are working with several cascading style sheet (CSS) and JavaScript 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.5/leaflet.js"></script>
     ```
 
-2. In the `<head>` section, immediately after the Leaflet lines, add references to the geocoder's CSS and JavaScript files. These files are from the GitHub repository you copied to your machine.
+2. In the `<head>` section, immediately after the lines you added for Leaflet, add references to the geocoder's CSS and JavaScript files. These files are from the zipped file you copied to your machine.
 
     ```html
     <link rel="stylesheet" href="../geocoding-tutorial/pelias-leaflet-geocoder.css">
     <script src="../geocoding-tutorial/pelias-leaflet-geocoder.js"></script>
     ```
 
-3. Save your edits and refresh the browser. It should still appear empty because you have not added any code to interact with these references.
+3. Save your edits and refresh the browser. The webpage should still appear empty because you have not added any code to interact with these references.
 
 After adding these, your index.html file should look something like this.
 
@@ -191,7 +188,7 @@ So far, you have referenced the necessary files, initialized Leaflet with a map 
     var geocoder = L.control.geocoder('search-VzKH_PI').addTo(map);
     ```
 
-    The search-VzKH_PI text is the Mapzen Search API key, which is provided for you at MaptimeOAK. Because the search service is free, the key is a way to make sure that the performance is acceptable for everyone. The key you are provided will expire, so if you want to use Mapzen Search after this event, you need to obtain your own API key from https://mapzen.com/developers and replace it here.
+    The `search-VzKH_PI` text is the Mapzen Search API key, which is provided for you at MaptimeOAK. Because the search service is shared among many users, the key is a way to make sure that the performance is acceptable for everyone. The key you are provided will expire, so if you want to use Mapzen Search after this event, you need to obtain your own API key from https://mapzen.com/developers and replace it here.
 
 2. Save your edits and refresh the browser. You should see a small magnifying glass icon in the left corner, near the zoom controls.
 
@@ -220,14 +217,14 @@ Your `<body>` section should look like this:
 
 ## Search for places on the map
 
-1. On the map, type a place name or address in the Search box. As you type, the text automatically completes to suggest matching results.
-2. Click a result in the list to zoom and add a point to the map at that location. (The point is only on your map, and does not update OpenStreetMap.)
+1. On the map, type `555 12th` in the Search box. As you type, the text automatically completes to suggest matching results.
+2. In the results list, find the entry for `555 12th Street, Oakland, CA` and click it in the list to zoom and add a point to the map at that location. (The point is only on your map, and does not update OpenStreetMap.)
 
     ![Entering an address to find on the map](images/geocoder-address-search.png)
 
-Mapzen Search uses a [variety of open data sources](https://mapzen.com/documentation/search/data-sources/), including OpenStreetMap. In some cases, you may be unable to find the location you are expecting, which could be an indicator that the data has limitations or the location is not in the source dataset. Part of the power of open data is that you can modify the source data yourself and improve the quality for everyone.
+Mapzen Search uses a [variety of open data sources](https://mapzen.com/documentation/search/data-sources/), including OpenStreetMap. If you unable to find a location, it could be a software issue, or also an indicator that the place is missing or incorrect in the source dataset. Part of the power of open data is that anyone can modify the source data and improve the quality for everyone.
 
-If you think you have found an issue with the data or get unexpected search results, you can add an issue to the [Pelias GitHub repository](https://github.com/pelias/pelias/issues).
+However, because the geocoder is still under development and considered experimental, if you are getting unexpected search results, please add an issue to the [Pelias GitHub repository](https://github.com/pelias/pelias/issues). The developers can investigate and determine if the problem is caused by software or data, and work to fix it either way.
 
 ## Walkthrough summary and next steps
 
