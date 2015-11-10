@@ -16,7 +16,7 @@ To set up your development environment for this walkthrough, you need to downloa
 2. Unzip the file you downloaded. It should unzip to a folder named geocoding-tutorial. (Note that some browsers, such as Safari, may unzip it automatically.)
 3. Make sure your geocoding-tutorial folder has leaflet-geocoder.css, leaflet-geocoder, an images folder, and two HTML files.
 
-    ![Files needed for the walkthrough](images/geocoder-dist-folder.png)
+    ![Files needed for the walkthrough](images/geocoder-downloads-folder.png)
 
 ## Create an index page
 
