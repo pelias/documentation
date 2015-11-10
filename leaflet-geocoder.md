@@ -28,7 +28,7 @@ Now that you have downloaded the required dependent files, you are ready to star
 
 `index.html` is the file you will be editing, while `index-complete.html` is a completed version that you can use to check your work or review if you need to troubleshoot an error.
 
-Some common text editor applications include Atom, Notepad++, Sublime, as well as the apps that are installed with your operating system, such as Notepad or TextEdit, although they do not provide indentations or code alignments that are availabl in the other apps. If you do use TextEdit, you need to go to the Format menu and click Make Plain Text to use the plain-text version of the file. You should not use an app with any rich formatting, such as Word or Wordpad.
+Some common text editor applications include Atom, Notepad++, Sublime. You can use the apps installed with your operating system, such as Notepad or TextEdit, but they do not provide the helpful indentations or code alignments that are available in the other apps. If you do use TextEdit, you must go to the Format menu and click Make Plain Text to use the plain-text version of the file. Do not use an app with any rich formatting, such as Word or Wordpad.
 
 1. From your geocoding-tutorial folder, open index.html in a text editor. It should look like this:
 
@@ -42,8 +42,8 @@ Some common text editor applications include Atom, Notepad++, Sublime, as well a
     </html>
     ```
 
-3. In the `<head>` tag, add a title, such as `<title>My Geocoding Map</title>`.
-4. On the next line, add a metadata tag so you can properly display diacritics and characters from different languages.
+2. In the `<head>` tag, add a title, such as `<title>My Geocoding Map</title>`.
+3. On the next line, add a metadata tag so you can properly display diacritics and characters from different languages.
   ```html
   <meta charset="utf-8">
   ```
@@ -69,7 +69,7 @@ As you are working, it’s a good idea to save your edits and periodically reloa
 
 ## Add references to CSS and JavaScript files
 
-Because you are working with several external cascading style sheet (CSS) and JavaScript files, you need to add references to them in your index.html file. These include style sheets and JavaScript files for Leaflet and the geocoder. You will need to add these into the <head> and <body> sections of the index.html.
+Because you are working with several external cascading style sheet (CSS) and JavaScript files, you need to add references to them in your index.html file. These include style sheets and JavaScript files for Leaflet and the geocoder. You will need to add these into the `<head>` and `<body>` sections of the index.html.
 
 1. In index.html, at the bottom of the `<head>` section, add references to the Leaflet CSS and JavaScript files. You are referencing these from a website, rather than from a file on your machine.
 
@@ -128,13 +128,16 @@ To display a Leaflet map on a page, you need a `<div>` element with an ID value,
     <div id="map"></div>
     ```
 
-3. Immediately after the `<div>`, add this JavaScript code within a `<script>` tag to initialize Leaflet. `L.xxxxx` is a convention used with the Leaflet API. The `setView([37.804146, -122.275045], 16)` sets the center of the map, in decimal degrees, and the zoom level. The map is centered at the Maptime Oakland meeting location, with a zoom level that allows you to see the streets and features of the city. Zoom levels are similar to map scales or resolutions, where a smaller value shows a larger area in less detail, and a larger zoom level value depicts smaller area in great detail.
+3. Immediately after the `<div>`, add this JavaScript code within a `<script>` tag to initialize Leaflet.
 
     ```html
     <script>
       var map = L.map('map').setView([37.804146, -122.275045], 16);
     </script>
     ```
+
+    `L.xxxxx` is a convention used with the Leaflet API. The `setView([37.804146, -122.275045], 16)` sets the center of the map, in decimal degrees, and the zoom level. The map is centered at the Maptime Oakland meeting location, with a zoom level that allows you to see the streets and features of the city. Zoom levels are similar to map scales or resolutions, where a smaller value shows a larger area in less detail, and a larger zoom level value depicts smaller area in great detail.
+
 4. Within the same `<script>` tag as `var map = `, add a line to set the data source for the map. This line adds the default OpenStreetMap tiles and an attribution.
 
     ```html
@@ -142,9 +145,7 @@ To display a Leaflet map on a page, you need a `<div>` element with an ID value,
       attribution: '&copy; <a href="http://openstreetmap.org/copyright">OpenStreetMap contributors</a>'
     }).addTo(map);
     ```
-5. Save your edits and refresh the browser. You should see a map with OpenStreetMap tiles, zoom controls, and a Leaflet attribution in the bottom corner.
-
-    ![Leaflet canvas map with controls and attribution](images/geocoder-osm-leaflet.png)
+5. Save your edits and refresh the browser.
 
 Your index.html should look something like this:
 
@@ -178,6 +179,10 @@ Your index.html should look something like this:
 </html>
 ```
 
+You should see a map with OpenStreetMap tiles, zoom controls, and a Leaflet attribution in the bottom corner.
+
+![Leaflet canvas map with controls and attribution](images/geocoder-osm-leaflet.png)
+
 ## Add the Search box
 
 So far, you have referenced the necessary files, initialized Leaflet with a map container on the page, and added data to the map. Now, you are ready to add the Search box from the Mapzen Search plug-in.
@@ -187,6 +192,7 @@ So far, you have referenced the necessary files, initialized Leaflet with a map 
     ```js
     var geocoder = L.control.geocoder('search-VzKH_PI').addTo(map);
     ```
+
     The search-VzKH_PI text is the Mapzen Search API key, which is provided for you at MaptimeOAK. Because the search service is provided for free, the key is a way to make sure that the performance is good for everyone. If you want to use Mapzen Search after this event, you need to obtained your own API key from https://mapzen.com/developers. Then, paste it here instead of this one.
 
 2. Save your edits and refresh the browser. You should see a small magnifying glass icon in the left corner, near the zoom controls.
@@ -217,7 +223,7 @@ Your `<body>` section should look like this:
 ## Search for places on the map
 
 1. On the map, type a place name or address in the Search box. As you type, the text automatically completes to suggest matching results.
-2. Click a result in the list to zoom and add a point to the map at that location.
+2. Click a result in the list to zoom and add a point to the map at that location. (The point is only on your map, and does not update OpenStreetMap.)
 
     ![Entering an address to find on the map](images/geocoder-address-search.png)
 
