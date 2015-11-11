@@ -12,17 +12,17 @@ The Leaflet JavaScript library, which provides tools for zooming, displaying att
 
 To set up your development environment for this walkthrough, you need to download the geocoder plug-in. You do not need to download the Leaflet files because you will be referencing them from a web server.
 
-1. Download the files from .
-2. Unzip the file you downloaded. It should unzip to a folder named geocoding-tutorial. (Note that some browsers, such as Safari, may unzip it automatically.)
+1. Download the zip file from https://github.com/pelias/pelias-doc/raw/master/geocoding-tutorial.zip.
+2. Find the file in your default downloads directory and unzip it. It should unzip to a folder named geocoding-tutorial. (Note that some browsers, such as Safari, may unzip automatically.)
 3. Make sure your geocoding-tutorial folder has leaflet-geocoder.css, leaflet-geocoder, an images folder, and two HTML files.
 
     ![Files needed for the walkthrough](images/geocoder-downloads-folder.png)
 
 ## Create an index page
 
-Now that you have downloaded the required dependent files, you are ready to start building your application. You will need to use a text editor to update the HTML.
+With the files downloaded, you are ready to start building your application. You will need to use a text editor to update the HTML.
 
-Suggested text editor applications include Atom, Notepad++, and Sublime. While you can use the ones installed with your operating system, such as Notepad or TextEdit, they do not provide the helpful indentations or code alignments found in the other editors. For TextEdit, you must go to the Format menu and click Make Plain Text to use the plain-text version of the file. Do not use an app that applies rich formatting, such as Word or Wordpad.
+Suggested text editor applications include [Atom - OS X, Windows, Linux](https://atom.io/), [Notepad++ - Windows](https://notepad-plus-plus.org/), [TextWrangler - OS X](http://www.barebones.com/products/textwrangler/), and  [Sublime - OS X, Windows, Linux; free trial](http://www.sublimetext.com/). While you can use the apps installed with your operating system, such as Notepad or TextEdit, they do not provide the helpful indentations, code coloring, or text alignment options found in the other editors. For TextEdit, you must go to the Format menu and click Make Plain Text to use the plain-text version of the file. Do not use an app that applies rich formatting, such as Word or Wordpad.
 
 The geocoding-tutorial folder contains two HTML files: `index.html` is the file you will start with and update in the steps, while `index-complete.html` is a finished version to check your work or review if you need to troubleshoot an error.
 
