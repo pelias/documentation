@@ -65,9 +65,9 @@ You HTML should look like this:
 
 ## Add references to CSS and JavaScript files
 
-Cascading style sheet (CSS) files style a webpage, including layout and fonts, and JavaScript adds functionality to the page. In your index.html file, you need to list the CSS and JavaScript files used for building a page with Leaflet and the geocoder.
+A cascading style sheet (CSS) is used to style a webpage, including layout and fonts, and JavaScript adds functionality to the page. In your index.html file, you need to list the CSS and JavaScript files required for building a page with Leaflet and the geocoder plug-in.
 
-1. In index.html, at the bottom of the `<head>` section, add references to the Leaflet CSS and JavaScript files. You are referencing these from a website, rather than from a file on your machine.
+1. In index.html, at the bottom of the `<head>` section, add references to the Leaflet CSS and JavaScript files. You are linking to these on a website, rather than from a file on your machine.
 
     ```html
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.5/leaflet.css">
@@ -132,7 +132,7 @@ To display a Leaflet map on a page, you need a `<div>` element with an ID value,
     </script>
     ```
 
-    `L.xxxxx` is a convention used with the Leaflet API. The `setView([37.804146, -122.275045], 16)` sets the center of the map, in decimal degrees, and the zoom level. The map is centered at the MaptimeOAK meeting location, with a zoom level that allows you to see the streets and features of the city. Zoom levels are similar to map scales or resolutions, where a smaller value shows a larger area in less detail, and a larger zoom level value depicts smaller area in great detail.
+    `L.xxxxx` is a convention used with the Leaflet API. The `setView([37.804146, -122.275045], 16)` part sets the center of the map, in decimal degrees, and the zoom level. The map is centered at the MaptimeOAK meeting location, with a zoom level that allows you to see the streets and features of the city. Zoom levels are similar to map scales or resolutions, where a smaller value shows a larger area in less detail, and a larger zoom level value depicts smaller area in great detail.
 
 4. Within the same `<script>` tag, start a new line and set the data source for the map. This line adds the default OpenStreetMap tiles and an attribution.
 
