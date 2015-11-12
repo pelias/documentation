@@ -1,4 +1,4 @@
-# Add Mapzen Search geocoder to a map
+# Add the Mapzen Search geocoder to a map
 
 [Mapzen Search](https://mapzen.com/projects/search) is a modern, geographic search service based entirely on open-source tools and powered entirely by open data. You might use this functionality in any app that has a geographic component, including ones that deliver goods, locate hotels or venues, or even provide local weather forecasts.
 
@@ -14,7 +14,7 @@ To set up your development environment for this walkthrough, you need to downloa
 
 1. Download the zip file from https://github.com/pelias/pelias-doc/raw/master/geocoding-tutorial.zip.
 2. Find the file in your default downloads directory and unzip it. It should unzip to a folder named geocoding-tutorial. (Note that some browsers, such as Safari, may unzip automatically.)
-3. Make sure your geocoding-tutorial folder has leaflet-geocoder.css, leaflet-geocoder, an images folder, and two HTML files.
+3. Make sure your geocoding-tutorial folder has pelias-leaflet-geocoder.css, pelias-leaflet-geocoder.js, an images folder, and two HTML files.
 
     ![Files needed for the walkthrough](images/geocoder-downloads-folder.png)
 
@@ -22,7 +22,7 @@ To set up your development environment for this walkthrough, you need to downloa
 
 With the files downloaded, you are ready to start building your map. You will need to use a text editor to update the HTML.
 
-Suggested text editor applications include [Atom - OS X, Windows, Linux](https://atom.io/), [Notepad++ - Windows](https://notepad-plus-plus.org/), [TextWrangler - OS X](http://www.barebones.com/products/textwrangler/), and  [Sublime - OS X, Windows, Linux; free trial](http://www.sublimetext.com/). While you can use the apps installed with your operating system, such as Notepad or TextEdit, they do not provide the helpful indentations, code coloring and autocomplete, or text alignment options found in the other editors. For TextEdit, you must go to the Format menu and click Make Plain Text to use the plain-text version of the file. Do not use an app that applies rich formatting, such as Word or Wordpad.
+Suggested text editor applications include [Atom - OS X, Windows, Linux](https://atom.io/); [Notepad++ - Windows](https://notepad-plus-plus.org/); [TextWrangler - OS X](http://www.barebones.com/products/textwrangler/); and  [Sublime - OS X, Windows, Linux; free trial](http://www.sublimetext.com/). While you can use the apps installed with your operating system, such as Notepad or TextEdit, they do not provide the helpful indentations, code coloring and autocomplete, or text alignment options found in the other editors. For TextEdit, you must go to the Format menu and click Make Plain Text to use the plain-text version of the file. Do not use an app that applies rich formatting, such as Word or Wordpad.
 
 The geocoding-tutorial folder contains two HTML files: `index.html` is the file you will start with and update in the steps, while `index-complete.html` is a finished version to check your work or review if you need to troubleshoot an error.
 
