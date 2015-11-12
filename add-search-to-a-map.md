@@ -14,8 +14,8 @@ To set up your development environment for this walkthrough, you need to downloa
 
 1. Download the zip file from https://github.com/pelias/pelias-doc/raw/master/geocoding-tutorial.zip.
 
-2. Find the file in your default downloads directory and unzip it. It should unzip to a folder named geocoding-tutorial. (Note that some browsers, such as Safari, may unzip automatically.)
-3. Make sure your geocoding-tutorial folder has pelias-leaflet-geocoder.css, pelias-leaflet-geocoder.js, an images folder, and two HTML files.
+2. Find the file in your default downloads directory and unzip it. It should unzip to a folder named `geocoding-tutorial`. (Note that some browsers, such as Safari, may unzip automatically.)
+3. Make sure your `geocoding-tutorial` folder has `pelias-leaflet-geocoder.css`, `pelias-leaflet-geocoder.js`, an images folder, and two HTML files.
 
     ![Files needed for the walkthrough](images/geocoder-downloads-folder.png)
 
@@ -27,7 +27,7 @@ Suggested text editor applications include [Atom - OS X, Windows, Linux](https:/
 
 The geocoding-tutorial folder contains two HTML files: `index.html` is the file you will start with and update in the steps, while `index-complete.html` is a finished version to check your work or review if you need to troubleshoot an error.
 
-1. From your geocoding-tutorial folder, open index.html in a text editor. It should look like this:
+1. From your `geocoding-tutorial` folder, open `index.html` in a text editor. It should look like this:
 
     ```html
     <!DOCTYPE html>
@@ -70,7 +70,7 @@ You HTML should look like this:
 
 A cascading style sheet (CSS) is used to style a webpage, including layout and fonts, and JavaScript adds functionality to the page. In your index.html file, you need to list the CSS and JavaScript files required for building a page with Leaflet and the geocoder plug-in.
 
-1. In index.html, at the bottom of the `<head>` section, add references to the Leaflet CSS and JavaScript files. You are linking to these from a remote website, rather than from a file on your machine.
+1. In `index.html`, at the bottom of the `<head>` section, add references to the Leaflet CSS and JavaScript files. You are linking to these from a remote website, rather than from a file on your machine.
 
     ```html
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.5/leaflet.css">
@@ -227,14 +227,14 @@ Your `<body>` section should look like this:
 
     ![Entering an address to find on the map](images/geocoder-address-search.png)
 
-Mapzen Search uses a [variety of open data sources](https://mapzen.com/documentation/search/data-sources/), including OpenStreetMap. If you unable to find a location, it could be a software issue, or an indicator that the place is missing or incorrect in the source dataset. Part of the power of open data is that anyone can modify the source data and improve the quality for everyone.
+If you want to [customize the geocoder plug-in behavior](https://github.com/pelias/leaflet-geocoder#customizing-the-plugin) beyond the defaults in this Walkthrough, you can set additional options in your code. For example, the Search box collapses to an icon by default, but you can specify that the text box be shown at full width. There are also options for customizing the parameters for the Mapzen Search service, such as limiting the search to the map's extent or prioritizing results near the current view. Right now, you may notice that results from around the world appear in the list.
 
-However, because the geocoder is still under development and considered experimental, if you are getting unexpected search results, please add an issue to the [Pelias GitHub repository](https://github.com/pelias/pelias/issues). The developers can investigate and determine if the problem is caused by software or data, and work to fix it either way.
+Mapzen Search uses a [variety of open data sources](https://mapzen.com/documentation/search/data-sources/), including OpenStreetMap. Part of the power of open data is that anyone can modify the source data and improve the quality for everyone. If you are unable to find a location, the place could be missing or incorrect in the source datasets. Mapzen is also building a comprehensive, open database of places known as [Who's on First](https://github.com/whosonfirst/whosonfirst-data) that can be publicly edited, and is working on integrating it into the geocoder.  
 
-## Walkthrough summary and next steps
+Because the geocoder is still under development and considered experimental, if you are getting unexpected search results, please add an issue to the [Pelias GitHub repository](https://github.com/pelias/pelias/issues). The developers can investigate and determine if the problem is caused by software or data, and work to fix it either way.
 
-In this walkthrough, you learned the basics of adding the Mapzen Search geocoding engine to a Leaflet map.
+To take your map even further, you can follow along with some additional Mapzen tutorials. One exercise you can try is to use [Mapzen's Tangram rendering engine](https://mapzen.com/documentation/turn-by-turn/add-routing-to-a-map/#add-a-tangram-map-to-the-frame) and vector tiles to draw the data on the map, instead of the OpenStreetMap raster tile layer you used in this walkthrough. When you get your map the way you want, you might be interested [putting your map on the web](https://mapzen.com/documentation/tangram/walkthrough/#put-your-tangram-map-on-the-web) so you can share your work with others.
 
-If you want to continue building your map, you can follow along with some additional Mapzen tutorials. One exercise you can try is to use [Mapzen's Tangram rendering engine](https://mapzen.com/documentation/turn-by-turn/add-routing-to-a-map/#add-a-tangram-map-to-the-frame) and vector tiles to draw the data on the map, instead of the OpenStreetMap raster tile layer you used in this walkthrough. When you get your map the way you want, you might be interested [putting your map on the web](https://mapzen.com/documentation/tangram/walkthrough/#put-your-tangram-map-on-the-web) so you can share your work with others.
+## Walkthrough summary
 
-If you want to learn more about Mapzen Search, review the [documentation](https://mapzen.com/documentation/search/).
+In this walkthrough, you learned the basics of adding the Mapzen Search geocoding engine to a Leaflet map. If you want to learn more about Mapzen Search, review the [documentation](https://mapzen.com/documentation/search/).
