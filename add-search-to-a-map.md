@@ -46,7 +46,7 @@ The geocoding-tutorial folder contains two HTML files: `index.html` is the file 
   ```html
   <meta charset="utf-8">
   ```
-  
+
 4. Save your edits to the index.html file.
 5. Drag your index.html file onto a web browser tab. It should show your title, `My Geocoding Map`, but the web page canvas is blank.
 
