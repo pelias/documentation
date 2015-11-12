@@ -1,8 +1,8 @@
 # Add the Mapzen Search geocoder to a map
 
-[Mapzen Search](https://mapzen.com/projects/search) is a modern, geographic search service based entirely on open-source tools and powered entirely by open data. You might use this functionality in any app that has a geographic component, including ones that deliver goods, locate hotels or venues, or even provide local weather forecasts.
+[Mapzen Search](https://mapzen.com/projects/search) is a modern, geographic search service based entirely on open-source tools and open data. Use this functionality to enhance any app that has a geographic context, such as ones that assist in delivering goods, locating hotels or venues, or providing local weather forecasts.
 
-Through a process known as [geocoding](https://en.wikipedia.org/wiki/Geocoding), Mapzen Search allows you to enter an address or the name of a landmark or business, and then it translates the result in to the geographic coordinates for mapping. Mapzen Search is built on [Pelias](https://github.com/pelias), an open-source geocoding project.
+Through a process known as [geocoding](https://en.wikipedia.org/wiki/Geocoding), Mapzen Search allows you to enter an address or the name of a landmark or business, and the service translates the result into geographic coordinates for mapping. Mapzen Search is built on [Pelias](https://github.com/pelias), an open-source geocoding project.
 
 In this walkthrough, you will learn how to make a map with a search box that allows you to enter addresses and place names and locate them on a map. To complete the tutorial, you should have some familiarity with HTML and JavaScript, although all the source code is provided.
 
@@ -13,6 +13,7 @@ The Leaflet JavaScript library, which provides tools for zooming, displaying att
 To set up your development environment for this walkthrough, you need to download the geocoder plug-in. You do not need to download the Leaflet files because you will be referencing them from a web server.
 
 1. Download the zip file from https://github.com/pelias/pelias-doc/raw/master/geocoding-tutorial.zip.
+
 2. Find the file in your default downloads directory and unzip it. It should unzip to a folder named geocoding-tutorial. (Note that some browsers, such as Safari, may unzip automatically.)
 3. Make sure your geocoding-tutorial folder has pelias-leaflet-geocoder.css, pelias-leaflet-geocoder.js, an images folder, and two HTML files.
 
@@ -48,7 +49,7 @@ The geocoding-tutorial folder contains two HTML files: `index.html` is the file 
   ```
 
 4. Save your edits to the index.html file.
-5. Drag your index.html file onto a web browser tab. It should show your title, `My Geocoding Map`, but the web page canvas is blank.
+5. Drag your index.html file onto a web browser tab. It should show your title, `My Geocoding Map`, but the web page canvas will be blank.
 
   ![Blank html page](images/geocoder-blank-tab.png)
 
@@ -69,7 +70,7 @@ You HTML should look like this:
 
 A cascading style sheet (CSS) is used to style a webpage, including layout and fonts, and JavaScript adds functionality to the page. In your index.html file, you need to list the CSS and JavaScript files required for building a page with Leaflet and the geocoder plug-in.
 
-1. In index.html, at the bottom of the `<head>` section, add references to the Leaflet CSS and JavaScript files. You are linking to these on a website, rather than from a file on your machine.
+1. In index.html, at the bottom of the `<head>` section, add references to the Leaflet CSS and JavaScript files. You are linking to these from a remote website, rather than from a file on your machine.
 
     ```html
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.5/leaflet.css">
@@ -226,7 +227,7 @@ Your `<body>` section should look like this:
 
     ![Entering an address to find on the map](images/geocoder-address-search.png)
 
-Mapzen Search uses a [variety of open data sources](https://mapzen.com/documentation/search/data-sources/), including OpenStreetMap. If you unable to find a location, it could be a software issue, or also an indicator that the place is missing or incorrect in the source dataset. Part of the power of open data is that anyone can modify the source data and improve the quality for everyone.
+Mapzen Search uses a [variety of open data sources](https://mapzen.com/documentation/search/data-sources/), including OpenStreetMap. If you unable to find a location, it could be a software issue, or an indicator that the place is missing or incorrect in the source dataset. Part of the power of open data is that anyone can modify the source data and improve the quality for everyone.
 
 However, because the geocoder is still under development and considered experimental, if you are getting unexpected search results, please add an issue to the [Pelias GitHub repository](https://github.com/pelias/pelias/issues). The developers can investigate and determine if the problem is caused by software or data, and work to fix it either way.
 
