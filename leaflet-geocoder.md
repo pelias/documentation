@@ -20,9 +20,9 @@ To set up your development environment for this walkthrough, you need to downloa
 
 ## Create an index page
 
-With the files downloaded, you are ready to start building your application. You will need to use a text editor to update the HTML.
+With the files downloaded, you are ready to start building your map. You will need to use a text editor to update the HTML.
 
-Suggested text editor applications include [Atom - OS X, Windows, Linux](https://atom.io/), [Notepad++ - Windows](https://notepad-plus-plus.org/), [TextWrangler - OS X](http://www.barebones.com/products/textwrangler/), and  [Sublime - OS X, Windows, Linux; free trial](http://www.sublimetext.com/). While you can use the apps installed with your operating system, such as Notepad or TextEdit, they do not provide the helpful indentations, code coloring, or text alignment options found in the other editors. For TextEdit, you must go to the Format menu and click Make Plain Text to use the plain-text version of the file. Do not use an app that applies rich formatting, such as Word or Wordpad.
+Suggested text editor applications include [Atom - OS X, Windows, Linux](https://atom.io/), [Notepad++ - Windows](https://notepad-plus-plus.org/), [TextWrangler - OS X](http://www.barebones.com/products/textwrangler/), and  [Sublime - OS X, Windows, Linux; free trial](http://www.sublimetext.com/). While you can use the apps installed with your operating system, such as Notepad or TextEdit, they do not provide the helpful indentations, code coloring and autocomplete, or text alignment options found in the other editors. For TextEdit, you must go to the Format menu and click Make Plain Text to use the plain-text version of the file. Do not use an app that applies rich formatting, such as Word or Wordpad.
 
 The geocoding-tutorial folder contains two HTML files: `index.html` is the file you will start with and update in the steps, while `index-complete.html` is a finished version to check your work or review if you need to troubleshoot an error.
 
