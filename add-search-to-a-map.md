@@ -2,9 +2,9 @@
 
 [Mapzen Search](https://mapzen.com/projects/search) is a modern, geographic search service based entirely on open-source tools and powered entirely by open data. You might use this functionality in any app that has a geographic component, including ones that deliver goods, locate hotels or venues, or even provide local weather forecasts.
 
-Through a process known as [geocoding](search.md), Mapzen Search allows you to enter an address or the name of a landmark or business, and then it translates the result in to the geographic coordinates for mapping. Mapzen Search is built on [Pelias](https://github.com/pelias), an open-source geocoding project.
+Through a process known as [geocoding](https://en.wikipedia.org/wiki/Geocoding), Mapzen Search allows you to enter an address or the name of a landmark or business, and then it translates the result in to the geographic coordinates for mapping. Mapzen Search is built on [Pelias](https://github.com/pelias), an open-source geocoding project.
 
-In this walkthrough, you will learn how to make a map with a search box that allows you to enter addresses and place names and locate them on a map. To complete the tutorial, you should have some familiarity with HTML and JavaScript, although all the source code is provided. You will need an [API key](https://mapzen.com/developers) (which is provided for you at MaptimeOAK) to use Mapzen Search, which requires a GitHub account for authorization. You can use any text editor and operating system, but must maintain an Internet connection while you are working. The tutorial should take about 30 minutes to complete.
+In this walkthrough, you will learn how to make a map with a search box that allows you to enter addresses and place names and locate them on a map. To complete the tutorial, you should have some familiarity with HTML and JavaScript, although all the source code is provided.
 
 ## Download and install the dependencies
 
@@ -20,9 +20,9 @@ To set up your development environment for this walkthrough, you need to downloa
 
 ## Create an index page
 
-With the files downloaded, you are ready to start building your application. You will need to use a text editor to update the HTML.
+With the files downloaded, you are ready to start building your map. You will need to use a text editor to update the HTML.
 
-Suggested text editor applications include [Atom - OS X, Windows, Linux](https://atom.io/); [Notepad++ - Windows](https://notepad-plus-plus.org/); [TextWrangler - OS X](http://www.barebones.com/products/textwrangler/); and  [Sublime - OS X, Windows, Linux; free trial](http://www.sublimetext.com/). While you can use the apps installed with your operating system, such as Notepad or TextEdit, they do not provide the helpful indentations, code coloring, or text alignment options found in the other editors. For TextEdit, you must go to the Format menu and click Make Plain Text to use the plain-text version of the file. Do not use an app that applies rich formatting, such as Word or Wordpad.
+Suggested text editor applications include [Atom - OS X, Windows, Linux](https://atom.io/); [Notepad++ - Windows](https://notepad-plus-plus.org/); [TextWrangler - OS X](http://www.barebones.com/products/textwrangler/); and  [Sublime - OS X, Windows, Linux; free trial](http://www.sublimetext.com/). While you can use the apps installed with your operating system, such as Notepad or TextEdit, they do not provide the helpful indentations, code coloring and autocomplete, or text alignment options found in the other editors. For TextEdit, you must go to the Format menu and click Make Plain Text to use the plain-text version of the file. Do not use an app that applies rich formatting, such as Word or Wordpad.
 
 The geocoding-tutorial folder contains two HTML files: `index.html` is the file you will start with and update in the steps, while `index-complete.html` is a finished version to check your work or review if you need to troubleshoot an error.
 
@@ -38,11 +38,15 @@ The geocoding-tutorial folder contains two HTML files: `index.html` is the file 
     </html>
     ```
 
+    These form the basic structure of an HTML document. `<!DOCTYPE html>` goes at the top of every HTML page and indicates that it is written for HTML5, and the `<html>` tags tell your browser that the content is HTML. The `<head>` tag contains the title for the page and other metadata about the page, while the `<body>` is where you add the code and the rest of the content on your page. There are many [web tutorials](http://www.w3schools.com/html/default.asp) available to help you experiment with and learn more about HTML documents and the tags in them.
+
 2. In the `<head>` tag, add a title, such as `<title>My Geocoding Map</title>`.
 3. On the next line, add a metadata tag so you can properly display diacritics and characters from different languages.
+
   ```html
   <meta charset="utf-8">
   ```
+
 4. Save your edits to the index.html file.
 5. Drag your index.html file onto a web browser tab. It should show your title, `My Geocoding Map`, but the web page canvas is blank.
 
@@ -63,9 +67,9 @@ You HTML should look like this:
 
 ## Add references to CSS and JavaScript files
 
-Cascading style sheet (CSS) files style a webpage, including layout and fonts, and JavaScript adds functionality to the page. In your index.html file, you need to list the CSS and JavaScript files used for building a page with Leaflet and the geocoder.
+A cascading style sheet (CSS) is used to style a webpage, including layout and fonts, and JavaScript adds functionality to the page. In your index.html file, you need to list the CSS and JavaScript files required for building a page with Leaflet and the geocoder plug-in.
 
-1. In index.html, at the bottom of the `<head>` section, add references to the Leaflet CSS and JavaScript files. You are referencing these from a website, rather than from a file on your machine.
+1. In index.html, at the bottom of the `<head>` section, add references to the Leaflet CSS and JavaScript files. You are linking to these on a website, rather than from a file on your machine.
 
     ```html
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.5/leaflet.css">
@@ -75,8 +79,8 @@ Cascading style sheet (CSS) files style a webpage, including layout and fonts, a
 2. In the `<head>` section, immediately after the lines you added for Leaflet, add references to the geocoder's CSS and JavaScript files. These files are from the zipped file you copied to your machine.
 
     ```html
-    <link rel="stylesheet" href="../geocoding-tutorial/pelias-leaflet-geocoder.css">
-    <script src="../geocoding-tutorial/pelias-leaflet-geocoder.js"></script>
+    <link rel="stylesheet" href="pelias-leaflet-geocoder.css">
+    <script src="pelias-leaflet-geocoder.js"></script>
     ```
 
 3. Save your edits and refresh the browser. The webpage should still appear empty because you have not added any code to interact with these references.
@@ -91,8 +95,8 @@ After adding these, your index.html file should look something like this.
   <meta charset="utf-8">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.5/leaflet.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.5/leaflet.js"></script>
-  <link rel="stylesheet" href="../geocoding-tutorial/pelias-leaflet-geocoder.css">
-  <script src="../geocoding-tutorial/pelias-leaflet-geocoder.js"></script>
+  <link rel="stylesheet" href="pelias-leaflet-geocoder.css">
+  <script src="pelias-leaflet-geocoder.js"></script>
 </head>
 <body>
 </body>
@@ -101,7 +105,7 @@ After adding these, your index.html file should look something like this.
 
 ## Add a map to the page
 
-To display a Leaflet map on a page, you need a `<div>` element with an ID value, as well as a size for the box containing the map. If you want to know more about initializing a Leaflet map, see the [Leaflet getting started documentation](http://leafletjs.com/examples/quick-start.html).
+To display a Leaflet map on a page, you need a `<div>` element, which is a container on the page that groups elements, with an ID value. If you want to know more about initializing a Leaflet map, see the [Leaflet getting started documentation](http://leafletjs.com/examples/quick-start.html).
 
 1. At the bottom of the `<head>` section, after the references you added in the previous steps, add a `<style>` tag and the following attributes to set the size of the map on your webpage.
 
@@ -130,7 +134,7 @@ To display a Leaflet map on a page, you need a `<div>` element with an ID value,
     </script>
     ```
 
-    `L.xxxxx` is a convention used with the Leaflet API. The `setView([37.804146, -122.275045], 16)` sets the center of the map, in decimal degrees, and the zoom level. The map is centered at the MaptimeOAK meeting location, with a zoom level that allows you to see the streets and features of the city. Zoom levels are similar to map scales or resolutions, where a smaller value shows a larger area in less detail, and a larger zoom level value depicts smaller area in great detail.
+    `L.xxxxx` is a convention used with the Leaflet API. The `setView([37.804146, -122.275045], 16)` part sets the center of the map, in decimal degrees, and the zoom level. The map is centered at the MaptimeOAK meeting location, with a zoom level that allows you to see the streets and features of the city. Zoom levels are similar to map scales or resolutions, where a smaller value shows a larger area in less detail, and a larger zoom level value depicts smaller area in great detail.
 
 4. Within the same `<script>` tag, start a new line and set the data source for the map. This line adds the default OpenStreetMap tiles and an attribution.
 
@@ -151,8 +155,8 @@ Your index.html should look something like this:
   <meta charset="utf-8">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.5/leaflet.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.5/leaflet.js"></script>
-  <link rel="stylesheet" href="../geocoding-tutorial/pelias-leaflet-geocoder.css">
-  <script src="../geocoding-tutorial/pelias-leaflet-geocoder.js"></script>
+  <link rel="stylesheet" href="pelias-leaflet-geocoder.css">
+  <script src="pelias-leaflet-geocoder.js"></script>
   <style>
     #map {
       height: 100%;
@@ -188,7 +192,7 @@ So far, you have referenced the necessary files, initialized Leaflet with a map 
     var geocoder = L.control.geocoder('search-VzKH_PI').addTo(map);
     ```
 
-    The `search-VzKH_PI` text is the Mapzen Search API key, which is provided for you at MaptimeOAK. Because the search service is shared among many users, the key is a way to make sure that the performance is acceptable for everyone. The key you are provided will expire, so if you want to use Mapzen Search after this event, you need to obtain your own API key from https://mapzen.com/developers and replace it here.
+    The `search-VzKH_PI` text is the Mapzen Search [API key](https://en.wikipedia.org/wiki/Application_programming_interface_key). Because the search service is shared among many users, an API key is a way to make sure that the performance is acceptable for everyone. The key you are provided at MaptimeOAK will expire, so if you want to use Mapzen Search after this event, you need to obtain your own API key from https://mapzen.com/developers and replace it here.
 
 2. Save your edits and refresh the browser. You should see a small magnifying glass icon in the left corner, near the zoom controls.
 
@@ -218,7 +222,7 @@ Your `<body>` section should look like this:
 ## Search for places on the map
 
 1. On the map, type `555 12th` in the Search box. As you type, the text automatically completes to suggest matching results.
-2. In the results list, find the entry for `555 12th Street, Oakland, CA` and click it in the list to zoom and add a point to the map at that location. (The point is only on your map, and does not update OpenStreetMap.)
+2. In the results list, find the entry for `555 12th Street, Oakland, CA` and click it to zoom and add a point to the map at that location. (The point is only on your map, and does not update OpenStreetMap.)
 
     ![Entering an address to find on the map](images/geocoder-address-search.png)
 
@@ -230,4 +234,6 @@ However, because the geocoder is still under development and considered experime
 
 In this walkthrough, you learned the basics of adding the Mapzen Search geocoding engine to a Leaflet map.
 
-You can review the [documentation](https://mapzen.com/documentation/search/) to learn more about geocoding with Mapzen Search.
+If you want to continue building your map, you can follow along with some additional Mapzen tutorials. One exercise you can try is to use [Mapzen's Tangram rendering engine](https://mapzen.com/documentation/turn-by-turn/add-routing-to-a-map/#add-a-tangram-map-to-the-frame) and vector tiles to draw the data on the map, instead of the OpenStreetMap raster tile layer you used in this walkthrough. When you get your map the way you want, you might be interested [putting your map on the web](https://mapzen.com/documentation/tangram/walkthrough/#put-your-tangram-map-on-the-web) so you can share your work with others.
+
+If you want to learn more about Mapzen Search, review the [documentation](https://mapzen.com/documentation/search/).
