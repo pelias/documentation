@@ -38,13 +38,15 @@ The geocoding-tutorial folder contains two HTML files: `index.html` is the file 
     </html>
     ```
 
-    These form the basic structure of an HTML document. `<!DOCTYPE html>` goes at the top of every HTML page and indicates that it is written for HTML5, and the `<html>` tags tell your browser that the content is HTML. The `<head>` tag contains the title for the page and other metadata about the page, while the `<body>` is where you add the code and the rest of the content on your page. There are many [web tutorials](http://www.w3schools.com/html/default.asp) available to help you experiment with and learn more about building HTML documents and the tags in them.
+    These form the basic structure of an HTML document. `<!DOCTYPE html>` goes at the top of every HTML page and indicates that it is written for HTML5, and the `<html>` tags tell your browser that the content is HTML. The `<head>` tag contains the title for the page and other metadata about the page, while the `<body>` is where you add the code and the rest of the content on your page. There are many [web tutorials](http://www.w3schools.com/html/default.asp) available to help you experiment with and learn more about HTML documents and the tags in them.
 
 2. In the `<head>` tag, add a title, such as `<title>My Geocoding Map</title>`.
 3. On the next line, add a metadata tag so you can properly display diacritics and characters from different languages.
+
   ```html
   <meta charset="utf-8">
   ```
+  
 4. Save your edits to the index.html file.
 5. Drag your index.html file onto a web browser tab. It should show your title, `My Geocoding Map`, but the web page canvas is blank.
 
@@ -103,7 +105,7 @@ After adding these, your index.html file should look something like this.
 
 ## Add a map to the page
 
-To display a Leaflet map on a page, you need a `<div>` element with an ID value, as well as a size for the box containing the map. If you want to know more about initializing a Leaflet map, see the [Leaflet getting started documentation](http://leafletjs.com/examples/quick-start.html).
+To display a Leaflet map on a page, you need a `<div>` element, which is a container on the page that groups elements, with an ID value. If you want to know more about initializing a Leaflet map, see the [Leaflet getting started documentation](http://leafletjs.com/examples/quick-start.html).
 
 1. At the bottom of the `<head>` section, after the references you added in the previous steps, add a `<style>` tag and the following attributes to set the size of the map on your webpage.
 
@@ -232,4 +234,6 @@ However, because the geocoder is still under development and considered experime
 
 In this walkthrough, you learned the basics of adding the Mapzen Search geocoding engine to a Leaflet map.
 
-You can review the [documentation](https://mapzen.com/documentation/search/) to learn more about geocoding with Mapzen Search.
+If you want to continue building your map, you can follow along with some additional Mapzen tutorials. One exercise you can try is to use [Mapzen's Tangram rendering engine](https://mapzen.com/documentation/turn-by-turn/add-routing-to-a-map/#add-a-tangram-map-to-the-frame) and vector tiles to draw the data on the map, instead of the OpenStreetMap raster tile layer you used in this walkthrough. When you get your map the way you want, you might be interested [putting your map on the web](https://mapzen.com/documentation/tangram/walkthrough/#put-your-tangram-map-on-the-web) so you can share your work with others.
+
+If you want to learn more about Mapzen Search, review the [documentation](https://mapzen.com/documentation/search/).
