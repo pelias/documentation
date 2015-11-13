@@ -22,6 +22,8 @@ https://search.mapzen.com/v1/place?api_key=search-XXXXXXX&ids=osm:venue:5013364,
 
 The results are returned in the order requested.
 
+One reason you'd want to do this is to exclude a particular dataset from being searched; you would include all the other data sources you do want to search.
+
 Keep in mind that if you enter a `source:layer:id` combination that cannot be found, then the `features` array in the response contains a different number of elements than the number of requests. This will be most noticeable in requests with multiple IDs, as your request may have three IDs requested but only two results returned. The reason for this is that the `features` section of the response is GeoJSON-compliant and there is currently no way to convey an exception condition (not even an empty JSON element, `{}`). For this reason, if your application is dependent upon the results mapping directly to the individual input requests in order, then you'll have to do your own bookkeeping to handle exception conditions.
 
 ## Valid combinations of place searches
