@@ -4,11 +4,20 @@
 
 Through a process known as [geocoding](https://en.wikipedia.org/wiki/Geocoding), Mapzen Search allows you to enter an address or the name of a landmark or business, and the service translates the result into geographic coordinates for mapping. Mapzen Search is built on [Pelias](https://github.com/pelias), an open-source geocoding project.
 
-In this walkthrough, you will learn how to make a map with a search box that allows you to enter addresses and place names and locate them on a map. To complete the tutorial, you should have some familiarity with HTML and JavaScript, although all the source code is provided.
+In this walkthrough, you will learn how to make a map with a search box that allows you to enter addresses and place names and locate them on a map. To complete the tutorial, you should have some familiarity with HTML and JavaScript, although all the source code is provided. You also need a Mapzen Search [API key](https://mapzen.com/developers), which requires a [GitHub account](https://help.github.com/articles/signing-up-for-a-new-github-account/) for authorization. You can use any text editor and operating system, but must maintain an Internet connection while you are working.
+
+## Sign up for a Mapzen Search API key
+
+To use the geocoding service, you must first obtain a Mapzen Search [API key](https://en.wikipedia.org/wiki/Application_programming_interface_key). Because the search service is shared among many users, an API key is a way to make sure that the performance is acceptable for everyone. Sign in at https://mapzen.com/developers to create and manage your API keys.
+
+1. Go to https://mapzen.com/developers.
+2. Sign in with your [GitHub account](https://help.github.com/articles/signing-up-for-a-new-github-account/). If you have not done this before, you need to agree to the terms first.
+3. Create a new key for Search, and optionally, give it a project name so you can remember the purpose of the key.
+4. Keep the web page open so you can copy the key into the source code later.
 
 ## Download and install the dependencies
 
-The Leaflet JavaScript library, which provides tools for zooming, displaying attributions, and drawing symbols, is a framework you can use to build web and mobile maps. Leaflet is extensible, and developers have built additional tools for Leaflet maps, including the Mapzen Search geocoder plug-in.
+The Leaflet JavaScript library provides tools for building an interactive map for web and mobile devices. Leaflet is extensible, and developers have built additional tools for Leaflet maps, including the Mapzen Search geocoder plug-in.
 
 To set up your development environment for this walkthrough, you need to download the geocoder plug-in. You do not need to download the Leaflet files because you will be referencing them from a web server.
 
@@ -44,16 +53,17 @@ The geocoding-tutorial folder contains two HTML files: `index.html` is the file 
 2. In the `<head>` tag, add a title, such as `<title>My Geocoding Map</title>`.
 3. On the next line, add a metadata tag so you can properly display diacritics and characters from different languages.
 
-  ```html
-  <meta charset="utf-8">
-  ```
+    ```html
+    <meta charset="utf-8">
+    ```
 
 4. Save your edits to the index.html file.
 5. Drag your index.html file onto a web browser tab. It should show your title, `My Geocoding Map`, but the web page canvas will be blank.
 
-  ![Blank html page](images/geocoder-blank-tab.png)
+    ![Blank html page](images/geocoder-blank-tab.png)
 
-You HTML should look like this:
+Your HTML should look like this:
+
 ```html
 <!DOCTYPE html>
 <html>
@@ -68,7 +78,7 @@ You HTML should look like this:
 
 ## Add references to CSS and JavaScript files
 
-A cascading style sheet (CSS) is used to style a webpage, including layout and fonts, and JavaScript adds functionality to the page. In your index.html file, you need to list the CSS and JavaScript files required for building a page with Leaflet and the geocoder plug-in.
+A cascading style sheet (CSS) is used to style a webpage, including layout and fonts, and JavaScript adds functionality to the page. In your `index.html` file, you need to list the CSS and JavaScript files required for building a page with Leaflet and the geocoder plug-in.
 
 1. In `index.html`, at the bottom of the `<head>` section, add references to the Leaflet CSS and JavaScript files. You are linking to these from a remote website, rather than from a file on your machine.
 
@@ -110,16 +120,16 @@ To display a Leaflet map on a page, you need a `<div>` element, which is a conta
 
 1. At the bottom of the `<head>` section, after the references you added in the previous steps, add a `<style>` tag and the following attributes to set the size of the map on your webpage.
 
-  ```html
-  <style>
-    #map {
-      height: 100%;
-      width: 100%;
-      position: absolute;
-    }
-    html,body{margin: 0; padding: 0}
-  </style>
-  ```
+    ```html
+    <style>
+      #map {
+        height: 100%;
+        width: 100%;
+        position: absolute;
+      }
+      html,body{margin: 0; padding: 0}
+    </style>
+    ```
 
 2. At the top of the `<body>` section, add the `<div>`.
 
@@ -135,7 +145,7 @@ To display a Leaflet map on a page, you need a `<div>` element, which is a conta
     </script>
     ```
 
-    `L.xxxxx` is a convention used with the Leaflet API. The `setView([37.804146, -122.275045], 16)` part sets the center of the map, in decimal degrees, and the zoom level. The map is centered at the MaptimeOAK meeting location, with a zoom level that allows you to see the streets and features of the city. Zoom levels are similar to map scales or resolutions, where a smaller value shows a larger area in less detail, and a larger zoom level value depicts smaller area in great detail.
+    `L.xxxxx` is a convention used with the Leaflet API. The `setView([37.804146, -122.275045], 16)` part sets the center of the map, in decimal degrees, and the zoom level. The map is centered in Oakland, California, with a zoom level that allows you to see the streets and features of the city. Zoom levels are similar to map scales or resolutions, where a smaller value shows a larger area in less detail, and a larger zoom level value depicts smaller area in great detail.
 
 4. Within the same `<script>` tag, start a new line and set the data source for the map. This line adds the default OpenStreetMap tiles and an attribution.
 
@@ -187,19 +197,20 @@ At this point, you have a map! You should see a map with OpenStreetMap tiles, zo
 
 So far, you have referenced the necessary files, initialized Leaflet with a map container on the page, and added data to the map. Now, you are ready to add the Search box from the Mapzen Search plug-in.
 
-1. Inside the same `<script>` tag, start a new line after the `}).addTo(map);` line, and initialize a search box with the following code.
+1. Go back to the https://mapzen.com/developers page and copy your API key to the clipboard.
+2. Inside the same `<script>` tag, start a new line after the `}).addTo(map);` line. Initialize a search box with the following code and your own API key substituted for the placeholder text of `search-xxxxxx`.
 
     ```js
-    var geocoder = L.control.geocoder('search-VzKH_PI').addTo(map);
+    var geocoder = L.control.geocoder('search-xxxxxx').addTo(map);
     ```
 
-    The `search-VzKH_PI` text is the Mapzen Search [API key](https://en.wikipedia.org/wiki/Application_programming_interface_key). Because the search service is shared among many users, an API key is a way to make sure that the performance is acceptable for everyone. The key you are provided at MaptimeOAK will expire, so if you want to use Mapzen Search after this event, you need to obtain your own API key from https://mapzen.com/developers and replace it here.
+    The `search-xxxxxx` text is the Mapzen Search API key. Paste your own API key inside the single quotes.
 
-2. Save your edits and refresh the browser. You should see a small magnifying glass icon in the left corner, near the zoom controls.
+3. Save your edits and refresh the browser. You should see a small magnifying glass icon in the left corner, near the zoom controls.
 
     ![Search icon on the map canvas](images/geocoder-search-icon.png)
 
-3. Click the button to display the Search box on the map. The Search box closes if you click away from it.
+4. Click the button to display the Search box on the map. The Search box closes if you click away from it.
 
     ![Expanded Search box on the map canvas](images/geocoder-search-box.png)
 
@@ -214,7 +225,7 @@ Your `<body>` section should look like this:
     L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
       attribution: '&copy; <a href="http://openstreetmap.org/copyright">OpenStreetMap contributors</a>'
     }).addTo(map);
-    var geocoder = L.control.geocoder('search-VzKH_PI').addTo(map);
+    var geocoder = L.control.geocoder('search-xxxxxx').addTo(map);
   </script>
 </body>
 [...]]
@@ -237,4 +248,4 @@ To take your map even further, you can follow along with some additional Mapzen 
 
 ## Walkthrough summary
 
-In this walkthrough, you learned the basics of adding the Mapzen Search geocoding engine to a Leaflet map. If you want to learn more about Mapzen Search, review the [documentation](https://mapzen.com/documentation/search/).
+In this walkthrough, you learned the basics of adding the Mapzen Search geocoding engine to a Leaflet map. If you want to learn more about Mapzen Search, review the [documentation](index.md).
