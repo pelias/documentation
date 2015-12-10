@@ -343,3 +343,11 @@ In Mapzen Search, place types are referred to as `layers`, ranging from fine to 
 |`localadmin`|local administrative boundaries|
 |`neighbourhood`|social communities, neighbourhoods|
 |`coarse`|alias for simultaneously using `country`, `region`, `county`, `locality`, `localadmin`, and `neighbourhood`|
+
+> [/v1/search?api_key=search-XXXXXXX&text=YMCA&___layers=venue,address___](https://search.mapzen.com/v1/search?api_key=search-XXXXXXX&text=YMCA&layers=venue,address)
+
+| parameter | value |
+| :--- | :--- |
+| `api_key` | [get yours here](https://mapzen.com/developers) |
+| `text` | YMCA |
+| `layers` | venue,address |
