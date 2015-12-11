@@ -15,28 +15,15 @@ To use the geocoding service, you must first obtain a Mapzen Search [API key](ht
 3. Create a new key for Search, and optionally, give it a project name so you can remember the purpose of the key.
 4. Keep the web page open so you can copy the key into the source code later.
 
-## Download and install the dependencies
-
-The Leaflet JavaScript library provides tools for building an interactive map for web and mobile devices. Leaflet is extensible, and developers have built additional tools for Leaflet maps, including the Mapzen Search geocoder plug-in.
-
-To set up your development environment for this walkthrough, you need to download the geocoder plug-in. You do not need to download the Leaflet files because you will be referencing them from a web server.
-
-1. Download the zip file from https://github.com/pelias/pelias-doc/raw/master/geocoding-tutorial.zip.
-
-2. Find the file in your default downloads directory and unzip it. It should unzip to a folder named `geocoding-tutorial`. (Note that some browsers, such as Safari, may unzip automatically.)
-3. Make sure your `geocoding-tutorial` folder has `pelias-leaflet-geocoder.css`, `pelias-leaflet-geocoder.js`, an images folder, and two HTML files.
-
-    ![Files needed for the walkthrough](images/geocoder-downloads-folder.png)
-
 ## Create an index page
 
-With the files downloaded, you are ready to start building your map. You will need to use a text editor to update the HTML.
+You are ready to start building your map. You will need to use a text editor to update the HTML.
 
 Suggested text editor applications include [Atom - OS X, Windows, Linux](https://atom.io/); [Notepad++ - Windows](https://notepad-plus-plus.org/); [TextWrangler - OS X](http://www.barebones.com/products/textwrangler/); and  [Sublime - OS X, Windows, Linux; free trial](http://www.sublimetext.com/). While you can use the apps installed with your operating system, such as Notepad or TextEdit, they do not provide the helpful indentations, code coloring and autocomplete, or text alignment options found in the other editors. For TextEdit, you must go to the Format menu and click Make Plain Text to use the plain-text version of the file. Do not use an app that applies rich formatting, such as Word or Wordpad.
 
 The geocoding-tutorial folder contains two HTML files: `index.html` is the file you will start with and update in the steps, while `index-complete.html` is a finished version to check your work or review if you need to troubleshoot an error.
 
-1. From your `geocoding-tutorial` folder, open `index.html` in a text editor. It should look like this:
+1. Start your text editor to a blank page. Paste the following HTML in the page.
 
     ```html
     <!DOCTYPE html>
@@ -57,7 +44,7 @@ The geocoding-tutorial folder contains two HTML files: `index.html` is the file 
     <meta charset="utf-8">
     ```
 
-4. Save your edits to the index.html file.
+4. Name your file index.html and save it.
 5. Drag your index.html file onto a web browser tab. It should show your title, `My Geocoding Map`, but the web page canvas will be blank.
 
     ![Blank html page](images/geocoder-blank-tab.png)
@@ -78,6 +65,8 @@ Your HTML should look like this:
 
 ## Add references to CSS and JavaScript files
 
+The Leaflet JavaScript library provides tools for building an interactive map for web and mobile devices. Leaflet is extensible, and developers have built additional tools for Leaflet maps, including the Mapzen Search geocoder plug-in.
+
 A cascading style sheet (CSS) is used to style a webpage, including layout and fonts, and JavaScript adds functionality to the page. In your `index.html` file, you need to list the CSS and JavaScript files required for building a page with Leaflet and the geocoder plug-in.
 
 1. In `index.html`, at the bottom of the `<head>` section, add references to the Leaflet CSS and JavaScript files. You are linking to these from a remote website, rather than from a file on your machine.
@@ -87,11 +76,11 @@ A cascading style sheet (CSS) is used to style a webpage, including layout and f
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.5/leaflet.js"></script>
     ```
 
-2. In the `<head>` section, immediately after the lines you added for Leaflet, add references to the geocoder's CSS and JavaScript files. These files are from the zipped file you copied to your machine.
+2. In the `<head>` section, immediately after the lines you added for Leaflet, add references to the geocoder's CSS and JavaScript files. These are also being linked to on a website.
 
     ```html
-    <link rel="stylesheet" href="pelias-leaflet-geocoder.css">
-    <script src="pelias-leaflet-geocoder.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-geocoder-mapzen/1.3.0/leaflet-geocoder-mapzen.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-geocoder-mapzen/1.3.0/leaflet-geocoder-mapzen.js"></script>
     ```
 
 3. Save your edits and refresh the browser. The webpage should still appear empty because you have not added any code to interact with these references.
@@ -106,13 +95,15 @@ After adding these, your index.html file should look something like this.
   <meta charset="utf-8">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.5/leaflet.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.5/leaflet.js"></script>
-  <link rel="stylesheet" href="pelias-leaflet-geocoder.css">
-  <script src="pelias-leaflet-geocoder.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-geocoder-mapzen/1.3.0/leaflet-geocoder-mapzen.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-geocoder-mapzen/1.3.0/leaflet-geocoder-mapzen.js"></script>
 </head>
 <body>
 </body>
 </html>
 ```
+
+Note that you are linking to the CSS and JavaScript files on a website in this walkthrough, but you can also [view, download, and contribute to the source code](https://github.com/mapzen/leaflet-geocoder).
 
 ## Add a map to the page
 
@@ -166,8 +157,8 @@ Your index.html should look something like this:
   <meta charset="utf-8">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.5/leaflet.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.5/leaflet.js"></script>
-  <link rel="stylesheet" href="pelias-leaflet-geocoder.css">
-  <script src="pelias-leaflet-geocoder.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-geocoder-mapzen/1.3.0/leaflet-geocoder-mapzen.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-geocoder-mapzen/1.3.0/leaflet-geocoder-mapzen.js"></script>
   <style>
     #map {
       height: 100%;
