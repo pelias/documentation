@@ -15,28 +15,15 @@ To use the geocoding service, you must first obtain a Mapzen Search [API key](ht
 3. Create a new key for Search, and optionally, give it a project name so you can remember the purpose of the key.
 4. Keep the web page open so you can copy the key into the source code later.
 
-## Download and install the dependencies
-
-The Leaflet JavaScript library provides tools for building an interactive map for web and mobile devices. Leaflet is extensible, and developers have built additional tools for Leaflet maps, including the Mapzen Search geocoder plug-in.
-
-To set up your development environment for this walkthrough, you need to download the geocoder plug-in. You do not need to download the Leaflet files because you will be referencing them from a web server.
-
-1. Download the zip file from https://github.com/pelias/pelias-doc/raw/master/geocoding-tutorial.zip.
-
-2. Find the file in your default downloads directory and unzip it. It should unzip to a folder named `geocoding-tutorial`. (Note that some browsers, such as Safari, may unzip automatically.)
-3. Make sure your `geocoding-tutorial` folder has `pelias-leaflet-geocoder.css`, `pelias-leaflet-geocoder.js`, an images folder, and two HTML files.
-
-    ![Files needed for the walkthrough](images/geocoder-downloads-folder.png)
-
 ## Create an index page
 
-With the files downloaded, you are ready to start building your map. You will need to use a text editor to update the HTML.
+You are ready to start building your map. You will need to use a text editor to update the HTML.
 
 Suggested text editor applications include [Atom - OS X, Windows, Linux](https://atom.io/); [Notepad++ - Windows](https://notepad-plus-plus.org/); [TextWrangler - OS X](http://www.barebones.com/products/textwrangler/); and  [Sublime - OS X, Windows, Linux; free trial](http://www.sublimetext.com/). While you can use the apps installed with your operating system, such as Notepad or TextEdit, they do not provide the helpful indentations, code coloring and autocomplete, or text alignment options found in the other editors. For TextEdit, you must go to the Format menu and click Make Plain Text to use the plain-text version of the file. Do not use an app that applies rich formatting, such as Word or Wordpad.
 
-The geocoding-tutorial folder contains two HTML files: `index.html` is the file you will start with and update in the steps, while `index-complete.html` is a finished version to check your work or review if you need to troubleshoot an error.
+The end of this walkthrough has a finished version of the HTML that you can use to check your work or review if you need to troubleshoot an error.
 
-1. From your `geocoding-tutorial` folder, open `index.html` in a text editor. It should look like this:
+1. Start your text editor with a blank document and copy and paste the following HTML. (Note: If the text editor you are using requires you to name and save a document at the time when it is first created, call the file `index.html`.)
 
     ```html
     <!DOCTYPE html>
@@ -57,7 +44,7 @@ The geocoding-tutorial folder contains two HTML files: `index.html` is the file 
     <meta charset="utf-8">
     ```
 
-4. Save your edits to the index.html file.
+4. Name your the document `index.html` (where the file name is `index` and the type is `.html`) and save it.
 5. Drag your index.html file onto a web browser tab. It should show your title, `My Geocoding Map`, but the web page canvas will be blank.
 
     ![Blank html page](images/geocoder-blank-tab.png)
@@ -78,6 +65,8 @@ Your HTML should look like this:
 
 ## Add references to CSS and JavaScript files
 
+The Leaflet JavaScript library provides tools for building an interactive map for web and mobile devices. Leaflet is extensible, and developers have built additional tools for Leaflet maps, including the Mapzen Search geocoder plug-in.
+
 A cascading style sheet (CSS) is used to style a webpage, including layout and fonts, and JavaScript adds functionality to the page. In your `index.html` file, you need to list the CSS and JavaScript files required for building a page with Leaflet and the geocoder plug-in.
 
 1. In `index.html`, at the bottom of the `<head>` section, add references to the Leaflet CSS and JavaScript files. You are linking to these from a remote website, rather than from a file on your machine.
@@ -87,11 +76,11 @@ A cascading style sheet (CSS) is used to style a webpage, including layout and f
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.5/leaflet.js"></script>
     ```
 
-2. In the `<head>` section, immediately after the lines you added for Leaflet, add references to the geocoder's CSS and JavaScript files. These files are from the zipped file you copied to your machine.
+2. In the `<head>` section, immediately after the lines you added for Leaflet, add references to the geocoder's CSS and JavaScript files. These are also being linked to on a website.
 
     ```html
-    <link rel="stylesheet" href="pelias-leaflet-geocoder.css">
-    <script src="pelias-leaflet-geocoder.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-geocoder-mapzen/1.3.0/leaflet-geocoder-mapzen.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-geocoder-mapzen/1.3.0/leaflet-geocoder-mapzen.js"></script>
     ```
 
 3. Save your edits and refresh the browser. The webpage should still appear empty because you have not added any code to interact with these references.
@@ -106,13 +95,15 @@ After adding these, your index.html file should look something like this.
   <meta charset="utf-8">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.5/leaflet.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.5/leaflet.js"></script>
-  <link rel="stylesheet" href="pelias-leaflet-geocoder.css">
-  <script src="pelias-leaflet-geocoder.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-geocoder-mapzen/1.3.0/leaflet-geocoder-mapzen.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-geocoder-mapzen/1.3.0/leaflet-geocoder-mapzen.js"></script>
 </head>
 <body>
 </body>
 </html>
 ```
+
+Note that you are linking to a website that is serving the geocoder's CSS and JavaScript, but you can also [view, download, and contribute to the source code](https://github.com/mapzen/leaflet-geocoder) if you want to access the contents of the plug-in.
 
 ## Add a map to the page
 
@@ -166,8 +157,8 @@ Your index.html should look something like this:
   <meta charset="utf-8">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.5/leaflet.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.5/leaflet.js"></script>
-  <link rel="stylesheet" href="pelias-leaflet-geocoder.css">
-  <script src="pelias-leaflet-geocoder.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-geocoder-mapzen/1.3.0/leaflet-geocoder-mapzen.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-geocoder-mapzen/1.3.0/leaflet-geocoder-mapzen.js"></script>
   <style>
     #map {
       height: 100%;
@@ -201,10 +192,13 @@ So far, you have referenced the necessary files, initialized Leaflet with a map 
 2. Inside the same `<script>` tag, start a new line after the `}).addTo(map);` line. Initialize a search box with the following code and your own API key substituted for the placeholder text of `search-xxxxxx`.
 
     ```js
-    var geocoder = L.control.geocoder('search-xxxxxx').addTo(map);
+    L.control.geocoder('search-xxxxxx', {
+      pointIcon: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet-geocoder-mapzen/1.3.0/images/point_icon.png',
+      polygonIcon: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet-geocoder-mapzen/1.3.0/images/polygon_icon.png'
+    }).addTo(map);
     ```
 
-    The `search-xxxxxx` text is the Mapzen Search API key. Paste your own API key inside the single quotes.
+    The `search-xxxxxx` text is the Mapzen Search API key; paste your own API key inside the single quotes. The other lines set the path to the icon images that display next to places in the search result list.
 
 3. Save your edits and refresh the browser. You should see a small magnifying glass icon in the left corner, near the zoom controls.
 
@@ -225,10 +219,13 @@ Your `<body>` section should look like this:
     L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
       attribution: '&copy; <a href="http://openstreetmap.org/copyright">OpenStreetMap contributors</a>'
     }).addTo(map);
-    var geocoder = L.control.geocoder('search-xxxxxx').addTo(map);
+    L.control.geocoder('search-xxxxxx', {
+      pointIcon: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet-geocoder-mapzen/1.3.0/images/point_icon.png',
+      polygonIcon: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet-geocoder-mapzen/1.3.0/images/polygon_icon.png'
+    }).addTo(map);
   </script>
 </body>
-[...]]
+[...]
 ```
 
 ## Search for places on the map
@@ -242,10 +239,52 @@ If you want to [customize the geocoder plug-in behavior](https://github.com/peli
 
 Mapzen Search uses a [variety of open data sources](https://mapzen.com/documentation/search/data-sources/), including OpenStreetMap. Part of the power of open data is that anyone can modify the source data and improve the quality for everyone. If you are unable to find a location, the place could be missing or incorrect in the source datasets. Mapzen is also building a comprehensive, open database of places known as [Who's on First](https://github.com/whosonfirst/whosonfirst-data) that can be publicly edited, and is working on integrating it into the geocoder.  
 
-Because the geocoder is still under development and considered experimental, if you are getting unexpected search results, please add an issue to the [Pelias GitHub repository](https://github.com/pelias/pelias/issues). The developers can investigate and determine if the problem is caused by software or data, and work to fix it either way.
-
-To take your map even further, you can follow along with some additional Mapzen tutorials. One exercise you can try is to use [Mapzen's Tangram rendering engine](https://mapzen.com/documentation/turn-by-turn/add-routing-to-a-map/#add-a-tangram-map-to-the-frame) and vector tiles to draw the data on the map, instead of the OpenStreetMap raster tile layer you used in this walkthrough. When you get your map the way you want, you might be interested [putting your map on the web](https://mapzen.com/documentation/tangram/walkthrough/#put-your-tangram-map-on-the-web) so you can share your work with others.
-
 ## Walkthrough summary
 
 In this walkthrough, you learned the basics of adding the Mapzen Search geocoding engine to a Leaflet map. If you want to learn more about Mapzen Search, review the [documentation](index.md).
+
+Because the geocoder is still under development and considered experimental, if you are getting unexpected search results, please add an issue to the [Pelias GitHub repository](https://github.com/pelias/pelias/issues). The developers can investigate and determine if the problem is caused by software or data, and work to fix it either way.
+
+To take your map even further, you can follow along with some additional Mapzen tutorials. One exercise you can try is to use [Mapzen's Tangram rendering engine](https://mapzen.com/documentation/turn-by-turn/add-routing-to-a-map/#add-a-tangram-map-to-the-frame) and vector tiles to draw the data on the map, instead of the OpenStreetMap raster tile layer you used in this walkthrough. When you get your map the way you want, you might be interested in [putting your map on the web](https://mapzen.com/documentation/tangram/walkthrough/#put-your-tangram-map-on-the-web) so you can share your work with others.
+
+## Completed HTML for this walkthrough
+
+You can refer to this HTML if you want to review your work or troubleshoot an error. You will need to substitute your own API key for the placeholder text in the source code.
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Geocoding Map</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.5/leaflet.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.5/leaflet.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-geocoder-mapzen/1.3.0/leaflet-geocoder-mapzen.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-geocoder-mapzen/1.3.0/leaflet-geocoder-mapzen.js"></script>
+  <style>
+    #map {
+      height: 100%;
+      width: 100%;
+      position: absolute;
+    }
+    html,body{margin: 0; padding: 0}
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+  <script>
+    var map = L.map('map').setView([37.804146, -122.275045], 16);
+    L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="http://openstreetmap.org/copyright">OpenStreetMap contributors</a>'
+    }).addTo(map);
+
+    //Use your own API key in place of search-xxxxxx. Get a key at mapzen.com/developers.
+    L.control.geocoder('search-xxxxxx', {
+      pointIcon: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet-geocoder-mapzen/1.3.0/images/point_icon.png',
+      polygonIcon: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet-geocoder-mapzen/1.3.0/images/polygon_icon.png'
+    }).addTo(map);
+
+  </script>
+</body>
+</html>
+```
