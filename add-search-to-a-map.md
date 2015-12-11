@@ -23,7 +23,7 @@ Suggested text editor applications include [Atom - OS X, Windows, Linux](https:/
 
 The end of this walkthrough has a finished version of the HTML that you can use to check your work or review if you need to troubleshoot an error.
 
-1. Start your text editor with a blank document and copy and paste the following HTML.
+1. Start your text editor with a blank document and copy and paste the following HTML. (Note: If the text editor you are using requires you to name and save a document at the time when it is first created, call the file `index.html`.)
 
     ```html
     <!DOCTYPE html>
@@ -44,7 +44,7 @@ The end of this walkthrough has a finished version of the HTML that you can use 
     <meta charset="utf-8">
     ```
 
-4. Name your file index.html and save it.
+4. Name your the document `index.html` (where the file name is `index` and the type is `.html`) and save it.
 5. Drag your index.html file onto a web browser tab. It should show your title, `My Geocoding Map`, but the web page canvas will be blank.
 
     ![Blank html page](images/geocoder-blank-tab.png)
@@ -103,7 +103,7 @@ After adding these, your index.html file should look something like this.
 </html>
 ```
 
-Note that you are linking to the CSS and JavaScript files on a website in this walkthrough, but you can also [view, download, and contribute to the source code](https://github.com/mapzen/leaflet-geocoder).
+Note that you are linking to a website that is serving the geocoder's CSS and JavaScript, but you can also [view, download, and contribute to the source code](https://github.com/mapzen/leaflet-geocoder) if you want to access the contents of the plug-in.
 
 ## Add a map to the page
 
@@ -241,7 +241,7 @@ Because the geocoder is still under development and considered experimental, if 
 
 To take your map even further, you can follow along with some additional Mapzen tutorials. One exercise you can try is to use [Mapzen's Tangram rendering engine](https://mapzen.com/documentation/turn-by-turn/add-routing-to-a-map/#add-a-tangram-map-to-the-frame) and vector tiles to draw the data on the map, instead of the OpenStreetMap raster tile layer you used in this walkthrough. When you get your map the way you want, you might be interested in [putting your map on the web](https://mapzen.com/documentation/tangram/walkthrough/#put-your-tangram-map-on-the-web) so you can share your work with others.
 
-## Completed HTML for walkthrough
+## Completed HTML for this walkthrough
 
 You can refer to this HTML if you want to review your work or troubleshoot an error. You will need to substitute your own API key for the placeholder text in the source code.
 
