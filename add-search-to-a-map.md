@@ -79,8 +79,8 @@ A cascading style sheet (CSS) is used to style a webpage, including layout and f
 2. In the `<head>` section, immediately after the lines you added for Leaflet, add references to the geocoder's CSS and JavaScript files. These are also being linked to on a website.
 
     ```html
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-geocoder-mapzen/1.3.0/leaflet-geocoder-mapzen.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-geocoder-mapzen/1.3.0/leaflet-geocoder-mapzen.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-geocoder-mapzen/1.4.0/leaflet-geocoder-mapzen.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-geocoder-mapzen/1.4.0/leaflet-geocoder-mapzen.js"></script>
     ```
 
 3. Save your edits and refresh the browser. The webpage should still appear empty because you have not added any code to interact with these references.
@@ -95,8 +95,8 @@ After adding these, your index.html file should look something like this.
   <meta charset="utf-8">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.5/leaflet.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.5/leaflet.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-geocoder-mapzen/1.3.0/leaflet-geocoder-mapzen.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-geocoder-mapzen/1.3.0/leaflet-geocoder-mapzen.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-geocoder-mapzen/1.4.0/leaflet-geocoder-mapzen.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-geocoder-mapzen/1.4.0/leaflet-geocoder-mapzen.js"></script>
 </head>
 <body>
 </body>
@@ -192,13 +192,10 @@ So far, you have referenced the necessary files, initialized Leaflet with a map 
 2. Inside the same `<script>` tag, start a new line after the `}).addTo(map);` line. Initialize a search box with the following code and your own API key substituted for the placeholder text of `search-xxxxxx`.
 
     ```js
-    L.control.geocoder('search-xxxxxx', {
-      pointIcon: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet-geocoder-mapzen/1.3.0/images/point_icon.png',
-      polygonIcon: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet-geocoder-mapzen/1.3.0/images/polygon_icon.png'
-    }).addTo(map);
+    var geocoder = L.control.geocoder('search-xxxxxx').addTo(map);
     ```
 
-    The `search-xxxxxx` text is the Mapzen Search API key; paste your own API key inside the single quotes. The other lines set the path to the icon images that display next to places in the search result list.
+    The `search-xxxxxx` text is the Mapzen Search API key; paste your own API key inside the single quotes.
 
 3. Save your edits and refresh the browser. You should see a small magnifying glass icon in the left corner, near the zoom controls.
 
@@ -219,10 +216,7 @@ Your `<body>` section should look like this:
     L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
       attribution: '&copy; <a href="http://openstreetmap.org/copyright">OpenStreetMap contributors</a>'
     }).addTo(map);
-    L.control.geocoder('search-xxxxxx', {
-      pointIcon: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet-geocoder-mapzen/1.3.0/images/point_icon.png',
-      polygonIcon: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet-geocoder-mapzen/1.3.0/images/polygon_icon.png'
-    }).addTo(map);
+    var geocoder = L.control.geocoder('search-xxxxxx').addTo(map);
   </script>
 </body>
 [...]
@@ -259,8 +253,8 @@ You can refer to this HTML if you want to review your work or troubleshoot an er
   <meta charset="utf-8">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.5/leaflet.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.5/leaflet.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-geocoder-mapzen/1.3.0/leaflet-geocoder-mapzen.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-geocoder-mapzen/1.3.0/leaflet-geocoder-mapzen.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-geocoder-mapzen/1.4.0/leaflet-geocoder-mapzen.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-geocoder-mapzen/1.34.0/leaflet-geocoder-mapzen.js"></script>
   <style>
     #map {
       height: 100%;
@@ -279,11 +273,7 @@ You can refer to this HTML if you want to review your work or troubleshoot an er
     }).addTo(map);
 
     //Use your own API key in place of search-xxxxxx. Get a key at mapzen.com/developers.
-    L.control.geocoder('search-xxxxxx', {
-      pointIcon: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet-geocoder-mapzen/1.3.0/images/point_icon.png',
-      polygonIcon: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet-geocoder-mapzen/1.3.0/images/polygon_icon.png'
-    }).addTo(map);
-
+    var geocoder = L.control.geocoder('search-xxxxxx').addTo(map);
   </script>
 </body>
 </html>
