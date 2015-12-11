@@ -255,7 +255,7 @@ You can refer to this HTML if you want to review your work or troubleshoot an er
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.5/leaflet.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.5/leaflet.js"></script>
 
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-geocoder-mapzen/1.3.0/leaflet-geocoder-mapzen.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-geocoder-mapzen/1.3.0/leaflet-geocoder-mapzen.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-geocoder-mapzen/1.3.0/leaflet-geocoder-mapzen.js"></script>
 
 	<style>
