@@ -192,10 +192,13 @@ So far, you have referenced the necessary files, initialized Leaflet with a map 
 2. Inside the same `<script>` tag, start a new line after the `}).addTo(map);` line. Initialize a search box with the following code and your own API key substituted for the placeholder text of `search-xxxxxx`.
 
     ```js
-    var geocoder = L.control.geocoder('search-xxxxxx').addTo(map);
+    L.control.geocoder('search-xxxxxx', {
+      pointIcon: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet-geocoder-mapzen/1.3.0/images/point_icon.png',
+      polygonIcon: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet-geocoder-mapzen/1.3.0/images/polygon_icon.png'
+    }).addTo(map);
     ```
 
-    The `search-xxxxxx` text is the Mapzen Search API key. Paste your own API key inside the single quotes.
+    The `search-xxxxxx` text is the Mapzen Search API key; paste your own API key inside the single quotes. The other lines set the path to the icon images that display next to places in the search result list.
 
 3. Save your edits and refresh the browser. You should see a small magnifying glass icon in the left corner, near the zoom controls.
 
@@ -216,10 +219,13 @@ Your `<body>` section should look like this:
     L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
       attribution: '&copy; <a href="http://openstreetmap.org/copyright">OpenStreetMap contributors</a>'
     }).addTo(map);
-    var geocoder = L.control.geocoder('search-xxxxxx').addTo(map);
+    L.control.geocoder('search-xxxxxx', {
+      pointIcon: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet-geocoder-mapzen/1.3.0/images/point_icon.png',
+      polygonIcon: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet-geocoder-mapzen/1.3.0/images/polygon_icon.png'
+    }).addTo(map);
   </script>
 </body>
-[...]]
+[...]
 ```
 
 ## Search for places on the map
@@ -249,36 +255,35 @@ You can refer to this HTML if you want to review your work or troubleshoot an er
 <!DOCTYPE html>
 <html>
 <head>
-	<title>My Geocoding Map</title>
+  <title>My Geocoding Map</title>
   <meta charset="utf-8">
-
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.5/leaflet.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.5/leaflet.js"></script>
-
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-geocoder-mapzen/1.3.0/leaflet-geocoder-mapzen.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-geocoder-mapzen/1.3.0/leaflet-geocoder-mapzen.js"></script>
-
-	<style>
-  		#map {
-    			height: 100%;
-    			width: 100%;
-    			position: absolute;
- 		}
-		html,body{margin: 0; padding: 0}
-	</style>
-
+  <style>
+    #map {
+      height: 100%;
+      width: 100%;
+      position: absolute;
+    }
+    html,body{margin: 0; padding: 0}
+  </style>
 </head>
 <body>
   <div id="map"></div>
   <script>
     var map = L.map('map').setView([37.804146, -122.275045], 16);
-
     L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
       attribution: '&copy; <a href="http://openstreetmap.org/copyright">OpenStreetMap contributors</a>'
     }).addTo(map);
 
-		//Use your own API key in place of search-xxxxxx. Get a key at mapzen.com/developers.
-    var geocoder = L.control.geocoder('search-xxxxxx').addTo(map);
+    //Use your own API key in place of search-xxxxxx. Get a key at mapzen.com/developers.
+    L.control.geocoder('search-xxxxxx', {
+      pointIcon: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet-geocoder-mapzen/1.3.0/images/point_icon.png',
+      polygonIcon: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet-geocoder-mapzen/1.3.0/images/polygon_icon.png'
+    }).addTo(map);
+
   </script>
 </body>
 </html>
