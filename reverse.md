@@ -28,8 +28,8 @@ Parameter | Type | Required | Default | Example
 `point.lat` | floating point number | yes | none | `48.858268`
 `point.lon` | floating point number | yes | none | `2.294471`
 `size` | integer | no | `10` | `3`
-`layers` | comma-delimited string array | no | none (all layers) | `oa,gn`
-`sources` | comma-delimited string array | no | none (all sources) | `address,locality`
+`layers` | comma-delimited string array | no | none (all layers) | `address,locality`
+`sources` | comma-delimited string array | no | none (all sources) | `oa,gn`
 `boundary.country` | <a href="https://en.wikipedia.org/wiki/ISO_3166-1" target="\_blank">ISO-3166 alpha-2 or alpha-3</a> | no | none | `FR`
 
 ### Size
