@@ -55,3 +55,16 @@ If you exceed your limits, the service will respond with the status code `429 To
 
 ## Security
 Mapzen Search works over HTTPS, in addition to HTTP. You are strongly encouraged to use HTTPS for all requests, especially for queries involving potentially sensitive information, such as a user's location or search query.
+
+## Content Delivery Network, Edge Caching, and Rate Limit Count
+Mapzen Search uses an "edge cache" in order to serve frequently requested content to our users as quickly as possible. This affects the way we calculate hits against your rate limit, as queries that are served out of the edge cache do not count against your limit of Requests per Second or Requests per Day (though they are reflected in your [Developer's Dashboard](https://mapzen.com/developers/)).
+
+An edge cache (also known as a "Content Delivery Network" or CDN) is a network of computers, geographically spread across the world, designed to shorten the physical distance data must travel from us to you so it can get there faster. If you've ever tried to access a common service on the other side of the world and wondered why its so slow, it's because the physical distance the information must travel is that much further. We use a content delivery network to help alleviate this effect and to limit the impact of common queries on our application servers.
+
+When you send a request to Mapzen Search, it first goes to the CDN server that is the closest path from your internet service provider before its forwarded onto a Mapzen Search application server (you can see a [map of locations](https://www.fastly.com/network-map) from our CDN, [Fastly](https://www.fastly.com) to see where your requests are likely being sent). If it's the first time that CDN server has seen that request in several days (we update our cache at least once every 7 days), the CDN server then passes your API call on to one of our Mapzen Search application servers. When it comes back with a response to your API call, that nearby CDN server keeps a copy of that response around (minus any personal data to your application, like your API key). If you or another nearby user makes that same API call, you'll likely be sent to the same CDN server, which has kept a copy of the response in its local cache. From our offices in New York, this has the effect of shortening a query to Mapzen Search from 190ms to 21ms. Your speed improvements may vary.
+
+What this means is, especially for common queries, like we see on `/autocomplete`, users will get a significant speed boost by sharing [...].
+
+Because these cached queries are so much faster and don't increase the impact to our application servers, we do not count them as part of the 
+
+We will do a "soft purge" of our cache at least once every 7 days as well as after every update to the service (//TODO DO WE DO THIS?).
