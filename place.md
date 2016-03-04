@@ -8,7 +8,7 @@ To get started with a `/place` search, you need a [free, developer API key](http
 * layer - the type of place, such as a venue, address, or country.
 * id - the identification number of the item
 
-If you have all of those, join them together with semicolons and pass them in with the `ids` parameter.
+If you have all those, join them together with semicolons and pass them in with the `ids` parameter.
 
 For example, this `/place` query looks up the Eiffel Tower in OpenStreetMap (OSM):
 
@@ -24,7 +24,7 @@ The results are returned in the order requested.
 
 One reason you'd want to do this is to exclude a particular dataset from being searched; you would include all the other data sources you do want to search.
 
-Keep in mind that if you enter a `source:layer:id` combination that cannot be found, then the `features` array in the response contains a different number of elements than the number of requests. This will be most noticeable in requests with multiple IDs, as your request may have three IDs requested but only two results returned. The reason for this is that the `features` section of the response is GeoJSON-compliant and there is currently no way to convey an exception condition (not even an empty JSON element, `{}`). For this reason, if your application is dependent upon the results mapping directly to the individual input requests in order, then you'll have to do your own bookkeeping to handle exception conditions.
+Keep in mind that if you enter a `source:layer:id` combination that cannot be found, then the `features` array in the response contains a different number of elements than the number of requests. This will be most noticeable in requests with multiple IDs, as your request may have three IDs requested but only two results returned. The reason for this is that the `features` section of the response is GeoJSON-compliant, and JSON does not allow a way to convey an exception condition (not even an empty JSON element, `{}`). For this reason, if your application is dependent upon the results mapping directly to the individual input requests in order, then you'll have to do your own bookkeeping to handle exception conditions.
 
 ## Valid combinations of place searches
 

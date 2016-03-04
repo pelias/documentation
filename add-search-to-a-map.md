@@ -1,14 +1,14 @@
 # Add the Mapzen Search geocoder to a map
 
-[Mapzen Search](https://mapzen.com/projects/search) is a modern, geographic search service based entirely on open-source tools and open data. Use this functionality to enhance any app that has a geographic context, such as ones that assist in delivering goods, locating hotels or venues, or providing local weather forecasts.
+[Mapzen Search](https://mapzen.com/projects/search) is a modern, geographic search service based entirely on open-source tools and open data. Use this functionality to enhance any app that has a geographic context, such as ones that help in delivering goods, locating hotels or venues, or providing local weather forecasts.
 
 Through a process known as [geocoding](https://en.wikipedia.org/wiki/Geocoding), Mapzen Search allows you to enter an address or the name of a landmark or business, and the service translates the result into geographic coordinates for mapping. Mapzen Search is built on [Pelias](https://github.com/pelias), an open-source geocoding project.
 
-In this walkthrough, you will learn how to make a map with a search box that allows you to enter addresses and place names and locate them on a map. To complete the tutorial, you should have some familiarity with HTML and JavaScript, although all the source code is provided. You also need a Mapzen Search [API key](https://mapzen.com/developers), which requires a [GitHub account](https://help.github.com/articles/signing-up-for-a-new-github-account/) for authorization. You can use any text editor and operating system, but must maintain an Internet connection while you are working.
+In this walkthrough, you will learn how to make a map with a search box that allows you to enter addresses and place names and locate them on a map. To complete the tutorial, you should have some familiarity with HTML and JavaScript, although all the source code is provided. You also need a Mapzen Search [API key](https://mapzen.com/developers), which requires a [GitHub account](https://help.github.com/articles/signing-up-for-a-new-github-account/) for authorization. You can use any text editor and operating system, but must keep an Internet connection while you are working.
 
 ## Sign up for a Mapzen Search API key
 
-To use the geocoding service, you must first obtain a Mapzen Search [API key](https://en.wikipedia.org/wiki/Application_programming_interface_key). Because the search service is shared among many users, an API key is a way to make sure that the performance is acceptable for everyone. Sign in at https://mapzen.com/developers to create and manage your API keys.
+To use the geocoding service, you must first get a Mapzen Search [API key](https://en.wikipedia.org/wiki/Application_programming_interface_key). Because the search service is shared among many users, an API key is a way to make sure that the performance is acceptable for everyone. Sign in at https://mapzen.com/developers to create and manage your API keys.
 
 1. Go to https://mapzen.com/developers.
 2. Sign in with your [GitHub account](https://help.github.com/articles/signing-up-for-a-new-github-account/). If you have not done this before, you need to agree to the terms first.
@@ -76,7 +76,7 @@ A cascading style sheet (CSS) is used to style a webpage, including layout and f
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.5/leaflet.js"></script>
     ```
 
-2. In the `<head>` section, immediately after the lines you added for Leaflet, add references to the geocoder's CSS and JavaScript files. These are also being linked to on a website.
+2. In the `<head>` section, directly after the lines you added for Leaflet, add references to the geocoder's CSS and JavaScript files. These are also being linked to on a website.
 
     ```html
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-geocoder-mapzen/1.4.0/leaflet-geocoder-mapzen.css">
@@ -109,7 +109,7 @@ Note that you are linking to a website that is serving the geocoder's CSS and Ja
 
 To display a Leaflet map on a page, you need a `<div>` element, which is a container on the page that groups elements, with an ID value. If you want to know more about initializing a Leaflet map, see the [Leaflet getting started documentation](http://leafletjs.com/examples/quick-start.html).
 
-1. At the bottom of the `<head>` section, after the references you added in the previous steps, add a `<style>` tag and the following attributes to set the size of the map on your webpage.
+1. At the bottom of the `<head>` section, after the references you added in the earlier steps, add a `<style>` tag and the following attributes to set the size of the map on your webpage.
 
     ```html
     <style>
@@ -128,7 +128,7 @@ To display a Leaflet map on a page, you need a `<div>` element, which is a conta
     <div id="map"></div>
     ```
 
-3. Immediately after the `<div>`, add this JavaScript code within a `<script>` tag to initialize Leaflet.
+3. Directly after the `<div>`, add this JavaScript code within a `<script>` tag to initialize Leaflet.
 
     ```html
     <script>
@@ -136,7 +136,7 @@ To display a Leaflet map on a page, you need a `<div>` element, which is a conta
     </script>
     ```
 
-    `L.xxxxx` is a convention used with the Leaflet API. The `setView([37.804146, -122.275045], 16)` part sets the center of the map, in decimal degrees, and the zoom level. The map is centered in Oakland, California, with a zoom level that allows you to see the streets and features of the city. Zoom levels are similar to map scales or resolutions, where a smaller value shows a larger area in less detail, and a larger zoom level value depicts smaller area in great detail.
+    `L.xxxxx` is a convention used with the Leaflet API. The `setView([37.804146, -122.275045], 16)` part sets the center of the map, in decimal degrees, and the zoom level. The map is centered in Oakland, California, with a zoom level that allows you to see the streets and features of the city. Zoom levels are like map scales or resolutions, where a smaller value shows a larger area in less detail, and a larger zoom level value depicts smaller area in great detail.
 
 4. Within the same `<script>` tag, start a new line and set the data source for the map. This line adds the default OpenStreetMap tiles and an attribution.
 
@@ -231,13 +231,13 @@ Your `<body>` section should look like this:
 
 If you want to [customize the geocoder plug-in behavior](https://github.com/pelias/leaflet-geocoder#customizing-the-plugin) beyond the defaults in this Walkthrough, you can set additional options in your code. For example, the Search box collapses to an icon by default, but you can specify that the text box be shown at full width. There are also options for customizing the parameters for the Mapzen Search service, such as limiting the search to the map's extent or prioritizing results near the current view. Right now, you may notice that results from around the world appear in the list.
 
-Mapzen Search uses a [variety of open data sources](https://mapzen.com/documentation/search/data-sources/), including OpenStreetMap. Part of the power of open data is that anyone can modify the source data and improve the quality for everyone. If you are unable to find a location, the place could be missing or incorrect in the source datasets. Mapzen is also building a comprehensive, open database of places known as [Who's on First](https://github.com/whosonfirst/whosonfirst-data) that can be publicly edited, and is working on integrating it into the geocoder.  
+Mapzen Search uses a [variety of open data sources](https://mapzen.com/documentation/search/data-sources/), including OpenStreetMap. Part of the power of open data is that anyone can change the source data and improve the quality for everyone. If you are unable to find a location, the place could be missing or incorrect in the source datasets. Mapzen is also building a comprehensive, open database of places known as [Who's on First](https://github.com/whosonfirst/whosonfirst-data) that can be publicly edited, and is working on integrating it into the geocoder.  
 
 ## Walkthrough summary
 
 In this walkthrough, you learned the basics of adding the Mapzen Search geocoding engine to a Leaflet map. If you want to learn more about Mapzen Search, review the [documentation](index.md).
 
-Because the geocoder is still under development and considered experimental, if you are getting unexpected search results, please add an issue to the [Pelias GitHub repository](https://github.com/pelias/pelias/issues). The developers can investigate and determine if the problem is caused by software or data, and work to fix it either way.
+Because the geocoder is still under development and considered experimental, if you are getting unexpected search results, please add an issue to the [Pelias GitHub repository](https://github.com/pelias/pelias/issues). The developers can investigate and decide if the problem is caused by software or data, and work to fix it either way.
 
 To take your map even further, you can follow along with some additional Mapzen tutorials. One exercise you can try is to use [Mapzen's Tangram rendering engine](https://mapzen.com/documentation/turn-by-turn/add-routing-to-a-map/#add-a-tangram-map-to-the-frame) and vector tiles to draw the data on the map, instead of the OpenStreetMap raster tile layer you used in this walkthrough. When you get your map the way you want, you might be interested in [putting your map on the web](https://mapzen.com/documentation/tangram/walkthrough/#put-your-tangram-map-on-the-web) so you can share your work with others.
 
