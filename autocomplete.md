@@ -58,3 +58,4 @@ without `focus.point` you will find the most popular restaurants first:
 | `text` | string | yes | none | `Union Square` |
 | `focus.point.lat` | floating point number | no | none | `48.581755` |
 | `focus.point.lon` | floating point number | no | none | `7.745843` |
+| `size` | integer | no | 10 | 5 |
