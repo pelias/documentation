@@ -20,7 +20,7 @@ Notice that the first result is the Eiffel Tower (well, Tour Eiffel). The output
 
 ## Reverse geocoding parameters
 
-Similar to other queries with Mapzen Search, reverse geocoding has optional, additional parameters you can use to refine results.
+Like other queries with Mapzen Search, reverse geocoding has optional, additional parameters you can use to refine results.
 
 Parameter | Type | Required | Default | Example
 --- | --- | --- | --- | ---
@@ -34,7 +34,7 @@ Parameter | Type | Required | Default | Example
 
 ### Size
 
-A basic parameter for filtering is `size`, which is used to limit the number of results returned. In the previous request that returned the Eiffel Tower (or 'Tour Eiffel', to be exact), notice that other results were returned including "Bureau de Gustave Eiffel" (a museum) and "Le Jules Verne" (a restaurant). To limit a reverse geocode to only the first result, pass the `size` parameter:
+A basic parameter for filtering is `size`, which is used to limit the number of results returned. In the earlier request that returned the Eiffel Tower (or 'Tour Eiffel', to be exact), notice that other results were returned including "Bureau de Gustave Eiffel" (a museum) and "Le Jules Verne" (a restaurant). To limit a reverse geocode to only the first result, pass the `size` parameter:
 
 >[/v1/reverse?api_key=search-XXXXXXX&point.lat=48.858268&point.lon=2.294471&___size=1___](https://search.mapzen.com/v1/reverse?api_key=search-XXXXXXX&point.lat=48.858268&point.lon=2.294471&size=1)
 
@@ -62,7 +62,7 @@ Note that `UK` is not a valid ISO 3166-1 alpha-2 country code.
 
 ## Confidence scores for the results
 
-Each result returned has an associated confidence score. Currently confidence scores are calculated based on the distance from the result to the supplied `point.lat` and `point.lon`. Confidence scoring for reverse geocode results is likely to change with different data sources and layers.
+Each result returned has an associated confidence score. Confidence scores are calculated based on the distance from the result to the supplied `point.lat` and `point.lon`. Confidence scoring for reverse geocode results is likely to change with different data sources and layers.
 
 Distance from `point.lat`/`point.lon` | Confidence score
 --- | ---
