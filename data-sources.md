@@ -4,6 +4,33 @@ Mapzen Search is powered by several major open data sets and owes a tremendous d
 
 Attribution is required for many of our data providers. Some license information is provided, but you are responsible for researching each project to follow their license terms.
 
+## OpenAddresses
+
+`sources=openaddresses` | `sources=osm`
+
+[OpenAddresses](http://openaddresses.io/) is a collection of authoritatively sourced data for addresses around the world, with over 200 million addresses. Data in OpenAddresses only comes from national, state, and local governments, so this data is highly authoritative. Because it consists of entirely bulk imports, OpenAddresses is a large, global, and rapidly growing dataset. Many countries, particularly in Europe, now have every address represented in OpenAddresses.
+
+OpenAddresses is by far the largest dataset by number of records used by Mapzen Search, so even though it only contains address data (as in no building names or other metadata), it's a great resource for global geocoding.
+
+OpenAddresses is sourced from regional governments. Many of these sources require [attribution (LINK NOT LIVE)](https://www.mapzen.com/copyright/openaddresses). Mapzen Search _does not_ import OpenAddresses sources marked as Share-Alike by the OpenAddresses project.
+
+## Who's on First
+
+`sources=whosonfirst` | `sources=wof`
+
+[Who's on First](https://whosonfirst.mapzen.com) is an open data directory of worldwide "administrative places" created by Mapzen. It is our primary provider of:
+- Countries
+- Regions (e.g. States, Provinces)
+- Counties
+- Localities (cities, towns, hamlets)
+- Neighbourhoods
+
+Additionally, for addresses and venues (POI's) coming from OpenStreetMap, Geonames, and OpenAddresses, we use Who's on First to provide standardized fields for the country, region, locality, and neighbourhood (in addition to any other matching levels the place may fall within like counties or macro-regions).
+
+[License](https://github.com/whosonfirst/whosonfirst-data/blob/master/LICENSE.md)
+
+
+
 ## OpenStreetMap
 
 `sources=openstreetmap` | `sources=osm`
@@ -14,15 +41,6 @@ With its coverage of roads as well as rich metadata, OpenStreetMap is arguably t
 
 All OpenStreetMap data is licensed under the [ODbL](http://opendatacommons.org/licenses/odbl/), a [share-alike](https://en.wikipedia.org/wiki/Share-alike) license which also requires attribution.
 
-## OpenAddresses
-
-`sources=openaddresses` | `sources=osm`
-
-[OpenAddresses](http://openaddresses.io/) is a collection of authoritatively sourced data for addresses around the world, with over 200 million addresses. Data in OpenAddresses only comes from national, state, and local governments, so this data is highly authoritative. Because it consists of entirely bulk imports, OpenAddresses is a large, global, and rapidly growing dataset. Many countries, particularly in Europe, now have every address represented in OpenAddresses.
-
-OpenAddresses is by far the largest dataset by number of records used by Mapzen Search, so even though it only contains address data (as in no building names or other metadata), it's a great resource for global geocoding.
-
-OpenAddresses is sourced from regional governments. Many of these sources require [attribution (LINK NOT LIVE)](https://www.mapzen.com/copyright/openaddresses.html). Mapzen Search does not import OpenAddresses sources marked as Share-Alike by the OpenAddresses project.
 
 ## Geonames
 
