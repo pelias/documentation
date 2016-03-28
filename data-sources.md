@@ -12,24 +12,6 @@ With its coverage of roads as well as rich metadata, OpenStreetMap is arguably t
 
 All OpenStreetMap data is licensed under the [ODbL](http://opendatacommons.org/licenses/odbl/), a [share-alike](https://en.wikipedia.org/wiki/Share-alike) license which also requires attribution.
 
-## Quattroshapes
-
-`sources=quattroshapes` | `sources=qs`
-
-[Quattroshapes](http://quattroshapes.com/) provides global coverage of location data for:
-
-- countries
-- regions (states/provinces)
-- counties
-- localities (cities, towns, hamlets, villages)
-- neighborhoods (in many places)
-
-Originally assembled by Foursquare, Quattroshapes provides not only the organizational hierarchy for nearly any point or address worldwide (town > local government > province > country), but also the borders for each of these places.
-
-Mapzen Search uses data from Quattroshapes to apply a consistent hierarchy to our data from other sources, so you can be sure that points of interest have consistent data about the cities, regions, and countries in which they are located.
-
-Quattroshapes data is licensed [CC BY](http://creativecommons.org/licenses/by/2.0/), allowing its use for any purpose with proper attribution.
-
 ## OpenAddresses
 
 `sources=openaddresses` | `sources=osm`
@@ -49,3 +31,17 @@ As OpenAddresses is sourced from regional governments, its data is in the public
 In the meantime, Geonames still provides a wide variety of useful data that helps augment the other datasets used by Mapzen Search.
 
 Geonames data is licensed [CC BY](http://creativecommons.org/licenses/by/3.0/).
+
+
+# Deprecated Sources
+Certain data sources have previously been supported by Mapzen Search but are no longer offered part of the core service and have been superseded by a new data source.
+
+## Quattroshapes
+
+`sources=quattroshapes` | `sources=qs`
+
+Quattroshapes was previously used by Mapzen Search and its use was discontinued in April 2016.
+
+It has been replaced by Who's on First, which continues to provide global administrative place data (countries, regions, counties, cities) and administrative lookup (_"what country, region, and city is this address part of?"_).
+
+Quattroshapes data is licensed [CC BY](http://creativecommons.org/licenses/by/2.0/), allowing its use for any purpose with proper attribution.
