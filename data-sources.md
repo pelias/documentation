@@ -2,6 +2,8 @@
 
 Mapzen Search is powered by several major open data sets and owes a tremendous debt of gratitude to the individuals and communities which produced them.
 
+Attribution is required for many of our data providers. Some license information is provided, but you are responsible for researching each project to follow their license terms.
+
 ## OpenStreetMap
 
 `sources=openstreetmap` | `sources=osm`
@@ -20,7 +22,7 @@ All OpenStreetMap data is licensed under the [ODbL](http://opendatacommons.org/l
 
 OpenAddresses is by far the largest dataset by number of records used by Mapzen Search, so even though it only contains address data (as in no building names or other metadata), it's a great resource for global geocoding.
 
-As OpenAddresses is sourced from regional governments, its data is in the public domain.
+OpenAddresses is sourced from regional governments. Many of these sources require [attribution (LINK NOT LIVE)](https://www.mapzen.com/copyright/openaddresses.html). Mapzen Search does not import OpenAddresses sources marked as Share-Alike by the OpenAddresses project.
 
 ## Geonames
 
@@ -30,7 +32,7 @@ As OpenAddresses is sourced from regional governments, its data is in the public
 
 In the meantime, Geonames still provides a wide variety of useful data that helps augment the other datasets used by Mapzen Search.
 
-Geonames data is licensed [CC BY](http://creativecommons.org/licenses/by/3.0/).
+Geonames data is licensed [CC-BY-3.0](http://creativecommons.org/licenses/by/3.0/).
 
 
 # Deprecated Sources
@@ -44,4 +46,4 @@ Quattroshapes was previously used by Mapzen Search and its use was discontinued 
 
 It has been replaced by Who's on First, which continues to provide global administrative place data (countries, regions, counties, cities) and administrative lookup (_"what country, region, and city is this address part of?"_).
 
-Quattroshapes data is licensed [CC BY](http://creativecommons.org/licenses/by/2.0/), allowing its use for any purpose with proper attribution.
+Quattroshapes data is licensed [CC-BY-2.0](http://creativecommons.org/licenses/by/2.0/).
