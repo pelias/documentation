@@ -16,7 +16,7 @@ To get started with reverse geocoding, you need a [free, developer API key](http
 
 >[/v1/reverse?api_key=search-XXXXXXX&___point.lat=48.858268___&___point.lon=2.294471___](https://search.mapzen.com/v1/reverse?api_key=search-XXXXXXX&point.lat=48.858268&point.lon=2.294471)
 
-Notice that the first result is the Eiffel Tower (well, Tour Eiffel). The output is the standard GeoJSON format.
+Notice that the first result is the Eiffel Tower (well, _Tour Eiffel_). The output is the standard GeoJSON format.
 
 ## Reverse geocoding parameters
 
@@ -44,11 +44,31 @@ The default value for `size` is `10` and the maximum value is `40`. Specifying a
 
 By default, reverse geocoding returns results from any [data source](data-sources.md) available to Mapzen Search. To filter results by source, specify one or more valid source names in a comma-delimited list using the `sources` parameter. For example, the following request returns only results from OpenStreetMap:
 
+| source | name | short name |
+|---|---|---|
+| [OpenStreetMap](http://www.openstreetmap.org/) | `openstreetmap` | `osm` |
+| [OpenAddresses](http://openaddresses.io/) | `openaddresses` | `oa` |
+| [Who's on First](https://whosonfirst.mapzen.com) | 'whosonfirst' | 'wof' |
+| [GeoNames](http://www.geonames.org/) | `geonames` | `gn` |
+
 >[/v1/reverse?api_key=search-XXXXXXX&point.lat=48.858268&point.lon=2.294471&___sources=osm___](https://search.mapzen.com/v1/reverse?api_key=search-XXXXXXX&point.lat=48.858268&point.lon=2.294471&sources=osm)
 
-### Filter by layers
+### Filter by layers (data type)
 
 Without specifying further, reverse geocoding doesn't restrict results to a particular type (street, venue, neighbourhood, and so on).  If your application is only concerned with, say, which city a latitude, longitude is closest to, then use the `layers` parameter.  For example, the following request returns only results that are localities (cities and towns):
+
+|layer|description|
+|----|----|
+|`venue`|points of interest, businesses, things with walls|
+|`address`|places with a street address|
+|`country`|places that issue passports, nations, nation-states|
+|`region`|states and provinces|
+|`county`|official governmental area; usually bigger than a locality, almost always smaller than a region|
+|`locality`|towns, hamlets, cities|
+|`localadmin`|local administrative boundaries|
+|`neighbourhood`|social communities, neighbourhoods|
+|`coarse`|alias for simultaneously using `country`, `region`, `county`, `locality`, `localadmin`, and `neighbourhood`|
+
 
 >[/v1/reverse?api_key=search-XXXXXXX&point.lat=48.858268&point.lon=2.294471&___layers=locality___](https://search.mapzen.com/v1/reverse?api_key=search-XXXXXXX&point.lat=48.858268&point.lon=2.294471&layers=locality)
 
@@ -60,9 +80,9 @@ If you are performing a reverse geocode near a country boundary, and are only in
 
 Note that `UK` is not a valid ISO 3166-1 alpha-2 country code.
 
-## Confidence scores for the results
+## Distance Confidence scores for the results
 
-Each result returned has an associated confidence score. Confidence scores are calculated based on the distance from the result to the supplied `point.lat` and `point.lon`. Confidence scoring for reverse geocode results is likely to change with different data sources and layers.
+Each result returned has a distance from the query point and an associated confidence score. Confidence scores are calculated based on the distance from the result to the supplied `point.lat` and `point.lon`. Confidence scoring for reverse geocode results is likely to change with different data sources and layers.
 
 Distance from `point.lat`/`point.lon` | Confidence score
 --- | ---
