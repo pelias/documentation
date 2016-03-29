@@ -28,17 +28,17 @@ Layers:
 - `locality`
 - `localadmin`
 - `neighbourhood`
-- `coarse` (alias for simultaneously using all of the above)
+- `coarse` (alias for simultaneously using all the above)
 
 
 [Who's on First](https://whosonfirst.mapzen.com) is an open data directory of worldwide "administrative places" created by Mapzen. It is our primary provider of:
 - Countries
-- Regions (e.g. States, Provinces)
+- Regions (for example: States, Provinces)
 - Counties
 - Localities (cities, towns, hamlets)
 - Neighbourhoods
 
-Additionally, for addresses and venues (POI's) coming from OpenStreetMap, Geonames, and OpenAddresses, we use Who's on First to provide standardized fields for the country, region, locality, and neighbourhood (in addition to any other matching levels the place may fall within like counties or macro-regions).
+Additionally, for addresses and venues (POI's) coming from OpenStreetMap, Geonames, and OpenAddresses, we use Who's on First to provide standardized fields for the country, region, locality, and neighbourhood. Other matching levels the place may fall within `macro-county` or `macro-region` taxonomy from Who's on Firsts.
 
 [License](https://github.com/whosonfirst/whosonfirst-data/blob/master/LICENSE.md)
 
@@ -71,7 +71,7 @@ Layers:
 - `locality`
 - `localadmin`
 - `neighbourhood`
-- `coarse` (alias for simultaneously using all of the above)
+- `coarse` (alias for simultaneously using all the above)
 
 [Geonames](http://www.geonames.org/) is an aggregation of many authoritative and non-authoritative datasets. It contains information on everything from country borders to airport names to geographical features. While Geonames does not contain any shape data (such as country borders), it does have a powerful and well defined hierarchy to describe the relationships between different records. This custom hierarchy makes it harder to use in combination with data from other sources, but the Mapzen [Who's On First](http://whosonfirst.mapzen.com/) project will help by providing concordance between Geonames and other datasets.
 
@@ -81,13 +81,13 @@ Geonames data is licensed [CC-BY-3.0](http://creativecommons.org/licenses/by/3.0
 
 
 # Deprecated Sources
-Certain data sources have previously been supported by Mapzen Search but are no longer offered part of the core service and have been superseded by a new data source.
+Certain data sources used to be supported by Mapzen Search but are no longer offered part of the core service and have been superseded by a new data source.
 
 ## Quattroshapes
 
 `sources=quattroshapes` | `sources=qs`
 
-Quattroshapes was previously used by Mapzen Search and its use was discontinued in April 2016.
+Quattroshapes used to be supported by Mapzen Search and its use was discontinued in April 2016.
 
 It has been replaced by Who's on First, which continues to provide global administrative place data (countries, regions, counties, cities) and administrative lookup (_"what country, region, and city is this address part of?"_).
 

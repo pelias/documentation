@@ -16,7 +16,7 @@ https://search.mapzen.com/v1/place?api_key=search-XXXXXXX&ids=osm:venue:5013364
 
 ## Search for multiple places in a query
 
-To search for more than one `/place` in a request, join multiple values together and separate them with a comma. For example, this /place query looks up the Eiffel Tower in OSM and `30 West 26th St, New York, NY` in OpenAddresses:
+To search for more than one `/place` in a request, join multiple values together and separate them with a comma. For example, this /place query looks up the Eiffel Tower in OpenStreetMap and `30 West 26th St, New York, NY` in OpenAddresses:
 
 https://search.mapzen.com/v1/place?api_key=search-XXXXXXX&ids=osm:venue:5013364,oa:address:65cf57e4eb5548eca9bb548fb1461633
 
