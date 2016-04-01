@@ -2,7 +2,7 @@
 
 Mapzen Search is powered by several major open data sets and owes a tremendous debt of gratitude to the individuals and communities which produced them.
 
-Attribution is required for many of our data providers. Some license information is provided, but you are responsible for researching each project to follow their license terms.
+Attribution is required for many of the Mapzen Search data providers. Some license information is listed here, but you are responsible for researching each project to follow their license terms.
 
 ## OpenAddresses
 
@@ -30,7 +30,7 @@ Layers:
 - `neighbourhood`
 - `coarse` (alias for simultaneously using all the above)
 
-[Who's on First](https://whosonfirst.mapzen.com) is an open-data directory of worldwide administrative places created by Mapzen. It is the primary provider of:
+[Who's on First](https://whosonfirst.mapzen.com) is an open-data directory of worldwide administrative places. Created by Mapzen, it is the primary provider of:
 - Countries
 - Regions (for example: states, provinces)
 - Counties

@@ -6,9 +6,9 @@ Fortunately, techniques have since been developed that allow developers to secur
 
 ## Cross-Origin Resource Sharing (CORS)
 
-`CORS` is the recommended standard for allowing your web browser and a web server to negotiate and allow requests to be made across domain contexts. `CORS` is supported in modern Chrome, Firefox, Safari, and Internet Explorer (10+) web browsers. It became an official W3C Recommendation on the 16th January 2014.
+`CORS` is the recommended standard for allowing your web browser and a web server to negotiate and allow requests to be made across domain contexts. `CORS` is supported in modern Chrome, Firefox, Safari, and Internet Explorer (10+) web browsers. It became a [W3C Recommendation](https://www.w3.org/TR/cors/) in 2014.
 
-You don’t need to do anything special to use `CORS` with JavaScript in a modern browser. Your web browser and our servers will automatically negotiate the cross-origin request. For example, to make a `CORS` request with `jQuery`, you’d make your request like you were performing it within the context of your own domain.
+You don’t need to do anything special to use `CORS` with JavaScript in a modern browser. Your web browser and the Mapzen Search servers will automatically negotiate the cross-origin request. For example, to make a `CORS` request with `jQuery`, you’d make your request like you were performing it within the context of your own domain.
 
 For a full list of supported browsers see: http://caniuse.com/#feat=cors
 
