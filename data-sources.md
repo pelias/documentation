@@ -11,11 +11,11 @@ Attribution is required for many of our data providers. Some license information
 Layers:
 - `address`
 
-[OpenAddresses](http://openaddresses.io/) is a collection of authoritatively sourced data for addresses around the world, with over 200 million addresses. Data in OpenAddresses only comes from national, state, and local governments, so this data is highly authoritative. Because it consists of entirely bulk imports, OpenAddresses is a large, global, and rapidly growing dataset. Many countries, particularly in Europe, now have every address represented in OpenAddresses.
+[OpenAddresses](http://openaddresses.io/) is a collection of over 200 million addresses around the world. Data in OpenAddresses only comes from national, state, and local governments, so this data is highly authoritative. Because it consists of entirely bulk imports, OpenAddresses is a large, global, and rapidly growing dataset. Many countries, particularly in Europe, now have every address represented in OpenAddresses.
 
-OpenAddresses is by far the largest dataset by number of records used by Mapzen Search, so even though it only contains address data (as in no building names or other metadata), it's a great resource for global geocoding.
+OpenAddresses is by far the largest dataset by number of records used by Mapzen Search. Even though it only contains address data (as in no building names or other metadata), it's a great resource for global geocoding.
 
-OpenAddresses is sourced from regional governments. Many of these sources require [attribution (LINK NOT LIVE)](https://www.mapzen.com/copyright/openaddresses). Mapzen Search _does not_ import OpenAddresses sources marked as Share-Alike by the OpenAddresses project.
+Many of the sources used in OpenAddresses require [attribution (LINK NOT LIVE)](https://www.mapzen.com/copyright/openaddresses). Mapzen Search _does not_ import OpenAddresses sources marked as Share-Alike by the OpenAddresses project.
 
 ## Who's on First
 
@@ -30,19 +30,16 @@ Layers:
 - `neighbourhood`
 - `coarse` (alias for simultaneously using all the above)
 
-
-[Who's on First](https://whosonfirst.mapzen.com) is an open data directory of worldwide "administrative places" created by Mapzen. It is our primary provider of:
+[Who's on First](https://whosonfirst.mapzen.com) is an open-data directory of worldwide administrative places created by Mapzen. It is the primary provider of:
 - Countries
-- Regions (for example: States, Provinces)
+- Regions (for example: states, provinces)
 - Counties
 - Localities (cities, towns, hamlets)
 - Neighbourhoods
 
-Additionally, for addresses and venues (POI's) coming from OpenStreetMap, Geonames, and OpenAddresses, we use Who's on First to provide standardized fields for the country, region, locality, and neighbourhood. Other matching levels the place may fall within `macro-county` or `macro-region` taxonomy from Who's on Firsts.
+Additionally, for addresses, venues, and points of interest coming from OpenStreetMap, Geonames, and OpenAddresses, Mapzen Search uses Who's on First to provide standardized fields for the country, region, locality, and neighbourhood. Other matching levels the place may fall within `macro-county` or `macro-region` taxonomy from Who's on Firsts.
 
 [License](https://github.com/whosonfirst/whosonfirst-data/blob/master/LICENSE.md)
-
-
 
 ## OpenStreetMap
 
@@ -57,7 +54,6 @@ Layers:
 With its coverage of roads as well as rich metadata, OpenStreetMap is arguably the most valuable dataset used by Mapzen Search for general usage.
 
 All OpenStreetMap data is licensed under the [ODbL](http://opendatacommons.org/licenses/odbl/), a [share-alike](https://en.wikipedia.org/wiki/Share-alike) license which also requires attribution.
-
 
 ## Geonames
 
@@ -79,8 +75,7 @@ In the meantime, Geonames still provides a wide variety of useful data that help
 
 Geonames data is licensed [CC-BY-3.0](http://creativecommons.org/licenses/by/3.0/).
 
-
-# Deprecated Sources
+# Deprecated sources
 Certain data sources used to be supported by Mapzen Search but are no longer offered part of the core service and have been superseded by a new data source.
 
 ## Quattroshapes
