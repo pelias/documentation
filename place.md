@@ -2,7 +2,7 @@
 
 When you know an identification number and the source it came from, you can use Mapzen Search to get details on the location.
 
-To get started with a `/place` search, you need a [free, developer API key](https://mapzen.com/developers) and these three pieces of information:
+To get started with a `/place` search, you need a [developer API key](https://mapzen.com/developers) and these three pieces of information:
 
 * source - the data source, such as OpenStreetMap
 * layer - the type of place, such as a venue, address, or country.
@@ -35,4 +35,3 @@ source | layers
 `osm` or `openstreetmap` | `venue`, `address`
 `oa` or `openaddresses` | `address`
 `gn` or `geonames` | `venue`, `address`, `neighbourhood`, `locality`, `county`, `region`, `country`, `coarse`
-`qs` or `quattroshapes` | `neighbourhood`, `locality`, `county`, `region`, `country`, `coarse`
