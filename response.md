@@ -64,7 +64,7 @@ Additionally, `/reverse` queries will have a `distance` parameter, which is the 
 ## Notable features
 
 ### `gid`
-This is a "global id" that can be used to reference a result with the [/place](place.md) endpoint. It consists of an identifier for the dataset, a layer, and finally an `id` for the individual record. This `id` corresponds to stable ids from datasets wherever possible (such as the ID of an OpenStreetMap Node or Way). Not all datasets have stable ID's (in particular OpenAddresses records), so for OpenAddresses, we include the name of the source dataset in OpenAddresses as a part of the ID scheme.
+This is a "global id" that can be used to reference a result with the [/place](place.md) endpoint. It consists of an identifier for the dataset, a layer, and finally an `id` for the individual record. This `id` corresponds to stable ids from datasets wherever possible (such as the ID of an OpenStreetMap Node or Way). Not all datasets have stable ID's (in particular OpenAddresses records), so for OpenAddresses, Mapzen Search includes the name of the source dataset in OpenAddresses as a part of the ID scheme.
 
 The `gid` is also used to retrieve full details on a particular result from the `place` endpoint. [Full details](place.md) on ID schemes are part of the `/place` endpoint.
 
