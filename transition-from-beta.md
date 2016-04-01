@@ -9,7 +9,7 @@ The changes aren't too drastic and should be implementable in an afternoon or a 
 These changes also affect self-hosted users of Pelias upgrading from the beta to 1.0 (leaving aside API key restrictions), but these users can make the upgrade on their own time.
 
 ## API keys
-The first big change is the introduction of API keys. Like all other Mapzen APIs, Search now requires a free API key. You can register at the [Mapzen Developer Portal](https://mapzen.com/developers) and generate one (or more) for all your search needs.
+The first big change is the introduction of API keys. Like all other Mapzen APIs, Search now requires an API key. You can register at the [Mapzen Developer Portal](https://mapzen.com/developers) and generate one (or more) for all your search needs.
 
 Mapzen Search API keys allow you:
 

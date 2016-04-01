@@ -4,7 +4,7 @@ Geospatial search, commonly referred to as geocoding, is the process of matching
 
 There's nothing inherent in the language we use to describe a physical address that allows us to convert that human readable sentence in to a format that a computer can understand, such as latitude & longitude.
 
-Making the leap from text to coordinates is an intricate and challenging process. Lucky for you, Mapzen has done all the hard work and made it accessible though a free web service.
+Making the leap from text to coordinates is an intricate and challenging process. Lucky for you, Mapzen has done all the hard work and made it accessible though a web service.
 
 All Mapzen Search requests share the same format:
 
