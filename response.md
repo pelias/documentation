@@ -21,42 +21,41 @@ The `features` property of the result is where you will find the list of results
 
 Each item in this list will contain all the information needed to find it in human-readable format in the `properties` block, as well as computer friendly coordinates in the `geometry` property.
 
-```json
+``` json
 {
-  "type": "Feature",
-  "geometry": {
-    "type": "Point",
-    "coordinates": [
-      -73.990425,
-      40.744131
-    ]
-  },
-  "properties": {
-    "id": "way:265038872",
-    "gid": "openstreetmap:address:way:265038872",
-    "layer": "address",
-    "source": "openstreetmap",
-    "name": "30 West 26th Street",
-    "housenumber": "30",
-    "street": "West 26th Street",
-    "postalcode": "10010",
-    "confidence": 0.875,
-    "country": "United States",
-    "country_id": "85633793",
-    "country_a": "USA",
-    "region": "New York",
-    "region_id": "85688543",
-    "region_a": "NY",
-    "county": "New York County",
-    "county_id": "102081863",
-    "localadmin": "Manhattan",
-    "localadmin_id": "404522731",
-    "locality": "New York",
-    "locality_id": "85977539",
-    "neighbourhood": "Flatiron District",
-    "neighbourhood_id": "85869245",
-    "label": "30 West 26th Street, Manhattan, NY, USA"
-  }
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.125422,
+          51.501581
+        ]
+      },
+      "properties": {
+        "id": "101750367",
+        "gid": "whosonfirst:locality:101750367",
+        "layer": "locality",
+        "source": "whosonfirst",
+        "name": "London",
+        "confidence": 0.949,
+        "country": "United Kingdom",
+        "country_gid": "whosonfirst:country:85633159",
+        "country_a": "GBR",
+        "macroregion": "England",
+        "macroregion_gid": "whosonfirst:macroregion:404227469",
+        "region": "City of Westminster",
+        "region_gid": "whosonfirst:region:85684061",
+        "locality": "London",
+        "locality_gid": "whosonfirst:locality:101750367",
+        "label": "London, England, United Kingdom"
+      },
+      "bbox": [
+        -0.4984345,
+        51.297207,
+        0.27894,
+        51.6843015
+      ]
+    },
 ```
 
 Additionally, `/reverse` queries will have a `distance` parameter, which is the distance, in meters, from the query point.
@@ -79,6 +78,9 @@ For the `/reverse` endpoint, the confidence score is determined solely by its di
 For the `/search` endpoint, it primarily takes into account how well properties in the result match what was expected from parsing the input text. For example, if the input text looks like an address, but the house number of the result doesn't match the house number that was parsed from the input text, the confidence score will be lower.
 
 Additionally, the confidence score can optionally be biased along with other results, like test scores in a classroom might be graded on a curve. This takes into account both the property matches described above and the distance between results. This relative scoring is enabled on Mapzen Search, but can be turned off when hosting your own Pelias instance.
+
+### `bbox`
+`Feature`s coming from _Who's on First_ and OpenStreetMap ways will often have their own `"bbox"` elements. This `"bbox"` is at the same level as `"properties"`. If present, it describes the geographic extent of the feature (e.g. the screen size necessary to show all of California without needing to send the precise polygon geometry). This should be treated as separate from the `bbox` that describes the entire `FeatureCollection`.
 
 ## Result count
 

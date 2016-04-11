@@ -15,7 +15,7 @@ Layers:
 
 OpenAddresses is by far the largest dataset by number of records used by Mapzen Search. Even though it only contains address data (as in no building names or other metadata), it's a great resource for global geocoding.
 
-Many of the sources used in OpenAddresses require [attribution (LINK NOT LIVE)](https://www.mapzen.com/copyright/openaddresses). Mapzen Search _does not_ import OpenAddresses sources marked as Share-Alike by the OpenAddresses project.
+Many of the sources used in OpenAddresses require [attribution](https://mapzen.com/rights/). Mapzen Search _does not_ import OpenAddresses sources marked as Share-Alike by the OpenAddresses project.
 
 ## Who's on First
 
@@ -23,7 +23,9 @@ Many of the sources used in OpenAddresses require [attribution (LINK NOT LIVE)](
 
 Layers:
 - `country`
+- `macroregion`
 - `region`
+- `macrocounty`
 - `county`
 - `locality`
 - `localadmin`
@@ -32,12 +34,14 @@ Layers:
 
 [Who's on First](https://whosonfirst.mapzen.com) is an open-data directory of worldwide administrative places. Created by Mapzen, it is the primary provider of:
 - Countries
+- Macroregions (e.g. England is a Macroregion within the United Kingdom)
 - Regions (for example: states, provinces)
+- Macro-counties (e.g. [Departments of France](https://en.wikipedia.org/wiki/Departments_of_France))
 - Counties
 - Localities (cities, towns, hamlets)
 - Neighbourhoods
 
-Additionally, for addresses, venues, and points of interest coming from OpenStreetMap, Geonames, and OpenAddresses, Mapzen Search uses Who's on First to provide standardized fields for the country, region, locality, and neighbourhood. Other matching levels the place may fall within `macro-county` or `macro-region` taxonomy from Who's on Firsts.
+Additionally, for addresses, venues, and points of interest coming from OpenStreetMap, Geonames, and OpenAddresses, Mapzen Search uses Who's on First to provide standardized fields for the country, region, locality, and neighbourhood.
 
 [License](https://github.com/whosonfirst/whosonfirst-data/blob/master/LICENSE.md)
 
