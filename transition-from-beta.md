@@ -9,7 +9,7 @@ The changes aren't too drastic and should be implementable in an afternoon or a 
 These changes also affect self-hosted users of Pelias upgrading from the beta to 1.0 (leaving aside API key restrictions), but these users can make the upgrade on their own time.
 
 ## API keys
-The first big change is the introduction of API keys. Like all other Mapzen APIs, Search now requires a free API key. You can register at the [Mapzen Developer Portal](https://mapzen.com/developers) and generate one (or more) for all your search needs.
+The first big change is the introduction of API keys. Like all other Mapzen APIs, Search now requires an API key. You can register at the [Mapzen Developer Portal](https://mapzen.com/developers) and generate one (or more) for all your search needs.
 
 Mapzen Search API keys allow you:
 
@@ -71,7 +71,7 @@ Most parameters (and options) for search have been renamed:
 | `size` | `count` | Number of responses. Minimum: 1, maximum: 50 |
 | `layers` | `layers` (SEE BELOW) | While the parameter remains the same, the options have changed. See the table below for a description.|
 | `bbox` | `boundary.rect.min_lon`, `boundary.rect.min_lat`, `boundary.rect.max_lon`, `boundary.rect.max_lat`| Bounding box parameters are now individually specified to prevent error.|
-| `details` | Deprecated (for the moment) | `details=false` used to respond with a minimized set of elements. We are reevaluating which elements of the response document make most sense for minimization. If you've got opinions, let us know at [search@mapzen.com](mailto:search@mapzen.com)|
+| `details` | Deprecated (for the moment) | `details=false` used to respond with a minimized set of elements. Mapzen is reevaluating which elements of the response document make most sense for minimization. If you've got opinions, let us know at [search@mapzen.com](mailto:search@mapzen.com)|
 
 `layers` used to be opaque about many of the kinds of places they represented (particularly the administrative layers). `layers` were also used to retrieve places from a particular source. `sources` is now a separate parameter from `layers` to help improve clarity.
 
@@ -190,7 +190,7 @@ Instead, Mapzen Search supports [Cross-Origin Resource Sharing](https://develope
 Mapzen Search is set to allow CORS requests from all domains.
 
 ### HTTPS
-Mapzen Search continues to support HTTPS and traditional HTTP. We encourage you to use HTTPS instead of HTTP, especially when handling sensitive personal information (such as users' searches or users' location data).
+Mapzen Search continues to support HTTPS and traditional HTTP. You are encouraged to use HTTPS instead of HTTP, especially when handling sensitive personal information (such as users' searches or users' location data).
 
 ## What's happening to pelias.mapzen.com?
 The beta API available at pelias.mapzen.com will be available through the end of November, 2015. Starting December 1, 2015, you will only be able to use search.mapzen.com or your own hosted version of Pelias.

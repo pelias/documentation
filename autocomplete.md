@@ -2,7 +2,7 @@
 
 If you are building an end-user application, you can use the `/autocomplete` endpoint alongside `/search` to enable real-time feedback. This type-ahead functionality helps users find what they are looking for, without requiring them to fully specify their search term. Typically, the user starts typing and a drop-down list appears where they can choose the term from the list below.
 
-To build a query with autocomplete, you need [a free, API developer key](https://mapzen.com/developers) and a `text` parameter, representing what a user has typed into your application so far. Optionally, you can specify a geographic point where the search is focused, this will allow users to see more local places in the results.
+To build a query with autocomplete, you need an [API key](https://mapzen.com/developers) and a `text` parameter, representing what a user has typed into your application so far. Optionally, you can specify a geographic point where the search is focused, this will allow users to see more local places in the results.
 
 ## User experience guidelines
 

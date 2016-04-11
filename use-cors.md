@@ -6,17 +6,17 @@ Fortunately, techniques have since been developed that allow developers to secur
 
 ## Cross-Origin Resource Sharing (CORS)
 
-`CORS` is the recommended standard for allowing your web browser and a web server to negotiate and allow requests to be made across domain contexts. `CORS` is supported in modern Chrome, Firefox, Safari, and Internet Explorer (10+) web browsers. It became an official W3C Recommendation on the 16th January 2014.
+`CORS` is the recommended standard for allowing your web browser and a web server to negotiate and allow requests to be made across domain contexts. `CORS` is supported in modern Chrome, Firefox, Safari, and Internet Explorer (10+) web browsers. It became a [W3C Recommendation](https://www.w3.org/TR/cors/) in 2014.
 
-You don’t need to do anything special to use `CORS` with JavaScript in a modern browser. Your web browser and our servers will automatically negotiate the cross-origin request. For example, to make a `CORS` request with `jQuery`, you’d make your request like you were performing it within the context of your own domain.
+You don’t need to do anything special to use `CORS` with JavaScript in a modern browser. Your web browser and the Mapzen Search servers will automatically negotiate the cross-origin request. For example, to make a `CORS` request with `jQuery`, you’d make your request like you were performing it within the context of your own domain.
 
 For a full list of supported browsers see: http://caniuse.com/#feat=cors
 
-### Add a Pelias search box to a Leaflet map
+### Add a search box to a Leaflet map
 
-Mapzen provides a plug-in that adds a Pelias search box to any [Leaflet](http://leafletjs.com/)-powered map.
+Mapzen provides a plug-in that adds a search box to any [Leaflet](http://leafletjs.com/)-powered map.
 
-See https://github.com/pelias/leaflet-geocoder for installation instructions and a live demo.
+See https://github.com/mapzen/leaflet-geocoder for installation instructions and a live demo. There is also a [tutorial](add-search-to-a-map.md) available.
 
 ### Loading data with jQuery
 
