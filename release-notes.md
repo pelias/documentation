@@ -1,4 +1,4 @@
-# Mapzen Search API Release Notes 
+# Release Notes 
 
 ## April 08, 2016
 
