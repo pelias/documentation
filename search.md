@@ -4,7 +4,7 @@ Geospatial search, commonly referred to as geocoding, is the process of matching
 
 There's nothing inherent in the language we use to describe a physical address that allows us to convert that human readable sentence in to a format that a computer can understand, such as latitude & longitude.
 
-Making the leap from text to coordinates is an intricate and challenging process. Lucky for you, Mapzen has done all the hard work and made it accessible though a free web service.
+Making the leap from text to coordinates is an intricate and challenging process. Lucky for you, Mapzen has done all the hard work and made it accessible though a web service.
 
 All Mapzen Search requests share the same format:
 
@@ -160,7 +160,7 @@ For example, to find a YMCA within the state of Texas, you can set the `boundary
 
 Sometimes you don't have a rectangle to work with, but rather you have a point on earth&mdash;for example, your location coordinates&mdash;and a maximum distance within which acceptable results can be located.
 
-In this example, you want to find all YMCA locations within a 35-kilometer radius of a location in Ontario, Canada. This time, you can use the `boundary.circle.*` parameter group, where `boundary.circle.lat` and `boundary.circle.lon` represents your location in Ontario and `boundary.circle.radius` is the acceptable distance from that location. Note that the `boundary.circle.radius` parameter is always specified in kilometers.
+In this example, you want to find all YMCA locations within a 35-kilometer radius of a location in Ontario, Canada. This time, you can use the `boundary.circle.*` parameter group, where `boundary.circle.lat` and `boundary.circle.lon` is your location in Ontario and `boundary.circle.radius` is the acceptable distance from that location. Note that the `boundary.circle.radius` parameter is always specified in kilometers.
 
 > [/v1/search?api_key=search-XXXXXXX&text=YMCA&__boundary.circle.lon=-79.186484&boundary.circle.lat=43.818156&boundary.circle.radius=35__](https://search.mapzen.com/v1/search?api_key=search-XXXXXXX&text=YMCA&boundary.circle.lon=-79.186484&boundary.circle.lat=43.818156&boundary.circle.radius=35)
 
@@ -291,7 +291,7 @@ The search examples so far have returned a mix of results from all the data sour
 |---|---|---|
 | [OpenStreetMap](http://www.openstreetmap.org/) | `openstreetmap` | `osm` |
 | [OpenAddresses](http://openaddresses.io/) | `openaddresses` | `oa` |
-| [Quattroshapes](http://quattroshapes.com/) | `quattroshapes` | `qs` |
+| [Who's on First](https://whosonfirst.mapzen.com) | 'whosonfirst' | 'wof' |
 | [GeoNames](http://www.geonames.org/) | `geonames` | `gn` |
 
 If you use the `sources` parameter, you can choose which of these data sources to include in your search. So if you're only interested in finding a YMCA in data from OpenAddresses, for example, you can build a query specifying that data source.

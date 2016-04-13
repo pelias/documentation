@@ -21,47 +21,56 @@ The `features` property of the result is where you will find the list of results
 
 Each item in this list will contain all the information needed to find it in human-readable format in the `properties` block, as well as computer friendly coordinates in the `geometry` property.
 
-```json
+``` json
 {
-  "type":"Feature",
-  "properties":{
-    "gid":"...",
-    "layer":"address",
-    "source":"osm",
-    "name":"30 West 26th Street",
-    "housenumber":"30",
-    "street":"West 26th Street",
-    "postalcode":"10010",
-    "country_a":"USA",
-    "country":"United States",
-    "region":"New York",
-    "region_a":"NY",
-    "county":"New York County",
-    "localadmin":"Manhattan",
-    "locality":"New York",
-    "neighbourhood":"Flatiron District",
-    "confidence":0.9624939994613662,
-    "label":"30 West 26th Street, Manhattan, NY"
-  },
-  "geometry":{
-    "type":"Point",
-    "coordinates":[
-      -73.990342,
-      40.744243
-    ]
-  }
-}
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.125422,
+          51.501581
+        ]
+      },
+      "properties": {
+        "id": "101750367",
+        "gid": "whosonfirst:locality:101750367",
+        "layer": "locality",
+        "source": "whosonfirst",
+        "name": "London",
+        "confidence": 0.949,
+        "country": "United Kingdom",
+        "country_gid": "whosonfirst:country:85633159",
+        "country_a": "GBR",
+        "macroregion": "England",
+        "macroregion_gid": "whosonfirst:macroregion:404227469",
+        "region": "City of Westminster",
+        "region_gid": "whosonfirst:region:85684061",
+        "locality": "London",
+        "locality_gid": "whosonfirst:locality:101750367",
+        "label": "London, England, United Kingdom"
+      },
+      "bbox": [
+        -0.4984345,
+        51.297207,
+        0.27894,
+        51.6843015
+      ]
+    },
 ```
+
+Additionally, `/reverse` queries will have a `distance` parameter, which is the distance, in meters, from the query point.
 
 ## Notable features
 
-### GID
-This is a "global id" that can be used to reference a result with the [/place](place.md) endpoint. It consists of an identifier for the dataset, a layer, and finally an `id` for the individual record. This `id` corresponds to stable ids from datasets wherever possible (such as the ID of an OpenStreetMap Node or Way), but not all datasets have them.
+### `gid`
+This is a "global id" that can be used to reference a result with the [/place](place.md) endpoint. It consists of an identifier for the dataset, a layer, and finally an `id` for the individual record. This `id` corresponds to stable ids from datasets wherever possible (such as the ID of an OpenStreetMap Node or Way). Not all datasets have stable ID's (in particular OpenAddresses records), so for OpenAddresses, Mapzen Search includes the name of the source dataset in OpenAddresses as a part of the ID scheme.
 
-### Label
+The `gid` is also used to retrieve full details on a particular result from the `place` endpoint. [Full details](place.md) on ID schemes are part of the `/place` endpoint.
+
+### `label`
 The `label` is a human-friendly representation of the place, ready to be displayed to an end user.  The label field attempts to use a format that is right for the region the result is in, although Mapzen Search only supports a few countries at the moment.
 
-### Confidence
+### `confidence`
 The confidence score is an estimation of how accurately this result matches the query.
 
 For the `/reverse` endpoint, the confidence score is determined solely by its distance from the coordinate specified. Closer results get a higher score.
@@ -69,6 +78,9 @@ For the `/reverse` endpoint, the confidence score is determined solely by its di
 For the `/search` endpoint, it primarily takes into account how well properties in the result match what was expected from parsing the input text. For example, if the input text looks like an address, but the house number of the result doesn't match the house number that was parsed from the input text, the confidence score will be lower.
 
 Additionally, the confidence score can optionally be biased along with other results, like test scores in a classroom might be graded on a curve. This takes into account both the property matches described above and the distance between results. This relative scoring is enabled on Mapzen Search, but can be turned off when hosting your own Pelias instance.
+
+### `bbox`
+`Feature`s coming from _Who's on First_ and OpenStreetMap ways will often have their own `"bbox"` elements. This `"bbox"` is at the same level as `"properties"`. If present, it describes the geographic extent of the feature (e.g. the screen size necessary to show all of California without needing to send the precise polygon geometry). This should be treated as separate from the `bbox` that describes the entire `FeatureCollection`.
 
 ## Result count
 
