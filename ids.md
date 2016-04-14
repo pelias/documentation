@@ -12,30 +12,16 @@ A record's `gid`'s in Mapzen Search looks like:
 
 **1. Do not use Mapzen Search `gid`'s as permanent identifiers for places.**
 
-`gid`'s in Mapzen Search can change because several of our data sources also lack permanent IDs. Some of our sources do not provide ways to track [...].
-
+`gid`'s in Mapzen Search can change because several of our data sources also lack permanent IDs. Some of our sources do not provide ways to track changes between each release of the data. This is particularly true for OpenAddresses, where there are no general ID's for each address. With OpenStreetMap it is possible for an entry to be superseded by another place, but for there to be no indicator of what the replacement place is.
 
 **2. The structure of identifiers in Mapzen Search may change.**
+This is not necessarily the final configuration of ID's in Mapzen Search. We reserve the right change their structure at some time in the future.
+
+**3. The Mapzen Search ID for a place may not be the same exact ID in other systems.**
+While some of our sources do have persistent ID's (e.g. Node/Way ID's in OpenStreetMap or all Who's on First ID's), we augment them to fit into our taxonomy and add the source dataset. While the numeric component of a Mapzen Search record coming from Who's on First can be used as its ID, you can't just use a Who's on First ID to get the record from Mapzen Search.
 
 
 ## Source-specific `gid` structures
-
-<table>
-<th> <td>Source</td> <td>Examples</td> <td>Structure</td> <td>Notes</td> </th>
-  <tr>
-    <td> <em>Who's on First</em></td>
-    <td>
-      <ul><li>`whosonfirst:locality:101750367`</li><li>`whosonfirst:country:85633793`</li></ul>
-    </td>
-
-
-  </tr>
-</table>
-
-
-| Source | Examples | Structure | Notes |
-| ------ | --------- | ----------- | -------- |
-| _Who's on First_ | <ul><li>`whosonfirst:locality:101750367`</li><li>`whosonfirst:country:85633793`</li></ul> | whosonfirst
 
 
 ### _Who's on First_ | `whosonfirst`
@@ -54,7 +40,20 @@ The numeric identifier at the end of a Who's on First `gid` _may be considered a
 
 ### OpenStreetMap | `openstreetmap`
 
+
 Results coming from OpenStreetMap take the form of:
+`"gid": "openstreetmap:<osm-element>:<search-placetype>id:<optional-multiple-id>"`
+
+There's a lot to unpack about that.
+
+`<osm-element>`: corresponds to the core OpenStreetMap data type for that place, or [Element](http://wiki.openstreetmap.org/wiki/Elements). These are the geometries that data about a place is attached to in OpenStreetMap. There are 3 elements in OpenStreetMap:
+* [Nodes](http://wiki.openstreetmap.org/wiki/Node), which are points corresponding to a latitude and longitude on earth. Nodes have positive numbers as their ID numbers in OpenStreetMap.
+* [Ways](http://wiki.openstreetmap.org/wiki/Way), which are ordered collections of points that can make up a line or a polygon
+* [Relations](http://wiki.openstreetmap.org/wiki/Relation), which are arbitrary collections of points, lines, and relations.
+
+
+
+Records coming from OpenStreetMap can take the form of
 
 ### OpenAddresses | `openaddresses`
 
