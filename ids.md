@@ -40,12 +40,20 @@ The numeric identifier at the end of a Who's on First `gid` _may be considered a
 
 ### OpenStreetMap | `openstreetmap`
 
+
 Results coming from OpenStreetMap take the form of:
-`"gid": "openstreetmap:<osm-type>:<search-placetype>id:<optional-multiple-id>"`
+`"gid": "openstreetmap:<osm-element>:<search-placetype>id:<optional-multiple-id>"`
 
 There's a lot to unpack about that.
 
-Records coming from OpenStreetMap can take the form of 
+`<osm-element>`: corresponds to the core OpenStreetMap data type for that place, or [Element](http://wiki.openstreetmap.org/wiki/Elements). These are the geometries that data about a place is attached to in OpenStreetMap. There are 3 elements in OpenStreetMap:
+* [Nodes](http://wiki.openstreetmap.org/wiki/Node), which are points corresponding to a latitude and longitude on earth. Nodes have positive numbers as their ID numbers in OpenStreetMap.
+* [Ways](http://wiki.openstreetmap.org/wiki/Way), which are ordered collections of points that can make up a line or a polygon
+* [Relations](http://wiki.openstreetmap.org/wiki/Relation), which are arbitrary collections of points, lines, and relations.
+
+
+
+Records coming from OpenStreetMap can take the form of
 
 ### OpenAddresses | `openaddresses`
 
