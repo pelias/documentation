@@ -91,6 +91,7 @@ We refer to the type of record as its `layer`. We index all records into the fol
 * `macrocounty`
 * `localadmin`
 * `locality`
+* `borough`
 * `region`
 * `country`
 
