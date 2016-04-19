@@ -50,6 +50,70 @@ without `focus.point` you will find the most popular restaurants first:
 2)	Hard Rock Café, San Giljan, Malta
 ```
 
+## Filters
+
+You can filter the results in several ways: the original data source and/or the type of record. 
+
+### Sources
+
+The `sources` parameter allows you to specify from which data sources you'd like to receive results. The sources are as follows
+
+* `openstreetmap` or `osm`
+* `openaddresses` or `oa`
+* `geonames` or `gn`
+* `whosonfirst` or `wof`
+
+> /v1/autocomplete?api_key=search-XXXXXXX&sources=openaddresses&text=pennsylvania
+
+with `sources=openaddresses` you will only find addresses on Pennsylvania Ave or Street:
+```
+1) 8 R Pennsylvania Avenue, Amity, PA, USA
+2) 7 Pennsylvania Avenue, Amity, PA, USA
+3) 9 Pennsylvania Avenue, Cherry, PA, USA
+```
+
+without `sources=openaddresses` you will find the most popular Pennsylvanias first:
+```
+1) Pennsylvania, USA
+2) Pennsylvania Avenue Heights, Washington, DC, USA
+3) Pennsylvania, Satsuma, AL, USA
+```
+
+### Layers
+We refer to the type of record as its `layer`. We index all records into the following layers
+
+* `venue`
+* `address`
+* `microhood`
+* `neighbourhood`
+* `macrohood`
+* `county`
+* `macrocounty`
+* `localadmin`
+* `locality`
+* `region`
+* `country`
+
+We also allow users to refer to all the administrative hierarchy layers with a single alias, `coarse`.
+
+> /v1/autocomplete?api_key=search-XXXXXXX&layers=coarse&text=starbuck
+
+with `layers=coarse` you will see only administrative areas with names containing Starbuck
+
+```
+1) Starbuckville, NY, USA
+2) Starbuck, MN, USA
+3) Starbuck, WA, USA
+```
+
+with `layers=venue` you will see only the venues by that name
+
+```
+1) Starbucks, Braunschweig, Germany
+2) Starbucks, Islip, NY, USA
+3) Starbucks, Austin, TX, USA
+```
+
 ## Available autocomplete parameters
 
 | Parameter | Type | Required | Default | Example |
@@ -58,3 +122,5 @@ without `focus.point` you will find the most popular restaurants first:
 | `text` | string | yes | none | `Union Square` |
 | `focus.point.lat` | floating point number | no | none | `48.581755` |
 | `focus.point.lon` | floating point number | no | none | `7.745843` |
+| `sources` | string | no | all sources: osm,oa,gn,wof | openstreetmap,wof |
+| `layers` | string | no | all layers: address,venue,neighbourhood,locality,borough,localadmin,county,macrocounty,region,marcoregion,country,coarse | address,venue |
