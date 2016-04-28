@@ -48,7 +48,7 @@ By default, reverse geocoding returns results from any [data source](data-source
 |---|---|---|
 | [OpenStreetMap](http://www.openstreetmap.org/) | `openstreetmap` | `osm` |
 | [OpenAddresses](http://openaddresses.io/) | `openaddresses` | `oa` |
-| [Who's on First](https://whosonfirst.mapzen.com) | 'whosonfirst' | 'wof' |
+| [Who's on First](https://whosonfirst.mapzen.com) | `whosonfirst` | `wof` |
 | [GeoNames](http://www.geonames.org/) | `geonames` | `gn` |
 
 >[/v1/reverse?api_key=search-XXXXXXX&point.lat=48.858268&point.lon=2.294471&___sources=osm___](https://search.mapzen.com/v1/reverse?api_key=search-XXXXXXX&point.lat=48.858268&point.lon=2.294471&sources=osm)
