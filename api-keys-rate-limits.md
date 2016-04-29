@@ -2,7 +2,7 @@
 
 ## Get an API key
 
-To use the Mapzen Search service, you must first get a free developer API key. Sign in at https://mapzen.com/developers to create and manage your API keys.
+To use the Mapzen Search service, you must first get a developer API key. Sign in at https://mapzen.com/developers to create and manage your API keys.
 
 1. Go to https://mapzen.com/developers.
 2. Sign in with your GitHub account. If you have not done this before, you need to agree to the terms first.
@@ -10,7 +10,7 @@ To use the Mapzen Search service, you must first get a free developer API key. S
 4. Copy the key into your code.
 
 ## Rate limits
-Because Mapzen Search is a free, shared service, there are limitations on the numbers of requests to prevent individual users from degrading system performance.
+Because Mapzen Search is a shared service, there are limitations on the numbers of requests to prevent individual users from degrading system performance.
 
 Mapzen Search allows you a maximum of:
 
@@ -64,11 +64,13 @@ Queries that are served out of the edge cache do not count against your limit of
 
 When you send a request to Mapzen Search, it first goes to the CDN server that is the closest path from your internet service provider before it is forwarded onto a Mapzen Search application server. Mapzen Search uses [Fastly](https://www.fastly.com) for its CDN; you can look at this [network map](https://www.fastly.com/network-map) to see where your requests are likely being sent. 
 
-If your request is the first time that CDN server has received that request in several days (the Mapzen Search cache is updated at least once a week), the CDN server then passes your API call to one of the Mapzen Search application servers. When it comes back with a response to your API call, that nearby CDN server keeps a copy of that response around (minus any personal data to your application, including your API key). If you or another nearby user makes that same API call, you will likely be sent to the same CDN server, which has kept a copy of the response in its local cache. From tests in the Mapzen office in New York, this has the effect of shortening a query to Mapzen Search from 190ms to 21ms. Your speed improvements may vary, and they may vary from location to location, as requests from different places and different internet providers may be served by different edge cache servers.
+If your request is the first one like that that CDN server has received in several days (the Mapzen Search cache is updated at least once a week), the CDN server then passes your API call to one of the Mapzen Search application servers. When it comes back with a response to your API call, that nearby CDN server keeps a copy of that response (minus any personal data to your application, including your API key). If you or another nearby user makes the identical API call, you will likely be sent to the same CDN server, which has the response in its local cache. From tests in the Mapzen office in New York, this has the effect of shortening a query from 190ms to 21ms. Your speed improvements may vary, as requests from other locations and internet providers may be served by different edge cache servers.
 
-Common searches, such as `/v1/search?text=new york`, often come back quickly for most users, and sometimes, not count toward your rate limit. This is especially useful with Autocomplete, where many places all start with the same few root letters, such as `new` as the start of `new york`, `newark`, and `new jersey`).
+The result is that common searches, such as `/v1/search?text=new york`, often come back quickly for most users, and might not count toward your rate limit. This design is especially useful with Autocomplete, where many places all start with the same few root letters, such as `new` in `new york`, `newark`, and `new jersey`.
 
-Unless you have made a particular API call right before, you won't know ahead of time whether it will be served from the edge cache. After you make an API call, you can get more information in the HTTP headers of the response. HTTP headers are embedded metadata that tells your browser (or other software) how to make sense of the request.
+Unless you have recently made a particular API call, you won't know ahead of time whether it will be served from the edge cache. After you make an API call, you can get more information in the HTTP headers of the response. HTTP headers are embedded metadata that tells your browser (or other software) how to make sense of the request.
 
-* `X-Cache` indicates if your request was served from the Mapzen Search application server (`MISS`) or the cache server (`HIT`). This header should be there for any query you make to the Mapzen Search API. Any query with `X-Cache: MISS` is a query that counts against your rate limit.
-* `X-ApiaxleProxy-Qps-Left` is the number of queries per second remaining on your API key, and `X-ApiaxleProxy-Qpd-Left` is the remaining queries per day. These headers are only present when you see `X-Cache: MISS`. 
+These header entries are most helpful to determine whether caching was used:
+
+- `X-Cache` indicates if your request was served from the Mapzen Search application server (`MISS`) or the cache server (`HIT`). This header should be there for any query you make to the Mapzen Search API. Any query with `X-Cache: MISS` is a query that counts toward your rate limit.
+- `X-ApiaxleProxy-Qps-Left` is the number of queries per second remaining on your API key, and `X-ApiaxleProxy-Qpd-Left` is the remaining queries per day. These headers are only present when you see `X-Cache: MISS`. 
