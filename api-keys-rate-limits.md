@@ -55,6 +55,7 @@ If you exceed your limits, the service will respond with the status code `429 To
 
 ## Security
 Mapzen Search works over HTTPS and HTTP. You are strongly encouraged to use HTTPS for all requests, especially for queries involving potentially sensitive information, such as a user's location or search query.
+<<<<<<< HEAD
 
 ## Caching to improve performance
 
@@ -74,3 +75,5 @@ These header entries are most helpful to determine whether caching was used:
 
 - `X-Cache` indicates if your request was served from the Mapzen Search application server (`MISS`) or the cache server (`HIT`). This header should be there for any query you make to the Mapzen Search API. Any query with `X-Cache: MISS` is a query that counts toward your rate limit.
 - `X-ApiaxleProxy-Qps-Left` is the number of queries per second remaining on your API key, and `X-ApiaxleProxy-Qpd-Left` is the remaining queries per day. These headers are only present when you see `X-Cache: MISS`. 
+=======
+>>>>>>> master

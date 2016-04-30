@@ -4,7 +4,7 @@ Geospatial search, commonly referred to as geocoding, is the process of matching
 
 There's nothing inherent in the language we use to describe a physical address that allows us to convert that human readable sentence in to a format that a computer can understand, such as latitude & longitude.
 
-Making the leap from text to coordinates is an intricate and challenging process. Lucky for you, Mapzen has done all the hard work and made it accessible though a free web service.
+Making the leap from text to coordinates is an intricate and challenging process. Lucky for you, Mapzen has done all the hard work and made it accessible though a web service.
 
 All Mapzen Search requests share the same format:
 
@@ -19,7 +19,7 @@ All Mapzen Search requests share the same format:
 
 ![Searching globally](/images/world_all.png)
 
-In the simplest search, you can provide only one parameter, the text you want to match in any part of the location details. To accomplish this, build a query where the `text` parameter is set to the item you want to find.
+In the simplest search, you can provide only one parameter, the text you want to match in any part of the location details. To do this, build a query where the `text` parameter is set to the item you want to find.
 
 For example, if you want to find a [YMCA](https://en.wikipedia.org/wiki/YMCA) facility, here's what you'd need to append to the base URL of the service, `search.mapzen.com`.
 
@@ -49,7 +49,7 @@ In the example above, you will find the name of each matched locations in a prop
 * YMCA, Jefferson, OH
 * YMCA, Belleville, IL
 
-Spelling matters, but not capitalization when performing a query with Mapzen Search. You can type `ymca`, `YMCA`, or even `yMcA`. See for yourself by comparing the results of the previous search to the following:
+Spelling matters, but not capitalization when performing a query with Mapzen Search. You can type `ymca`, `YMCA`, or even `yMcA`. See for yourself by comparing the results of the earlier search to the following:
 
 > [/v1/search?api_key=search-XXXXXXX&___text=yMcA___](https://search.mapzen.com/v1/search?api_key=search-XXXXXXX&text=yMcA)
 
@@ -74,7 +74,7 @@ If you want 25 results, you can build the query where `size` is 25.
 
 ## Narrow your search
 
-If you are looking for places in a particular region, or country, or only want to look in the immediate vicinity of a user with a known location, you can narrow your search to an area. There are different ways of including a region in your query. Mapzen Search currently supports three types: country, rectangle, and circle.
+If you are looking for places in a particular region, or country, or only want to look in the immediate vicinity of a user with a known location, you can narrow your search to an area. There are different ways of including a region in your query. Mapzen Search supports three types: country, rectangle, and circle.
 
 ### Search within a particular country
 
@@ -92,7 +92,7 @@ Now, you want to search for YMCA again, but this time only in Great Britain. To 
 | `text` | YMCA |
 | `boundary.country` | GBR |
 
-Note that all the results reside within Great Britain:
+Note that all the results are within Great Britain:
 
 > * YMCA, Bargoed Community, United Kingdom
 * YMCA, Orpington, Greater London
@@ -105,7 +105,7 @@ Note that all the results reside within Great Britain:
 * YMCA, Lenton Abbey, Nottinghamshire
 * YMCA, Old Clee, Lincolnshire
 
-If you attempt the same search request with different country codes, the results change to reflect YMCA locations within this region.
+If you try the same search request with different country codes, the results change to show YMCA locations within this region.
 
 > [/v1/search?api_key=search-XXXXXXX&text=YMCA&___boundary.country=USA___](https://search.mapzen.com/v1/search?api_key=search-XXXXXXX&text=YMCA&boundary.country=USA)
 
@@ -160,7 +160,7 @@ For example, to find a YMCA within the state of Texas, you can set the `boundary
 
 Sometimes you don't have a rectangle to work with, but rather you have a point on earth&mdash;for example, your location coordinates&mdash;and a maximum distance within which acceptable results can be located.
 
-In this example, you want to find all YMCA locations within a 35-kilometer radius of a location in Ontario, Canada. This time, you can use the `boundary.circle.*` parameter group, where `boundary.circle.lat` and `boundary.circle.lon` represents your location in Ontario and `boundary.circle.radius` is the acceptable distance from that location. Note that the `boundary.circle.radius` parameter is always specified in kilometers.
+In this example, you want to find all YMCA locations within a 35-kilometer radius of a location in Ontario, Canada. This time, you can use the `boundary.circle.*` parameter group, where `boundary.circle.lat` and `boundary.circle.lon` is your location in Ontario and `boundary.circle.radius` is the acceptable distance from that location. Note that the `boundary.circle.radius` parameter is always specified in kilometers.
 
 > [/v1/search?api_key=search-XXXXXXX&text=YMCA&__boundary.circle.lon=-79.186484&boundary.circle.lat=43.818156&boundary.circle.radius=35__](https://search.mapzen.com/v1/search?api_key=search-XXXXXXX&text=YMCA&boundary.circle.lon=-79.186484&boundary.circle.lat=43.818156&boundary.circle.radius=35)
 
@@ -185,7 +185,7 @@ You can see the results have fewer than the standard 10 items because there are 
 
 ![Searching within multiple regions](/images/overlapping_boundaries.gif)
 
-If you're going to attempt using multiple boundary types in a single search request, be aware that the results will come from the intersection of all the boundaries. So, if you provide regions that don't overlap, you'll be looking at an empty set of results.
+If you're going to try using multiple boundary types in a single search request, be aware that the results will come from the intersection of all the boundaries. So, if you provide regions that don't overlap, you'll be looking at an empty set of results.
 
 ## Prioritize results by proximity
 Many use cases call for the ability to promote nearby results to the top of the list, while still allowing important matches from farther away to be visible. Mapzen Search allows you to prioritize results within geographic boundaries, including around a point, within a country, or within a region.
@@ -237,7 +237,7 @@ Going back to the YMCA search you conducted with a focus around a point in Sydne
 | `focus.point.lon` | 151.215281 |
 | `boundary.country` | AUS |
 
-The results below look very different from the ones you saw previously with only a focus point specified. These results are all from within Australia. You'll note the closest results show up at the top of the list, which is facilitated by the focus parameter.
+The results below look different from the ones you saw before with only a focus point specified. These results are all from within Australia. You'll note the closest results show up at the top of the list, which is helped by the focus parameter.
 
 > * YMCA, Redfern, New South Wales [distance: 3.836]
 * YMCA, St Ives (NSW), New South Wales [distance: 14.844]
@@ -285,13 +285,13 @@ With Mapzen Search, you can filter by:
 * `layers`: the kind of place you want to find
 
 ### Filter by data source
-The search examples so far have returned a mix of results from all the data sources available to Mapzen Search. Here are the sources currently being searched:
+The search examples so far have returned a mix of results from all the data sources available to Mapzen Search. Here are the sources being searched:
 
 | source | name | short name |
 |---|---|---|
 | [OpenStreetMap](http://www.openstreetmap.org/) | `openstreetmap` | `osm` |
 | [OpenAddresses](http://openaddresses.io/) | `openaddresses` | `oa` |
-| [Quattroshapes](http://quattroshapes.com/) | `quattroshapes` | `qs` |
+| [Who's on First](https://whosonfirst.mapzen.com) | 'whosonfirst' | 'wof' |
 | [GeoNames](http://www.geonames.org/) | `geonames` | `gn` |
 
 If you use the `sources` parameter, you can choose which of these data sources to include in your search. So if you're only interested in finding a YMCA in data from OpenAddresses, for example, you can build a query specifying that data source.
@@ -330,7 +330,7 @@ If you wanted to combine several data sources together, set `sources` to a comma
 Each of these data sources has properties, licenses, and strengths. You can learn more about the [data sources for Mapzen Search](data-sources.md).
 
 ### Filter by data type
-In Mapzen Search, place types are referred to as `layers`, ranging from fine to coarse. The Mapzen Search layers are derived from the hierarchy created by the gazetteer [Who's on First](https://github.com/whosonfirst/whosonfirst-placetypes/blob/master/README.md) and can be used to facilitate coarse geocoding. Here's a list of the types of places you could find in the results, sorted by granularity:
+In Mapzen Search, place types are referred to as `layers`, ranging from fine to coarse. The Mapzen Search layers are derived from the hierarchy created by the gazetteer [Who's on First](https://github.com/whosonfirst/whosonfirst-placetypes/blob/master/README.md) and can be used to help coarse geocoding. Here's a list of the types of places you could find in the results, sorted by granularity:
 
 |layer|description|
 |----|----|

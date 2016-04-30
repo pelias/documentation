@@ -11,7 +11,7 @@ The following status codes are returned from the geocoding service:
 - `500 Internal Server Error`: Generic fatal error.
 - `502 Bad Gateway`: Connection was lost to the Elasticsearch cluster.
 
-In all cases above, the response body will be valid geoJSON.
+In all cases above, the response body will be valid GeoJSON.
 
 ## Rate limiter
 The rate limiter returns the status codes `403 Forbidden` and `429 Too Many Requests`.
