@@ -20,7 +20,7 @@ Mapzen Search allows you a maximum of:
 If you need more capacity, contact [search@mapzen.com](mailto:search@mapzen.com). You can also set up your own instance of [Pelias](https://github.com/pelias/pelias), which has access to the same data used in Mapzen Search.
 
 ## Failing to provide an `api_key`
-If you fail to include the `api_key` parameter, the service will respond with the status code, `403 Forbidden`:
+If you fail to supply the `api_key` parameter, the service will respond with the status code `403 Forbidden`:
 ```bash
 {
   "meta": {
@@ -36,7 +36,7 @@ If you fail to include the `api_key` parameter, the service will respond with th
 }
 ```
 
-## Exceeding limits
+## Exceeding your limits
 If you exceed your limits, the service will respond with the status code `429 Too Many Requests`:
 ```bash
 {
