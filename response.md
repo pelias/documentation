@@ -60,12 +60,17 @@ Each item in this list will contain all the information needed to find it in hum
 
 Additionally, `/reverse` queries will have a `distance` parameter, which is the distance, in meters, from the query point.
 
-## Notable features
+## Notable elements
 
 ### `gid`
-This is a "global id" that can be used to reference a result with the [/place](place.md) endpoint. It consists of an identifier for the dataset, a layer, and finally an `id` for the individual record. This `id` corresponds to stable ids from datasets wherever possible (such as the ID of an OpenStreetMap Node or Way). Not all datasets have stable ID's (in particular OpenAddresses records), so for OpenAddresses, Mapzen Search includes the name of the source dataset in OpenAddresses as a part of the ID scheme.
+All places in Mapzen Search have a global identifier, known as a `gid`. Each matching record returned from a [`/search`](search), [`/autocomplete`](autocomplete), or [`/reverse`](reverse) geocoding request has a `gid` field.
 
-The `gid` is also used to retrieve full details on a particular result from the `place` endpoint. [Full details](place.md) on ID schemes are part of the `/place` endpoint.
+The `gid` consists of an identifier for the dataset, a layer, and an `id` for the individual record.
+
+There are some important considerations for using IDs in Mapzen Search:
+
+- You should not create your own ID values.
+- ID values are not stable and you should not store them for future use. You should only use IDs at the time when you receive the search results. One valid use for the `gid` is to retrieve full details on a particular result from the `place` endpoint.
 
 ### `label`
 The `label` is a human-friendly representation of the place, ready to be displayed to an end user.  The label field attempts to use a format that is right for the region the result is in, although Mapzen Search only supports a few countries at the moment.
