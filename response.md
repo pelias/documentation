@@ -63,7 +63,7 @@ Additionally, `/reverse` queries will have a `distance` parameter, which is the 
 ## Notable features
 
 ### `gid`
-All places in Mapzen Search have a global identifier, known as a `gid`. Each matching record returned from a [`/search`](search), [`/autocomplete`](autocomplete), or [`/reverse`](reverse) geocoding request has a `gid` field.
+All places in Mapzen Search have a global identifier, known as a `gid`. Each matching record returned from a [/search](search), [/autocomplete](autocomplete), or [/reverse](reverse) geocoding request has a `gid` field.
 
 The `gid` consists of a `layer` (such as `address` or `country`), an identifier for the original data source (`openstreetmap` or `openaddresses`),  and an `id` for the individual record corresponding to the original source idenfier, where possible. This information is also available as properties on the individual results as `layer`, `source`, and `source_id`.
 
@@ -71,7 +71,7 @@ The `gid` consists of a `layer` (such as `address` or `country`), an identifier 
 
 - You should not create your own `gid` strings.
 - `gid` strings may not be consistent across releases.
-- You should not attempt to parse `gid` strings for information or store them for future use. You should only use `gid` at the time when you receive the search results. One valid use for the `gid` is to retrieve full details on a particular result from the [`/place`](place) endpoint.
+- You should not attempt to parse `gid` strings for information or store them for future use. You should only use `gid` at the time when you receive the search results. One valid use for the `gid` is to retrieve full details on a particular result from the [/place](place) endpoint.
 
 ### `label`
 The `label` is a human-friendly representation of the place, ready to be displayed to an end user.  The label field attempts to use a format that is right for the region the result is in, although Mapzen Search only supports a few countries at the moment.
