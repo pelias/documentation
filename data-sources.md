@@ -9,6 +9,7 @@ Attribution is required for many of the Mapzen Search data providers. Some licen
 `sources=openaddresses` | `sources=osm`
 
 Layers:
+
 - `address`
 
 [OpenAddresses](http://openaddresses.io/) is a collection of over 200 million addresses around the world. Data in OpenAddresses only comes from national, state, and local governments, so this data is highly authoritative. Because it consists of entirely bulk imports, OpenAddresses is a large, global, and rapidly growing dataset. Many countries, particularly in Europe, now have every address represented in OpenAddresses.
@@ -22,6 +23,7 @@ Many of the sources used in OpenAddresses require [attribution](https://mapzen.c
 `sources=whosonfirst` | `sources=wof`
 
 Layers:
+
 - `country`
 - `macroregion`
 - `region`
@@ -33,10 +35,11 @@ Layers:
 - `coarse` (alias for simultaneously using all the above)
 
 [Who's on First](https://whosonfirst.mapzen.com) is an open-data directory of worldwide administrative places. Created by Mapzen, it is the primary provider of:
+
 - Countries
-- Macroregions (e.g. England is a Macroregion within the United Kingdom)
-- Regions (for example: states, provinces)
-- Macro-counties (e.g. [Departments of France](https://en.wikipedia.org/wiki/Departments_of_France))
+- Macroregions (for example, England is a Macroregion within the United Kingdom)
+- Regions (for example, states, provinces)
+- Macro-counties (for example, [Departments of France](https://en.wikipedia.org/wiki/Departments_of_France))
 - Counties
 - Localities (cities, towns, hamlets)
 - Neighbourhoods
@@ -50,6 +53,7 @@ Additionally, for addresses, venues, and points of interest coming from OpenStre
 `sources=openstreetmap` | `sources=osm`
 
 Layers:
+
 - `address`
 - `venue`
 
@@ -64,6 +68,7 @@ All OpenStreetMap data is licensed under the [ODbL](http://opendatacommons.org/l
 `sources=geonames` | `sources=gn`
 
 Layers:
+
 - `venue`
 - `country`
 - `region`
