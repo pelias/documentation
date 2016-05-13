@@ -15,7 +15,7 @@ In general, Pelias will require:
   a single machine or across several
 * [Node.js](https://nodejs.org/) 0.12 or newer (Node 4 or 5 is recommended)
 * Up to 100GB disk space to download and extract data
-* Lots of RAM. A full North America OSM import just barely fits on a machine with 16GB RAM
+* Lots of RAM. At least 2-4GB. A full North America OSM import just barely fits on a machine with 16GB RAM
 
 ## Choose your branch
 
@@ -69,7 +69,7 @@ selected files.
 
 ### Openstreetmap
 
-Openstreetmap has a nearly limitless array of download options, and any of them will work as long as
+Openstreetmap has a nearly limitless array of download options, and any of them should work as long as
 they're in [PBF](http://wiki.openstreetmap.org/wiki/PBF_Format) format. Generally the files will
 have the extension `.osm.pbf`. Good sources include the [Mapzen Metro Extracts](https://mapzen.com/data/metro-extracts/)
 (feel free to submit pull requests for additional cities or regions if needed), and planet files
@@ -115,14 +115,16 @@ compare names, so it can tell that records with `101 Main St` and `101 Main Stre
 refer to the same place.
 
 Unfortunately, our current implementation is very slow, and requires about 50GB of scratch disk
-space during a full planet import.
+space during a full planet import. It's worth noting that Mapzen Search currently does _not_
+deduplicate any data, although we hope to improve the performance of deduplication and resume using
+it eventually.
 
 ## Considerations for full-planet builds
 
 As may be evident from the dataset section above, importing all the data in all four supported datasets is
 worthy of its own discussion. Current [full planet builds](https://pelias-dashboard.mapzen.com/pelias)
-weigh in at over 300 million documents, and about 140GB total storage in Elasticsearch. Needless to
-say, a full planet build is not likely to succeed on most personal computers.
+weigh in at over 300 million documents, and require about 140GB total storage in Elasticsearch.
+Needless to say, a full planet build is not likely to succeed on most personal computers.
 
 Fortunately, because of services like AWS and the scalability of Elasticsearch, full planet builds
 are possible without too much extra effort. To set expectations, a cluster of 4
@@ -133,10 +135,11 @@ c4.8xlarge instance running the importers can complete a full planet build in ab
 
 ### Download the Pelias repositories
 
-At a minimum, you'll need the Pelias [schema] and [api] repositories, as well as at least one of the
-importers. Here's a bash snippet that will download all the repositories (they are all small enough
-that you don't have to worry about the space of the code itself), check out the production branch
-(which is probably the one you want), and install all the node module dependencies.
+At a minimum, you'll need the Pelias [schema](https://github.com/pelias/schema/) and
+[api](https://github.com/pelias/api/) repositories, as well as at least one of the importers. Here's
+a bash snippet that will download all the repositories (they are all small enough that you don't
+have to worry about the space of the code itself), check out the production branch (which is
+probably the one you want), and install all the node module dependencies.
 
 ```bash
 for repository in schema api whosonfirst geonames openaddresses openstreetmap; do
@@ -165,7 +168,7 @@ you can see the Elasticsearch configuration looks something like this:
 
 ```json
 {
-  esclient: {
+  "esclient": {
   "hosts": [{
     "host": "localhost",
     "port": 9200
@@ -251,7 +254,7 @@ If you want to reset the schema later (to start over with a new import or becaus
 has been updated), you can drop the index and start over like so:
 
 ```bash
-# warning: this will remove all your data from pelias~
+# !! WARNING: this will remove all your data from pelias!!
 node scripts/drop_index.js # it will ask for confirmation first
 node scripts/create_index.js
 ```
@@ -268,13 +271,13 @@ the importers with simply `cd $importer_directory; npm start`. Unfortunately onl
 and Openstreetmap importers works that way right now.
 
 For [Geonames](https://github.com/pelias/geonames/) and [Openaddresses](https://github.com/pelias/openaddresses),
-please see their respective READMEs, which detail the process of running them. We'd love to see pull
-requests that allow them to read configuration from `pelias.json` like the other importers.
-
+please see their respective READMEs, which detail the process of running them. By the way, ~we'd
+love to see pull requests that allow them to read configuration from `pelias.json` like the other
+importers.
 
 Depending on how much data you've imported, now may be a good time to grab a coffee. Without admin
 lookup, the fastest speeds you'll see are around 10,000 records per second. With admin lookup,
-1000/sec is pretty fast.
+expect around 800-1000 inserts per second.
 
 ### Start the API
 
