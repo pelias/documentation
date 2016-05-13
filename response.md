@@ -6,7 +6,7 @@ When requesting results from Mapzen Search, you will always get back `GeoJSON` r
 
 The top-level structure to every response looks like this:
 
-```json
+```
 {
   "geocoding":{...},
   "type":"FeatureCollection",
@@ -21,7 +21,7 @@ The `features` property of the result is where you will find the list of results
 
 Each item in this list will contain all the information needed to find it in human-readable format in the `properties` block, as well as computer friendly coordinates in the `geometry` property.
 
-``` json
+```
 {
       "type": "Feature",
       "geometry": {
@@ -63,9 +63,15 @@ Additionally, `/reverse` queries will have a `distance` parameter, which is the 
 ## Notable features
 
 ### `gid`
-This is a "global id" that can be used to reference a result with the [/place](place.md) endpoint. It consists of an identifier for the dataset, a layer, and finally an `id` for the individual record. This `id` corresponds to stable ids from datasets wherever possible (such as the ID of an OpenStreetMap Node or Way). Not all datasets have stable ID's (in particular OpenAddresses records), so for OpenAddresses, Mapzen Search includes the name of the source dataset in OpenAddresses as a part of the ID scheme.
+All places in Mapzen Search have a global identifier, known as a `gid`. Each matching record returned from a [`/search`](search), [`/autocomplete`](autocomplete), or [`/reverse`](reverse) geocoding request has a `gid` field.
 
-The `gid` is also used to retrieve full details on a particular result from the `place` endpoint. [Full details](place.md) on ID schemes are part of the `/place` endpoint.
+The `gid` consists of a `layer` (such as `address` or `country`), an identifier for the original data source (`openstreetmap` or `openaddresses`),  and an `id` for the individual record corresponding to the original source idenfier, where possible. This information is also available as properties on the individual results as `layer`, `source`, and `source_id`.
+
+#### :warning: Follow these guidelines regarding the `gid`:
+
+- You should not create your own `gid` strings.
+- `gid` values may not be consistent across releases.
+- You should not attempt to parse `gid` strings for information or store them for future use. You should only use `gid` at the time when you receive the search results. One valid use for the `gid` is to retrieve full details on a particular result from the `/place` endpoint.
 
 ### `label`
 The `label` is a human-friendly representation of the place, ready to be displayed to an end user.  The label field attempts to use a format that is right for the region the result is in, although Mapzen Search only supports a few countries at the moment.
