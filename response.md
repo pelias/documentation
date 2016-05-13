@@ -70,8 +70,8 @@ The `gid` consists of a `layer` (such as `address` or `country`), an identifier 
 #### :warning: Follow these guidelines regarding the `gid`:
 
 - You should not create your own `gid` strings.
-- `gid` values may not be consistent across releases.
-- You should not attempt to parse `gid` strings for information or store them for future use. You should only use `gid` at the time when you receive the search results. One valid use for the `gid` is to retrieve full details on a particular result from the `/place` endpoint.
+- `gid` strings may not be consistent across releases.
+- You should not attempt to parse `gid` strings for information or store them for future use. You should only use `gid` at the time when you receive the search results. One valid use for the `gid` is to retrieve full details on a particular result from the [`/place`](place) endpoint.
 
 ### `label`
 The `label` is a human-friendly representation of the place, ready to be displayed to an end user.  The label field attempts to use a format that is right for the region the result is in, although Mapzen Search only supports a few countries at the moment.
