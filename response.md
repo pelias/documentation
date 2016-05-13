@@ -70,7 +70,8 @@ The `gid` consists of an identifier for the dataset, a layer, and an `id` for th
 There are some important considerations for using IDs in Mapzen Search:
 
 - You should not create your own ID values.
-- ID values are not stable and you should not store them for future use. You should only use IDs at the time when you receive the search results. One valid use for the `gid` is to retrieve full details on a particular result from the `place` endpoint.
+- ID values may not be stable.
+- You should not attempt to parse ID values for information or store them for future use. You should only use IDs at the time when you receive the search results. One valid use for the `gid` is to retrieve full details on a particular result from the `place` endpoint.
 
 ### `label`
 The `label` is a human-friendly representation of the place, ready to be displayed to an end user.  The label field attempts to use a format that is right for the region the result is in, although Mapzen Search only supports a few countries at the moment.
