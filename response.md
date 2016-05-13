@@ -67,7 +67,7 @@ All places in Mapzen Search have a global identifier, known as a `gid`. Each mat
 
 The `gid` consists of a `layer` (such as `address` or `country`), an identifier for the original data source (`openstreetmap` or `openaddresses`),  and an `id` for the individual record corresponding to the original source idenfier, where possible. This information is also available as properties on the individual results as `layer`, `source`, and `source_id`.
 
-:rotating_light: Follow these guidelines regarding the `gid`:
+#### :warning: Follow these guidelines regarding the `gid`:
 
 - You should not create your own `gid` strings.
 - `gid` values may not be consistent across releases.
