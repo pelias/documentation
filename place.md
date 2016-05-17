@@ -2,13 +2,10 @@
 
 When you know an identification number and the source it came from, you can use Mapzen Search to get details on the location.
 
-To get started with a `/place` search, you need a [developer API key](https://mapzen.com/developers) and these three pieces of information:
+To get started with a `/place` search, you need a [developer API key](https://mapzen.com/developers).
 
-* source - the data source, such as OpenStreetMap
-* layer - the type of place, such as a venue, address, or country.
-* id - the identification number of the item
-
-If you have all those, join them together with semicolons and pass them in with the `ids` parameter.
+The `/place` endpoint accepts Mapzen Search `gid` strings that get returned for every record in all query responses.
+These `gid` strings should not be built manually, but rather used directly as-is to lookup additional details on the location that `gid` refers to.
 
 For example, this `/place` query looks up the Eiffel Tower in OpenStreetMap (OSM):
 
