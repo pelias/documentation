@@ -36,6 +36,7 @@ Each item in this list will contain all the information needed to find it in hum
         "gid": "whosonfirst:locality:101750367",
         "layer": "locality",
         "source": "whosonfirst",
+        "souce_id": "101750367",
         "name": "London",
         "confidence": 0.949,
         "country": "United Kingdom",
