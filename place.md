@@ -15,7 +15,7 @@ https://search.mapzen.com/v1/place?api_key=search-XXXXXXX&ids=openstreetmap:venu
 
 To search for more than one `/place` in a request, join multiple values together and separate them with a comma. For example, this `/place` query looks up the Eiffel Tower in OpenStreetMap and the borough of Manhattan in Who's on First:
 
-https://search.mapzen.com/v1/place?api_key=search-XXXXXXX&ids=osm:venue:5013364,whosonfirst:borough:421205771
+https://search.mapzen.com/v1/place?api_key=search-XXXXXXX&ids=openstreetmap:venue:way:5013364,whosonfirst:borough:421205771
 
 The results are returned in the order requested.
 
