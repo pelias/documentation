@@ -60,8 +60,8 @@ The [pelias/geonames](https://github.com/pelias/geonames/#importing-data) import
 instructions for downloading Geonames data automatically. Individual countries, or the entire planet
 (1.3GB) can be specified.
 
-### Openaddresses
-The Openaddresses project includes [numerous download options](https://results.openaddresses.io/),
+### OpenAddresses
+The OpenAddresses project includes [numerous download options](https://results.openaddresses.io/),
 all of which are `.zip` downloads. The full dataset is several gigabytes, but there are numerous
 subdivision options. In any case, the `.zip` files simply need to be extracted to a directory of
 your choice, and Pelias can be configured to either import every `.csv` in that directory, or only
@@ -85,7 +85,7 @@ a compromise between import speed and resulting data quality and richness.
 
 Most data that is imported by Pelias comes to us incomplete: many data sources don't supply what we
 call admin hierarchy information: the neighbourhood, city, country, or other region that contains
-the record. In Openaddresses, for example, many records contain only a housenumber, street name, and
+the record. In OpenAddresses, for example, many records contain only a housenumber, street name, and
 coordinates.
 
 Fortunately, Whosonfirst contains a well-developed set of geometries for all admin regions from the
@@ -104,7 +104,7 @@ and with full hierarchy information.
 
 ### Address Deduplication
 
-Openaddresses data contains lots of addresses, but it also contains lots of duplicate data. To help
+OpenAddresses data contains lots of addresses, but it also contains lots of duplicate data. To help
 reduce this problem we've built an [address-deduplicator](https://github.com/pelias/address-deduplicator)
 that can be run at import. It uses the [OpenVenues deduplicator](https://github.com/openvenues/address_deduper)
 to remove records that are near each other and have names that are likely to be duplicates. Note
@@ -218,11 +218,11 @@ Two caveats to this config section. First, the array structure of the OpenStreet
 suggests you can specify multiple files to import. Unfortunately, you can't, although we'd like to
 [support that in the future](https://github.com/pelias/openstreetmap/issues/55).
 
-Second, note that the Openaddresses section does _not_ have an `adminLookup` flag. The Openaddresses
+Second, note that the OpenAddresses section does _not_ have an `adminLookup` flag. The OpenAddresses
 importer only supports controlling this option by a command line flag currently. Again this is
 something [we'd like to fix](https://github.com/pelias/openaddresses/issues/51). See the importer
 [readme](https://github.com/pelias/openaddresses/blob/master/README.md) for details on how to
-configure admin lookup and deduplication for Openaddresses.
+configure admin lookup and deduplication for OpenAddresses.
 
 ### Install Elasticsearch
 
@@ -270,7 +270,7 @@ Our [goal](https://github.com/pelias/pelias/issues/255) is that eventually you'l
 the importers with simply `cd $importer_directory; npm start`. Unfortunately only the Whosonfirst
 and OpenStreetMap importers works that way right now.
 
-For [Geonames](https://github.com/pelias/geonames/) and [Openaddresses](https://github.com/pelias/openaddresses),
+For [Geonames](https://github.com/pelias/geonames/) and [OpenAddresses](https://github.com/pelias/openaddresses),
 please see their respective READMEs, which detail the process of running them. By the way, ~we'd
 love to see pull requests that allow them to read configuration from `pelias.json` like the other
 importers.
