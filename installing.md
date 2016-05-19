@@ -67,9 +67,9 @@ subdivision options. In any case, the `.zip` files simply need to be extracted t
 your choice, and Pelias can be configured to either import every `.csv` in that directory, or only
 selected files.
 
-### Openstreetmap
+### OpenStreetMap
 
-Openstreetmap has a nearly limitless array of download options, and any of them should work as long as
+OpenStreetMap has a nearly limitless array of download options, and any of them should work as long as
 they're in [PBF](http://wiki.openstreetmap.org/wiki/PBF_Format) format. Generally the files will
 have the extension `.osm.pbf`. Good sources include the [Mapzen Metro Extracts](https://mapzen.com/data/metro-extracts/)
 (feel free to submit pull requests for additional cities or regions if needed), and planet files
@@ -214,7 +214,7 @@ The other major section, `imports`, defiens settings for each importer. The defa
 As you can see, the default datapaths are meant to be changed. This is also where you can enable
 admin lookup by overriding the default value.
 
-Two caveats to this config section. First, the array structure of the Openstreetmap `import` section
+Two caveats to this config section. First, the array structure of the OpenStreetMap `import` section
 suggests you can specify multiple files to import. Unfortunately, you can't, although we'd like to
 [support that in the future](https://github.com/pelias/openstreetmap/issues/55).
 
@@ -268,7 +268,7 @@ Now that the schema is set up, you're ready to begin importing data!
 
 Our [goal](https://github.com/pelias/pelias/issues/255) is that eventually you'll be able to run all
 the importers with simply `cd $importer_directory; npm start`. Unfortunately only the Whosonfirst
-and Openstreetmap importers works that way right now.
+and OpenStreetMap importers works that way right now.
 
 For [Geonames](https://github.com/pelias/geonames/) and [Openaddresses](https://github.com/pelias/openaddresses),
 please see their respective READMEs, which detail the process of running them. By the way, ~we'd
