@@ -15,7 +15,7 @@ In general, Pelias will require:
   a single machine or across several
 * [Node.js](https://nodejs.org/) 0.12 or newer (Node 4 or 5 is recommended)
 * Up to 100GB disk space to download and extract data
-* Lots of RAM. At least 2-4GB. A full North America OSM import just barely fits on a machine with 16GB RAM
+* Lots of RAM, 8GB is a good minimum. A full North America OSM import just fits in 16GB RAM
 
 ## Choose your branch
 
