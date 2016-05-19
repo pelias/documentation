@@ -184,7 +184,7 @@ config is sent along to the [elasticsearch-js](https://github.com/elastic/elasti
 any of its [configuration options](https://www.elastic.co/guide/en/elasticsearch/client/javascript-api/current/configuration.html)
 are valid.
 
-The other major section, `imports`, defiens settings for each importer. The defaults look like this:
+The other major section, `imports`, defines settings for each importer. The defaults look like this:
 
 ```json
 {
