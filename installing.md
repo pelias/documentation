@@ -166,7 +166,7 @@ Elasticsearch port).
 By taking a look at the [default config](https://github.com/pelias/config/blob/master/config/defaults.json#L2),
 you can see the Elasticsearch configuration looks something like this:
 
-```json
+```js
 {
   "esclient": {
   "hosts": [{
@@ -208,6 +208,7 @@ The other major section, `imports`, defiens settings for each importer. The defa
     "whosonfirst": {
       "datapath": "/mnt/pelias/whosonfirst"
     }
+  }
 }
 ```
 
