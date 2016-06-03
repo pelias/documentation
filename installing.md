@@ -1,11 +1,13 @@
 # Installing Pelias
 
 Mapzen offers the Mapzen Search service in hopes that as many people as possible will use it,
-but we also encourage people to set up their own Pelias instance. Whether it's to import their own data,
-make their own tweaks to Pelias code, or to help with Pelias development, its important that we
-document how this can be done. Similarly, while there are ways this process can be
-[automated](https://github.com/pelias/vagrant), these instructions are written as if the setup is
-manual, to illustrate all the moving pieces of Pelias.
+but we also encourage people to set up their own Pelias instance.
+
+For most cases, it's useful to have much of the installation process automated, so we suggest
+looking at the [Pelias Vagrant image](https://github.com/pelias/vagrant).
+
+However, for more in-depth usage, to learn more about the working of Pelias, or to contribute back,
+manual setup is useful. These instructions will help you install Pelias from scratch manually.
 
 ## Installation Overview
 
