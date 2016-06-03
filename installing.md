@@ -42,13 +42,13 @@ Pelias can currently import data from four different sources. The contents and d
 sources are available on our [data sources page](./data_sources). Here we'll just focus on what to
 download for each one.
 
-### Whosonfirst
+### Who's on First
 
-There are two ways to download Whosonfirst data. The first is to use the pre-created
+There are two ways to download Who's on First data. The first is to use the pre-created
 [bundles](https://whosonfirst.mapzen.com/bundles/). These consist of a series of archives that can
 be easily extracted (instructions are on the page).
 
-For more advanced uses, or to contribute back to Whosonfirst, use the
+For more advanced uses, or to contribute back to Who's on First, use the
 [whosonfirst-data](https://github.com/whosonfirst/whosonfirst-data) Github repository. Again, there
 are [instructions](https://github.com/whosonfirst/whosonfirst-data#git-and-github). Note that this
 repo requires [git-lfs](https://git-lfs.github.com/), a lot of bandwidth, and 27GB (currently) of
@@ -88,7 +88,7 @@ call admin hierarchy information: the neighbourhood, city, country, or other reg
 the record. In OpenAddresses, for example, many records contain only a housenumber, street name, and
 coordinates.
 
-Fortunately, Whosonfirst contains a well-developed set of geometries for all admin regions from the
+Fortunately, Who's on First contains a well-developed set of geometries for all admin regions from the
 neighbourhood to continent level. Through
 [point-in-polygon](https://en.wikipedia.org/wiki/Point_in_polygon) lookup, our importers can
 [derive](https://github.com/pelias/wof-admin-lookup) this information!
@@ -98,8 +98,8 @@ Because geometry data is quite large, expect to use about 6GB of RAM (not disk) 
 for this geometry data. And because of the complexity of the required calculations, imports with
 admin lookup are up to 10 times slower than without.
 
-Whosonfirst, of course, always includes full hierarchy information because it's built into the
-dataset itself, so there's no tradeoff to be made. Whosonfirst data will always import quite fast
+Who's on First, of course, always includes full hierarchy information because it's built into the
+dataset itself, so there's no tradeoff to be made. Who's on First data will always import quite fast
 and with full hierarchy information.
 
 ### Address Deduplication
@@ -268,7 +268,7 @@ reindex all your data after making schema changes.
 Now that the schema is set up, you're ready to begin importing data!
 
 Our [goal](https://github.com/pelias/pelias/issues/255) is that eventually you'll be able to run all
-the importers with simply `cd $importer_directory; npm start`. Unfortunately only the Whosonfirst
+the importers with simply `cd $importer_directory; npm start`. Unfortunately only the Who's on First
 and OpenStreetMap importers works that way right now.
 
 For [Geonames](https://github.com/pelias/geonames/) and [OpenAddresses](https://github.com/pelias/openaddresses),
