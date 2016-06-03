@@ -52,14 +52,14 @@ disk space.
 
 The [pelias/geonames](https://github.com/pelias/geonames/#importing-data) importer contains code and
 instructions for downloading Geonames data automatically. Individual countries, or the entire planet
-(1.3GB) can be specified.
+(1.3GB compressed) can be specified.
 
 ### OpenAddresses
 The OpenAddresses project includes [numerous download options](https://results.openaddresses.io/),
-all of which are `.zip` downloads. The full dataset is several gigabytes, but there are numerous
-subdivision options. In any case, the `.zip` files simply need to be extracted to a directory of
-your choice, and Pelias can be configured to either import every `.csv` in that directory, or only
-selected files.
+all of which are `.zip` downloads. The full dataset is just over 3 gigabytes compressed, but there
+are numerous subdivision options. In any case, the `.zip` files simply need to be extracted to a
+directory of your choice, and Pelias can be configured to either import every `.csv` in that
+directory, or only selected files.
 
 ### OpenStreetMap
 
@@ -67,8 +67,8 @@ OpenStreetMap has a nearly limitless array of download options, and any of them 
 they're in [PBF](http://wiki.openstreetmap.org/wiki/PBF_Format) format. Generally the files will
 have the extension `.osm.pbf`. Good sources include the [Mapzen Metro Extracts](https://mapzen.com/data/metro-extracts/)
 (feel free to submit pull requests for additional cities or regions if needed), and planet files
-listed on the [OSM wiki](http://wiki.openstreetmap.org/wiki/Planet.osm).
-
+listed on the [OSM wiki](http://wiki.openstreetmap.org/wiki/Planet.osm). A full planet PBF is about
+36GB.
 
 ## Choose your import settings
 
