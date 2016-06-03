@@ -1,13 +1,27 @@
 # Installing Pelias
 
 Mapzen offers the Mapzen Search service in hopes that as many people as possible will use it,
-but we also encourage people to set up their own Pelias instance. Whether it's to import their own data,
-make their own tweaks to Pelias code, or to help with Pelias development, its important that we
-document how this can be done. Similarly, while there are ways this process can be
-[automated](https://github.com/pelias/vagrant), these instructions are written as if the setup is
-manual, to illustrate all the moving pieces of Pelias.
+but we also encourage people to set up their own Pelias instance.
 
-## Gather the Ingredients
+For most cases, it's useful to have much of the installation process automated, so we suggest
+looking at the [Pelias Vagrant image](https://github.com/pelias/vagrant).
+
+However, for more in-depth usage, to learn more about the working of Pelias, or to contribute back,
+manual setup is useful. These instructions will help you install Pelias from scratch manually.
+
+## Installation Overview
+
+The steps for fully installing Pelias look like this:
+
+1. Decide which datasets and settings will be used
+2. Download appropriate data
+3. Download Pelias code, using the appropriate branches
+4. Set up Elasticsearch
+5. Install the Elasticsearch schema using pelias-schema
+6. Use one or more importers to load data into Elasticsearch
+7. Start the API server to begin handling queries
+
+## System Requirements
 
 In general, Pelias will require:
 
@@ -15,26 +29,8 @@ In general, Pelias will require:
   a single machine or across several
 * [Node.js](https://nodejs.org/) 0.12 or newer (Node 4 or 5 is recommended)
 * Up to 100GB disk space to download and extract data
-* Lots of RAM. At least 2-4GB. A full North America OSM import just barely fits on a machine with 16GB RAM
+* Lots of RAM, 8GB is a good minimum. A full North America OSM import just fits in 16GB RAM
 
-## Choose your branch
-
-As part of the setup instructions below, you'll be downloading several Pelias packages from source
-on Github. All of these packages offer 3 branches for various use cases. Based on your needs, you
-should pick one of these branches and use the same one across all of the Pelias packages.
-
-`production`: contains only code that has been tested against a full-planet build and is live on
-Mapzen Search. This is the "safest" branch and it will change the least frequently, although we
-generally release new code at least once a week.
-
-`staging`: these branches contain the code that is currently being tested against a full planet
-build for imminent release to Mapzen Search. It's useful to track what code will be going out in the
-next release, but not much else.
-
-`master`: master branches contain the latest code that has passed code review, unit/integration
-tests, and is ready to be included in the next release. While we try to avoid it, the nature of the
-master branch is that it will sometimes be broken. That said, these are the branches to use for
-development of new features.
 
 ## Choose your datasets
 
@@ -42,13 +38,13 @@ Pelias can currently import data from four different sources. The contents and d
 sources are available on our [data sources page](./data_sources). Here we'll just focus on what to
 download for each one.
 
-### Whosonfirst
+### Who's on First
 
-There are two ways to download Whosonfirst data. The first is to use the pre-created
+There are two ways to download Who's on First data. The first is to use the pre-created
 [bundles](https://whosonfirst.mapzen.com/bundles/). These consist of a series of archives that can
 be easily extracted (instructions are on the page).
 
-For more advanced uses, or to contribute back to Whosonfirst, use the
+For more advanced uses, or to contribute back to Who's on First, use the
 [whosonfirst-data](https://github.com/whosonfirst/whosonfirst-data) Github repository. Again, there
 are [instructions](https://github.com/whosonfirst/whosonfirst-data#git-and-github). Note that this
 repo requires [git-lfs](https://git-lfs.github.com/), a lot of bandwidth, and 27GB (currently) of
@@ -58,25 +54,25 @@ disk space.
 
 The [pelias/geonames](https://github.com/pelias/geonames/#importing-data) importer contains code and
 instructions for downloading Geonames data automatically. Individual countries, or the entire planet
-(1.3GB) can be specified.
+(1.3GB compressed) can be specified.
 
-### Openaddresses
-The Openaddresses project includes [numerous download options](https://results.openaddresses.io/),
-all of which are `.zip` downloads. The full dataset is several gigabytes, but there are numerous
-subdivision options. In any case, the `.zip` files simply need to be extracted to a directory of
-your choice, and Pelias can be configured to either import every `.csv` in that directory, or only
-selected files.
+### OpenAddresses
+The OpenAddresses project includes [numerous download options](https://results.openaddresses.io/),
+all of which are `.zip` downloads. The full dataset is just over 3 gigabytes compressed, but there
+are numerous subdivision options. In any case, the `.zip` files simply need to be extracted to a
+directory of your choice, and Pelias can be configured to either import every `.csv` in that
+directory, or only selected files.
 
-### Openstreetmap
+### OpenStreetMap
 
-Openstreetmap has a nearly limitless array of download options, and any of them should work as long as
+OpenStreetMap has a nearly limitless array of download options, and any of them should work as long as
 they're in [PBF](http://wiki.openstreetmap.org/wiki/PBF_Format) format. Generally the files will
 have the extension `.osm.pbf`. Good sources include the [Mapzen Metro Extracts](https://mapzen.com/data/metro-extracts/)
 (feel free to submit pull requests for additional cities or regions if needed), and planet files
-listed on the [OSM wiki](http://wiki.openstreetmap.org/wiki/Planet.osm).
+listed on the [OSM wiki](http://wiki.openstreetmap.org/wiki/Planet.osm). A full planet PBF is about
+36GB.
 
-
-## Choose your import options
+## Choose your import settings
 
 There are several options that should be discussed before starting any data imports, as they require
 a compromise between import speed and resulting data quality and richness.
@@ -85,10 +81,10 @@ a compromise between import speed and resulting data quality and richness.
 
 Most data that is imported by Pelias comes to us incomplete: many data sources don't supply what we
 call admin hierarchy information: the neighbourhood, city, country, or other region that contains
-the record. In Openaddresses, for example, many records contain only a housenumber, street name, and
+the record. In OpenAddresses, for example, many records contain only a housenumber, street name, and
 coordinates.
 
-Fortunately, Whosonfirst contains a well-developed set of geometries for all admin regions from the
+Fortunately, Who's on First contains a well-developed set of geometries for all admin regions from the
 neighbourhood to continent level. Through
 [point-in-polygon](https://en.wikipedia.org/wiki/Point_in_polygon) lookup, our importers can
 [derive](https://github.com/pelias/wof-admin-lookup) this information!
@@ -98,13 +94,13 @@ Because geometry data is quite large, expect to use about 6GB of RAM (not disk) 
 for this geometry data. And because of the complexity of the required calculations, imports with
 admin lookup are up to 10 times slower than without.
 
-Whosonfirst, of course, always includes full hierarchy information because it's built into the
-dataset itself, so there's no tradeoff to be made. Whosonfirst data will always import quite fast
+Who's on First, of course, always includes full hierarchy information because it's built into the
+dataset itself, so there's no tradeoff to be made. Who's on First data will always import quite fast
 and with full hierarchy information.
 
 ### Address Deduplication
 
-Openaddresses data contains lots of addresses, but it also contains lots of duplicate data. To help
+OpenAddresses data contains lots of addresses, but it also contains lots of duplicate data. To help
 reduce this problem we've built an [address-deduplicator](https://github.com/pelias/address-deduplicator)
 that can be run at import. It uses the [OpenVenues deduplicator](https://github.com/openvenues/address_deduper)
 to remove records that are near each other and have names that are likely to be duplicates. Note
@@ -130,6 +126,25 @@ Fortunately, because of services like AWS and the scalability of Elasticsearch, 
 are possible without too much extra effort. To set expectations, a cluster of 4
 [r3.xlarge](https://aws.amazon.com/ec2/instance-types/) AWS instances running Elasticsearch, and one
 c4.8xlarge instance running the importers can complete a full planet build in about two days.
+
+## Choose your Pelias code branch
+
+As part of the setup instructions below, you'll be downloading several Pelias packages from source
+on Github. All of these packages offer 3 branches for various use cases. Based on your needs, you
+should pick one of these branches and use the same one across all of the Pelias packages.
+
+`production`: contains only code that has been tested against a full-planet build and is live on
+Mapzen Search. This is the "safest" branch and it will change the least frequently, although we
+generally release new code at least once a week.
+
+`staging`: these branches contain the code that is currently being tested against a full planet
+build for imminent release to Mapzen Search. It's useful to track what code will be going out in the
+next release, but not much else.
+
+`master`: master branches contain the latest code that has passed code review, unit/integration
+tests, and is ready to be included in the next release. While we try to avoid it, the nature of the
+master branch is that it will sometimes be broken. That said, these are the branches to use for
+development of new features.
 
 ## Installation
 
@@ -166,7 +181,7 @@ Elasticsearch port).
 By taking a look at the [default config](https://github.com/pelias/config/blob/master/config/defaults.json#L2),
 you can see the Elasticsearch configuration looks something like this:
 
-```json
+```js
 {
   "esclient": {
   "hosts": [{
@@ -184,7 +199,7 @@ config is sent along to the [elasticsearch-js](https://github.com/elastic/elasti
 any of its [configuration options](https://www.elastic.co/guide/en/elasticsearch/client/javascript-api/current/configuration.html)
 are valid.
 
-The other major section, `imports`, defiens settings for each importer. The defaults look like this:
+The other major section, `imports`, defines settings for each importer. The defaults look like this:
 
 ```json
 {
@@ -208,21 +223,22 @@ The other major section, `imports`, defiens settings for each importer. The defa
     "whosonfirst": {
       "datapath": "/mnt/pelias/whosonfirst"
     }
+  }
 }
 ```
 
 As you can see, the default datapaths are meant to be changed. This is also where you can enable
 admin lookup by overriding the default value.
 
-Two caveats to this config section. First, the array structure of the Openstreetmap `import` section
+Two caveats to this config section. First, the array structure of the OpenStreetMap `import` section
 suggests you can specify multiple files to import. Unfortunately, you can't, although we'd like to
 [support that in the future](https://github.com/pelias/openstreetmap/issues/55).
 
-Second, note that the Openaddresses section does _not_ have an `adminLookup` flag. The Openaddresses
+Second, note that the OpenAddresses section does _not_ have an `adminLookup` flag. The OpenAddresses
 importer only supports controlling this option by a command line flag currently. Again this is
 something [we'd like to fix](https://github.com/pelias/openaddresses/issues/51). See the importer
 [readme](https://github.com/pelias/openaddresses/blob/master/README.md) for details on how to
-configure admin lookup and deduplication for Openaddresses.
+configure admin lookup and deduplication for OpenAddresses.
 
 ### Install Elasticsearch
 
@@ -267,11 +283,11 @@ reindex all your data after making schema changes.
 Now that the schema is set up, you're ready to begin importing data!
 
 Our [goal](https://github.com/pelias/pelias/issues/255) is that eventually you'll be able to run all
-the importers with simply `cd $importer_directory; npm start`. Unfortunately only the Whosonfirst
-and Openstreetmap importers works that way right now.
+the importers with simply `cd $importer_directory; npm start`. Unfortunately only the Who's on First
+and OpenStreetMap importers works that way right now.
 
-For [Geonames](https://github.com/pelias/geonames/) and [Openaddresses](https://github.com/pelias/openaddresses),
-please see their respective READMEs, which detail the process of running them. By the way, ~we'd
+For [Geonames](https://github.com/pelias/geonames/) and [OpenAddresses](https://github.com/pelias/openaddresses),
+please see their respective READMEs, which detail the process of running them. By the way, we'd
 love to see pull requests that allow them to read configuration from `pelias.json` like the other
 importers.
 
