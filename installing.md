@@ -272,7 +272,7 @@ the importers with simply `cd $importer_directory; npm start`. Unfortunately onl
 and OpenStreetMap importers works that way right now.
 
 For [Geonames](https://github.com/pelias/geonames/) and [OpenAddresses](https://github.com/pelias/openaddresses),
-please see their respective READMEs, which detail the process of running them. By the way, ~we'd
+please see their respective READMEs, which detail the process of running them. By the way, we'd
 love to see pull requests that allow them to read configuration from `pelias.json` like the other
 importers.
 
