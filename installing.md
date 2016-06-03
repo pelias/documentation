@@ -7,7 +7,19 @@ document how this can be done. Similarly, while there are ways this process can 
 [automated](https://github.com/pelias/vagrant), these instructions are written as if the setup is
 manual, to illustrate all the moving pieces of Pelias.
 
-## Gather the Ingredients
+## Installation Overview
+
+The steps for fully installing Pelias look like this:
+
+1. Decide which datasets and settings will be used
+2. Download appropriate data
+3. Download Pelias code, using the appropriate branches
+4. Set up Elasticsearch
+5. Install the Elasticsearch schema using pelias-schema
+6. Use one or more importers to load data into Elasticsearch
+7. Start the API server to begin handling queries
+
+## System Requirements
 
 In general, Pelias will require:
 
@@ -17,24 +29,6 @@ In general, Pelias will require:
 * Up to 100GB disk space to download and extract data
 * Lots of RAM, 8GB is a good minimum. A full North America OSM import just fits in 16GB RAM
 
-## Choose your branch
-
-As part of the setup instructions below, you'll be downloading several Pelias packages from source
-on Github. All of these packages offer 3 branches for various use cases. Based on your needs, you
-should pick one of these branches and use the same one across all of the Pelias packages.
-
-`production`: contains only code that has been tested against a full-planet build and is live on
-Mapzen Search. This is the "safest" branch and it will change the least frequently, although we
-generally release new code at least once a week.
-
-`staging`: these branches contain the code that is currently being tested against a full planet
-build for imminent release to Mapzen Search. It's useful to track what code will be going out in the
-next release, but not much else.
-
-`master`: master branches contain the latest code that has passed code review, unit/integration
-tests, and is ready to be included in the next release. While we try to avoid it, the nature of the
-master branch is that it will sometimes be broken. That said, these are the branches to use for
-development of new features.
 
 ## Choose your datasets
 
@@ -76,7 +70,7 @@ have the extension `.osm.pbf`. Good sources include the [Mapzen Metro Extracts](
 listed on the [OSM wiki](http://wiki.openstreetmap.org/wiki/Planet.osm).
 
 
-## Choose your import options
+## Choose your import settings
 
 There are several options that should be discussed before starting any data imports, as they require
 a compromise between import speed and resulting data quality and richness.
@@ -130,6 +124,25 @@ Fortunately, because of services like AWS and the scalability of Elasticsearch, 
 are possible without too much extra effort. To set expectations, a cluster of 4
 [r3.xlarge](https://aws.amazon.com/ec2/instance-types/) AWS instances running Elasticsearch, and one
 c4.8xlarge instance running the importers can complete a full planet build in about two days.
+
+## Choose your Pelias code branch
+
+As part of the setup instructions below, you'll be downloading several Pelias packages from source
+on Github. All of these packages offer 3 branches for various use cases. Based on your needs, you
+should pick one of these branches and use the same one across all of the Pelias packages.
+
+`production`: contains only code that has been tested against a full-planet build and is live on
+Mapzen Search. This is the "safest" branch and it will change the least frequently, although we
+generally release new code at least once a week.
+
+`staging`: these branches contain the code that is currently being tested against a full planet
+build for imminent release to Mapzen Search. It's useful to track what code will be going out in the
+next release, but not much else.
+
+`master`: master branches contain the latest code that has passed code review, unit/integration
+tests, and is ready to be included in the next release. While we try to avoid it, the nature of the
+master branch is that it will sometimes be broken. That said, these are the branches to use for
+development of new features.
 
 ## Installation
 
