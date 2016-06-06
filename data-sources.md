@@ -95,6 +95,6 @@ Quattroshapes used to be supported by Mapzen Search and its use was discontinued
 
 It has been replaced by Who's on First, which continues to provide global administrative place data (countries, regions, counties, cities) and administrative lookup (_"what country, region, and city is this address part of?"_).
 
-To help make the transition seamless, any queries that specify quattroshapes in the `sources` parameter will see results from Who's on First instead. Who's on First contains all the data from Quattroshapes, plus more data, and has continuous updates and fixes, so it should be a seamless transition where all existing queries will continue to work as expected.
+To help make the transition seamless, any queries that specify quattroshapes in the `sources` parameter will see results from Who's on First instead. Who's on First contains all the data from Quattroshapes, plus more data, and has continuous updates and fixes. All existing queries for Quattroshapes will continue to work without modification.
 
 Quattroshapes data is licensed [CC-BY-2.0](http://creativecommons.org/licenses/by/2.0/).
