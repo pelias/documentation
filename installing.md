@@ -40,7 +40,10 @@ download for each one.
 
 ### Who's on First
 
-There are two ways to download Who's on First data. The first is to use the pre-created
+The [Who's on First](https://github.com/pelias/whosonfirst#data) importer contains code and
+instructions for downloading WOF data. 
+
+Alternativley, there are two other ways to download Who's on First data. The first is to use the pre-created
 [bundles](https://whosonfirst.mapzen.com/bundles/). These consist of a series of archives that can
 be easily extracted (instructions are on the page).
 
