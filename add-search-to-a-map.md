@@ -189,13 +189,13 @@ At this point, you have a map! You should see a map with OpenStreetMap tiles, zo
 So far, you have referenced the necessary files, initialized Leaflet with a map container on the page, and added data to the map. Now, you are ready to add the Search box from the Mapzen Search plug-in.
 
 1. Go back to the https://mapzen.com/developers page and copy your API key to the clipboard.
-2. Inside the same `<script>` tag, start a new line after the `}).addTo(map);` line. Initialize a search box with the following code and your own API key substituted for the placeholder text of `search-hnopfLZ`.
+2. Inside the same `<script>` tag, start a new line after the `}).addTo(map);` line. Initialize a search box with the following code and your own API key substituted for the placeholder text of `search-xxxxxx`.
 
     ```js
-    var geocoder = L.control.geocoder('search-hnopfLZ').addTo(map);
+    var geocoder = L.control.geocoder('search-xxxxxx').addTo(map);
     ```
 
-    The `search-hnopfLZ` text is the Mapzen Search API key; paste your own API key inside the single quotes.
+    The `search-xxxxxx` text is the Mapzen Search API key; paste your own API key inside the single quotes.
 
 3. Save your edits and refresh the browser. You should see a small magnifying glass icon in the left corner, near the zoom controls.
 
@@ -216,7 +216,7 @@ Your `<body>` section should look like this:
     L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
       attribution: '&copy; <a href="http://openstreetmap.org/copyright">OpenStreetMap contributors</a>'
     }).addTo(map);
-    var geocoder = L.control.geocoder('search-hnopfLZ').addTo(map);
+    var geocoder = L.control.geocoder('search-xxxxxx').addTo(map);
   </script>
 </body>
 [...]
@@ -273,7 +273,7 @@ You can refer to this HTML if you want to review your work or troubleshoot an er
     }).addTo(map);
 
     //Use your own API key in place of this one. Get a key at mapzen.com/developers.
-    var geocoder = L.control.geocoder('search-hnopfLZ').addTo(map);
+    var geocoder = L.control.geocoder('search-xxxxxx').addTo(map);
   </script>
 </body>
 </html>
