@@ -305,7 +305,7 @@ If you use the `sources` parameter, you can choose which of these data sources t
 
 Because OpenAddresses is, as the name suggests, only address data, here's what you can expect to find:
 
-> * 0 Ymca, New Brunswick
+* 0 Ymca, New Brunswick
 * 0 Ymca Drive, Cary, NC
 * 14843 Ymca Lane, Cormorant, MN
 * 14660 Ymca Lane, Cormorant, MN
