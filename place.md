@@ -9,13 +9,13 @@ These `gid` strings should not be built manually, but rather used directly as-is
 
 For example, this `/place` query looks up the Eiffel Tower in OpenStreetMap (OSM):
 
-https://search.mapzen.com/v1/place?api_key=search-hnopfLZ&ids=openstreetmap:venue:way:5013364
+> [/v1/place?api_key=search-hnopfLZ&ids=openstreetmap:venue:way:5013364](https://search.mapzen.com/v1/place?api_key=search-hnopfLZ&ids=openstreetmap:venue:way:5013364)
 
 ## Search for multiple places in a query
 
 To search for more than one `/place` in a request, join multiple values together and separate them with a comma. For example, this `/place` query looks up the Eiffel Tower in OpenStreetMap and the borough of Manhattan in Who's on First:
 
-https://search.mapzen.com/v1/place?api_key=search-hnopfLZ&ids=openstreetmap:venue:way:5013364,whosonfirst:borough:421205771
+> [/v1/place?api_key=search-hnopfLZ&ids=openstreetmap:venue:way:5013364,whosonfirst:borough:421205771](https://search.mapzen.com/v1/place?api_key=search-hnopfLZ&ids=openstreetmap:venue:way:5013364,whosonfirst:borough:421205771)
 
 The results are returned in the order requested.
 
