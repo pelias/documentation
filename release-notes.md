@@ -1,3 +1,8 @@
+## 13 June 2016
+
+* Who's on First importer: records now use the label centroid if it's present. The previous behavior was to always use the center of the record's bounding box. In cases like [San Francisco](https://github.com/pelias/pelias/issues/356), this caused the record to not show up where people expect!
+* Openstreetmap importer: A bug in config parameter handling that caused admin lookup to be disabled when it shouldn't was fixed. Thanks to [@dylanFrese](https://github.com/DylanFrese) for helping us catch this tricky one.
+
 ## 26 May 2016
 
 * We did it... we removed an Elasticsearch analyzer that was presumptuously assuming all queries were in English! The `k-stemming` analysis would do strange things like turn Daly into Dale, so finding "Daly City" was a challange. Well, no more! Word of warning, in `/search` we are now less forgiving when someone uses a plural version of a word where the real name is singular.
