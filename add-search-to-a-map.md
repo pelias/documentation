@@ -272,7 +272,7 @@ You can refer to this HTML if you want to review your work or troubleshoot an er
       attribution: '&copy; <a href="http://openstreetmap.org/copyright">OpenStreetMap contributors</a>'
     }).addTo(map);
 
-    //Use your own API key in place of search-xxxxxx. Get a key at mapzen.com/developers.
+    //Use your own API key in place of this one. Get a key at mapzen.com/developers.
     var geocoder = L.control.geocoder('search-xxxxxx').addTo(map);
   </script>
 </body>

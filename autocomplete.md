@@ -18,7 +18,8 @@ To focus your search based upon a geographical area, such as the center of the u
 
 From San Francisco:
 
-> /v1/autocomplete?api_key=search-XXXXXXX&focus.point.lat=37.7&focus.point.lon=-122.4&text=union square
+>
+[/v1/autocomplete?api_key=search-hnopfLZ&__focus.point.lat=37.7&focus.point.lon=-122.4&text=union square__](https://search.mapzen.com/v1/autocomplete?api_key=search-hnopfLZ&focus.point.lat=37.7&focus.point.lon=-122.4&text=union square)
 
 ```
 1)	Union Square, San Francisco County, CA
@@ -27,7 +28,8 @@ From San Francisco:
 
 From New York City:
 
-> /v1/autocomplete?api_key=search-XXXXXXX&focus.point.lat=40.7&focus.point.lon=-73.9&text=union square
+>
+[/v1/autocomplete?api_key=search-hnopfLZ&__focus.point.lat=40.7&focus.point.lon=-73.9&text=union square__](https://search.mapzen.com/v1/autocomplete?api_key=search-hnopfLZ&focus.point.lat=40.7&focus.point.lon=-73.9&text=union square)
 
 ```
 1)	Union Square, New York County, NY
@@ -36,7 +38,7 @@ From New York City:
 
 The `/autocomplete` endpoint can promote nearby results to the top of the list, while still allowing important matches from farther away to be visible. For example, searching `hard rock cafe` with a focus on Berlin:
 
-> /v1/autocomplete?api_key=search-XXXXXXX&focus.point.lat=52.5&focus.point.lon=13.3&text=hard rock cafe
+> [/v1/autocomplete?api_key=search-hnopfLZ&__focus.point.lat=52.5&focus.point.lon=13.3&text=hard rock cafe__](https://search.mapzen.com/v1/autocomplete?api_key=search-hnopfLZ&focus.point.lat=52.5&focus.point.lon=13.3&text=hard rock cafe)
 
 with `focus.point` you will find the Berlin restaurant first:
 ```
@@ -52,7 +54,7 @@ without `focus.point` you will find the most popular restaurants first:
 
 ## Filters
 
-You can filter the results in several ways: the original data source and/or the type of record. 
+You can filter the results in several ways: the original data source and/or the type of record.
 
 ### Sources
 
@@ -63,7 +65,7 @@ The `sources` parameter allows you to specify from which data sources you'd like
 * `geonames` or `gn`
 * `whosonfirst` or `wof`
 
-> /v1/autocomplete?api_key=search-XXXXXXX&sources=openaddresses&text=pennsylvania
+> [/v1/autocomplete?api_key=search-hnopfLZ&__sources=openaddresses__&text=pennsylvania](https://search.mapzen.com/v1/autocomplete?api_key=search-hnopfLZ&sources=openaddresses&text=pennsylvania)
 
 with `sources=openaddresses` you will only find addresses on Pennsylvania Ave or Street:
 ```
@@ -80,7 +82,7 @@ without `sources=openaddresses` you will find the most popular Pennsylvanias fir
 ```
 
 ### Layers
-We refer to the type of record as its `layer`. We index all records into the following layers
+The type of record is referred to as its `layer`. All records are indexed into the following layers:
 
 * `venue`
 * `address`
@@ -95,9 +97,9 @@ We refer to the type of record as its `layer`. We index all records into the fol
 * `region`
 * `country`
 
-We also allow users to refer to all the administrative hierarchy layers with a single alias, `coarse`.
+You can also refer to all the administrative hierarchy layers with a single alias, `coarse`.
 
-> /v1/autocomplete?api_key=search-XXXXXXX&layers=coarse&text=starbuck
+> [/v1/autocomplete?api_key=search-hnopfLZ&__layers=coarse__&text=starbuck](https://search.mapzen.com/v1/autocomplete?api_key=search-hnopfLZ&layers=coarse&text=starbuck)
 
 with `layers=coarse` you will see only administrative areas with names containing Starbuck
 
