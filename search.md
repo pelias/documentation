@@ -344,7 +344,7 @@ In Mapzen Search, place types are referred to as `layers`, ranging from fine to 
 |`localadmin`|local administrative boundaries|
 |`borough`| a local administrative boundary, currently only used for New York City|
 |`neighbourhood`|social communities, neighbourhoods|
-|`coarse`|alias for simultaneously using `country`, `region`, `county`, `locality`, `localadmin`, and `neighbourhood`|
+|`coarse`|alias for simultaneously using all administrative layers (everything except `venue` and `address`)|
 
 > [/v1/search?api_key=search-TeXrSTX&text=YMCA&___layers=venue,address___](https://search.mapzen.com/v1/search?api_key=search-TeXrSTX&text=YMCA&layers=venue,address)
 

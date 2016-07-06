@@ -70,7 +70,7 @@ Without specifying further, reverse geocoding doesn't restrict results to a part
 |`localadmin`|local administrative boundaries|
 |`borough`| a local administrative boundary, currently only used for New York City|
 |`neighbourhood`|social communities, neighbourhoods|
-|`coarse`|alias for simultaneously using `country`, `region`, `county`, `locality`, `localadmin`, and `neighbourhood`|
+|`coarse`|alias for simultaneously using all administrative layers (everything except `venue` and `address`)|
 
 
 >[/v1/reverse?api_key=search-TeXrSTX&point.lat=48.858268&point.lon=2.294471&___layers=locality___](https://search.mapzen.com/v1/reverse?api_key=search-TeXrSTX&point.lat=48.858268&point.lon=2.294471&layers=locality)

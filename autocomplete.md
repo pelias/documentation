@@ -97,9 +97,7 @@ The type of record is referred to as its `layer`. All records are indexed into t
 |`localadmin`|local administrative boundaries|
 |`borough`| a local administrative boundary, currently only used for New York City|
 |`neighbourhood`|social communities, neighbourhoods|
-|`coarse`|alias for simultaneously using `country`, `region`, `county`, `locality`, `localadmin`, and `neighbourhood`|
-
-You can also refer to all the administrative hierarchy layers with a single alias, `coarse`.
+|`coarse`|alias for simultaneously using all administrative layers (everything except `venue` and `address`)|
 
 > [/v1/autocomplete?api_key=search-TeXrSTX&__layers=coarse__&text=starbuck](https://search.mapzen.com/v1/autocomplete?api_key=search-TeXrSTX&layers=coarse&text=starbuck)
 
