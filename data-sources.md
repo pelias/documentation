@@ -29,8 +29,9 @@ Layers:
 - `region`
 - `macrocounty`
 - `county`
-- `locality`
 - `localadmin`
+- `locality`
+- `borough`
 - `neighbourhood`
 - `coarse` (alias for simultaneously using all the above)
 
@@ -71,10 +72,11 @@ Layers:
 
 - `venue`
 - `country`
+- `macroregion`
 - `region`
 - `county`
-- `locality`
 - `localadmin`
+- `locality`
 - `neighbourhood`
 - `coarse` (alias for simultaneously using all the above)
 

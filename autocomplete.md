@@ -84,20 +84,20 @@ without `sources=openaddresses` you will find the most popular Pennsylvanias fir
 ### Layers
 The type of record is referred to as its `layer`. All records are indexed into the following layers:
 
-* `venue`
-* `address`
-* `microhood`
-* `neighbourhood`
-* `macrohood`
-* `county`
-* `macrocounty`
-* `localadmin`
-* `locality`
-* `borough`
-* `region`
-* `country`
-
-You can also refer to all the administrative hierarchy layers with a single alias, `coarse`.
+|layer|description|
+|----|----|
+|`venue`|points of interest, businesses, things with walls|
+|`address`|places with a street address|
+|`country`|places that issue passports, nations, nation-states|
+|`macroregion`|a related group of regions. Mostly in Europe|
+|`region`|states and provinces|
+|`macrocounty`|a related group of counties. Mostly in Europe.|
+|`county`|official governmental area; usually bigger than a locality, almost always smaller than a region|
+|`locality`|towns, hamlets, cities|
+|`localadmin`|local administrative boundaries|
+|`borough`| a local administrative boundary, currently only used for New York City|
+|`neighbourhood`|social communities, neighbourhoods|
+|`coarse`|alias for simultaneously using all administrative layers (everything except `venue` and `address`)|
 
 > [/v1/autocomplete?api_key=search-TeXrSTX&__layers=coarse__&text=starbuck](https://search.mapzen.com/v1/autocomplete?api_key=search-TeXrSTX&layers=coarse&text=starbuck)
 
