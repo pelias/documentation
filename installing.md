@@ -25,7 +25,7 @@ The steps for fully installing Pelias look like this:
 
 In general, Pelias will require:
 
-* A working [Elasticsearch](https://www.elastic.co/products/elasticsearch) 1.7 cluster. It can be on
+* A working [Elasticsearch](https://www.elastic.co/products/elasticsearch) 2.3 cluster. It can be on
   a single machine or across several
 * [Node.js](https://nodejs.org/) 0.12 or newer (Node 4 or 5 is recommended)
 * Up to 100GB disk space to download and extract data
@@ -245,17 +245,17 @@ configure admin lookup and deduplication for OpenAddresses.
 
 ### Install Elasticsearch
 
-Other than requiring Elasticsearch 1.7, nothing special in the Elasticsearch setup is required for
-Pelias, so please refer to the [official 1.7 install docs](https://www.elastic.co/guide/en/elasticsearch/reference/1.7/setup.html).
+Other than requiring Elasticsearch 2.3, nothing special in the Elasticsearch setup is required for
+Pelias, so please refer to the [official 2.3 install docs](https://www.elastic.co/guide/en/elasticsearch/reference/2.3/setup.html).
 
-Newer versions of Elasticsearch are not supported. 
+Older versions of Elasticsearch are not supported.
 
 Make sure Elasticsearch is running and connectable, and then you can continue with the Pelias
 specific setup and importing. Using a plugin like [head](https://mobz.github.io/elasticsearch-head/)
 or [Marvel](https://www.elastic.co/products/marvel) can help monitor Elasticsearch as you import
 data.
 
-If you're using a terminal, you can also search and/or monitor Elasticsearch using their [APIs.](https://www.elastic.co/guide/en/elasticsearch/reference/1.7/api-conventions.html)
+If you're using a terminal, you can also search and/or monitor Elasticsearch using their [APIs.](https://www.elastic.co/guide/en/elasticsearch/reference/2.3/api-conventions.html)
 
 **Note:** On large imports, Elasticsearch can be very sensitive to memory issues. Be sure to modify it's [heap size](https://www.elastic.co/guide/en/elasticsearch/guide/1.x/heap-sizing.html) from the default confiration to something more appropriate to your machine.  
 
