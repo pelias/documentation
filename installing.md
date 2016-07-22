@@ -257,7 +257,7 @@ data.
 
 If you're using a terminal, you can also search and/or monitor Elasticsearch using their [APIs.](https://www.elastic.co/guide/en/elasticsearch/reference/2.3/api-conventions.html)
 
-**Note:** On large imports, Elasticsearch can be very sensitive to memory issues. Be sure to modify it's [heap size](https://www.elastic.co/guide/en/elasticsearch/guide/1.x/heap-sizing.html) from the default confiration to something more appropriate to your machine.  
+**Note:** On large imports, Elasticsearch can be very sensitive to memory issues. Be sure to modify it's [heap size](https://www.elastic.co/guide/en/elasticsearch/guide/2.x/heap-sizing.html) from the default confiration to something more appropriate to your machine.  
 
 ### Set up the Elasticsearch Schema
 
