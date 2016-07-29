@@ -126,4 +126,4 @@ with `layers=venue` you will see only the venues by that name
 | `focus.point.lat` | floating point number | no | none | `48.581755` |
 | `focus.point.lon` | floating point number | no | none | `7.745843` |
 | `sources` | string | no | all sources: osm,oa,gn,wof | openstreetmap,wof |
-| `layers` | string | no | all layers: address,venue,neighbourhood,locality,borough,localadmin,county,macrocounty,region,marcoregion,country,coarse | address,venue |
+| `layers` | string | no | all layers: address,venue,neighbourhood,locality,borough,localadmin,county,macrocounty,region,macroregion,country,coarse | address,venue |
