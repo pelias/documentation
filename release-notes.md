@@ -1,3 +1,17 @@
+## 2 August 2016
+
+Another bigger than usual release, we had some ops related challenges to resolve after the update to Elasticsearch 2, as well as some data issues, but we also have some great improvements in store!
+
+* We use more of the population data in Who's on First, which really helps more [relevant cities come up in searches](https://github.com/pelias/whosonfirst/pull/116).
+* Searching for [only records in certain layers in Geonames](https://github.com/pelias/api/pull/573) now works! We keep adding better handling of Geonames data but sometimes our API code doesn't keep up with those changes.
+* Labels now [include county names](https://github.com/pelias/api/pull/576) if there's no city (locality) info present. This helps with [addresses that are outside the bounds of any city](https://github.com/pelias/api/issues/575)
+* Capitalization across all OpenAddresess records is now more consistent. We've tried to [properly capitalize all records that were either in all caps or all lowercase](https://github.com/pelias/openaddresses/pull/131). This is better in general, although there are certainly exceptions, and we welcome bug reports for those cases.
+* Geonames records for New York City boroughs like Manhattan and Brooklyn are [now in the `borough`, rather than `locality` layer](https://github.com/pelias/geonames/pull/100). This makes them consistent with the records from Who's on First, which have been boroughs for some time.
+* Addresses in the [Czech Republic](https://github.com/pelias/api/pull/594) now show the street name before the house number, in keeping with local customs
+* When using the `/v1/place` endpoint, the source name can either be the full name or the [abbreviation](https://github.com/pelias/api/pull/574) (like the `sources` parameter to the search and autocomplete endpoints). We love saving people some typing :)
+* We've made lots of internal changes like [reducing the size of our documents](https://github.com/pelias/model/pull/37), using a cleaner method to construct [layer filter queries](https://github.com/pelias/api/pull/580), removing dependencies on [packages we've deprecated](https://github.com/pelias/schema/pull/151), and allowing the Elasticsearch index name to be configured for both the [API](https://github.com/pelias/api/pull/595) and [schema](https://github.com/pelias/schema/pull/155) packages.
+* In related internal changes news, we've also worked to make sure that all our code works with Node.js version 6, which was recently released! Support for Node.js 0.10, which is quite old and near end-of-life, is also starting to be removed.
+
 ## 07 July 2016
 
 * **Big news:** We've finally [upgraded to Elasticsearch 2.3](https://github.com/pelias/pelias/issues/325)! This brings improved performance and more importantly sets us up for lots of improvements from the new features of Elasticsearch 2. Elasticsearch 1.7 is no longer supported.
