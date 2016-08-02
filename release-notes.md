@@ -12,6 +12,10 @@ Another bigger than usual release, we had some ops related challenges to resolve
 * We've made lots of internal changes like [reducing the size of our documents](https://github.com/pelias/model/pull/37), using a cleaner method to construct [layer filter queries](https://github.com/pelias/api/pull/580), removing dependencies on [packages we've deprecated](https://github.com/pelias/schema/pull/151), and allowing the Elasticsearch index name to be configured for both the [API](https://github.com/pelias/api/pull/595) and [schema](https://github.com/pelias/schema/pull/155) packages.
 * In related internal changes news, we've also worked to make sure that all our code works with Node.js version 6, which was recently released! Support for Node.js 0.10, which is quite old and near end-of-life, is also starting to be removed.
 
+We also have two **known issues** in this build:
+* Some OpenAddresses records for the statewide data in Massachusetts, USA are incorrect. This is because of an issue [when changing data sources](https://github.com/openaddresses/openaddresses/pull/1892) that will be resolved in the next OpenAddresses build
+* Geonames `localadmin` records, like the [City of New York](http://pelias.github.io/compare/#/v1/search%3Fsources=gn&layers=localadmin&text=city%20of%20new%20york) will have extra components in the label (in this case, "Brooklyn, New York"). The [fix for this](https://github.com/pelias/wof-admin-lookup/pull/53) is merged but was accidentally omitted from this build. Look forward to it next week!
+
 ## 07 July 2016
 
 * **Big news:** We've finally [upgraded to Elasticsearch 2.3](https://github.com/pelias/pelias/issues/325)! This brings improved performance and more importantly sets us up for lots of improvements from the new features of Elasticsearch 2. Elasticsearch 1.7 is no longer supported.
