@@ -1,3 +1,14 @@
+## 8 August 2016
+
+Incremental release resolving the final outstanding tasks in the Elasticsearch 2 upgrade.
+
+We have registered a new website [http://pelias.io](http://pelias.io) which has information about the milstones we have planned for the current quarter.
+
+* Elasticsearch 2+ does not support co-ordinate wrapping as it did prior to the 2 release. Some front-ends allow users to 'wrap' around the globe. Floats outside of the normal -90/+90 -180/+180 geographic coordinate ranges cause Elasticsearch to error. We added a function to the API which [unwraps these coordinates](https://github.com/pelias/api/pull/608); providing better compatibility with these tools.
+- We added `borough` as a [possible layer for Geonames](https://github.com/pelias/api/pull/612)
+- Since the beginning of the project the Elasticsearch `_index` name has always been hard-coded as 'pelias', the [index names configurable PRs](https://github.com/pelias/config/pull/30) allow this behaviour to be adjusted in your individual pelias config files.
+- We [removed the focus.viewport API](https://github.com/pelias/api/pull/620) which was undocumented and never used outside of test suites.
+
 ## 2 August 2016
 
 Another bigger than usual release, we had some ops related challenges to resolve after the update to Elasticsearch 2, as well as some data issues, but we also have some great improvements in store!
@@ -60,7 +71,7 @@ We also have two **known issues** in this build:
 
 ## 08 April 2016
 
-This release marks the official integration of the Mapzen `Who's on First` data set into Mapzen Search. This data is replacing `Quattroshapes` across the entire service. Any forward usage or references to `Quattroshapes` will be replaced with `WhosOnFirst`. This substitution allows us to fix long-standing encoding issues in administrative hierarchy place-names. We've also added a bounding box for individual features in the results, not only the all-encompassing bounding box at the top level of the geojson results. Also, the all-encompassing bounding box will extend to include the bounding boxes of all the features in the results, not only their centroids. 
+This release marks the official integration of the Mapzen `Who's on First` data set into Mapzen Search. This data is replacing `Quattroshapes` across the entire service. Any forward usage or references to `Quattroshapes` will be replaced with `WhosOnFirst`. This substitution allows us to fix long-standing encoding issues in administrative hierarchy place-names. We've also added a bounding box for individual features in the results, not only the all-encompassing bounding box at the top level of the geojson results. Also, the all-encompassing bounding box will extend to include the bounding boxes of all the features in the results, not only their centroids.
 Another major improvement that many have been waiting for is the addition of more filters for the `/autocomplete` endpoint. Users can now ask `/autocomplete` to filter by `layers` and `sources`, as documented [here](https://mapzen.com/documentation/search/autocomplete/#available-autocomplete-parameters).
 See the detailed list of changes below for more specifics.
 
@@ -74,4 +85,3 @@ See the detailed list of changes below for more specifics.
 * `gid` values have been added for each parent in the admin hierarchies of results.
 * `/autocomplete` now allows filtering by `sources` and `layers`.
 * Fixed a bug that allowed `/autocomplete` to accept the `size` parameter. The default and only size of `/autocomplete` results is now `10`, as originally intended.
-
