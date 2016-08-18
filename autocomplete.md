@@ -117,6 +117,12 @@ with `layers=venue` you will see only the venues by that name
 3) Starbucks, Austin, TX, USA
 ```
 
+### Country
+
+![Searching in a country](/images/world_country.png)
+
+Sometimes your work might require that all the search results be from a particular country. To do this, you can set the `boundary.country` parameter value to the alpha-2 or alpha-3 [ISO-3166 country code](https://en.wikipedia.org/wiki/ISO_3166-1).
+
 ## Available autocomplete parameters
 
 | Parameter | Type | Required | Default | Example |
@@ -126,4 +132,5 @@ with `layers=venue` you will see only the venues by that name
 | `focus.point.lat` | floating point number | no | none | `48.581755` |
 | `focus.point.lon` | floating point number | no | none | `7.745843` |
 | `sources` | string | no | all sources: osm,oa,gn,wof | openstreetmap,wof |
-| `layers` | string | no | all layers: address,venue,neighbourhood,locality,borough,localadmin,county,macrocounty,region,macroregion,country,coarse | address,venue |
+| `layers` | string | no | all layers: address,venue,neighbourhood,locality,borough,localadmin,county,macrocounty,region,marcoregion,country,coarse | address,venue |
+| `boundary.country` | string | no | none | 'GBR' |
