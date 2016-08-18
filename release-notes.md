@@ -1,3 +1,11 @@
+## 18 August 2016
+
+* After much feedback we've added the [`boundary.country` parameter for autocomplete](https://github.com/pelias/api/pull/634)! It works just like the one on the search endpoint.
+* To help make Leaflet maps display results better, we now use [use the  `lbl:bbox` property on Who's on First records](https://github.com/pelias/whosonfirst/pull/122). This is useful for places like [San Francisco](https://en.wikipedia.org/wiki/Farallon_Islands) where the mathematical bounding box is bigger than people expect.
+* The API was [incorrectly warning](https://github.com/pelias/api/pull/617) against using the `boundary.circle` parameter. Now it doesn't complain!
+* We've added a new `/v1/nearby` endpoint that is currently in _early alpha_! There's no documentation, probably some bugs, and any part of the interface is still subject to change.
+* Finally, we're now running Node.js 4 in production, rather than Node.js 0.12. For those running their own Pelias instance, be aware that we'll be dropping support for Node.js 0.12 in September. At first, things may work on Node.js 0.12, but we're very excited to finally start using ES2016, so that won't last too long.
+
 ## 8 August 2016
 
 Incremental release resolving the final outstanding tasks in the Elasticsearch 2 upgrade.
