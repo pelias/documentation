@@ -1,3 +1,9 @@
+## 22 August 2016
+
+No changes in functionality at all, just the freshest data! We did clean up some tests and do other work only visible to developers and those who run their own Pelias instance, but nothing major.
+
+Stay tuned for next week's release where we already have some nice changes queued up.
+
 ## 18 August 2016
 
 * After much feedback we've added the [`boundary.country` parameter for autocomplete](https://github.com/pelias/api/pull/634)! It works just like the one on the search endpoint.
