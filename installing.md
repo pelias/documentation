@@ -27,7 +27,7 @@ In general, Pelias will require:
 
 * A working [Elasticsearch](https://www.elastic.co/products/elasticsearch) 2.3 cluster. It can be on
   a single machine or across several
-* [Node.js](https://nodejs.org/) 0.12 or newer (Node 4 or 5 is recommended)
+* [Node.js](https://nodejs.org/) 0.12 or newer (Node 4 or 6 is recommended)
 * Up to 100GB disk space to download and extract data
 * Lots of RAM, 8GB is a good minimum. A full North America OSM import just fits in 16GB RAM
 
