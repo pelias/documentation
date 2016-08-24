@@ -302,7 +302,7 @@ importers.
 
 Depending on how much data you've imported, now may be a good time to grab a coffee. Without admin
 lookup, the fastest speeds you'll see are around 10,000 records per second. With admin lookup,
-expect around 800-1000 inserts per second.
+expect around 800-2000 inserts per second.
 
 ### Start the API
 
