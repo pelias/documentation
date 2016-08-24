@@ -61,7 +61,7 @@ instructions for downloading Geonames data automatically. Individual countries, 
 
 ### OpenAddresses
 The OpenAddresses project includes [numerous download options](https://results.openaddresses.io/),
-all of which are `.zip` downloads. The full dataset is just over 3 gigabytes compressed, but there
+all of which are `.zip` downloads. The full dataset is just over 6 gigabytes compressed, but there
 are numerous subdivision options. In any case, the `.zip` files simply need to be extracted to a
 directory of your choice, and Pelias can be configured to either import every `.csv` in that
 directory, or only selected files.
@@ -122,7 +122,7 @@ it eventually.
 
 As may be evident from the dataset section above, importing all the data in all four supported datasets is
 worthy of its own discussion. Current [full planet builds](https://pelias-dashboard.mapzen.com/pelias)
-weigh in at over 300 million documents, and require about 140GB total storage in Elasticsearch.
+weigh in at over 320 million documents, and require about 230GB total storage in Elasticsearch.
 Needless to say, a full planet build is not likely to succeed on most personal computers.
 
 Fortunately, because of services like AWS and the scalability of Elasticsearch, full planet builds
