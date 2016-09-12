@@ -1,3 +1,7 @@
+## 12 September 2016
+
+* Get excited for the addition of __STREETS__! That's right, with this release Mapzen Search gets a brand new `street` layer, which contains OSM street centroids. With this addition, if we can't find the exact address you're looking for we'll return the street record. Stay tuned for an indepth blog post in the next few days.
+
 ## 7 September 2016
 
 * Crikey! We noticed we weren't handling Australian province abbreviations, so we [added support for them in our labels](https://github.com/pelias/api/pull/638).
