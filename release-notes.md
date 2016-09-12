@@ -1,6 +1,6 @@
 ## 12 September 2016
 
-* Get excited for the addition of :sparkles: __STREETS__ :sparkles:! That's right, with this release Mapzen Search gets a brand new `street` layer, which contains OSM street centroids. With this addition, if we can't find the exact address you're looking for we'll return the street record. Stay tuned for an in-depth blog post in the next few days. :clap:
+* Get excited for the addition of ✨ __STREETS__ ✨! That's right, with this release Mapzen Search gets a brand new `street` layer, which contains OSM street centroids. With this addition, if we can't find the exact address you're looking for we'll return the street record. Stay tuned for an in-depth blog post in the next few days. 👏
 
 ## 7 September 2016
 
