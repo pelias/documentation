@@ -61,6 +61,7 @@ Without specifying further, reverse geocoding doesn't restrict results to a part
 |----|----|
 |`venue`|points of interest, businesses, things with walls|
 |`address`|places with a street address|
+|`street`|streets,roads,highways|
 |`country`|places that issue passports, nations, nation-states|
 |`macroregion`|a related group of regions. Mostly in Europe|
 |`region`|states and provinces|
