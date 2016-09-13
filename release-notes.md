@@ -1,3 +1,14 @@
+## 12 September 2016
+
+* Get excited for the addition of ✨ __STREETS__ ✨! That's right, with this release Mapzen Search gets a brand new `street` layer, which contains OSM street centroids. With this addition, if we can't find the exact address you're looking for we'll return the street record. Stay tuned for an in-depth blog post in the next few days. 👏
+
+## 7 September 2016
+
+* Crikey! We noticed we weren't handling Australian province abbreviations, so we [added support for them in our labels](https://github.com/pelias/api/pull/638).
+* Geonames ADM3 records now are [correctly listed as localadmins](https://github.com/pelias/geonames/pull/120), not venues.
+* Our wonderful, now departed intern made sure [Germanic street names are consistently handled](https://github.com/pelias/openaddresses/pull/68) (previously, some would end in -strasse while others ended in the abbreviation -str).
+* Records with a Who's on First [dependency](https://github.com/whosonfirst/whosonfirst-placetypes#dependency) now [have that dependency listed in API responses](https://github.com/pelias/api/pull/643).
+
 ## 22 August 2016
 
 No changes in functionality at all, just the freshest data! We did clean up some tests and do other work only visible to developers and those who run their own Pelias instance, but nothing major.
