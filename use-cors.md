@@ -49,7 +49,7 @@ $http({
   headers: { "Accept": "application/json" },
   params: {
     "text": "London, UK",
-    "api_key": "search-EEgHGcM"
+    "api_key": "api_key=mapzen-xxxxxx"
   },
 })
 .success(function( data, status ) {

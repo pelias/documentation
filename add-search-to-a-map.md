@@ -8,11 +8,11 @@ In this walkthrough, you will learn how to make a map with a search box that all
 
 ## Sign up for a Mapzen Search API key
 
-To use the geocoding service, you must first get a Mapzen Search [API key](https://en.wikipedia.org/wiki/Application_programming_interface_key). Because the search service is shared among many users, an API key is a way to make sure that the performance is acceptable for everyone. Sign in at https://mapzen.com/developers to create and manage your API keys.
+To use the geocoding service, you must first get a Mapzen [API key](https://en.wikipedia.org/wiki/Application_programming_interface_key). Because the search service is shared among many users, an API key is a way to make sure that the performance is acceptable for everyone. Sign in at https://mapzen.com/developers to create and manage your API keys.
 
 1. Go to https://mapzen.com/developers.
 2. Sign in with your [GitHub account](https://help.github.com/articles/signing-up-for-a-new-github-account/). If you have not done this before, you need to agree to the terms first.
-3. Create a new key for Search, and optionally, give it a project name so you can remember the purpose of the key.
+3. Create a new key for this project, and optionally, give it a project name so you can remember the purpose of the key.
 4. Keep the web page open so you can copy the key into the source code later.
 
 ## Create an index page
@@ -189,13 +189,13 @@ At this point, you have a map! You should see a map with OpenStreetMap tiles, zo
 So far, you have referenced the necessary files, initialized Leaflet with a map container on the page, and added data to the map. Now, you are ready to add the Search box from the Mapzen Search plug-in.
 
 1. Go back to the https://mapzen.com/developers page and copy your API key to the clipboard.
-2. Inside the same `<script>` tag, start a new line after the `}).addTo(map);` line. Initialize a search box with the following code and your own API key substituted for the placeholder text of `search-xxxxxx`.
+2. Inside the same `<script>` tag, start a new line after the `}).addTo(map);` line. Initialize a search box with the following code and your own API key substituted for the placeholder text of `mapzen-xxxxxx`.
 
     ```js
-    var geocoder = L.control.geocoder('search-xxxxxx').addTo(map);
+    var geocoder = L.control.geocoder('mapzen-xxxxxx').addTo(map);
     ```
 
-    The `search-xxxxxx` text is the Mapzen Search API key; paste your own API key inside the single quotes.
+    The `mapzen-xxxxxx` text is the Mapzen Search API key; paste your own API key inside the single quotes.
 
 3. Save your edits and refresh the browser. You should see a small magnifying glass icon in the left corner, near the zoom controls.
 
@@ -273,7 +273,7 @@ You can refer to this HTML if you want to review your work or troubleshoot an er
     }).addTo(map);
 
     //Use your own API key in place of this one. Get a key at mapzen.com/developers.
-    var geocoder = L.control.geocoder('search-xxxxxx').addTo(map);
+    var geocoder = L.control.geocoder('mapzen-xxxxxx').addTo(map);
   </script>
 </body>
 </html>
