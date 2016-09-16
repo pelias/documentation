@@ -12,7 +12,7 @@ To use the geocoding service, you must first get a Mapzen [API key](https://en.w
 
 1. Go to https://mapzen.com/developers.
 2. Sign in with your [GitHub account](https://help.github.com/articles/signing-up-for-a-new-github-account/). If you have not done this before, you need to agree to the terms first.
-3. Create a new key for this project, and optionally, give it a project name so you can remember the purpose of the key.
+3. Create a new key for this project and, optionally, give it a project name so you can remember the purpose of the key.
 4. Keep the web page open so you can copy the key into the source code later.
 
 ## Create an index page
