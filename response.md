@@ -99,8 +99,8 @@ By default, Mapzen Search results 10 places, unless otherwise specified. If you 
 | `text` | YMCA |
 | `size` | 1 |
 
-> [/v1/search?api_key=search-TeXrSTX&text=YMCA&___size=1___](https://search.mapzen.com/v1/search?api_key=search-TeXrSTX&text=YMCA&size=1)
+> [/v1/search?api_key=mapzen-xxxxxx&text=YMCA&___size=1___](https://search.mapzen.com/v1/search?text=YMCA&size=1)
 
 If you want 25 results, you can build the query where `size` is 25.
 
-> [/v1/search?api_key=search-TeXrSTX&text=YMCA&___size=25___](https://search.mapzen.com/v1/search?api_key=search-TeXrSTX&text=YMCA&size=25)
+> [/v1/search?api_key=mapzen-xxxxxx&text=YMCA&___size=25___](https://search.mapzen.com/v1/search?text=YMCA&size=25)
