@@ -8,9 +8,9 @@ To build a query with autocomplete, you need an [API key](https://mapzen.com/dev
 
 There are two user experience pitfalls to watch out for when implementing a client-side typeahead solution:
 
-**Requests must be throttled.** The client must only send a maximum of one or two requests per second. Sending requests more often than this will result in a sluggish network and laggy user interface for mobile consumers. A general rule is to account for fast typers by batching their keystrokes and sending the input text no more than twice per second. Mapzen Search limits the amount of requests per second (per API key), so be sure to account for those limits in your throttle code. [Learn more in this interactive demo.](http://jsfiddle.net/missinglink/19e2r2we/)
+**Requests must be throttled.** Since autocomplete requests generally correspond directly to user input, it's important to account for fast typers and throttle requests when using the autocomplete endpoint. Mapzen Search has a per second rate limit (that defaults to 6 requests per second), but some devices and networks (for example, mobile phones on a slow connection) may also respond poorly when too many requests are sent too quickly, so be sure to do some testing on your own. [Learn more in this interactive demo.](http://jsfiddle.net/missinglink/19e2r2we/)
 
-**Responses are asynchronous.** This means you cannot be sure responses will be returned in the same order they were requested. If you were to send two queries synchronously, first `'Lo'` then `'London'`, you may find the `'London'` response would arrive before the `'Lo'` response. This will result in a quick flash of `'London'` results followed by the results for `'Lo'`, which can confuse the user. You must account for this behavior by storing the `requested_at` timestamps for each request and discarding older responses when they arrive late.
+**Responses are asynchronous.** This means you cannot be sure responses will be returned in the same order they were requested. If you were to send two queries synchronously, first `'Lo'` then `'London'`, you may find the `'London'` response would arrive before the `'Lo'` response. This will result in a quick flash of `'London'` results followed by the results for `'Lo'`, which can confuse the user.
 
 ## Global scope, local focus
 
