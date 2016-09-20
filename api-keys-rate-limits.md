@@ -17,7 +17,7 @@ Mapzen Search allows you a maximum of:
 - 6 requests per second
 - 30,000 requests per day
 
-If you need more capacity, contact [search@mapzen.com](mailto:search@mapzen.com). You can also set up your own instance of [Pelias](https://github.com/pelias/pelias), which has access to the same data used in Mapzen Search.
+If you need more capacity, contact [search@mapzen.com](mailto:search@mapzen.com). You can also set up your own instance of [Pelias](https://pelias.io), which has access to the same data used in Mapzen Search.
 
 ## Security
 Mapzen Search works over HTTPS and HTTP. You are strongly encouraged to use HTTPS for all requests, especially for queries involving potentially sensitive information, such as a user's location or search query.
