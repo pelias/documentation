@@ -12,7 +12,7 @@ You also need a [Mapzen API key](https://mapzen.com/developers), which requires 
 
 Suggested text editor applications include [Atom - OS X, Windows, Linux](https://atom.io/); [Notepad++ - Windows](https://notepad-plus-plus.org/); [TextWrangler - OS X](http://www.barebones.com/products/textwrangler/); and  [Sublime - OS X, Windows, Linux; free trial](http://www.sublimetext.com/). While you can use the apps installed with your operating system, such as Notepad or TextEdit, they do not provide the helpful indentations, code coloring and autocomplete, or text alignment options found in the other editors. For TextEdit, you must go to the Format menu and click Make Plain Text to use the plain-text version of the file. Do not use an app that applies rich formatting, such as Word or Wordpad.
 
-## Sign up for a Mapzen API key
+### Sign up for a Mapzen API key
 
 1. Go to https://mapzen.com/developers.
 2. Sign in with your [GitHub account](https://help.github.com/articles/signing-up-for-a-new-github-account/). If you have not done this before, you need to agree to the terms first.
@@ -75,10 +75,10 @@ The [Mapzen.js library](https://www.mapzen.com/documentation/mapzen-js/) simplif
 
 1. In `index.html`, at the bottom of the `<head>` section, add references to the Mapzen.js CSS and JavaScript files.
 
-    ```html
-    <link rel="stylesheet" href="https://mapzen.com/js/mapzen.css">
-    <script src="https://mapzen.com/js/mapzen.min.js"></script>
-    ```
+  ```html
+  <link rel="stylesheet" href="https://mapzen.com/js/mapzen.css">
+  <script src="https://mapzen.com/js/mapzen.min.js"></script>
+  ```
 
 2. Save your edits and refresh the browser. The webpage should still appear empty because you have not added any code to interact with these references.
 
@@ -90,8 +90,8 @@ After adding these, your index.html file should look something like this.
   <head>
   <title>My Geocoding Map</title>
   <meta charset="utf-8">
-    <link rel="stylesheet" href="https://mapzen.com/js/mapzen.css">
-    <script src="https://mapzen.com/js/mapzen.min.js"></script>
+  <link rel="stylesheet" href="https://mapzen.com/js/mapzen.css">
+  <script src="https://mapzen.com/js/mapzen.min.js"></script>
 </head>
 <body>
 </body>
@@ -99,7 +99,6 @@ After adding these, your index.html file should look something like this.
 ```
 
 Note that you are linking to a website that is serving the Mapzen.js CSS and JavaScript, but you can also [view, download, and contribute to the source code](https://github.com/mapzen/mapzen.js) if you want to access the contents of the library.
-
 
 ## Add a map to the page
 
@@ -216,7 +215,7 @@ Your `<body>` section should look like this:
     scene: L.Mapzen.HouseStyles.BubbleWrap
   });
 
-  var geocoder = L.Mapzen.geocoder('search-q78U1e7');
+  var geocoder = L.Mapzen.geocoder('mapzen-xxxxxx');
   geocoder.addTo(map);
 </script>
 [...]
@@ -268,12 +267,35 @@ Although you will not be using it in this tutorial, [\reverse](https://mapzen.co
 
 1. Open your browser's developer tools console. In Chrome, you can do this by clicking the menu in the corner, pointing to More Tools, and clicking Developer Tools.
 2. Click the Network tab to see the Internet traffic, including the queries to the Mapzen servers.
-3. Click the Headers tab for more information about the request, including the full URL. For example, the URL might look something like `https://search.mapzen.com/v1/search?text=901%2012th%20avenue&focus.point.lat=47.61032944737081&focus.point.lon=-122.31800079345703&api_key=search-q78U1e7`
+3. Click the Headers tab for more information about the request, including the full URL. For example, the URL might look something like `https://search.mapzen.com/v1/search?text=901%2012th%20avenue&focus.point.lat=47.61032944737081&focus.point.lon=-122.31800079345703&api_key=mapzen-xxxxxx`
 4. Paste this URL into a new browser tab to see the JSON response, which can be mapped.
 
-_Tip: You can install a plug-in for your browser to display JSON in a more formatted manner. For example, JSONView is a common extension that does this for Chrome. You can search the web store for your browser to find and install applicable products ._
+_Tip: You can install a plug-in for your browser to display JSON in a more formatted manner. For example, JSONView is a common extension that does this for Chrome. You can search the web store for your browser to find and install applicable products._
 
 ![Search endpoint query in the browser developer console](images/developer-console.png)
+
+## Choose which data sources to search
+
+Mapzen Search uses a [variety of open data sources](https://mapzen.com/documentation/search/data-sources/), including OpenStreetMap. Part of the power of open data is that anyone can change the source data and improve the quality for everyone. If you are unable to find a location, the place could be missing or incorrect in the source datasets.
+
+You can choose which data sources to search by passing a parameter for the `sources`. In addition, you need to enclose with single quotation marks any parameter names that use the dot notation (such as `boundary.country`) to make sure JavaScript can parse the text correctly.
+
+As you were searching, you might have noticed results that looked similar. Mapzen Search does perform some elimination, but the differing data sources may still cause seemingly matching results to appear. Choosing a particular data source can reduce the occurrence of duplicated entries.
+
+1. Within the geocoder block, add the `params:` list and a parameter for `sources:`. Be sure to add a `,` at the end of the `autocomplete: false` line.
+
+  ```js
+  var geocoder = L.Mapzen.geocoder('search-q78U1e7', {
+    autocomplete: false,
+    params: {
+      sources: 'osm'
+    }
+  });
+  geocoder.addTo(map);
+  ```
+
+2. Save your edits and refresh the browser.
+3. Search for `901 12th Avenue` again. Try searching city names, such as `Vancouver`, as you continue to experiment with the geocoder.
 
 ## Prioritize nearby places and filter search results
 
