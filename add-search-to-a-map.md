@@ -285,7 +285,7 @@ As you were searching, you might have noticed results that looked similar. Mapze
 1. Within the geocoder block, add the `params:` list and a parameter for `sources:`. Be sure to add a `,` at the end of the `autocomplete: false` line.
 
   ```js
-  var geocoder = L.Mapzen.geocoder('search-q78U1e7', {
+  var geocoder = L.Mapzen.geocoder('mapzen-xxxxxx', {
     autocomplete: false,
     params: {
       sources: 'osm'
