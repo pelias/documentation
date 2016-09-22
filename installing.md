@@ -25,9 +25,9 @@ The steps for fully installing Pelias look like this:
 
 In general, Pelias will require:
 
-* A working [Elasticsearch](https://www.elastic.co/products/elasticsearch) 1.7 cluster. It can be on
+* A working [Elasticsearch](https://www.elastic.co/products/elasticsearch) 2.3 cluster. It can be on
   a single machine or across several
-* [Node.js](https://nodejs.org/) 0.12 or newer (Node 4 or 5 is recommended)
+* [Node.js](https://nodejs.org/) 0.12 or newer (Node 4 or 6 is recommended)
 * Up to 100GB disk space to download and extract data
 * Lots of RAM, 8GB is a good minimum. A full North America OSM import just fits in 16GB RAM
 
@@ -61,7 +61,7 @@ instructions for downloading Geonames data automatically. Individual countries, 
 
 ### OpenAddresses
 The OpenAddresses project includes [numerous download options](https://results.openaddresses.io/),
-all of which are `.zip` downloads. The full dataset is just over 3 gigabytes compressed, but there
+all of which are `.zip` downloads. The full dataset is just over 6 gigabytes compressed, but there
 are numerous subdivision options. In any case, the `.zip` files simply need to be extracted to a
 directory of your choice, and Pelias can be configured to either import every `.csv` in that
 directory, or only selected files.
@@ -122,7 +122,7 @@ it eventually.
 
 As may be evident from the dataset section above, importing all the data in all four supported datasets is
 worthy of its own discussion. Current [full planet builds](https://pelias-dashboard.mapzen.com/pelias)
-weigh in at over 300 million documents, and require about 140GB total storage in Elasticsearch.
+weigh in at over 320 million documents, and require about 230GB total storage in Elasticsearch.
 Needless to say, a full planet build is not likely to succeed on most personal computers.
 
 Fortunately, because of services like AWS and the scalability of Elasticsearch, full planet builds
@@ -245,19 +245,19 @@ configure admin lookup and deduplication for OpenAddresses.
 
 ### Install Elasticsearch
 
-Other than requiring Elasticsearch 1.7, nothing special in the Elasticsearch setup is required for
-Pelias, so please refer to the [official 1.7 install docs](https://www.elastic.co/guide/en/elasticsearch/reference/1.7/setup.html).
+Other than requiring Elasticsearch 2.3, nothing special in the Elasticsearch setup is required for
+Pelias, so please refer to the [official 2.3 install docs](https://www.elastic.co/guide/en/elasticsearch/reference/2.3/setup.html).
 
-Newer versions of Elasticsearch are not supported. 
+Older versions of Elasticsearch are not supported.
 
 Make sure Elasticsearch is running and connectable, and then you can continue with the Pelias
 specific setup and importing. Using a plugin like [head](https://mobz.github.io/elasticsearch-head/)
 or [Marvel](https://www.elastic.co/products/marvel) can help monitor Elasticsearch as you import
 data.
 
-If you're using a terminal, you can also search and/or monitor Elasticsearch using their [APIs.](https://www.elastic.co/guide/en/elasticsearch/reference/1.7/api-conventions.html)
+If you're using a terminal, you can also search and/or monitor Elasticsearch using their [APIs.](https://www.elastic.co/guide/en/elasticsearch/reference/2.3/api-conventions.html)
 
-**Note:** On large imports, Elasticsearch can be very sensitive to memory issues. Be sure to modify it's [heap size](https://www.elastic.co/guide/en/elasticsearch/guide/1.x/heap-sizing.html) from the default confiration to something more appropriate to your machine.  
+**Note:** On large imports, Elasticsearch can be very sensitive to memory issues. Be sure to modify it's [heap size](https://www.elastic.co/guide/en/elasticsearch/guide/2.x/heap-sizing.html) from the default confiration to something more appropriate to your machine.
 
 ### Set up the Elasticsearch Schema
 
@@ -302,7 +302,7 @@ importers.
 
 Depending on how much data you've imported, now may be a good time to grab a coffee. Without admin
 lookup, the fastest speeds you'll see are around 10,000 records per second. With admin lookup,
-expect around 800-1000 inserts per second.
+expect around 800-2000 inserts per second.
 
 ### Start the API
 

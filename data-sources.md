@@ -29,8 +29,9 @@ Layers:
 - `region`
 - `macrocounty`
 - `county`
-- `locality`
 - `localadmin`
+- `locality`
+- `borough`
 - `neighbourhood`
 - `coarse` (alias for simultaneously using all the above)
 
@@ -56,6 +57,7 @@ Layers:
 
 - `address`
 - `venue`
+- `street`
 
 [OpenStreetMap](https://www.openstreetmap.org/) is a community-driven, editable map of the world. It prioritizes local knowledge and individual contributions over bulk imports, which often means it has excellent coverage even in remote areas where no large-scale mapping efforts have been attempted. OpenStreetMap contains information on landmarks, buildings, roads, and natural features.
 
@@ -71,10 +73,11 @@ Layers:
 
 - `venue`
 - `country`
+- `macroregion`
 - `region`
 - `county`
-- `locality`
 - `localadmin`
+- `locality`
 - `neighbourhood`
 - `coarse` (alias for simultaneously using all the above)
 

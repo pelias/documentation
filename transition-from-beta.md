@@ -16,7 +16,7 @@ Mapzen Search API keys allow you:
 * 6 requests per second
 * 30,000 requests per day
 
-To start using an API key, append `&api_key=search-xxxxxx` to all API calls to all endpoints (aside from `/attribution`, which requires no key).
+To start using an API key, append `&api_key=mapzen-xxxxxx` to all API calls to all endpoints (aside from `/attribution`, which requires no key).
 
 Your API usage limits are displayed in the HTTP headers of any API call, such as in this example:
 
@@ -126,7 +126,7 @@ A former query for a coarse geocode may have been:
 `https://pelias.mapzen.com/search/coarse?input=<search-text>`
 
 That same query would now be written as:
-`https://search.mapzen.com/v1/search?text=<search-text>&layers=coarse&api_key=<search-xxxxxx>`
+`https://search.mapzen.com/v1/search?text=<search-text>&layers=coarse&api_key=<mapzen-xxxxxx>`
 
 You can also call the coarse layers directly, namely, `country`, `region`, `county`, `locality`, `neighbourhood`, to restrict the kinds of results you'll get back.
 
@@ -154,7 +154,7 @@ The `/autocomplete` endpoint serves as a renamed `/suggest` to show that these a
 Reverse geocoding finds the places closest to geospatial coordinates.
 
 ```
-https://search.mapzen.com/v1/reverse?point.lon={longitude}&point.lat={latitude}&api_key=search-xxxxxx
+https://search.mapzen.com/v1/reverse?point.lon={longitude}&point.lat={latitude}&api_key=mapzen-xxxxxx
 ```
 
 Used to be (Beta) | New parameter (V1) | New behavior (if any) |
@@ -169,7 +169,7 @@ New parameters:
 ### Reverse coarse geocoding
 Reverse coarse geocoding is not a point-in-polygon lookup (finding the hierarchy for the polygon that the point falls in), but instead looks for the hierarchy of points nearby. To use reverse coarse geocoding, use:
 
-```https://search.mapzen.com/v1/reverse?point.lon={longitude}&point.lat={latitude}&layers=coarse&api_key=search-xxxxxx
+```https://search.mapzen.com/v1/reverse?point.lon={longitude}&point.lat={latitude}&layers=coarse&api_key=mapzen-xxxxxx
 ```
 
 ## `/place` (formerly `/doc`)
@@ -177,7 +177,7 @@ Reverse coarse geocoding is not a point-in-polygon lookup (finding the hierarchy
 
 If a search returns `id: "geonames:3544:adm1:fr:fra:paris"` as the matching ID for a record, the complete underlying place record can be returned with:
 ```
-https://search.mapzen.com/v1/place?ids=geonames:3544:adm1:fr:fra:paris&api_key=search-xxxxxx
+https://search.mapzen.com/v1/place?ids=geonames:3544:adm1:fr:fra:paris&api_key=mapzen-xxxxxx
 ```
 
 ## Security

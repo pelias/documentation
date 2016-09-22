@@ -1,4 +1,4 @@
-# Mapzen Search terminology
+# Mapzen Search glossary
 
 ## Common search and geocoding terms
 
