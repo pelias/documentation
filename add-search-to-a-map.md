@@ -189,7 +189,6 @@ To recap how you created this, you added references to the Mapzen JS and CSS fil
 So far, you have referenced the necessary files, initialized Leaflet with a map container on the page, and added data to the map. Now, you are ready to add the Search box.
 
 1. Go back to the https://mapzen.com/developers page and copy your API key to the clipboard.
-<<<<<<< HEAD
 2. Inside the same `<script>` tag, and after the code you just added for the map, initialize a search box and add it to the map with the following code. Use your own API key substituted for the placeholder text of `mapzen-xxxxxx`.
 
   ```js
@@ -356,7 +355,6 @@ You can refer to this HTML if you want to review your work or troubleshoot an er
     <meta charset="utf-8">
       <link rel="stylesheet" href="https://mapzen.com/js/mapzen.css">
       <script src="https://mapzen.com/js/mapzen.min.js"></script>
-
     <style>
       #map {
         height: 100%;
@@ -388,7 +386,6 @@ You can refer to this HTML if you want to review your work or troubleshoot an er
         }
       });
       geocoder.addTo(map);
-
     </script>
   </body>
 </html>
