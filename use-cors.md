@@ -14,9 +14,9 @@ For a full list of supported browsers see: http://caniuse.com/#feat=cors
 
 ### Add a search box to a Leaflet map
 
-Mapzen provides a plug-in that adds a search box to any [Leaflet](http://leafletjs.com/)-powered map.
+You can add a Mapzen Search box to any [Leaflet](http://leafletjs.com/) map.
 
-See the [Mapzen.js documentation](https://mapzen.com/documentation/mapzen-js/search/#add-mapzen-search-box-to-a-map) for instructions on how to add search to a web map. 
+See the [Mapzen.js documentation](https://mapzen.com/documentation/mapzen-js/search/#add-mapzen-search-box-to-a-map) for instructions. There is also a [tutorial](add-search-to-a-map.md) available.
 
 ### Loading data with jQuery
 
