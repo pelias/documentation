@@ -71,9 +71,9 @@ directory, or only selected files.
 OpenStreetMap has a nearly limitless array of download options, and any of them should work as long as
 they're in [PBF](http://wiki.openstreetmap.org/wiki/PBF_Format) format. Generally the files will
 have the extension `.osm.pbf`. Good sources include the [Mapzen Metro Extracts](https://mapzen.com/data/metro-extracts/)
-(feel free to submit pull requests for additional cities or regions if needed), and planet files
-listed on the [OSM wiki](http://wiki.openstreetmap.org/wiki/Planet.osm). A full planet PBF is about
-36GB.
+(which has popular cities available immediately, or custom areas that take only
+a few minutes to build), and planet files listed on the [OSM wiki](http://wiki.openstreetmap.org/wiki/Planet.osm).
+A full planet PBF file is about 36GB.
 
 ## Choose your import settings
 
