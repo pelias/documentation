@@ -221,6 +221,7 @@ The other major section, `imports`, defines settings for each importer. The defa
     },
     "openaddresses": {
       "datapath": "/mnt/pelias/openaddresses",
+      "adminLookup": false,
       "files": []
     },
     "whosonfirst": {
@@ -232,16 +233,6 @@ The other major section, `imports`, defines settings for each importer. The defa
 
 As you can see, the default datapaths are meant to be changed. This is also where you can enable
 admin lookup by overriding the default value.
-
-Two caveats to this config section. First, the array structure of the OpenStreetMap `import` section
-suggests you can specify multiple files to import. Unfortunately, you can't, although we'd like to
-[support that in the future](https://github.com/pelias/openstreetmap/issues/55).
-
-Second, note that the OpenAddresses section does _not_ have an `adminLookup` flag. The OpenAddresses
-importer only supports controlling this option by a command line flag currently. Again this is
-something [we'd like to fix](https://github.com/pelias/openaddresses/issues/51). See the importer
-[readme](https://github.com/pelias/openaddresses/blob/master/README.md) for details on how to
-configure admin lookup and deduplication for OpenAddresses.
 
 ### Install Elasticsearch
 
@@ -292,13 +283,12 @@ reindex all your data after making schema changes.
 Now that the schema is set up, you're ready to begin importing data!
 
 Our [goal](https://github.com/pelias/pelias/issues/255) is that eventually you'll be able to run all
-the importers with simply `cd $importer_directory; npm start`. Unfortunately only the Who's on First
-and OpenStreetMap importers works that way right now.
+the importers with simply `cd $importer_directory; npm start`. We are now really close, and all but
+one importer follows this pattern!
 
-For [Geonames](https://github.com/pelias/geonames/) and [OpenAddresses](https://github.com/pelias/openaddresses),
-please see their respective READMEs, which detail the process of running them. By the way, we'd
-love to see pull requests that allow them to read configuration from `pelias.json` like the other
-importers.
+That importer is the [Geonames](https://github.com/pelias/geonames/) importer, please see its README file
+for the most up to date instructions. By the way, we'd love to see a pull request to allow it to
+read configuration from `pelias.json` like the other impoters.
 
 Depending on how much data you've imported, now may be a good time to grab a coffee. Without admin
 lookup, the fastest speeds you'll see are around 10,000 records per second. With admin lookup,
