@@ -61,10 +61,10 @@ instructions for downloading Geonames data automatically. Individual countries, 
 
 ### OpenAddresses
 The OpenAddresses project includes [numerous download options](https://results.openaddresses.io/),
-all of which are `.zip` downloads. The full dataset is just over 6 gigabytes compressed, but there
-are numerous subdivision options. In any case, the `.zip` files simply need to be extracted to a
-directory of your choice, and Pelias can be configured to either import every `.csv` in that
-directory, or only selected files.
+all of which are `.zip` downloads. The full dataset is just over 6 gigabytes compressed (the
+extracted files are around 30GB), but there are numerous subdivision options. In any case, the
+`.zip` files simply need to be extracted to a directory of your choice, and Pelias can be configured
+to either import every `.csv` in that directory, or only selected files.
 
 ### OpenStreetMap
 
