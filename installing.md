@@ -280,15 +280,13 @@ reindex all your data after making schema changes.
 
 ### Run the importers
 
-Now that the schema is set up, you're ready to begin importing data!
+Now that the schema is set up, you're ready to begin importing data.
 
 Our [goal](https://github.com/pelias/pelias/issues/255) is that eventually you'll be able to run all
-the importers with simply `cd $importer_directory; npm start`. We are now really close, and all but
-one importer follows this pattern!
+the importers with simply `cd $importer_directory; npm start`.
 
 That importer is the [Geonames](https://github.com/pelias/geonames/) importer, please see its README file
-for the most up to date instructions. By the way, we'd love to see a pull request to allow it to
-read configuration from `pelias.json` like the other impoters.
+for the most up to date instructions. 
 
 Depending on how much data you've imported, now may be a good time to grab a coffee. Without admin
 lookup, the fastest speeds you'll see are around 10,000 records per second. With admin lookup,
