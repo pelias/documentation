@@ -292,7 +292,7 @@ cd $importer_directory; npm start
 For the [Geonames](https://github.com/pelias/geonames/) importer, please see its
 [README](https://github.com/pelias/geonames/blob/master/README.md) file for the most up to date
 instructions.  We are working towards making all the importers have [the same interface](https://github.com/pelias/pelias/issues/255),
-so hopefully you won't have to do anything special for Geonames soon.
+so the Geonames importer will behave the same as the others soon.
 
 Depending on how much data you've imported, now may be a good time to grab a coffee. Without admin
 lookup, the fastest speeds you'll see are around 10,000 records per second. With admin lookup,
