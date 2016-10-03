@@ -282,11 +282,17 @@ reindex all your data after making schema changes.
 
 Now that the schema is set up, you're ready to begin importing data.
 
-Our [goal](https://github.com/pelias/pelias/issues/255) is that eventually you'll be able to run all
-the importers with simply `cd $importer_directory; npm start`.
+For all importers except for Geonames, you can start the import process with the `npm start`
+command:
 
-That importer is the [Geonames](https://github.com/pelias/geonames/) importer, please see its README file
-for the most up to date instructions. 
+```bash
+cd $importer_directory; npm start
+```
+
+For the [Geonames](https://github.com/pelias/geonames/) importer, please see its
+[README](https://github.com/pelias/geonames/blob/master/README.md) file for the most up to date
+instructions.  We are working towards making all the importers have [the same interface](https://github.com/pelias/pelias/issues/255),
+so hopefully you won't have to do anything special for Geonames soon.
 
 Depending on how much data you've imported, now may be a good time to grab a coffee. Without admin
 lookup, the fastest speeds you'll see are around 10,000 records per second. With admin lookup,
