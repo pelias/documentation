@@ -61,19 +61,19 @@ instructions for downloading Geonames data automatically. Individual countries, 
 
 ### OpenAddresses
 The OpenAddresses project includes [numerous download options](https://results.openaddresses.io/),
-all of which are `.zip` downloads. The full dataset is just over 6 gigabytes compressed, but there
-are numerous subdivision options. In any case, the `.zip` files simply need to be extracted to a
-directory of your choice, and Pelias can be configured to either import every `.csv` in that
-directory, or only selected files.
+all of which are `.zip` downloads. The full dataset is just over 6 gigabytes compressed (the
+extracted files are around 30GB), but there are numerous subdivision options. In any case, the
+`.zip` files simply need to be extracted to a directory of your choice, and Pelias can be configured
+to either import every `.csv` in that directory, or only selected files.
 
 ### OpenStreetMap
 
 OpenStreetMap has a nearly limitless array of download options, and any of them should work as long as
 they're in [PBF](http://wiki.openstreetmap.org/wiki/PBF_Format) format. Generally the files will
 have the extension `.osm.pbf`. Good sources include the [Mapzen Metro Extracts](https://mapzen.com/data/metro-extracts/)
-(feel free to submit pull requests for additional cities or regions if needed), and planet files
-listed on the [OSM wiki](http://wiki.openstreetmap.org/wiki/Planet.osm). A full planet PBF is about
-36GB.
+(which has popular cities available immediately, or custom areas that take only
+a few minutes to build), and planet files listed on the [OSM wiki](http://wiki.openstreetmap.org/wiki/Planet.osm).
+A full planet PBF file is about 36GB.
 
 ## Choose your import settings
 
@@ -221,6 +221,7 @@ The other major section, `imports`, defines settings for each importer. The defa
     },
     "openaddresses": {
       "datapath": "/mnt/pelias/openaddresses",
+      "adminLookup": false,
       "files": []
     },
     "whosonfirst": {
@@ -232,16 +233,6 @@ The other major section, `imports`, defines settings for each importer. The defa
 
 As you can see, the default datapaths are meant to be changed. This is also where you can enable
 admin lookup by overriding the default value.
-
-Two caveats to this config section. First, the array structure of the OpenStreetMap `import` section
-suggests you can specify multiple files to import. Unfortunately, you can't, although we'd like to
-[support that in the future](https://github.com/pelias/openstreetmap/issues/55).
-
-Second, note that the OpenAddresses section does _not_ have an `adminLookup` flag. The OpenAddresses
-importer only supports controlling this option by a command line flag currently. Again this is
-something [we'd like to fix](https://github.com/pelias/openaddresses/issues/51). See the importer
-[readme](https://github.com/pelias/openaddresses/blob/master/README.md) for details on how to
-configure admin lookup and deduplication for OpenAddresses.
 
 ### Install Elasticsearch
 
@@ -289,16 +280,19 @@ reindex all your data after making schema changes.
 
 ### Run the importers
 
-Now that the schema is set up, you're ready to begin importing data!
+Now that the schema is set up, you're ready to begin importing data.
 
-Our [goal](https://github.com/pelias/pelias/issues/255) is that eventually you'll be able to run all
-the importers with simply `cd $importer_directory; npm start`. Unfortunately only the Who's on First
-and OpenStreetMap importers works that way right now.
+For all importers except for Geonames, you can start the import process with the `npm start`
+command:
 
-For [Geonames](https://github.com/pelias/geonames/) and [OpenAddresses](https://github.com/pelias/openaddresses),
-please see their respective READMEs, which detail the process of running them. By the way, we'd
-love to see pull requests that allow them to read configuration from `pelias.json` like the other
-importers.
+```bash
+cd $importer_directory; npm start
+```
+
+For the [Geonames](https://github.com/pelias/geonames/) importer, please see its
+[README](https://github.com/pelias/geonames/blob/master/README.md) file for the most up to date
+instructions.  We are working towards making all the importers have [the same interface](https://github.com/pelias/pelias/issues/255),
+so the Geonames importer will behave the same as the others soon.
 
 Depending on how much data you've imported, now may be a good time to grab a coffee. Without admin
 lookup, the fastest speeds you'll see are around 10,000 records per second. With admin lookup,
