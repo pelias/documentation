@@ -1,3 +1,9 @@
+## 10 October 2016
+
+* Data release that correctly analyzes post-directionals in street names, e.g. - `186 Tuskegee St SE Atlanta GA` -> `186 Tuskegee St SouthEast Atlanta GA`
+* Incorporates libpostal text analyzer for more accurate address parsing
+* Introduces geocoding fallback rules that favors traditional geocoding behavior instead of search engine behavior
+
 ## 19 September 2016
 
 Another data-only release. Stay tuned for next week!
