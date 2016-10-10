@@ -1,6 +1,6 @@
 ## 10 October 2016
 
-* [libpostal](https://github.com/openvenues/libpostal), the super-sophisticated address parser, has been integrated for more accurate analysis of inputs at `/search`.
+* [libpostal](https://github.com/openvenues/libpostal), the super-sophisticated address parser, has been integrated for more accurate analysis of inputs at `/v1/search`.
 * Street names containing post-directionals (e.g. - `186 Tuskegee St SE Atlanta GA` -> `186 Tuskegee St SouthEast Atlanta GA`) are now treated the same as their pre-directional brethren.
 * 10/10, would release again - geocoding fallback rules that favor traditional geocoding behavior instead of search engine behavior
 
