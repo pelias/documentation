@@ -24,7 +24,7 @@ Here is an example resulting from a search for the text, `30 W 26th street, New 
 }
 ```
 
-With an accuracy of point and an exact match, the confidence score is closer to 1, and you will see fewer results in the response. The confidence value decreases when centroid accuracy and a fallback match occurs. When that happens, you may see multiple results appear so you can choose the one you intended.
+With an accuracy of point and an exact match, the confidence score is closer to 1. The confidence value decreases when centroid accuracy and a fallback match occurs. When that happens, multiple results may be returned so you can choose the one you intended.
 
 ## Partial matches and fallbacks
 
