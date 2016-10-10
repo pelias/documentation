@@ -19,7 +19,8 @@ The steps for fully installing Pelias look like this:
 4. Set up Elasticsearch
 5. Install the Elasticsearch schema using pelias-schema
 6. Use one or more importers to load data into Elasticsearch
-7. Start the API server to begin handling queries
+7. Install the libpostal text analyzer (optional)
+8. Start the API server to begin handling queries
 
 ## System Requirements
 
