@@ -298,6 +298,36 @@ Depending on how much data you've imported, now may be a good time to grab a cof
 lookup, the fastest speeds you'll see are around 10,000 records per second. With admin lookup,
 expect around 800-2000 inserts per second.
 
+### Install Libpostal (optional, but recommended)
+
+Pelias is now able to use the [libpostal](https://github.com/openvenues/libpostal) address parser,
+which greatly increases the quality of search results. Libpostal must be installed on the machines
+running the Pelias API, and requires about 4GB of disk space to download all the required data. This
+data represents a statistical natural language processing model of address parsing trained on
+OpenStreetMap data. The API will also require about 2GB of memory (it used only a few hundred
+before), to store the needed data for queries.
+
+First, install libpostal following its [installation docs](https://github.com/openvenues/libpostal#installation).
+This will also download the training data, so be sure to have enough free disk space.
+
+Next, configure the Pelias API to use libpostal (it won't by default) by adding a section like this
+to `pelias.json`:
+
+```json
+{
+  "api": {
+    "textParser": "libpostal"
+  }
+}
+```
+
+In the future, libpostal may become the default, and we may drop support for
+[addressit](https://github.com/DamonOehlman/addressit), the current default text parser. Until then,
+the `textParser` property can be changed back to `addressit` (or removed) to stop using libpostal.
+
+Once configured, the API will use libpostal via the [node-postal](https://github.com/openvenues/node-postal)
+NPM module.
+
 ### Start the API
 
 As soon as you have any data in Elasticsearch, you can start running queries against the
