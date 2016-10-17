@@ -63,6 +63,10 @@ Additionally, [/reverse](reverse.md) queries will have a `distance` parameter, w
 
 ## Notable features
 
+## `coordinates`
+
+All results returned from Mapzen Search are points, and can be found in the `coordinates` array. Following the [GeoJSON specification](http://geojson.org/geojson-spec.html#positions), these coordinates are in **longitude, latitude** order.
+
 ### `gid`
 All places in Mapzen Search have a global identifier, known as a `gid`. Each matching record returned from a [/search](search.md), [/autocomplete](autocomplete.md), or [/reverse](reverse.md) geocoding request has a `gid` field.
 
