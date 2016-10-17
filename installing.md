@@ -235,6 +235,25 @@ The other major section, `imports`, defines settings for each importer. The defa
 As you can see, the default datapaths are meant to be changed. This is also where you can enable
 admin lookup by overriding the default value.
 
+### Elasticsearch Configuration
+
+Of special note in `pelias.json` are Elasticsearch settings. The [default](https://github.com/pelias/config/blob/master/config/defaults.json)
+settings (see the `elasticsearch` section) will be fine for development, but in particular the shard count should be
+increased for production use. Mapzen Search uses 24 shards in production (for a full planet build).
+Smaller installations should probably at least use the Elasticsearch default of 5 shards:
+
+```js
+{
+  "elasticsearch": {
+    "settings": {
+      "index": {
+        "number_of_shards": "5",
+      }
+    }
+  }
+}
+```
+
 ### Install Elasticsearch
 
 Other than requiring Elasticsearch 2.3, nothing special in the Elasticsearch setup is required for
