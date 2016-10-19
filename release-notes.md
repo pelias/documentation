@@ -1,3 +1,7 @@
+## 25 October 2016
+
+* We are officially on node.js 4.0! We're going to have a party! :tada:
+
 ## 10 October 2016
 
 * [libpostal](https://github.com/openvenues/libpostal), the super-sophisticated address parser, has been integrated for more accurate analysis of inputs at `/v1/search`.
