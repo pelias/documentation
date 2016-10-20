@@ -41,18 +41,8 @@ download for each one.
 
 ### Who's on First
 
-The [Who's on First](https://github.com/pelias/whosonfirst#data) importer contains code and
-instructions for downloading WOF data.
-
-Alternatively, there are two other ways to download Who's on First data. The first is to use the pre-created
-[bundles](https://whosonfirst.mapzen.com/bundles/). These consist of a series of archives that can
-be easily extracted (instructions are on the page).
-
-For more advanced uses, or to contribute back to Who's on First, use the
-[whosonfirst-data](https://github.com/whosonfirst/whosonfirst-data) Github repository. Again, there
-are [instructions](https://github.com/whosonfirst/whosonfirst-data#git-and-github). Note that this
-repo requires [git-lfs](https://git-lfs.github.com/), a lot of bandwidth, and 27GB (currently) of
-disk space.
+The [Who's on First](https://github.com/pelias/whosonfirst#data) importer can download all the Who's
+on First data quickly and easily. See the README for the most up to date instructions.
 
 ### Geonames
 
