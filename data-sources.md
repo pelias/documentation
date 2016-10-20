@@ -6,7 +6,7 @@ Attribution is required for many of the Mapzen Search data providers. Some licen
 
 ## OpenAddresses
 
-`sources=openaddresses` | `sources=osm`
+`sources=openaddresses` | `sources=oa`
 
 Layers:
 
