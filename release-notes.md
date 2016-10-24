@@ -1,3 +1,8 @@
+## 24 October 2016
+
+* The `/v1/autocomplete` endpoint now supports [boundary.rect](https://mapzen.com/documentation/search/search/#search-within-a-rectangular-region) just like `/v1/search`
+* Labels for administrative areas should be [improved in a few cases](https://github.com/pelias/whosonfirst/pull/139)
+
 ## 10 October 2016
 
 * [libpostal](https://github.com/openvenues/libpostal), the super-sophisticated address parser, has been integrated for more accurate analysis of inputs at `/v1/search`.
