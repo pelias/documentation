@@ -1,6 +1,7 @@
-## 25 October 2016
+## 24 October 2016
 
-* We are officially on node.js 4.0! We're going to have a party! :tada:
+* The `/v1/autocomplete` endpoint now supports [boundary.rect](https://mapzen.com/documentation/search/search/#search-within-a-rectangular-region) just like `/v1/search`
+* Labels for administrative areas should be [improved in a few cases](https://github.com/pelias/whosonfirst/pull/139)
 
 ## 10 October 2016
 
