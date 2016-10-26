@@ -132,6 +132,10 @@ Sometimes your work might require that all the search results be from a particul
 | `text` | string | yes | none | `Union Square` |
 | `focus.point.lat` | floating point number | no | none | `48.581755` |
 | `focus.point.lon` | floating point number | no | none | `7.745843` |
+| `boundary.rect.min_lon` | floating point number | no | none | `139.2794` |
+| `boundary.rect.max_lon` | floating point number | no | none | `140.1471` |
+| `boundary.rect.min_lat` | floating point number | no | none | `35.53308` |
+| `boundary.rect.max_lat` | floating point number | no | none | `35.81346` |
 | `sources` | string | no | all sources: osm,oa,gn,wof | openstreetmap,wof |
 | `layers` | string | no | all layers: address,venue,neighbourhood,locality,borough,localadmin,county,macrocounty,region,marcoregion,country,coarse | address,venue |
 | `boundary.country` | string | no | none | 'GBR' |
