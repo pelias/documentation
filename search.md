@@ -354,3 +354,23 @@ In Mapzen Search, place types are referred to as `layers`, ranging from fine to 
 | `api_key` | [get yours here](https://mapzen.com/developers) |
 | `text` | YMCA |
 | `layers` | venue,address |
+
+## Available search parameters
+
+| Parameter | Type | Required | Default | Example |
+| --- | --- | --- | --- | --- |
+| `api_key` | string | yes | none | [get yours here](https://mapzen.com/developers) |
+| `text` | string | yes | none | `Union Square` |
+| `focus.point.lat` | floating point number | no | none | `48.581755` |
+| `focus.point.lon` | floating point number | no | none | `7.745843` |
+| `boundary.rect.min_lon` | floating point number | no | none | `139.2794` |
+| `boundary.rect.max_lon` | floating point number | no | none | `140.1471` |
+| `boundary.rect.min_lat` | floating point number | no | none | `35.53308` |
+| `boundary.rect.max_lat` | floating point number | no | none | `35.81346` |
+| `boundary.circle.lat` | floating point number | no | none | `43.818156` |
+| `boundary.circle.lon` | floating point number | no | none | `-79.186484` |
+| `boundary.circle.radius` | floating point number | no | 50 | `35` |
+| `sources` | string | no | all sources: osm,oa,gn,wof | openstreetmap,wof |
+| `layers` | string | no | all layers: address,venue,neighbourhood,locality,borough,localadmin,county,macrocounty,region,marcoregion,country,coarse | address,venue |
+| `boundary.country` | string | no | none | 'GBR' |
+| `size` | integer | no | 10 | 20 |
