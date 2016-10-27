@@ -326,14 +326,14 @@ to `pelias.json`:
 ```json
 {
   "api": {
-    "textParser": "libpostal"
+    "textAnalyzer": "libpostal"
   }
 }
 ```
 
 In the future, libpostal may become the default, and we may drop support for
 [addressit](https://github.com/DamonOehlman/addressit), the current default text parser. Until then,
-the `textParser` property can be changed back to `addressit` (or removed) to stop using libpostal.
+the `textAnalyzer` property can be changed back to `addressit` (or removed) to stop using libpostal.
 
 Once configured, the API will use libpostal via the [node-postal](https://github.com/openvenues/node-postal)
 NPM module.
