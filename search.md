@@ -336,15 +336,15 @@ In Mapzen Search, place types are referred to as `layers`, ranging from fine to 
 |`venue`|points of interest, businesses, things with walls|
 |`address`|places with a street address|
 |`street`|streets,roads,highways|
-|`country`|places that issue passports, nations, nation-states|
-|`macroregion`|a related group of regions. Mostly in Europe|
-|`region`|states and provinces|
-|`macrocounty`|a related group of counties. Mostly in Europe.|
-|`county`|official governmental area; usually bigger than a locality, almost always smaller than a region|
-|`locality`|towns, hamlets, cities|
-|`localadmin`|local administrative boundaries|
-|`borough`| a local administrative boundary, currently only used for New York City|
 |`neighbourhood`|social communities, neighbourhoods|
+|`borough`|a local administrative boundary, currently only used for New York City|
+|`localadmin`|local administrative boundaries|
+|`locality`|towns, hamlets, cities|
+|`county`|official governmental area; usually bigger than a locality, almost always smaller than a region|
+|`macrocounty`|a related group of counties. Mostly in Europe.|
+|`region`|states and provinces|
+|`macroregion`|a related group of regions. Mostly in Europe|
+|`country`|places that issue passports, nations, nation-states|
 |`coarse`|alias for simultaneously using all administrative layers (everything except `venue` and `address`)|
 
 > [/v1/search?api_key=mapzen-xxxxxx&text=YMCA&___layers=venue,address___](https://search.mapzen.com/v1/search?text=YMCA&layers=venue,address)
