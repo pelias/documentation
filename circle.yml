@@ -1,0 +1,14 @@
+machine:
+  python:
+    version: 2.7.10
+
+test:
+  override:
+    - echo "Fine, whatever."
+
+deployment:
+  release:
+    branch: "master"
+    commands:
+      - pip install 'Circle-Tickler == 1.0.1'
+      - tickle-circle mapzen mapzen-docs-generator master $CIRCLE_TOKEN
