@@ -1,3 +1,13 @@
+## 05 December 2016
+
+This week includes only code changes, no data updates. Our production build failed do to an [error reading whosonfirst data](https://github.com/pelias/pelias/issues/477). We'll either kick off a new build for release later this week, or resume data updates with our usual cadence next week.
+
+### New features
+
+* We've released what was previously referred to as component geocoding in the new structured geocoding endpoint! It lives at `/v1/search/structured`
+* We fixed a bug where [specifying the same parameter twice](https://github.com/pelias/api/issues/744) (eg `/v1/search?text=paris&sources=geonames&sources=gn`) would cause a 500 error. It now returns a helpful 400 error message that includes which parameter is duplicated, so that the request can be fixed.
+* Other errors that should have been 500 errors were [being returned with status code 400](https://github.com/pelias/api/pull/742). Fixing this will allow us to more quickly catch any 500 errors that happen in the future.
+
 ## 18 November 2016
 
 * We've just released beta support for component geocoding so instead of passing in a single input to the `/v1/search` endpoint, the parts of an address can be sent to `/v1/beta/component`!  An example of this is `address=201+Spear+St&locality=San+Francisco&region=CA`.  We haven't officially named this geocoding type yet, so if you have a naming suggestion, please weigh in [here](https://github.com/pelias/pelias/issues/455)!  Our basic design doc for using this new beta feature is [here](https://github.com/pelias/pelias/tree/master/milestones/component_geocoding), please check it out.  We're still working out the final implementation (why it's currently deployed to our `/v1/beta` test bed) so check it out and don't hesitate to [raise any issues](https://github.com/pelias/pelias/issues) you might encounter.  Check out the [acceptance tests](https://github.com/pelias/acceptance-tests/blob/master/test_cases/component_geocoding.json) for some more examples.  
