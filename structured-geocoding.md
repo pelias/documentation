@@ -1,8 +1,18 @@
 # Structured geocoding
 
-With [structured geocoding](https://search.mapzen.com/v1/search/structured), you can search for individual components by specifying that the item you are searching for is an address, a city, or one or more types of locations.
+With [structured geocoding](https://search.mapzen.com/v1/search/structured), you can search for the individual parts of a location.
 
-For example, if you have a table of addresses where each column represents a different part of an location, use structured geocoding. With the `text` parameter for `search`, you would need to concatenate these fields into one string.
+For example, you want to find `30 West 26th Street, New York, NY`. With the geocoding parameter for `\search`, you can only enter the entire location as one string, such as `text=30 West 26th Street, New York, NY`. However, with `\search\structured`, you can specify that this location is composed of a street address, a locality, and a region.
+
+  {
+    address: '30 West 26th Street',
+    locality: 'New York',
+    region: 'NY'
+  }
+
+Structured geocoding can improve how the items in your query are parsed and interpreted in a search. An address such as `10 Park Place North Charleston South Carolina` could be viewed as a city name containing a directional (North Charleston in South Carolina), or as a street with a post-directional (10 Park Place North). By separating the components of the search input, you are reducing ambiguity in your query. This is also helpful because addresses and postal codes around the world are often formatted and ordered differently.
+
+One common use for structured geocoding is for geocoding a list or table of addresses, where each column represents a different portion of a location.
 
 | address | city | state | country |
 | ------- | ---- | ----- | ------- |
@@ -11,11 +21,11 @@ For example, if you have a table of addresses where each column represents a dif
 | 55 Rue du Faubourg Saint-Honoré | Paris | | FR |
 | Bulevardul Geniului 1 | Bucharest | | Romania |
 
-Structured geocoding allows you to specify exactly how to interpret a location, as concatenating fields introduces ambiguity in your data. For example, `10 Park Place North Charleston South Carolina` could be a city name containing a directional (North Charleston in South Carolina), or as or as a street with a post-directional (10 Park Place North). In addition, addresses and postal codes around the world are often formatted differently.
+With a regular `/search` query, you would need to concatenate these columns into one string, but `/search/structured` allows you to define a query that maintains the individual fields for address, city, state, and country.
 
 ## Structured geocoding parameters
 
-You can use structured geocoding on any of these parameters, as well as the other [search parameters](https://mapzen.com/documentation/search/search/#available-search-parameters).
+You can use structured geocoding to search for the following parameters:
 
 * address
 * neighbourhood
@@ -26,9 +36,11 @@ You can use structured geocoding on any of these parameters, as well as the othe
 * postalcode
 * country
 
+Note that the other [\search parameters](https://mapzen.com/documentation/search/search/#available-search-parameters) can also be combined with these to set filters and priorities on the results.
+
 ### address
 
-The `address` parameter can contain a full address including house number or just a street name.  Pelias stores addresses as separate number and street fields so libpostal is utilized to parse the number and street values.  
+The `address` parameter can contain a full address with house number or only a street name.
 
 _Examples_
 
@@ -43,21 +55,23 @@ _Examples_
 _Examples_
 
 * [Notting Hill](http://search.mapzen.com/v1/search/structured?neighbourhood=Notting+Hill&locality=London) in London
-* [Flatiron District](http://search.mapzen.com/v1/search/structured?neighbourhood=Flatiron District&borough=Manhattan) in Manhattan
+* [Flatiron District](http://search.mapzen.com/v1/search/structured?neighbourhood=Flatiron+District&borough=Manhattan) in Manhattan
 * [Le Marais](http://search.mapzen.com/v1/search/structured?neighbourhood=Le Marais&locality=Paris) in Paris
 
 ### borough
 
-[Boroughs](https://whosonfirst.mapzen.com/spelunker/placetypes/borough/) are a bit of an oddity in the realm of spatial data.  For the most part they fit in between neighbourhoods and localities but are mostly identifiable to the general public in the context of New York City even though other cities such as [Mexico City](https://whosonfirst.mapzen.com/spelunker/id/857683023/descendants/?exclude=nullisland&placetype=borough) have them, too.  In fact, they're commonly thought of as cities themselves rather than as subsidiaries of [New York City](https://whosonfirst.mapzen.com/spelunker/placetypes/borough/?&region_id=85688543).  
+[Boroughs](https://whosonfirst.mapzen.com/spelunker/placetypes/borough/) are mostly known in the context of New York City, even though they may exist in other cities, such as [Mexico City](https://whosonfirst.mapzen.com/spelunker/id/857683023/descendants/?exclude=nullisland&placetype=borough).
 
 _Examples_
 
-* [Manhattan](http://search.mapzen.com/v1/search/structured?borough=Manhattan&locality=New+York+City)
+* [Manhattan](http://search.mapzen.com/v1/search/structured?borough=Manhattan&locality=New+York)
 * [Iztapalapa](http://search.mapzen.com/v1/search/structured?borough=Iztapalapa&locality=Mexico City)
+
+A structured geocoding request for `/v1/search/structured?locality=Manhattan&region=NY`, returns boroughs along with localities.  
 
 ### locality
 
-[Localities](https://whosonfirst.mapzen.com/spelunker/placetypes/locality/) are equivalent to what are commonly referred to as cities, but can range anywhere in size from the [smallest hamlet](https://whosonfirst.mapzen.com/spelunker/id/85977019/) to the [most populous metropolis](https://whosonfirst.mapzen.com/spelunker/id/102031307/) on the planet.  
+[Localities](https://whosonfirst.mapzen.com/spelunker/placetypes/locality/) are equivalent to what are commonly referred to as cities.  
 
 _Examples_
 
@@ -75,7 +89,7 @@ _Examples_
 * [Maui](http://search.mapzen.com/v1/search/structured?county=Maui&region=HI)
 * [Alb-Donau-Kreis](http://search.mapzen.com/v1/search/structured?county=Alb-Donau-Kreis&country=DEU) in Germany
 
-Counties are not as commonly used in geocoding as localities but can be useful when attempting to disambiguate between localities.  For instance, there are 3 cities named Red Lion in Pennsylvania but only 1 in each of 3 counties.  Specifying a county disambiguates this list to a single result.  
+Counties are not as commonly used in geocoding as localities, but can be useful when attempting to disambiguate between localities. For instance, there are three cities named Red Lion in Pennsylvania but only one in each of three counties. Specifying a county disambiguates this list to a single result.  
 
 ### region
 
@@ -91,7 +105,7 @@ Regions in the United States have [common abbreviations](https://en.wikipedia.or
 
 ### postalcode
 
-[Postal codes](https://whosonfirst.mapzen.com/spelunker/placetypes/postalcode/) are used to aid in sorting mail with the format dictated by an administrative division (almost always countries).  Among other reasons, postal codes are unique within a country so they're useful in geocoding as a shorthand for a fairly granular geographical location.
+[Postal codes](https://whosonfirst.mapzen.com/spelunker/placetypes/postalcode/) are used to aid in sorting mail with the format dictated by an administrative division, which is almost always countries.  Among other reasons, postal codes are unique within a country so they are useful in geocoding as a shorthand for a fairly granular geographical location.
 
 _Examples_
 
@@ -99,11 +113,11 @@ _Examples_
 * [CV23 9SL](https://whosonfirst.mapzen.com/spelunker/id/454261459/)
 * [5439171](https://whosonfirst.mapzen.com/spelunker/id/538904173/)
 
-Pelias doesn't currently import postal codes, though addresses from [OpenAddresses](https://openaddresses.io/) and [OpenStreetMap](https://www.openstreetmap.org/) are sometimes annotated with postal codes and used for scoring.  
+Keep in mind that you cannot search for `postalcode` exclusively because postal codes are not imported as separate records. For example, this request [/v1/search/structured?postalcode=87801](http://search.mapzen.com//v1/search/structured?postalcode=87801) returns an error.
 
 ### country
 
-[Countries](https://whosonfirst.mapzen.com/spelunker/placetypes/country/) are the highest-level administrative divisions supported by Pelias.  In addition to full names, countries have common [2-](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) and [3-letter](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3) abbreviations which are also supported values for the `country` parameter.  
+[Countries](https://whosonfirst.mapzen.com/spelunker/placetypes/country/) are the highest-level administrative divisions supported in a search. In addition to full names, countries have common [two-](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) and [three-letter](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3) abbreviations that are also supported values for the `country` parameter.  
 
 _Examples_
 
@@ -111,19 +125,11 @@ _Examples_
 * [CMR](http://search.mapzen.com/v1/search/structured?country=CMR) ([Cameroon](https://whosonfirst.mapzen.com/spelunker/id/85632245/))
 * [Bermuda](http://search.mapzen.com/v1/search/structured?country=Bermuda)
 
-The more astute geocoding blog reader that has spent entirely too much time perusing [Who's on First](https://whosonfirst.mapzen.com/) would have noticed that [Bermuda](https://whosonfirst.mapzen.com/spelunker/id/85632731/) is actually a [British Overseas Territory](https://en.wikipedia.org/wiki/British_Overseas_Territories) (a `dependency`, in Who's on First nomenclature) and not a country, similar to the relationship [Puerto Rico](https://whosonfirst.mapzen.com/spelunker/id/85633729/) and [New Caledonia](https://whosonfirst.mapzen.com/spelunker/id/85632473/) have to the [United States](https://whosonfirst.mapzen.com/spelunker/id/85633793/descendants/?exclude=nullisland&placetype=dependency#4/2.92/-170.78) and [France](https://whosonfirst.mapzen.com/spelunker/id/85633147/), respectively.  To reduce the number of parameters and potential confusion about data organization, [dependencies](https://whosonfirst.mapzen.com/spelunker/placetypes/dependency/) are searched for using the `country` parameter value.  
+## Who's On First layer mappings reference
 
-## Caveats
+The [Who's on First](https://whosonfirst.mapzen.com/) gazetteer is one of the datasets used as a source of search data. Use this table is a reference between the parameters for structured geocoding and the [types of places in Who's on First](https://whosonfirst.mapzen.com/placetypes/).
 
-Any combination of the above parameters can be sent as structured geocoding requests **with the exception of postalcode-only** as Pelias does not currently import postal codes as separate records, only as augmenting address data.  For example, a request consisting only of [/v1/search/structured?postalcode=87801](http://search.mapzen.com//v1/search/structured?postalcode=87801) is not valid at this time and an error will be returned to the caller.  
-
-## Who's On First Layer Mappings
-
-This section is for people who are well-versed in the nuances of Who's on First place types in or have spent a bit of time looking at data in it.  
-
-As stated previously, we don't expect our users to understand the [complexities of Who's on First layer mappings](https://whosonfirst.mapzen.com/placetypes/).  While there are very good reasons why our gazetteer supports both `locality` and `localadmin`, it would be pretty cumbersome to include both as parameters, so we have added some convenience mappings to make structured geocoding easier:
-
-| structured geocoding parameter | Who's on First placetype(s) |
+| Structured geocoding parameter | Who's on First placetype |
 | -------------------- | ------------------------- |
 | `neighbourhood`        | [neighbourhood](https://whosonfirst.mapzen.com/spelunker/placetypes/neighbourhood/)             |
 | `borough`              | [borough](https://whosonfirst.mapzen.com/spelunker/placetypes/borough/)                   |
@@ -132,4 +138,4 @@ As stated previously, we don't expect our users to understand the [complexities 
 | `region`               | [region](https://whosonfirst.mapzen.com/spelunker/placetypes/region/), [macroregion](https://whosonfirst.mapzen.com/spelunker/placetypes/macroregion/)       |
 | `country`              | [dependency](https://whosonfirst.mapzen.com/spelunker/placetypes/dependency/), [country](https://whosonfirst.mapzen.com/spelunker/placetypes/country/)       |
 
-For example, [Peach Bottom, Pennsylvania](https://whosonfirst.mapzen.com/spelunker/id/404487863/) is only a `localadmin` place type and not a `locality` in Who's on First, but we don't expect the user to know the distinction, so if a structured geocoding request specifies `locality=Peach+Bottom&region=Pennsylvania`, then Pelias will lookup `Peach Bottom` in both the `locality` and `localadmin` layers.  
+For example, [Peach Bottom, Pennsylvania](https://whosonfirst.mapzen.com/spelunker/id/404487863/) is only a `localadmin` place type and not a `locality` in Who's on First. For simplicity, if a structured geocoding request specifies `locality=Peach+Bottom&region=Pennsylvania`, then `Peach Bottom` in both the `locality` and `localadmin` layers are searched.
