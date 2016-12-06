@@ -15,7 +15,7 @@ All Mapzen Search requests share the same format:
   scheme       domain   version  path     query     authentication token
 ```
 
-In addition, you can search at `https://search.mapzen.com/v1/search/search/structured` to look for individual components of a location.
+In addition, you can search at `https://search.mapzen.com/v1/search/structured` to look for individual components of a location.
 
 ## Search the world
 
