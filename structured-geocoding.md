@@ -1,8 +1,8 @@
 # Structured geocoding
 
-With structured geocoding, you can search for the individual parts of a location. Structured geocoding is an option on the [`search` endpoint](search), where a query takes the form of `https://search.mapzen.com/v1/search/structured`.
+With structured geocoding, you can search for the individual parts of a location. Structured geocoding is an option on the [`search` endpoint](search.md), where a query takes the form of `https://search.mapzen.com/v1/search/structured`.
 
-For example, you want to find `30 West 26th Street, New York, NY`. With the geocoding parameter for `\search`, you can only enter the entire location as one string, such as `text=30 West 26th Street, New York, NY`. However, with `\search\structured`, you can specify that this location is composed of a street address, a locality, and a region.
+For example, you want to find `30 West 26th Street, New York, NY`. With the geocoding parameter for `search`, you can only enter the entire location as one string, such as `text=30 West 26th Street, New York, NY`. However, with `search\structured`, you can specify that this location is composed of a street address, a locality, and a region.
 
   {
     address: '30 West 26th Street',
@@ -21,7 +21,7 @@ One common use for structured geocoding is for geocoding a list or table of addr
 | 55 Rue du Faubourg Saint-Honoré | Paris | | FR |
 | Bulevardul Geniului 1 | Bucharest | | Romania |
 
-With a regular `/search` query, you would need to concatenate these columns into one string, but `/search/structured` allows you to define a query that maintains the individual fields for address, city, state, and country.
+With a regular `search` query, you would need to concatenate these columns into one string, but `search/structured` allows you to define a query that maintains the individual fields for address, city, state, and country.
 
 ## Structured geocoding parameters
 
@@ -36,7 +36,7 @@ You can use structured geocoding to search for the following parameters:
 * postalcode
 * country
 
-Note that the other [\search parameters](search/#available-search-parameters) can also be combined with these, allowing you to filter and prioritize your results.
+Note that the other [\search parameters](search.md/#available-search-parameters) can also be combined with these, allowing you to filter and prioritize your results.
 
 ### address
 
