@@ -1,6 +1,6 @@
 # Structured geocoding
 
-With [structured geocoding](https://search.mapzen.com/v1/search/structured), you can search for the individual parts of a location.
+With structured geocoding, you can search for the individual parts of a location. Structured geocoding is an option on the [`search` endpoint](search), where a query takes the form of `https://search.mapzen.com/v1/search/structured`.
 
 For example, you want to find `30 West 26th Street, New York, NY`. With the geocoding parameter for `\search`, you can only enter the entire location as one string, such as `text=30 West 26th Street, New York, NY`. However, with `\search\structured`, you can specify that this location is composed of a street address, a locality, and a region.
 
@@ -36,7 +36,7 @@ You can use structured geocoding to search for the following parameters:
 * postalcode
 * country
 
-Note that the other [\search parameters](https://mapzen.com/documentation/search/search/#available-search-parameters) can also be combined with these to set filters and priorities on the results.
+Note that the other [\search parameters](search/#available-search-parameters) can also be combined with these, allowing you to filter and prioritize your results.
 
 ### address
 

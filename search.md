@@ -74,7 +74,7 @@ Structured geocoding accepts one or more of the following parameters:
 
 Structured geocoding also supports the other parameters from `search`, allowing you to filter and prioritize your results.
 
-For more information on structured searches, see [Structured geocoding](structured-geocoding.md).
+For more information on how to search this way, see [Structured geocoding](structured-geocoding).
 
 ## Set the number of results returned
 
