@@ -1,14 +1,16 @@
 # Structured geocoding
 
-With structured geocoding, you can search for the individual parts of a location. Structured geocoding is an option on the [`search` endpoint](search.md), where a query takes the form of `https://search.mapzen.com/v1/search/structured`.
+With structured geocoding, you can search for the individual parts of a location. Structured geocoding is an option on the [`search` endpoint](search.md), where a query takes the form of https://search.mapzen.com/v1/search/structured.
 
 For example, you want to find `30 West 26th Street, New York, NY`. With the geocoding parameter for `search`, you can only enter the entire location as one string, such as `text=30 West 26th Street, New York, NY`. However, with `search\structured`, you can specify that this location is composed of a street address, a locality, and a region.
 
-  {
-    address: '30 West 26th Street',
-    locality: 'New York',
-    region: 'NY'
-  }
+```
+{
+  address: '30 West 26th Street',
+  locality: 'New York',
+  region: 'NY'
+}
+```
 
 Structured geocoding can improve how the items in your query are parsed and interpreted in a search. An address such as `10 Park Place North Charleston South Carolina` could be viewed as a city name containing a directional (North Charleston in South Carolina), or as a street with a post-directional (10 Park Place North). By separating the components of the search input, you are reducing ambiguity in your query. This is also helpful because addresses and postal codes around the world are often formatted and ordered differently.
 
@@ -36,7 +38,7 @@ You can use structured geocoding to search for the following parameters:
 * postalcode
 * country
 
-Note that the other [\search parameters](search.md/#available-search-parameters) can also be combined with these, allowing you to filter and prioritize your results.
+Note that the other [`search` parameters](search.md/#available-search-parameters) can also be combined with these, allowing you to filter and prioritize your results.
 
 ### address
 
