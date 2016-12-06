@@ -2,7 +2,7 @@
 
 With structured geocoding, you can search for the individual parts of a location. Structured geocoding is an option on the [`search` endpoint](search.md), where a query takes the form of https://search.mapzen.com/v1/search/structured.
 
-For example, you want to find `30 West 26th Street, New York, NY`. With the geocoding parameter for `search`, you can only enter the entire location as one string, such as `text=30 West 26th Street, New York, NY`. However, with `search\structured`, you can specify that this location is composed of a street address, a locality, and a region.
+For example, you want to find `30 West 26th Street, New York, NY`. With the geocoding parameter for `search`, you can only enter the entire location as one string, such as `text=30 West 26th Street, New York, NY`. However, with `search/structured`, you can specify that this location is composed of a street address, a locality, and a region.
 
 ```
 {
@@ -46,9 +46,9 @@ The `address` parameter can contain a full address with house number or only a s
 
 _Examples_
 
-* [201 Spear Street](http://search.mapzen.com/v1/search/structured?address=201%20Spear%20Street&locality=San%20Francisco&region=CA)
-* [Rue de Rivoli](http://search.mapzen.com/v1/search/structured?address=Rue de Rivoli&locality=Paris&region=France)
-* [Přílucká 1](http://search.mapzen.com/v1/search/structured?address=1 Přílucká&locality=Želechovice nad Dřevnicí)
+* [201 Spear Street](http://search.mapzen.com/v1/search/structured?address=201+Spear+Street&locality=San+Francisco&region=CA)
+* [Rue de Rivoli](http://search.mapzen.com/v1/search/structured?address=Rue+de+Rivoli&locality=Paris&region=France)
+* [Přílucká 1](http://search.mapzen.com/v1/search/structured?address=1+Přílucká&locality=Želechovice+nad+Dřevnicí)
 
 ### neighbourhood
 
@@ -58,7 +58,7 @@ _Examples_
 
 * [Notting Hill](http://search.mapzen.com/v1/search/structured?neighbourhood=Notting+Hill&locality=London) in London
 * [Flatiron District](http://search.mapzen.com/v1/search/structured?neighbourhood=Flatiron+District&borough=Manhattan) in Manhattan
-* [Le Marais](http://search.mapzen.com/v1/search/structured?neighbourhood=Le Marais&locality=Paris) in Paris
+* [Le Marais](http://search.mapzen.com/v1/search/structured?neighbourhood=Le+Marais&locality=Paris) in Paris
 
 ### borough
 
@@ -67,7 +67,7 @@ _Examples_
 _Examples_
 
 * [Manhattan](http://search.mapzen.com/v1/search/structured?borough=Manhattan&locality=New+York)
-* [Iztapalapa](http://search.mapzen.com/v1/search/structured?borough=Iztapalapa&locality=Mexico City)
+* [Iztapalapa](http://search.mapzen.com/v1/search/structured?borough=Iztapalapa&locality=Mexico+City)
 
 A structured geocoding request for `/v1/search/structured?locality=Manhattan&region=NY`, returns boroughs along with localities.  
 
