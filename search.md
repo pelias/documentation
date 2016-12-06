@@ -15,6 +15,8 @@ All Mapzen Search requests share the same format:
   scheme       domain   version  path     query     authentication token
 ```
 
+In addition, you can search at `https://search.mapzen.com/v1/search/structured` to look for individual components of a location.
+
 ## Search the world
 
 ![Searching globally](/images/world_all.png)
@@ -54,6 +56,25 @@ Spelling matters, but not capitalization when performing a query with Mapzen Sea
 > [/v1/search?api_key=mapzen-xxxxxx&___text=yMcA___](https://search.mapzen.com/v1/search?text=yMcA)
 
 Note that the results are spread out throughout the world because you have not given your current location or provided any other geographic context in which to search.
+
+## Search for a component of a location
+
+With the `text` parameter, your search is composed of all the items in one string. With [structured geocoding](http://search.mapzen.com/v1/search/structured), you can search for individual components of a location.
+
+Structured geocoding accepts one or more of the following parameters:
+
+* address
+* neighbourhood
+* borough
+* locality
+* county
+* region
+* postalcode
+* country
+
+Structured geocoding also supports the other parameters from `search`, allowing you to filter and prioritize your results.
+
+For more information on how to search this way, see [Structured geocoding](structured-geocoding.md).
 
 ## Set the number of results returned
 
