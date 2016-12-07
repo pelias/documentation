@@ -12,7 +12,7 @@ Layers:
 
 - `address`
 
-[OpenAddresses](http://openaddresses.io/) is a collection of over 200 million addresses around the world. Data in OpenAddresses only comes from national, state, and local governments, so this data is highly authoritative. Because it consists of entirely bulk imports, OpenAddresses is a large, global, and rapidly growing dataset. Many countries, particularly in Europe, now have every address represented in OpenAddresses.
+[OpenAddresses](http://openaddresses.io/) is a collection of over 300 million addresses around the world. Data in OpenAddresses only comes from national, state, and local governments, so this data is highly authoritative. Because it consists of entirely bulk imports, OpenAddresses is a large, global, and rapidly growing dataset. Many countries, particularly in Europe, now have every address represented in OpenAddresses.
 
 OpenAddresses is by far the largest dataset by number of records used by Mapzen Search. Even though it only contains address data (as in no building names or other metadata), it's a great resource for global geocoding.
 
