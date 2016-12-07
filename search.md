@@ -36,7 +36,7 @@ Note the parameter values are set as follows:
 
 Clicking the link above will open a file containing the best matching results for the text `YMCA`. You will notice the data is in a computer-friendly format called [GeoJSON](http://geojson.org/), which may be hard for humans to read in some browsers.
 
-If you are having trouble seeing the JSON in your browser, you can install a browser extension for [Chrome](https://chrome.google.com/webstore/detail/jsonview/chklaanhfefbnpoihckbnefhakgolnmc?hl=en) or [Firefox](https://addons.mozilla.org/en-us/firefox/addon/jsonview/) that will make it easier for you to read.
+You can install a plug-in for your browser to display JSON in a more formatted manner. You can search the web store for your browser to find and install applicable products.
 
 In the example above, you will find the name of each matched locations in a property named `'label'`. The top 10 labels returned were:
 

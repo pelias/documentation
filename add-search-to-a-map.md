@@ -270,7 +270,7 @@ Although you will not be using it in this tutorial, [\reverse](https://mapzen.co
 3. Click the Headers tab for more information about the request, including the full URL. For example, the URL might look something like `https://search.mapzen.com/v1/search?text=901%2012th%20avenue&focus.point.lat=47.61032944737081&focus.point.lon=-122.31800079345703&api_key=mapzen-xxxxxx`
 4. Paste this URL into a new browser tab to see the JSON response, which can be mapped.
 
-_Tip: You can install a plug-in for your browser to display JSON in a more formatted manner. For example, JSONView is a common extension that does this for Chrome. You can search the web store for your browser to find and install applicable products._
+_Tip: You can install a plug-in for your browser to display JSON in a more formatted manner. You can search the web store for your browser to find and install applicable products._
 
 ![Search endpoint query in the browser developer console](images/developer-console.png)
 
