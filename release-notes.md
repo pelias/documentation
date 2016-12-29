@@ -1,3 +1,10 @@
+## 28 December 2016
+ 
+### New features
+
+* Searches for `St Louis, MO` and `Saint Louis, MO` now return the same thing (the same goes for towns starting with `Mount`/`Mt` and `Fort`/`Ft`)
+* [Structured geocoding](https://mapzen.com/blog/structured-geocoding/) no longer fails horribly when the `address` parameter consists of only a house number
+
 ## 05 December 2016
 
 This week includes only code changes, no data updates. Our production build failed do to an [error reading whosonfirst data](https://github.com/pelias/pelias/issues/477). We'll either kick off a new build for release later this week, or resume data updates with our usual cadence next week.
