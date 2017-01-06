@@ -1,3 +1,7 @@
+## 5 January 2017
+
+Our first release of 2017 is here! Due to some build issues, this is the first update of data since mid-November. We're happy to be back and have improved our build validation along the way.
+
 ## 28 December 2016
  
 ### New features
