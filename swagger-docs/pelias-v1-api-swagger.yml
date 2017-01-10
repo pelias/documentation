@@ -255,6 +255,47 @@ paths:
           type: number
           format: float
 
+        - name: sources
+          in: query
+          required: false
+          type: string
+          collectionFormat: csv
+          description: tk
+
+        - name: layers
+          in: query
+          type: string
+          format: string
+          description: |
+            For more than one layer, accepts a comma separated list of valid layers. If any of those layers is invalid, the request will still be honored, but a warning will be thrown in the `geocoding` block of the response.
+          required: false
+          collectionFormat: csv
+
+        - name: boundary.country
+          in: query
+          type: string
+          format: string
+          required: false
+          description: Limits search to only return matches within a specific country. Accepts 2 or 3 letter country codes based on ISO [Alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Current_codes) or [Alpha-3](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Current_codes) abbreviations.
+
+        # BOUNDARY RECTANGLE
+        - name: boundary.rect.min_lon
+          in: query
+          type: number
+          format: float
+        - name: boundary.rect.min_lat
+          in: query
+          type: number
+          format: float
+        - name: boundary.rect.max_lon
+          in: query
+          type: number
+          format: float
+        - name: boundary.rect.max_lat
+          in: query
+          type: number
+          format: float
+
       security:
         - api_key: []
 
