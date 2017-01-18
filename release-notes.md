@@ -1,3 +1,11 @@
+## 17 January 2017
+
+For our second relese of the year we bring the first new batch of street data for our [polylines](https://github.com/pelias/polylines) dataset (derived from OSM) that we introduced late last year. We'll now be updating that data weekly like everything else!
+
+### New features
+* The `/v1/structured` endpoint [now supports](https://github.com/pelias/api/pull/763) the `venue` parameter, which allows for searching for venues with a particular name.
+* We've [improved result balance](https://github.com/pelias/api/pull/729) when using `focus.point` in the autocomplete endpoint. In particular, searching for cities far away from the focus point should work much better. More improvements to `focus.point` are planned for the near future.
+
 ## 5 January 2017
 
 Our first release of 2017 is here! Due to some build issues, this is the first update of data since mid-November. We're happy to be back and have improved our build validation along the way.
