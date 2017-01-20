@@ -11,4 +11,7 @@ deployment:
     branch: "master"
     commands:
       - pip install 'Circle-Tickler == 1.0.1'
+      # remove this soon once new repo is verified
       - tickle-circle mapzen mapzen-docs-generator master $CIRCLE_TOKEN
+      # new new new
+      - tickle-circle mapzen documentation master $CIRCLE_TOKEN
