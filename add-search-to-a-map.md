@@ -8,7 +8,7 @@ Through a process known as [geocoding](https://en.wikipedia.org/wiki/Geocoding),
 
 In this tutorial, you will learn how to make a map with a search box that allows you to enter addresses and place names and locate them on a map. To complete the tutorial, you should have some familiarity with HTML and JavaScript, although all the source code is provided. You can use any text editor and operating system, but must keep an Internet connection while you are working.
 
-You also need a Mapzen API key, which you can get by following the steps in the Mapzen [developer overview]( https://mapzen.com/documentation/overview/#developer-accounts-and-api-keys).
+You also need a Mapzen API key, which you can get by following the steps in the Mapzen [developer overview](https://mapzen.com/documentation/overview/#developer-accounts-and-api-keys).
 
 Suggested text editor applications include [Atom - OS X, Windows, Linux](https://atom.io/); [Notepad++ - Windows](https://notepad-plus-plus.org/); [TextWrangler - OS X](http://www.barebones.com/products/textwrangler/); and  [Sublime - OS X, Windows, Linux; free trial](http://www.sublimetext.com/). While you can use the apps installed with your operating system, such as Notepad or TextEdit, they do not provide the helpful indentations, code coloring and autocomplete, or text alignment options found in the other editors. For TextEdit, you must go to the Format menu and click Make Plain Text to use the plain-text version of the file. Do not use an app that applies rich formatting, such as Word or Wordpad.
 
@@ -187,7 +187,7 @@ So far, you have referenced the necessary files, initialized Leaflet with a map 
   geocoder.addTo(map);
   ```
 
-  The `mapzen-xxxxxx` text is the Mapzen API key; paste your own API key inside the single quotes. You can get an API key by following the steps in the Mapzen [developer overview]( https://mapzen.com/documentation/overview/#developer-accounts-and-api-keys).
+  The `mapzen-xxxxxx` text is the Mapzen API key; paste your own API key inside the single quotes. You can get an API key by following the steps in the Mapzen [developer overview](https://mapzen.com/documentation/overview/#developer-accounts-and-api-keys).
 
   You are passing one parameter to the search, which is the [API key](https://en.wikipedia.org/wiki/Application_programming_interface_key) inside the single quotes. The API key is a code that uniquely identifies your developer account without providing a password.
 
