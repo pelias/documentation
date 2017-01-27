@@ -1,6 +1,18 @@
+## 27 January 2017
+
+Thanks to some wild activity in the [openaddresses](http://openaddresses.io) project, this is the first mapzen search build with over 400 million documents!
+
+We are excited to see open data continue to grow and improve and looking forward to the big half billion milestone :)
+
+### New features
+* Big news! 🐯 we have soft launched our new [street interpolation](https://github.com/pelias/api/pull/769) service which includes [TIGER](https://en.wikipedia.org/wiki/Topologically_Integrated_Geographic_Encoding_and_Referencing) data. This allows us to return more address results than before. For more info see https://github.com/pelias/interpolation
+
+## Bug fixes
+* We've [fixed a bug](https://github.com/pelias/api/pull/780) where structured queries would always return 'fallback' as the 'match_type'.
+
 ## 17 January 2017
 
-For our second relese of the year we bring the first new batch of street data for our [polylines](https://github.com/pelias/polylines) dataset (derived from OSM) that we introduced late last year. We'll now be updating that data weekly like everything else!
+For our second release of the year we bring the first new batch of street data for our [polylines](https://github.com/pelias/polylines) dataset (derived from OSM) that we introduced late last year. We'll now be updating that data weekly like everything else!
 
 ### New features
 * The `/v1/structured` endpoint [now supports](https://github.com/pelias/api/pull/763) the `venue` parameter, which allows for searching for venues with a particular name.
@@ -11,7 +23,7 @@ For our second relese of the year we bring the first new batch of street data fo
 Our first release of 2017 is here! Due to some build issues, this is the first update of data since mid-November. We're happy to be back and have improved our build validation along the way.
 
 ## 28 December 2016
- 
+
 ### New features
 
 * Searches for `St Louis, MO` and `Saint Louis, MO` now return the same thing (the same goes for towns starting with `Mount`/`Mt` and `Fort`/`Ft`)
