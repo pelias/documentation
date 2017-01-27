@@ -1,12 +1,12 @@
 # Address search accuracy and results
 
-Finding an address is one of the most common functions of a geocoder, but also one of the more complex because of analysis required on the constituent parts of the input text. The search integrates an address-parsing library, known as libpostal, to improve the results when you are looking for an address.
+Finding an address is one of the most common functions of a geocoder, but also one of the more complex because of analysis required on the constituent parts of the input text. The search integrates an address-parsing library, known as libpostal, to improve the results when you are looking for an address. In addition, interpolation improves search results when addresses are not available in the source data.
 
 ## Accuracy in address results
 
 When finding addresses, you can see an indication of the [confidence](response.md#confidence) of the result in the response. The `confidence` is a numerical value increasing from 0 to 1 that estimates how closely this result matches the query. In relation to an address search, if the input text looks like an address, but the house number of the result does not match the house number that was parsed from the input text, the confidence score is lower.
 
-Properties that are related to confidence include `accuracy` and `match_type`. The `accuracy` is an indication of the geometry of the result, which can be either a `point` or a `centroid`. The `match_type` represents the kind of matching that happened for this address. An `exact` match means the search precisely found your entry, but `fallback` means the result is a less-than-perfect match. The match type is only shown for queries that include an address.
+Properties that are related to confidence include `accuracy` and `match_type`. The `accuracy` is an indication of the geometry of the result, which can be either a `point` or a `centroid`. The `match_type` represents the kind of matching that happened for this address. An `exact` match means the search precisely found your entry, but `fallback` or `interpolated` means the result is a less-than-perfect match. The match type is only shown for queries that include an address.
 
 Here is an example resulting from a search for the text, `30 W 26th street, New York, NY`:
 
@@ -24,7 +24,31 @@ Here is an example resulting from a search for the text, `30 W 26th street, New 
 }
 ```
 
-With an accuracy of point and an exact match, the confidence score is closer to 1. The confidence value decreases when centroid accuracy and a fallback match occurs. When that happens, multiple results may be returned so you can choose the one you intended.
+With an accuracy of point and an exact match, the confidence score is closer to 1. You also likely see higher scores with interpolated matches, but the confidence value decreases when centroid accuracy and a fallback match occurs. When that happens, multiple results may be returned so you can choose the one you intended.
+
+## Address interpolation
+
+The search uses several sources of address data, which cover hundreds of millions of locations globally. These addresses create a framework that allow for interpolation, or estimation, of address numbers in cases where data is missing or the address is incorrectly entered.
+
+If the address value is estimated, you see `interpolated` for the `match_type`.
+
+The simplest form of address interpolation involves drawing a straight line between the nearest known address numbers and placing the interpolated address within a range on that line. This method may result in the point being offset from the road, especially with curving roads, which could make it harder to use as an input point for routing and navigation.
+
+For more accurate placement of interpolated address points, the geocoder uses the actual street line to locate the estimated position. This means the interpolated locations are placed on the street itself and follow along its shape.
+
+```
+},
+"properties": {
+  [...]
+  "name": "207 Spear Street",
+  "housenumber": "207",
+  "street": "Spear Street",
+  "confidence": 0.8,
+  "match_type": "interpolated",
+  "accuracy": "point",
+  [...]
+}
+```
 
 ## Partial matches and fallbacks
 
