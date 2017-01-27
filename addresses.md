@@ -1,6 +1,6 @@
 # Address search accuracy and results
 
-Finding an address is one of the most common functions of a geocoder, but also one of the more complex because of analysis required on the constituent parts of the input text. The search integrates an address-parsing library, known as libpostal, to improve the results when you are looking for an address. In addition, interpolation improves search results when addresses are not available in the source data.
+Finding an address is one of the most common functions of a geocoder, but also one of the more complex because of analysis required on the constituent parts of the input text. The search integrates an address-parsing library, known as libpostal, to improve the results when you are looking for an address. In addition, interpolation improves search results when matching addresses cannot be found directly in the source data.
 
 ## Accuracy in address results
 
@@ -28,13 +28,13 @@ With an accuracy of point and an exact match, the confidence score is closer to 
 
 ## Address interpolation
 
-The search uses several sources of address data, which cover hundreds of millions of locations globally. These addresses create a framework that allow for interpolation, or estimation, of address numbers in cases where data is missing or you search for an address that may not exist.
+When you search for an address and and there is not a precise match, interpolation occurs if there are enough known address values in that area. OpenAddresses and OpenStreetMap, which are the primary sources of addresses in the geocoder, provide locations for hundreds of millions of places globally. These sources build a framework for the interpolation, or estimation, of address numbers in areas where there is incomplete data.
 
-If the address is estimated, you see either `interpolated` or `close` for the `match_type`. A match of `close` indicates that the result is nearby, which may occur when you are looking for a fractional address (such as 1/2) or a unit number, such as 18C when a street address of 18 is known.
+One form of address interpolation involves drawing a line that connects between the nearest known house numbers and placing the interpolated address within a range on that line. This process may work if the road is straight, but often results in the interpolated point being placed at a distance offset from the road network on curved sections.
 
-The simplest form of address interpolation involves drawing a straight line between the nearest known address numbers and placing the interpolated address within a range on that line. This method may result in the point being offset from the road, especially with curving roads, which could make it harder to use as an input point for routing and navigation.
+The search uses a more advanced process that considers the actual shape of the street when locating a point without a matching address. This results in more accurate location estimation because the interpolated addresses points are placed on the road itself, which also makes it easier for routing and turn-by-turn navigation services to calculate directions for that location.
 
-For more accurate placement of interpolated address points, the geocoder uses the actual street line to locate the estimated position. This means the interpolated locations are placed on the street itself and follow along its shape.
+If the address is estimated, you see `interpolated` for the `match_type`.
 
 ```
 },
