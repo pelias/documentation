@@ -28,9 +28,9 @@ With an accuracy of point and an exact match, the confidence score is closer to 
 
 ## Address interpolation
 
-The search uses several sources of address data, which cover hundreds of millions of locations globally. These addresses create a framework that allow for interpolation, or estimation, of address numbers in cases where data is missing or the address is incorrectly entered.
+The search uses several sources of address data, which cover hundreds of millions of locations globally. These addresses create a framework that allow for interpolation, or estimation, of address numbers in cases where data is missing or you search for an address that may not exist.
 
-If the address value is estimated, you see `interpolated` for the `match_type`.
+If the address is estimated, you see either `interpolated` or `close` for the `match_type`. A match of `close` indicates that the result is nearby, which may occur when you are looking for a fractional address (such as 1/2) or a unit number, such as 18C when a street address of 18 is known.
 
 The simplest form of address interpolation involves drawing a straight line between the nearest known address numbers and placing the interpolated address within a range on that line. This method may result in the point being offset from the road, especially with curving roads, which could make it harder to use as an input point for routing and navigation.
 
