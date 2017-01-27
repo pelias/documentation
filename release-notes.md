@@ -1,11 +1,11 @@
 ## 27 January 2017
 
-Thanks to some wild activity in the [openaddresses](http://openaddresses.io) project, this is the first mapzen search build with over 400 million documents!
+Thanks to some wild activity in the [openaddresses](http://openaddresses.io) project, this is the first Mapzen Search build with over 400 million documents!
 
-We are excited to see open data continue to grow and improve and looking forward to the big half billion milestone :)
+We are excited to see open data continue to grow and improve and looking forward to the big half billion milestone. :)
 
 ### New features
-* Big news! 🐯 we have soft launched our new [street interpolation](https://github.com/pelias/api/pull/769) service which includes [TIGER](https://en.wikipedia.org/wiki/Topologically_Integrated_Geographic_Encoding_and_Referencing) data. This allows us to return more address results than before. For more info see https://github.com/pelias/interpolation
+* Big news! 🐯 we have soft-launched our new [street interpolation](https://github.com/pelias/api/pull/769) service, which includes [TIGER](https://en.wikipedia.org/wiki/Topologically_Integrated_Geographic_Encoding_and_Referencing) data. This allows us to return more address results than before. For more info, see https://github.com/pelias/interpolation
 
 ## Bug fixes
 * We've [fixed a bug](https://github.com/pelias/api/pull/780) where structured queries would always return 'fallback' as the 'match_type'.
