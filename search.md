@@ -17,6 +17,8 @@ All Mapzen Search requests share the same format:
 
 In addition, you can search at `https://search.mapzen.com/v1/search/structured` to look for individual components of a location.
 
+Mapzen Search works over HTTPS and HTTP. You are strongly encouraged to use HTTPS for all requests, especially for queries involving potentially sensitive information, such as a user's location or search query.
+
 ## Search the world
 
 ![Searching globally](/images/world_all.png)

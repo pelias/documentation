@@ -8,16 +8,9 @@ Through a process known as [geocoding](https://en.wikipedia.org/wiki/Geocoding),
 
 In this tutorial, you will learn how to make a map with a search box that allows you to enter addresses and place names and locate them on a map. To complete the tutorial, you should have some familiarity with HTML and JavaScript, although all the source code is provided. You can use any text editor and operating system, but must keep an Internet connection while you are working.
 
-You also need a [Mapzen API key](https://mapzen.com/developers), which requires a [GitHub account](https://help.github.com/articles/signing-up-for-a-new-github-account/) for authorization.
+You also need a Mapzen API key, which you can get by following the steps in the Mapzen [developer overview](https://mapzen.com/documentation/overview/#developer-accounts-and-api-keys).
 
 Suggested text editor applications include [Atom - OS X, Windows, Linux](https://atom.io/); [Notepad++ - Windows](https://notepad-plus-plus.org/); [TextWrangler - OS X](http://www.barebones.com/products/textwrangler/); and  [Sublime - OS X, Windows, Linux; free trial](http://www.sublimetext.com/). While you can use the apps installed with your operating system, such as Notepad or TextEdit, they do not provide the helpful indentations, code coloring and autocomplete, or text alignment options found in the other editors. For TextEdit, you must go to the Format menu and click Make Plain Text to use the plain-text version of the file. Do not use an app that applies rich formatting, such as Word or Wordpad.
-
-### Sign up for a Mapzen API key
-
-1. Go to https://mapzen.com/developers.
-2. Sign in with your [GitHub account](https://help.github.com/articles/signing-up-for-a-new-github-account/). If you have not done this before, you need to agree to the terms first.
-3. Create a new key, and, optionally, give it a project name so you can remember the purpose of the key.
-4. Keep the web page open so you can copy the key into the source code later.
 
 ## Create an HTML page
 
@@ -187,17 +180,16 @@ To recap how you created this, you added references to the Mapzen JS and CSS fil
 
 So far, you have referenced the necessary files, initialized Leaflet with a map container on the page, and added data to the map. Now, you are ready to add the Search box.
 
-1. Go back to the https://mapzen.com/developers page and copy your API key to the clipboard.
-2. Inside the same `<script>` tag, and after the code you just added for the map, initialize a search box and add it to the map with the following code. Use your own API key substituted for the placeholder text of `mapzen-xxxxxx`.
+1. Inside the same `<script>` tag, and after the code you just added for the map, initialize a search box and add it to the map with the following code. Use your own API key substituted for the placeholder text of `mapzen-xxxxxx`.
 
   ```js
   var geocoder = L.Mapzen.geocoder('mapzen-xxxxxx');
   geocoder.addTo(map);
   ```
 
-  The `mapzen-xxxxxx` text is the Mapzen API key; paste your own API key inside the single quotes.
+  The `mapzen-xxxxxx` text is the Mapzen API key; paste your own API key inside the single quotes. You can get an API key by following the steps in the Mapzen [developer overview](https://mapzen.com/documentation/overview/#developer-accounts-and-api-keys).
 
-  You are passing one parameter to the search, which is the [API key](https://en.wikipedia.org/wiki/Application_programming_interface_key) inside the single quotes. The API key is a code that uniquely identifies your developer account without providing a password. For this workshop, you are being provided with an API key. Because the search service is shared among many users, an API key is a way to make sure that the performance is acceptable for everyone.
+  You are passing one parameter to the search, which is the [API key](https://en.wikipedia.org/wiki/Application_programming_interface_key) inside the single quotes. The API key is a code that uniquely identifies your developer account without providing a password.
 
 2. Save your edits and refresh the browser. You should see search box in the left corner, near the zoom controls. If your browser window is wide, the Search box is expanded by default. When you reduce the window size, the box collapses to a button. You can change this behavior in the geocoder options.
 
