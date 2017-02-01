@@ -1,3 +1,7 @@
+## 1 February 2017
+### New features
+* We're working on some fancy new things in dev so our only new feature released this week is retrying timed-out elasticsearch requests.  By default, Pelias will, by default, retry a timed-out request up to 3 times before failing for good, though this number can be overridden by specifying `api.requestRetries` in your Pelias configuration.  
+
 ## 27 January 2017
 
 Thanks to some wild activity in the [openaddresses](http://openaddresses.io) project, this is the first Mapzen Search build with over 400 million documents!
