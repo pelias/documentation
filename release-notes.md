@@ -1,3 +1,7 @@
+## 1 February 2017
+
+This release is just a data refresh since it's hard to keep up with the leaps and bounds that [openaddresses](http://openaddresses.io) is growing by!  
+
 ## 27 January 2017
 
 Thanks to some wild activity in the [openaddresses](http://openaddresses.io) project, this is the first Mapzen Search build with over 400 million documents!
