@@ -1,6 +1,6 @@
 ## 1 February 2017
 
-This release is just a data refresh since it's hard to keep up with the leaps and bounds that [openaddresses](http://openaddresses.io) that is growing by!  
+This release is just a data refresh since it's hard to keep up with the leaps and bounds that [openaddresses](http://openaddresses.io) is growing by!  
 
 ## 27 January 2017
 
