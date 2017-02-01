@@ -1,6 +1,6 @@
 ## 1 February 2017
-### New features
-* We're working on some fancy new things in dev so our only new feature released this week is retrying timed-out elasticsearch requests.  By default, Pelias will retry a timed-out request up to 3 times before failing for good, though this number can be overridden by specifying `api.requestRetries` in your Pelias configuration.  
+
+This release is just a data refresh since it's hard to keep up with the leaps and bounds that [openaddresses](http://openaddresses.io) that is growing by!  
 
 ## 27 January 2017
 
