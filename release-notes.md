@@ -1,3 +1,7 @@
+## 6 February 2017
+
+We bring you another data update this week, but don't worry, we're busy working on cool new features and improvements. If you're curious what those might be, come read all about them [here](http://pelias.io/quarterly_goals/q1-2017.html)!
+
 ## 1 February 2017
 
 This release is just a data refresh since it's hard to keep up with the leaps and bounds that [openaddresses](http://openaddresses.io) is growing by!  
