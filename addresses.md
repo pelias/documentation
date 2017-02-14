@@ -28,7 +28,7 @@ With an accuracy of point and an exact match, the confidence score is closer to 
 
 ## Address interpolation
 
-When you search for an address and and there is not a precise match, interpolation occurs if there are enough known address values in that area. OpenAddresses and OpenStreetMap, which are the primary sources of addresses in the geocoder, provide locations for hundreds of millions of places globally. These sources build a framework for the interpolation, or estimation, of address numbers in areas where there is incomplete data.
+When you search for an address and and there is not a precise match, the interpolation technique is applied if the street being queried has any address records at all. [OpenAddresses](data-sources.md#openaddresses) and [OpenStreetMap](data-sources.md#openstreetmap), which are the primary sources of addresses in the geocoder, provide locations for hundreds of millions of places globally. These sources, plus address range data from the [United States Census Bureau's TIGER product](https://www.census.gov/geo/maps-data/data/tiger.html), build a framework for the interpolation, or estimation, of address numbers in areas where there is incomplete data.
 
 One form of address interpolation involves drawing a line that connects between the nearest known house numbers and placing the interpolated address within a range on that line. This process may work if the road is straight, but often results in the interpolated point being placed at a distance offset from the road network on curved sections.
 
