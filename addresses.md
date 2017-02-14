@@ -34,7 +34,7 @@ One form of address interpolation involves drawing a line that connects between 
 
 The search uses a more advanced process that considers the actual shape of the street when locating a point without a matching address. This results in more accurate location estimation because the interpolated addresses points are placed on the road itself, which also makes it easier for routing and turn-by-turn navigation services to calculate directions for that location.
 
-If the address is estimated, you see `interpolated` for the `match_type`.
+If the address was derived using this technique, you see `interpolated` for the `match_type`.
 
 ```
 },
