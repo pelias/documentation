@@ -6,7 +6,7 @@ Finding an address is one of the most common functions of a geocoder, but also o
 
 When finding addresses, you can see an indication of the [confidence](response.md#confidence) of the result in the response. The `confidence` is a numerical value increasing from 0 to 1 that estimates how closely this result matches the query. In relation to an address search, if the input text looks like an address, but the house number of the result does not match the house number that was parsed from the input text, the confidence score is lower.
 
-Properties that are related to confidence include `accuracy` and `match_type`. The `accuracy` is an indication of the geometry of the result, which can be either a `point` or a `centroid`. The `match_type` represents the kind of matching that happened for this address. An `exact` match means the search precisely found your entry, but `fallback` or `interpolated` means the result is a less-than-perfect match. The match type is only shown for queries that include an address.
+Properties that are related to confidence include `accuracy` and `match_type`. The `accuracy` is an indication of the geometry of the result, which can be either a `point` or a `centroid`. The `match_type` represents the kind of matching that happened for this address. An `exact` match means the search precisely found your entry, but `fallback` or `interpolated` means the result is not exact. The match type is only shown for queries that include an address.
 
 Here is an example resulting from a search for the text, `30 W 26th street, New York, NY`:
 
