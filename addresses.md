@@ -1,6 +1,6 @@
 # Address search accuracy and results
 
-Finding an address is one of the most common functions of a geocoder, but also one of the more complex because of analysis required on the constituent parts of the input text. The search integrates an address-parsing library, known as libpostal, to improve the results when you are looking for an address. In addition, interpolation improves search results when matching addresses cannot be found directly in the source data.
+Finding an address is one of the most common functions of a geocoder, but also one of the more complex because of analysis required on the constituent parts of the input text. The search integrates an address-parsing library, known as libpostal, to improve the results when you are looking for an address. In addition, interpolation improves search results when addresses exactly matching the query cannot be found.
 
 ## Accuracy in address results
 
