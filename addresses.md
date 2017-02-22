@@ -1,12 +1,12 @@
 # Address search accuracy and results
 
-Finding an address is one of the most common functions of a geocoder, but also one of the more complex because of analysis required on the constituent parts of the input text. The search integrates an address-parsing library, known as libpostal, to improve the results when you are looking for an address.
+Finding an address is one of the most common functions of a geocoder, but also one of the more complex because of analysis required on the constituent parts of the input text. The search integrates an address-parsing library, known as libpostal, to improve the results when you are looking for an address. In addition, interpolation improves search results when addresses exactly matching the query cannot be found.
 
 ## Accuracy in address results
 
 When finding addresses, you can see an indication of the [confidence](response.md#confidence) of the result in the response. The `confidence` is a numerical value increasing from 0 to 1 that estimates how closely this result matches the query. In relation to an address search, if the input text looks like an address, but the house number of the result does not match the house number that was parsed from the input text, the confidence score is lower.
 
-Properties that are related to confidence include `accuracy` and `match_type`. The `accuracy` is an indication of the geometry of the result, which can be either a `point` or a `centroid`. The `match_type` represents the kind of matching that happened for this address. An `exact` match means the search precisely found your entry, but `fallback` means the result is a less-than-perfect match. The match type is only shown for queries that include an address.
+Properties that are related to confidence include `accuracy` and `match_type`. The `accuracy` is an indication of the geometry of the result, which can be either a `point` or a `centroid`. The `match_type` represents the kind of matching that happened for this address. An `exact` match means the search precisely found your entry, but `fallback` or `interpolated` means the result is not exact. The match type is only shown for queries that include an address.
 
 Here is an example resulting from a search for the text, `30 W 26th street, New York, NY`:
 
@@ -24,7 +24,31 @@ Here is an example resulting from a search for the text, `30 W 26th street, New 
 }
 ```
 
-With an accuracy of point and an exact match, the confidence score is closer to 1. The confidence value decreases when centroid accuracy and a fallback match occurs. When that happens, multiple results may be returned so you can choose the one you intended.
+With an accuracy of point and an exact match, the confidence score is closer to 1. You also likely see higher scores with interpolated matches, but the confidence value decreases when centroid accuracy and a fallback match occurs. When that happens, multiple results may be returned so you can choose the one you intended.
+
+## Address interpolation
+
+When you search for an address and and there is not a precise match, the interpolation technique is applied if the street being queried has any address records at all. [OpenAddresses](data-sources.md#openaddresses) and [OpenStreetMap](data-sources.md#openstreetmap), which are the primary sources of addresses in the geocoder, provide locations for hundreds of millions of places globally. These sources, plus address range data from the [United States Census Bureau's TIGER product](https://www.census.gov/geo/maps-data/data/tiger.html), build a framework for the interpolation, or estimation, of address numbers in areas where there is incomplete data.
+
+One form of address interpolation involves drawing a line that connects between the nearest known house numbers and placing the interpolated address within a range on that line. This process may work if the road is straight, but often results in the interpolated point being placed at a distance offset from the road network on curved sections.
+
+To improve upon the straight line technique, the Mapzen Search interpolation implementation considers the actual shape of the street when locating a point without a matching address. This results in more accurate location estimation because the interpolated addresses points are placed on the road itself, which also makes it easier for routing and turn-by-turn navigation services to calculate directions for that location.
+
+If the address was derived using this technique, you see `interpolated` for the `match_type`.
+
+```
+},
+"properties": {
+  [...]
+  "name": "207 Spear Street",
+  "housenumber": "207",
+  "street": "Spear Street",
+  "confidence": 0.8,
+  "match_type": "interpolated",
+  "accuracy": "point",
+  [...]
+}
+```
 
 ## Partial matches and fallbacks
 
