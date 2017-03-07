@@ -394,6 +394,6 @@ In Mapzen Search, place types are referred to as `layers`, ranging from fine to 
 | `boundary.circle.lon` | floating point number | no | none | `-79.186484` |
 | `boundary.circle.radius` | floating point number | no | 50 | `35` |
 | `sources` | string | no | all sources: osm,oa,gn,wof | openstreetmap,wof |
-| `layers` | string | no | all layers: address,venue,neighbourhood,locality,borough,localadmin,county,macrocounty,region,marcoregion,country,coarse | address,venue |
+| `layers` | string | no | all layers: address,venue,neighbourhood,locality,borough,localadmin,county,macrocounty,region,macroregion,country,coarse | address,venue |
 | `boundary.country` | string | no | none | 'GBR' |
 | `size` | integer | no | 10 | 20 |
