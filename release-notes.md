@@ -1,3 +1,15 @@
+## 13 March 2017
+
+* We've added postalcodes to the Who's on First import process and enabled the postalcode-only query type, so users can now find postalcodes directly! [90210](https://mapzen.com/products/search/?query=90210&endpoint=search&selectedLat=34.19096&selectedLng=-118.11613&lng=-118.77594&lat=34.19136&zoom=8) anyone?
+* Dependencies, like [San Juan, PR](https://mapzen.com/products/search/?query=San%20Juan%2C%20PRI&endpoint=search&&selectedLat=18.46633&selectedLng=-66.10572&lng=-66.82571&lat=18.25413&zoom=9), should now have the proper alpha3 ISO codes of their own in the country abbreviation (`country_a`) properties, instead of alpha2 of the parent country as it did previously.
+* Washington DC wasn't getting a region abbreviation at all for a while, but that's water under the [Arlington Memorial Bridge](https://mapzen.com/products/search/?query=Arlington%20Memorial%20Bridge&endpoint=search&selectedLat=38.88725&selectedLng=-77.05541&lng=-77.13810&lat=38.88702&zoom=11) now!
+
+***Warning:*** _We are having some technical difficulties with the polylines data generated from the OSM
+road network. This data is used to populate our street index and interpolation service. Both features will continue working as before, but data will be stale until a fix is implemented.
+We will be using the last known good version, which was built on February 27th, 2017.
+We will definitely keep everyone posted as soon as an updated working version is available. Sorry for any 
+inconvenience this may have caused._
+
 ## 6 February 2017
 
 We bring you another data update this week, but don't worry, we're busy working on cool new features and improvements. If you're curious what those might be, come read all about them [here](http://pelias.io/quarterly_goals/q1-2017.html)!
