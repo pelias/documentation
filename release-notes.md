@@ -1,6 +1,6 @@
 ## 13 March 2017
 
-* We've added postalcodes to the Who's on First import process and enabled the postalcode-only query type, so users can now find postalcodes directly! [90210](https://mapzen.com/products/search/?query=90210&endpoint=search&selectedLat=34.19096&selectedLng=-118.11613&lng=-118.77594&lat=34.19136&zoom=8) anyone?
+* We've added postalcodes to the Who's on First import process and enabled the postalcode-only query type, so users can now find postalcodes directly! [90210](https://mapzen.com/products/search/?query=90210%2C%20Los%20Angeles%2C%20CA%2C%20USA&endpoint=place&gid=whosonfirst%3Apostalcode%3A554783991&selectedLat=34.10052&selectedLng=-118.41463&lng=-119.73999&lat=34.10271&zoom=7) anyone?
 * Dependencies, like [San Juan, PR](https://mapzen.com/products/search/?query=San%20Juan%2C%20PRI&endpoint=search&&selectedLat=18.46633&selectedLng=-66.10572&lng=-66.82571&lat=18.25413&zoom=9), should now have the proper alpha3 ISO codes of their own in the country abbreviation (`country_a`) properties, instead of alpha2 of the parent country as it did previously.
 * Washington DC wasn't getting a region abbreviation at all for a while, but that's water under the [Arlington Memorial Bridge](https://mapzen.com/products/search/?query=Arlington%20Memorial%20Bridge%2C%20Washington%2C%20DC%2C%20USA&endpoint=place&gid=openstreetmap%3Astreet%3Apolyline%3A22398323&selectedLat=38.88844&selectedLng=-77.05266&lng=-77.21809&lat=38.88863&zoom=10) now!
 
