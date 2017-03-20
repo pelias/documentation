@@ -2,12 +2,13 @@
 
 When you know an identification number and the source it came from, you can use Mapzen Search to get details on the location.
 
-The `/place` endpoint accepts Mapzen Search `gid` strings that get returned for every record in all query responses.
-These `gid` strings should not be built manually, but rather used directly as-is to lookup additional details on the location that `gid` refers to.
+The `/place` endpoint accepts Mapzen Search `gid` strings that get returned for every exactly matched record in query responses. These `gid` strings should not be built manually, but rather used directly as-is to lookup additional details on the location that `gid` refers to.
 
 For example, this `/place` query looks up the Eiffel Tower in OpenStreetMap (OSM):
 
 > [/v1/place?api_key=mapzen-xxxxxx&__ids=openstreetmap:venue:way:5013364__](https://search.mapzen.com/v1/place?ids=openstreetmap:venue:way:5013364)
+
+Note that you need an actual `gid` value to make a `/place` search. For example, if you search for an address and the result is [interpolated](addresses.md#address-interpolation), then there is no discrete `gid` to use for a `/place` search because interpolated results may be from multiple data sources.
 
 ## Search for multiple places in a query
 
