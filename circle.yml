@@ -10,5 +10,5 @@ deployment:
   release:
     branch: "master"
     commands:
-      - pip install 'Circle-Tickler == 1.0.1'
-      - tickle-circle mapzen documentation master $CIRCLE_TOKEN
+      - pip install ‘Circle-Beacon == 2.0.0'
+      - alert-circle mapzen documentation master $CIRCLE_TOKEN
