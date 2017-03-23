@@ -1,34 +1,31 @@
-# Language codes
+# Get search results in a particular language
 
-Search results can be returned in a different language (where available) by specifying a target language code when making the request.
+You can get search results in another language, if available, by specifying a target language code with your request.
 
-The default behaviour is to return responses in the default locale of the dataset, in some cases this is the local dialect and for other datasets this defaults to English.
+By default, search responses are in the default locale of the dataset. However, if you include a language code, the search attempts to return place names in the language you specified.
 
-If you explicitly specify a language code during the request then the system will attempt to return place names in that language, in the case that the requested language is unavailable then the default language will be returned instead.
+If the language you requested is unavailable, then the default language is returned. In some cases, this is the local dialect, or it may be English for other datasets.
 
-## Requesting a different language
+## Request a specific language
 
-Users can specify the target language via two methods, in both cases the BCP47 standard is used to specify the target language code.
+You can specify the target language code in the [BCP47 standard](http://www.rfc-editor.org/rfc/bcp/bcp47.txt) as either a query string URL parameter or an HTTP header.
+
+Note that a language code in the query string takes precedence over a code in the header. If you include an invalid language code, then you see a warning message and the search attempts to find a valid code, if one is available. Otherwise, the results fall back to default behavior.
 
 BCP47 language tags can contain three parts:
+
    1. A language subtag (en, zh).
    2. A script subtag (Hant, Latn).
    3. A region subtag (US, CN).
 
-At this time we only use the `language subtag` information to select the target language, this behaviour may change in the future as we import more data which contains text with `script subtag` and `region subtag` variants.
+At this time, only the `language subtag` information is used to set the target language. The other options may be enabled in the future when additional data can be imported with text containing `script subtag` and `region subtag` variants.
 
-### Querystring
+### Set language as a query string in the URL
 
-Specify the language code using a URL parameter named 'lang'.
+You can specify the language code using a URL parameter named `lang`.
 > eg. /v1/search?lang=de-ch
 
-### HTTP Header
+### Set language in the HTTP header
 
-Specify the language code using the `Accept-Language` HTTP request header.
+You can include the language code in the HTTP request header with the `Accept-Language` parameter.
 > eg. Accept-Language: de-ch
-
-### Precedence
-
-Note that language codes are provided in the `querystring` take precedence over those provided in the `header`.
-
-If either the `querystring` or `header` language codes are invalid then a warning will be emitted, we will attempt to use a valid code if one is available, otherwise we will fall back to default behaviour.
