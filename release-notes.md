@@ -1,3 +1,12 @@
+## 21 April 2017
+
+### New features
+* Our first big ticket item is technically a new feature, a code level change, and a bug fix all in one! We've created a standalone microservice whose job it is to handle point-in-polygon requests. So with this release, all reverse queries specifying admin layers will be directed to this new service, instead of going to Elasticsearch like it used to. As a user, you won't see any difference in the interface to these types of requests and you don't have to take any action to use the new functionality. However, faster and better results will be apparent!
+* Our second big ticket item (we know, 2 in one release is awesome sauce!) is the long awaited upgrade to `libpostal 1.0`. This is again a code level change that doesn't have any user interface implications but yeild significant improvements in results. We can tell just by the number of [old issues we were able to resolve](https://github.com/pelias/pelias/milestone/49?closed=1) as a result of this upgrade that this is a big moment for the Pelias engine. High-fives all around!
+* You know how we started supporting search queries with only postalcodes in the, like `/v1/search?text=90210`? Well get excited, because we've added the ability to handle postalcode only queries in `structured` search as well! So queries like `/v1/search/structures?postalcode=90210` will now work. More info [here](https://mapzen.com/documentation/search/structured-geocoding/#postalcode).
+* We fixed a few minor bugs related to address interpolation. There were cases where the results had a mix of street centroids and addresses and the correct address was not showing up first. More details [here](https://github.com/pelias/pelias/issues/528).
+* There was an [issue with geonames admin records](https://github.com/pelias/pelias/issues/539) having incorrect ids in their admin hierarchy properties. They were basically mascarading as Who's on First ids leading to invalid results and general chaos. Well no more. We fixed it.
+
 ## 13 March 2017
 
 * We've added postalcodes to the Who's on First import process and enabled the postalcode-only query type, so users can now find postalcodes directly! [90210](https://mapzen.com/products/search/?query=90210%2C%20Los%20Angeles%2C%20CA%2C%20USA&endpoint=place&gid=whosonfirst%3Apostalcode%3A554783991&selectedLat=34.10052&selectedLng=-118.41463&lng=-119.73999&lat=34.10271&zoom=7) anyone?
