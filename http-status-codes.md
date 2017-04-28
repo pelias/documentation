@@ -12,8 +12,3 @@ The following status codes are returned from the geocoding service:
 - `502 Bad Gateway`: Connection was lost to the Elasticsearch cluster.
 
 In all cases above, the response body will be valid GeoJSON.
-
-## Rate limiter
-The rate limiter returns the status codes `403 Forbidden` and `429 Too Many Requests`.
-
-See [API keys and rate limits](api-keys-rate-limits.md) for more information.
