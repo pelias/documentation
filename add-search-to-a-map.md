@@ -251,10 +251,10 @@ Although you will not be using it in this tutorial, [\reverse](https://mapzen.co
 
   You are setting `autocomplete: false` to specify that the Search box should not suggest potential text matches as you type. Autocomplete is enabled by default, so adding this means that you will turn it off.
 
-2. Modify the existing geocoder code to pass in two parameters. The first is a placeholder for an additional API key, and the second is the `geocoderOptions` you set. (If you want to use a different API key for the geocoding function of you app, you could add it here; with the `""`, you are using the same global API key that you set before.)
+2. Modify the existing geocoder code to pass in the `geocoderOptions` you set.
 
   ```js
-  var geocoder = L.Mapzen.geocoder("", geocoderOptions);
+  var geocoder = L.Mapzen.geocoder(geocoderOptions);
   ```
 
 3. Save your edits and refresh the browser.
@@ -267,7 +267,7 @@ var geocoderOptions = {
   autocomplete: false
 };
 
-var geocoder = L.Mapzen.geocoder("", geocoderOptions);
+var geocoder = L.Mapzen.geocoder(geocoderOptions);
 geocoder.addTo(map);
 ```
 
@@ -401,8 +401,8 @@ You can refer to this HTML if you want to review your work or troubleshoot an er
         }
       };
 
-      // Add the geocoder to the map, set parameters for an optional API key and other geocoder options
-      var geocoder = L.Mapzen.geocoder("", geocoderOptions);
+      // Add the geocoder to the map, set parameters for geocoder options
+      var geocoder = L.Mapzen.geocoder(geocoderOptions);
       geocoder.addTo(map);
 
     </script>
