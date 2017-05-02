@@ -1,10 +1,12 @@
 # API keys and rate limits
 
+_Note: This page is deprecated and has been removed from the documentation on https://mapzen.com/ as of May 2017. For more information, see the [Mapzen developer overview](https://mapzen.com/documentation/overview/)._
+
 ## Get started
 
-The Mapzen Search service requires an API key. In a request, you must append your own API key to the URL, following `&api_key=` at the end.
+The Mapzen Search service requires an API key. In a request, you must append your own API key to the URL, following `?api_key=`.
 
-See the [Mapzen developer overview](https://mapzen.com/documentation/overview/#mapzen-search) for more on API keys and rate limits.
+See the [Mapzen developer overview](https://mapzen.com/documentation/overview/) for more on API keys and rate limits.
 
 ## Caching to improve performance
 
