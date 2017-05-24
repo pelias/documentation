@@ -59,7 +59,8 @@ Without specifying further, reverse geocoding doesn't restrict results to a part
 
 >[/v1/reverse?api_key=mapzen-xxxxxx&point.lat=48.858268&point.lon=2.294471&___layers=locality___](https://search.mapzen.com/v1/reverse?point.lat=48.858268&point.lon=2.294471&layers=locality)
 
-Here are all the supported layers and their meanings:
+Here are all the supported layers and their meanings.
+
 |layer|description|
 |----|----|
 |`venue`|points of interest, businesses, things with walls|
