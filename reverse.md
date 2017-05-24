@@ -14,9 +14,88 @@ With reverse geocoding with Mapzen Search, you can look up all sorts of informat
 
 To get started with reverse geocoding, you need a latitude, longitude pair in decimal degrees specified with the parameters `point.lat` and `point.lon`, respectively.  For example, the Eiffel Tower in Paris, France, is located at `48.858268,2.294471`. The reverse geocode query for this would be:
 
->[/v1/reverse?api_key=mapzen-xxxxxx&___point.lat=48.858268___&___point.lon=2.294471___](https://search.mapzen.com/v1/reverse?point.lat=48.858268&point.lon=2.294471)
+```
+https://search.mapzen.com/v1/reverse??api_key=your-mapzen-api-key&point.lat=48.858268&point.lon=2.294471
+```
 
-Notice that the first result is the Eiffel Tower (well, _Tour Eiffel_). The output is the standard GeoJSON format.
+Notice that the first result is the Eiffel Tower (well, _Tour Eiffel_). The output is the standard GeoJSON format:
+
+
+```
+{
+  geocoding: {
+    version: "0.2",
+    attribution: "https://search.mapzen.com/v1/attribution",
+    query: {
+      size: 10,
+      private: false,
+      point.lat: 48.858268,
+      point.lon: 2.294471,
+      boundary.circle.radius: 1,
+      boundary.circle.lat: 48.858268,
+      boundary.circle.lon: 2.294471,
+      lang: {
+        name: "English",
+        iso6391: "en",
+        iso6393: "eng",
+        defaulted: true
+      },
+      querySize: 20
+    },
+    engine: {
+      name: "Pelias",
+      author: "Mapzen",
+      version: "1.0"
+    },
+    timestamp: 1494452713373
+  },
+  type: "FeatureCollection",
+  features: [{
+    type: "Feature",
+    geometry: {
+    type: "Point",
+    coordinates: [
+      2.294501,
+      48.858262
+    ]},
+    properties: {
+      id: "node:4013678139",
+      gid: "openstreetmap:venue:node:4013678139",
+      layer: "venue",
+      source: "openstreetmap",
+      source_id: "node:4013678139",
+      name: "75056Y - A",
+      confidence: 0.9,
+      distance: 0.002,
+      accuracy: "point",
+      country: "France",
+      country_gid: "whosonfirst:country:85633147",
+      country_a: "FRA",
+      macroregion: "Île-De-France",
+      macroregion_gid: "whosonfirst:macroregion:404227465",
+      region: "Paris",
+      region_gid: "whosonfirst:region:85683497",
+      macrocounty: "1st Arrondissement",
+      macrocounty_gid: "whosonfirst:macrocounty:404227749",
+      county: "7th Arrondissement",
+      county_gid: "whosonfirst:county:102068177",
+      locality: "Paris",
+      locality_gid: "whosonfirst:locality:101751119",
+      neighbourhood: "Quartier du Gros-Caillou",
+      neighbourhood_gid: "whosonfirst:neighbourhood:85873841",
+      label: "75056Y - A, Paris, France"
+    }
+  }],
+  bbox: [
+    2.293308,
+    48.857475,
+    2.29569,
+    48.859047
+  ]
+}
+```
+
+[Log in]() or [sign up]() to see demo request
 
 ## Reverse geocoding parameters
 
