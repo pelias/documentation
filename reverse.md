@@ -57,6 +57,9 @@ By default, reverse geocoding returns results from any [data source](data-source
 
 Without specifying further, reverse geocoding doesn't restrict results to a particular type (street, venue, neighbourhood, and so on).  If your application is only concerned with, say, which city a latitude, longitude is closest to, then use the `layers` parameter.  For example, the following request returns only results that are localities (cities and towns):
 
+>[/v1/reverse?api_key=mapzen-xxxxxx&point.lat=48.858268&point.lon=2.294471&___layers=locality___](https://search.mapzen.com/v1/reverse?point.lat=48.858268&point.lon=2.294471&layers=locality)
+
+Here are all the supported layers and their meanings:
 |layer|description|
 |----|----|
 |`venue`|points of interest, businesses, things with walls|
@@ -72,9 +75,6 @@ Without specifying further, reverse geocoding doesn't restrict results to a part
 |`borough`| a local administrative boundary, currently only used for New York City|
 |`neighbourhood`|social communities, neighbourhoods|
 |`coarse`|alias for simultaneously using all administrative layers (everything except `venue` and `address`)|
-
-
->[/v1/reverse?api_key=mapzen-xxxxxx&point.lat=48.858268&point.lon=2.294471&___layers=locality___](https://search.mapzen.com/v1/reverse?point.lat=48.858268&point.lon=2.294471&layers=locality)
 
 ### Filter by country
 
