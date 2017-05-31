@@ -10,7 +10,7 @@ All Mapzen Search requests share the same format:
 
 ```
    https://search.mapzen.com/v1/search?text=London&api_key=your-mapzen-api-key
-   \___/   \_______________/\__/\_____/\__________/\___________________/
+   \___/   \_______________/\__/\_____/\__________/\_________________________/
      |            |          /     |        |                |
   scheme       domain   version  path     query     authentication token
 ```
