@@ -27,7 +27,7 @@ $.ajax({
   dataType: "json",
   data: {
     "text": "London, UK",
-    "api_key": "mapzen-xxxxxx"
+    "api_key": "your-mapzen-api-key"
   },
   success: function( data, status, jqxhr ){
     console.log( "Request received:", data );
@@ -49,7 +49,7 @@ $http({
   headers: { "Accept": "application/json" },
   params: {
     "text": "London, UK",
-    "api_key": "mapzen-xxxxxx"
+    "api_key": "your-mapzen-api-key"
   },
 })
 .success(function( data, status ) {
