@@ -46,9 +46,9 @@ The `address` parameter can contain a full address with house number or only a s
 
 _Examples_
 
-* [201 Spear Street](http://search.mapzen.com/v1/search/structured?address=201+Spear+Street&locality=San+Francisco&region=CA)
-* [Rue de Rivoli](http://search.mapzen.com/v1/search/structured?address=Rue+de+Rivoli&locality=Paris&region=France)
-* [Přílucká 1](http://search.mapzen.com/v1/search/structured?address=1+Přílucká&locality=Želechovice+nad+Dřevnicí)
+* [201 Spear Street](https://mapzen.github.io/search-sandbox/?query=search/structured&address=201 Spear Street&locality=San Francisco&region=CA)
+* [Rue de Rivoli](https://mapzen.github.io/search-sandbox/?query=search/structured&address=Rue de Rivoli&locality=Paris&region=France)
+* [Přílucká 1](https://mapzen.github.io/search-sandbox/?query=search/structured&address=1 Přílucká&locality=Želechovice nad Dřevnicí)
 
 ### neighbourhood
 
@@ -56,9 +56,9 @@ _Examples_
 
 _Examples_
 
-* [Notting Hill](http://search.mapzen.com/v1/search/structured?neighbourhood=Notting+Hill&locality=London) in London
-* [Flatiron District](http://search.mapzen.com/v1/search/structured?neighbourhood=Flatiron+District&borough=Manhattan) in Manhattan
-* [Le Marais](http://search.mapzen.com/v1/search/structured?neighbourhood=Le+Marais&locality=Paris) in Paris
+* [Notting Hill](https://mapzen.github.io/search-sandbox/?query=search/structured&neighbourhood=Notting Hill&locality=London) in London
+* [Flatiron District](https://mapzen.github.io/search-sandbox/?query=search/structured&neighbourhood=Flatiron District&borough=Manhattan) in Manhattan
+* [Le Marais](https://mapzen.github.io/search-sandbox/?query=search/structured&neighbourhood=Le Marais&locality=Paris) in Paris
 
 ### borough
 
@@ -66,8 +66,8 @@ _Examples_
 
 _Examples_
 
-* [Manhattan](http://search.mapzen.com/v1/search/structured?borough=Manhattan&locality=New+York)
-* [Iztapalapa](http://search.mapzen.com/v1/search/structured?borough=Iztapalapa&locality=Mexico+City)
+* [Manhattan](https://mapzen.github.io/search-sandbox/?query=search/structured&borough=Manhattan&locality=New York)
+* [Iztapalapa](https://mapzen.github.io/search-sandbox/?query=search/structured&borough=Iztapalapa&locality=Mexico City)
 
 A structured geocoding request for `/v1/search/structured?locality=Manhattan&region=NY`, returns boroughs along with localities.  
 
@@ -77,9 +77,9 @@ A structured geocoding request for `/v1/search/structured?locality=Manhattan&reg
 
 _Examples_
 
-* [Bangkok](http://search.mapzen.com/v1/search/structured?locality=Bangkok&country=Thailand)
-* [Caracas](http://search.mapzen.com/v1/search/structured?locality=Caracas&country=Venezuela)
-* [Truth or Consequences](http://search.mapzen.com/v1/search/structured?locality=Truth+or+Consequences&region=NM) in New Mexico
+* [Bangkok](https://mapzen.github.io/search-sandbox/?query=search/structured&locality=Bangkok&country=Thailand)
+* [Caracas](https://mapzen.github.io/search-sandbox/?query=search/structured&locality=Caracas&country=Venezuela)
+* [Truth or Consequences](https://mapzen.github.io/search-sandbox/?query=search/structured&locality=Truth or Consequences&region=NM) in New Mexico
 
 ### county
 
@@ -87,9 +87,9 @@ _Examples_
 
 _Examples_
 
-* [Bucks](http://search.mapzen.com/v1/search/structured?county=Bucks&region=PA) in Pennsylvania
-* [Maui](http://search.mapzen.com/v1/search/structured?county=Maui&region=HI)
-* [Alb-Donau-Kreis](http://search.mapzen.com/v1/search/structured?county=Alb-Donau-Kreis&country=DEU) in Germany
+* [Bucks](https://mapzen.github.io/search-sandbox/?query=search/structured&county=Bucks&region=PA) in Pennsylvania
+* [Maui](https://mapzen.github.io/search-sandbox/?query=search/structured&county=Maui&region=HI)
+* [Alb-Donau-Kreis](https://mapzen.github.io/search-sandbox/?query=search/structured&county=Alb-Donau-Kreis&country=DEU) in Germany
 
 Counties are not as commonly used in geocoding as localities, but can be useful when attempting to disambiguate between localities. For instance, there are three cities named Red Lion in Pennsylvania but only one in each of three counties. Specifying a county disambiguates this list to a single result.  
 
@@ -99,9 +99,9 @@ Counties are not as commonly used in geocoding as localities, but can be useful 
 
 _Examples_
 
-* [Delaware](http://search.mapzen.com/v1/search/structured?region=Delaware)
-* [Ontario](http://search.mapzen.com/v1/search/structured?region=Ontario)
-* [Ardennes](http://search.mapzen.com/v1/search/structured?region=Ardennes)
+* [Delaware](https://mapzen.github.io/search-sandbox/?query=search/structured&region=Delaware)
+* [Ontario](https://mapzen.github.io/search-sandbox/?query=search/structured&region=Ontario)
+* [Ardennes](https://mapzen.github.io/search-sandbox/?query=search/structured&region=Ardennes)
 
 Regions in the United States have [common abbreviations](https://en.wikipedia.org/wiki/List_of_U.S._state_abbreviations), such as PA for [Pennsylvania](https://whosonfirst.mapzen.com/spelunker/id/85688481/) and NM for [New Mexico](https://whosonfirst.mapzen.com/spelunker/id/85688493/).  The `region` parameter can be a full name or abbreviation, so specifying `/v1/search/structured?region=NM` is functionality equivalent to `/v1/search/structured?region=New Mexico`.  
 
@@ -123,9 +123,9 @@ Keep in mind that you can search for `postalcode` exclusively. So requests like 
 
 _Examples_
 
-* [Liechtenstein](http://search.mapzen.com/v1/search/structured?country=Liechtenstein)
-* [CMR](http://search.mapzen.com/v1/search/structured?country=CMR) ([Cameroon](https://whosonfirst.mapzen.com/spelunker/id/85632245/))
-* [Bermuda](http://search.mapzen.com/v1/search/structured?country=Bermuda)
+* [Liechtenstein](https://mapzen.github.io/search-sandbox/?query=search/structured&country=Liechtenstein)
+* [CMR](https://mapzen.github.io/search-sandbox/?query=search/structured&country=CMR) ([Cameroon](https://whosonfirst.mapzen.com/spelunker/id/85632245/))
+* [Bermuda](https://mapzen.github.io/search-sandbox/?query=search/structured&country=Bermuda)
 
 ## Who's On First layer mappings reference
 
@@ -140,4 +140,4 @@ The [Who's on First](https://whosonfirst.mapzen.com/) gazetteer is one of the da
 | `region`               | [region](https://whosonfirst.mapzen.com/spelunker/placetypes/region/), [macroregion](https://whosonfirst.mapzen.com/spelunker/placetypes/macroregion/)       |
 | `country`              | [dependency](https://whosonfirst.mapzen.com/spelunker/placetypes/dependency/), [country](https://whosonfirst.mapzen.com/spelunker/placetypes/country/)       |
 
-For example, [Peach Bottom, Pennsylvania](https://whosonfirst.mapzen.com/spelunker/id/404487863/) is only a `localadmin` place type and not a `locality` in Who's on First. For simplicity, if a structured geocoding request specifies `locality=Peach+Bottom&region=Pennsylvania`, then `Peach Bottom` in both the `locality` and `localadmin` layers are searched.
+For example, [Peach Bottom, Pennsylvania](https://whosonfirst.mapzen.com/spelunker/id/404487863/) is only a `localadmin` place type and not a `locality` in Who's on First. For simplicity, if a structured geocoding request specifies `locality=Peach Bottom&region=Pennsylvania`, then `Peach Bottom` in both the `locality` and `localadmin` layers are searched.
