@@ -107,8 +107,8 @@ By default, Mapzen Search results 10 places, unless otherwise specified. If you 
 | `text` | YMCA |
 | `size` | 1 |
 
-> [/v1/search?api_key=your-mapzen-api-key&text=YMCA&___size=1___](https://mapzen.github.io/search-sandbox/?query=search&text=YMCA&size=1)
+> [/v1/search?api_key=your-mapzen-api-key&text=YMCA&___size=1___](https://mapzen.com/search/explorer/?query=search&text=YMCA&size=1)
 
 If you want 25 results, you can build the query where `size` is 25.
 
-> [/v1/search?api_key=your-mapzen-api-key&text=YMCA&___size=25___](https://mapzen.github.io/search-sandbox/?query=search&text=YMCA&size=25)
+> [/v1/search?api_key=your-mapzen-api-key&text=YMCA&___size=25___](https://mapzen.com/search/explorer/?query=search&text=YMCA&size=25)
