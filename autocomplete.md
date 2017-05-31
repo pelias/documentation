@@ -8,7 +8,7 @@ To build a query with autocomplete, you need a `text` parameter, representing wh
 
 There are two user experience pitfalls to watch out for when implementing a client-side typeahead solution:
 
-**Requests must be throttled.** Since autocomplete requests generally correspond directly to user input, it's important to account for fast typers and throttle requests when using the autocomplete endpoint. Mapzen Search has a per second rate limit (that defaults to 6 requests per second), but some devices and networks (for example, mobile phones on a slow connection) may also respond poorly when too many requests are sent too quickly, so be sure to do some testing on your own. [Learn more in this interactive demo.](http://jsfiddle.net/missinglink/19e2r2we/)
+**Requests must be throttled.** Since autocomplete requests generally correspond directly to user input, it's important to account for fast typers and throttle requests when using the autocomplete endpoint. Some devices and networks (for example, mobile phones on a slow connection) may respond poorly when too many requests are sent too quickly, so be sure to do some testing on your own. [Learn more in this interactive demo.](http://jsfiddle.net/missinglink/19e2r2we/)
 
 **Responses are asynchronous.** This means you cannot be sure responses will be returned in the same order they were requested. If you were to send two queries synchronously, first `'Lo'` then `'London'`, you may find the `'London'` response would arrive before the `'Lo'` response. This will result in a quick flash of `'London'` results followed by the results for `'Lo'`, which can confuse the user.
 
@@ -19,7 +19,7 @@ To focus your search based upon a geographical area, such as the center of the u
 From San Francisco:
 
 >
-[/v1/autocomplete?api_key=mapzen-xxxxxx&__focus.point.lat=37.7&focus.point.lon=-122.4&text=union square__](https://search.mapzen.com/v1/autocomplete?focus.point.lat=37.7&focus.point.lon=-122.4&text=union square)
+[/v1/autocomplete?api_key=your-mapzen-api-key&__focus.point.lat=37.7&focus.point.lon=-122.4&text=union square__](https://mapzen.github.io/search-sandbox/?query=autocomplete&focus.point.lat=37.7&focus.point.lon=-122.4&text=union square)
 
 ```
 1)	Union Square, San Francisco County, CA
@@ -29,7 +29,7 @@ From San Francisco:
 From New York City:
 
 >
-[/v1/autocomplete?api_key=mapzen-xxxxxx&__focus.point.lat=40.7&focus.point.lon=-73.9&text=union square__](https://search.mapzen.com/v1/autocomplete?focus.point.lat=40.7&focus.point.lon=-73.9&text=union square)
+[/v1/autocomplete?api_key=your-mapzen-api-key&__focus.point.lat=40.7&focus.point.lon=-73.9&text=union square__](https://mapzen.github.io/search-sandbox/?query=autocomplete&focus.point.lat=40.7&focus.point.lon=-73.9&text=union square)
 
 ```
 1)	Union Square, New York County, NY
@@ -38,7 +38,7 @@ From New York City:
 
 The `/autocomplete` endpoint can promote nearby results to the top of the list, while still allowing important matches from farther away to be visible. For example, searching `hard rock cafe` with a focus on Berlin:
 
-> [/v1/autocomplete?api_key=mapzen-xxxxxx&__focus.point.lat=52.5&focus.point.lon=13.3&text=hard rock cafe__](https://search.mapzen.com/v1/autocomplete?focus.point.lat=52.5&focus.point.lon=13.3&text=hard rock cafe)
+> [/v1/autocomplete?api_key=your-mapzen-api-key&__focus.point.lat=52.5&focus.point.lon=13.3&text=hard rock cafe__](https://mapzen.github.io/search-sandbox/?query=autocomplete&focus.point.lat=52.5&focus.point.lon=13.3&text=hard rock cafe)
 
 with `focus.point` you will find the Berlin restaurant first:
 ```
@@ -65,7 +65,7 @@ The `sources` parameter allows you to specify from which data sources you'd like
 * `geonames` or `gn`
 * `whosonfirst` or `wof`
 
-> [/v1/autocomplete?api_key=mapzen-xxxxxx&__sources=openaddresses__&text=pennsylvania](https://search.mapzen.com/v1/autocomplete?sources=openaddresses&text=pennsylvania)
+> [/v1/autocomplete?api_key=your-mapzen-api-key&__sources=openaddresses__&text=pennsylvania](https://mapzen.github.io/search-sandbox/?query=autocomplete&sources=openaddresses&text=pennsylvania)
 
 with `sources=openaddresses` you will only find addresses on Pennsylvania Ave or Street:
 ```
@@ -82,6 +82,7 @@ without `sources=openaddresses` you will find the most popular Pennsylvanias fir
 ```
 
 ### Layers
+
 The type of record is referred to as its `layer`. All records are indexed into the following layers:
 
 |layer|description|
@@ -100,7 +101,7 @@ The type of record is referred to as its `layer`. All records are indexed into t
 |`neighbourhood`|social communities, neighbourhoods|
 |`coarse`|alias for simultaneously using all administrative layers (everything except `venue` and `address`)|
 
-> [/v1/autocomplete?api_key=mapzen-xxxxxx&__layers=coarse__&text=starbuck](https://search.mapzen.com/v1/autocomplete?layers=coarse&text=starbuck)
+> [/v1/autocomplete?api_key=your-mapzen-api-key&__layers=coarse__&text=starbuck](https://mapzen.github.io/search-sandbox/?query=autocomplete&layers=coarse&text=starbuck)
 
 with `layers=coarse` you will see only administrative areas with names containing Starbuck
 
