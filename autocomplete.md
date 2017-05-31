@@ -8,7 +8,7 @@ To build a query with autocomplete, you need a `text` parameter, representing wh
 
 There are two user experience pitfalls to watch out for when implementing a client-side typeahead solution:
 
-**Requests must be throttled.** Since autocomplete requests generally correspond directly to user input, it's important to account for fast typers and throttle requests when using the autocomplete endpoint. Mapzen Search has a per second rate limit (that defaults to 6 requests per second), but some devices and networks (for example, mobile phones on a slow connection) may also respond poorly when too many requests are sent too quickly, so be sure to do some testing on your own. [Learn more in this interactive demo.](http://jsfiddle.net/missinglink/19e2r2we/)
+**Requests must be throttled.** Since autocomplete requests generally correspond directly to user input, it's important to account for fast typers and throttle requests when using the autocomplete endpoint. Some devices and networks (for example, mobile phones on a slow connection) may respond poorly when too many requests are sent too quickly, so be sure to do some testing on your own. [Learn more in this interactive demo.](http://jsfiddle.net/missinglink/19e2r2we/)
 
 **Responses are asynchronous.** This means you cannot be sure responses will be returned in the same order they were requested. If you were to send two queries synchronously, first `'Lo'` then `'London'`, you may find the `'London'` response would arrive before the `'Lo'` response. This will result in a quick flash of `'London'` results followed by the results for `'Lo'`, which can confuse the user.
 
