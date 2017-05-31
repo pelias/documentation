@@ -115,7 +115,7 @@ _Examples_
 * [CV23 9SL](https://whosonfirst.mapzen.com/spelunker/id/454261459/)
 * [5439171](https://whosonfirst.mapzen.com/spelunker/id/538904173/)
 
-Keep in mind that you can search for `postalcode` exclusively. So requests like [/v1/search/structured?postalcode=87801](http://search.mapzen.com//v1/search/structured?postalcode=87801) will return matching postalcode records.
+Keep in mind that you can search for `postalcode` exclusively. So requests like [/v1/search/structured?postalcode=87801]( https://mapzen.github.io/search-sandbox/?query=search/structured&postalcode=87801) will return matching postalcode records.
 
 ### country
 
