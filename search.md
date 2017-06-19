@@ -9,10 +9,10 @@ Making the leap from text to coordinates is an intricate and challenging process
 All Mapzen Search requests share the same format:
 
 ```
-   https://search.mapzen.com/v1/search?text=London&api_key=your-api-key
-   \___/   \_______________/\__/\_____/\__________/\___________________/
-     |            |          /     |        |                |
-  scheme       domain   version  path     query     authentication token
+   https://search.mapzen.com/v1/search?text=London&api_key=
+   \___/   \_______________/\__/\_____/\__________/\_______/
+     |            |          /     |        |           |
+  scheme       domain   version  path     query   authentication token
 ```
 
 In addition, you can search at `https://search.mapzen.com/v1/search/structured` to look for individual components of a location.
