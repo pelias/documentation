@@ -225,6 +225,7 @@ Now, you will test your search box by finding a few locations. As you type, the 
 2. In the results list, find the entry for `Seattle University` and click it to zoom and add a point to the map at that location. (The point is only on your map, and does not update OpenStreetMap.)
 
     ![Entering an address to find on the map](images/geocoder-address-search.png)
+
 3. Search for other addresses or places to experiment with the search function and get an idea of the results it returns. For example, you might try looking for a point of interest in Seattle, your work address, or a city outside the United States.
 
 ## Customize the geocoder
@@ -357,7 +358,7 @@ Because the geocoder is still under development and considered experimental, if 
 
 ## Completed HTML for this tutorial
 
-You can refer to this HTML if you want to review your work or troubleshoot an error. You will need to substitute your own API key for the placeholder text in the source code.
+You can refer to this HTML if you want to review your work or troubleshoot an error.
 
 ```html
 <!DOCTYPE html>
