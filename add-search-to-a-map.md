@@ -68,10 +68,10 @@ The [Mapzen.js library](https://www.mapzen.com/documentation/mapzen-js/) simplif
 
 1. In `index.html`, at the bottom of the `<head>` section, add references to the Mapzen.js CSS and JavaScript files.
 
-  ```html
-  <link rel="stylesheet" href="https://mapzen.com/js/mapzen.css">
-  <script src="https://mapzen.com/js/mapzen.min.js"></script>
-  ```
+    ```html
+    <link rel="stylesheet" href="https://mapzen.com/js/mapzen.css">
+    <script src="https://mapzen.com/js/mapzen.min.js"></script>
+    ```
 
 2. Save your edits and refresh the browser. The webpage should still appear empty because you have not added any code to interact with these references.
 
@@ -99,49 +99,47 @@ To display a Leaflet map on a page, you need a `<div>` element, which is a conta
 
 1. At the bottom of the `<head>` section, after the references you added in the earlier steps, add a `<style>` tag and the following attributes to set the size of the map on your webpage. A Leaflet map will not display unless you include a width.
 
-  ```html
-  <style>
-    #map {
-      height: 100%;
-      width: 100%;
-      position: absolute;
-    }
-    html,body{margin: 0; padding: 0}
-  </style>
-  ```
+    ```html
+    <style>
+      #map {
+        height: 100%;
+        width: 100%;
+        position: absolute;
+      }
+      html,body{margin: 0; padding: 0}
+    </style>
+    ```
 
 2. At the top of the `<body>` section, add the `<div>`.
 
-  ```html
-  <div id='map'></div>
-  ```
+    ```html
+    <div id='map'></div>
+    ```
 
-3. Directly after the `<div>`, add this JavaScript code within a `<script>` tag to set the API key for the map. Use your own API key substituted for the placeholder text of `your-mapzen-api-key`.
+3. Directly after the `<div>`, add this JavaScript code within a `<script>` tag to set the API key for the map.
 
-  ```js
-  <script>
-    L.Mapzen.apiKey = "your-mapzen-api-key"; // paste your actual API key here
-  </script>
-  ```
-
-  The `your-mapzen-api-key` text is the Mapzen API key; paste your own API key inside the single quotes. You can get an API key by following the steps in the Mapzen [developer overview](https://mapzen.com/documentation/overview/).
+    ```js
+    <script>
+      L.Mapzen.apiKey = "your-mapzen-api-key";
+    </script>
+    ```
 
 4. Inside the same `<script>` tag, and after the code you just added for the API key, initialize a map.  
 
-  ```html
-  <script>
-    L.Mapzen.apiKey = "your-mapzen-api-key";
+    ```html
+    <script>
+      L.Mapzen.apiKey = "your-mapzen-api-key";
 
-    var map = L.Mapzen.map("map", {
-      center: [47.61033,-122.31801],
-      zoom: 16,
-    });
-  </script>
-  ```
+      var map = L.Mapzen.map("map", {
+        center: [47.61033,-122.31801],
+        zoom: 16,
+      });
+    </script>
+    ```
 
-  `L.xxxxx` is a convention used with the Leaflet API. The `center: [47.61033,-122.31801]` parameter sets the center point of the map, in decimal degrees, at the location of a building at Seattle University.
+    `L.xxxxx` is a convention used with the Leaflet API. The `center: [47.61033,-122.31801]` parameter sets the center point of the map, in decimal degrees, at the location of a building at Seattle University.
 
-  The next line sets the `zoom` level, which is like a map scale or resolution, where a smaller value shows a larger area in less detail, and a larger zoom level value depicts smaller area in great detail.
+    The next line sets the `zoom` level, which is like a map scale or resolution, where a smaller value shows a larger area in less detail, and a larger zoom level value depicts smaller area in great detail.
 
 4. Save your edits and refresh the browser.
 
@@ -192,14 +190,14 @@ So far, you have referenced the necessary files, initialized Leaflet with a map 
 
 1. Inside the same `<script>` tag, and after the code you just added for the map, initialize a search box and add it to the map with the following code.
 
-  ```js
-  var geocoder = L.Mapzen.geocoder();
-  geocoder.addTo(map);
-  ```
+    ```js
+    var geocoder = L.Mapzen.geocoder();
+    geocoder.addTo(map);
+    ```
 
 2. Save your edits and refresh the browser. You should see search button in the left corner. If you want to expand the button to a box, you can change this behavior in the geocoder options.
 
-  ![Search icon on the map canvas](images/geocoder-search-icon.png)
+    ![Search icon on the map canvas](images/geocoder-search-icon.png)
 
 Your `<body>` section should look like this:
 
@@ -243,19 +241,19 @@ Although you will not be using it in this tutorial, [\reverse](https://mapzen.co
 
 1. Add a variable to allow you to set options for the geocoder. Inside the script tags, and above the geocoder line, add this block.
 
-  ```js
-  var geocoderOptions = {
-    autocomplete: false
-  };
-  ```
+    ```js
+    var geocoderOptions = {
+      autocomplete: false
+    };
+    ```
 
-  You are setting `autocomplete: false` to specify that the Search box should not suggest potential text matches as you type. Autocomplete is enabled by default, so adding this means that you will turn it off.
+    You are setting `autocomplete: false` to specify that the Search box should not suggest potential text matches as you type. Autocomplete is enabled by default, so adding this means that you will turn it off.
 
 2. Modify the existing geocoder code to pass in the `geocoderOptions` you set.
 
-  ```js
-  var geocoder = L.Mapzen.geocoder(geocoderOptions);
-  ```
+    ```js
+    var geocoder = L.Mapzen.geocoder(geocoderOptions);
+    ```
 
 3. Save your edits and refresh the browser.
 4. Type `901 12th Avenue` in the Search box and press Enter. Notice now that the matching search results are not listed until you press the Enter key.
@@ -292,14 +290,14 @@ As you were searching, you might have noticed results that looked similar. Mapze
 
 1. Within the `geocoderOptions` block, add the `params:` list and a parameter for `sources:`. Be sure to add a `,` at the end of the `autocomplete: false` line.
 
-  ```js
-  var geocoderOptions = {
-    autocomplete: false,
-    params: {
-      sources: 'osm'
-    }
-  };
-  ```
+    ```js
+    var geocoderOptions = {
+      autocomplete: false,
+      params: {
+        sources: 'osm'
+      }
+    };
+    ```
 
 2. Save your edits and refresh the browser.
 3. Search for `901 12th Avenue` again. Try searching city names, such as `Vancouver`, as you continue to experiment with the geocoder.
@@ -312,15 +310,15 @@ Mapzen.js automatically provides a [focus point](https://mapzen.com/documentatio
 
 1. Within the `geocoderOptions` block, add add a `,` at the end of the `sources: 'osm'` line and then a parameter for `'boundary.country': 'USA'` on the next line. You need to enclose with single quotation marks any parameter names that use the dot notation (such as `boundary.country`) to make sure JavaScript can parse the text correctly.
 
-  ```js
-  var geocoderOptions = {
-    autocomplete: false,
-    params: {
-      sources: 'osm',
-      'boundary.country': 'USA'
-    }
-  };
-  ```
+    ```js
+    var geocoderOptions = {
+      autocomplete: false,
+      params: {
+        sources: 'osm',
+        'boundary.country': 'USA'
+      }
+    };
+    ```
 
 3. Save your edits and refresh the browser.
 4. Search again for city names in the Search box. Notice that you only see results from within the United States. For example, `Vancouver` in Canada is no longer listed, but you can find the city in Washington.
@@ -336,16 +334,16 @@ You can review the [Mapzen Search documentation](https://mapzen.com/documentatio
 
 1. Within the `geocoderOptions` block, add add a `,` at the end of the `'boundary.country: 'USA'` line and then a parameter for `layers: 'address,venue'` on the next line.
 
-  ```js
-  var geocoderOptions = {
-    autocomplete: false,
-    params: {
-      sources: 'osm',
-      'boundary.country': 'USA',
-      layers: 'address,venue'
-    }
-  };
-  ```
+    ```js
+    var geocoderOptions = {
+      autocomplete: false,
+      params: {
+        sources: 'osm',
+        'boundary.country': 'USA',
+        layers: 'address,venue'
+      }
+    };
+    ```
 2. Save your edits and refresh the browser.
 3. Search for `102 Pike Street, Seattle, WA 98101` (the first Starbucks) and press Enter. Some other places you can try include `Starbucks`, `400 Broad Street` (the address of the Space Needle), `Space Needle`, and `University of Washington`.
 
