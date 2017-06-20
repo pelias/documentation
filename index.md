@@ -11,5 +11,4 @@ Mapzen Search also enables the opposite workflow, known as [reverse geocoding](r
 - [Autocomplete](autocomplete.md) to give real-time result suggestions without having to type the whole location
 - [Global coverage with prioritized local results](data-sources.md)
 - Open-source software using [open data sources](data-sources.md)
-- [Plug-in for embedding search](https://mapzen.com/documentation/mapzen-js/search/) in a [Leaflet-based](http://leafletjs.com/) map
-- API with [generous rate limits](api-keys-rate-limits.md)
+- [Tools for embedding search](https://mapzen.com/documentation/mapzen-js/search/) in a map
