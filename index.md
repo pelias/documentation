@@ -9,7 +9,6 @@ Mapzen Search also enables the opposite workflow, known as [reverse geocoding](r
 - [Forward geocoding](search.md) to find a place by searching for an address or name
 - [Reverse geocoding](reverse.md) to find what is located at a certain coordinate location
 - [Autocomplete](autocomplete.md) to give real-time result suggestions without having to type the whole location
-- [Global coverage with prioritized local results](data-sources.md)
+- [Global coverage with prioritized local results](search.md#prioritize-results-by-proximity)
 - Open-source software using [open data sources](data-sources.md)
-- [Plug-in for embedding search](https://mapzen.com/documentation/mapzen-js/search/) in a [Leaflet-based](http://leafletjs.com/) map
-- API with [generous rate limits](api-keys-rate-limits.md)
+- [Tools for embedding search](https://mapzen.com/documentation/mapzen-js/search/) in a map
