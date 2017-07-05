@@ -22,10 +22,33 @@ At this time, only the `language subtag` information is used to set the target l
 
 ### Set language as a query string in the URL
 
-You can specify the language code using a URL parameter named `lang`.
-> eg. /v1/search?lang=de-ch
+You can specify the language code using a URL parameter named `lang`: `/v1/search?lang=de-ch`.
 
 ### Set language in the HTTP header
 
-You can include the language code in the HTTP request header with the `Accept-Language` parameter.
-> eg. Accept-Language: de-ch
+You can include the language code in the HTTP request header with the `Accept-Language` parameter: `Accept-Language: de-ch`.
+
+## Language properties in the response
+
+The response contains information about the language being returned, which can be helpful for debugging.  
+
+```
+{
+  "geocoding": {
+      [...]
+      "lang": {
+        "name": "German",
+        "iso6391": "de",
+        "iso6393": "deu",
+        "defaulted": false
+      },
+      [...]
+    },
+[...]
+```
+
+The language items include:
+
+- `name`: a human-readable name for the language, in English
+- `iso6391` and `iso6393`: the language code as defined in the two most common standards
+- `defaulted`: a value of `true` or `false` to indicate if there was a fall-back to a default language property
