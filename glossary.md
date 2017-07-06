@@ -16,6 +16,7 @@
 - **focus** - option to make places closer to a particular location be prioritized and appear higher in the search results list. After all nearby results have been found, additional results will come from the rest of the world, without any further location-based prioritization.
 - **layer** - types of places available to Mapzen Search and arranged in a hierarchy, such as an address, a venue, a neighbourhood, or a country.
 - **`place` search** - get details on a place if you know the data source, the type of place (such as a venue or address), and the identification number.
+- **structured geocoding** - Assigns geographical coordinates to an address, venue, or other location type that has been broken up into its constituent parts. Use the `search/structured` endpoint to do this.
 
 ## Other mapping terms
 
