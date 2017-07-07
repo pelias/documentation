@@ -1,6 +1,6 @@
 # Common geocoding workflows
 
-Mapzen Search provides several API endpoints, and each is best suited for a particular geocoding workflow. Match your use case to these common scenarios to determine which endpoint to use for a particular task in your app.
+Mapzen Search provides several API endpoints, and each is best suited for a particular geocoding workflow. Match your use case to these common scenarios to determine which endpoint to use for tasks in your app.
 
 ## You have a single address field that needs geographic coordinates (`/search`)
 
