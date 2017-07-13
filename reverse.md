@@ -27,8 +27,6 @@ Parameter | Type | Required | Default | Example
 `api_key` | string | yes | none | [get yours here](https://mapzen.com/developers)
 `point.lat` | floating point number | yes | none | `48.858268`
 `point.lon` | floating point number | yes | none | `2.294471`
-`boundary.circle.lat` | floating point number | no | none | `43.818156` 
-`boundary.circle.lon` | floating point number | no | none | `-79.186484` 
 `boundary.circle.radius` | floating point number | no | 1 | `35` 
 `size` | integer | no | `10` | `3`
 `layers` | comma-delimited string array | no | none (all layers) | `address,locality`
