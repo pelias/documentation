@@ -1,3 +1,14 @@
+## 22 August 2017
+### New features
+* We now support the ability to specify the admin hierarchy part of an address query in any language 
+(as long as a name in that language can be found in WOF), for example searching for 
+[30 w 26th st, Нью Йорк, 미국](https://mapzen.com/search/explorer/?query=search&text=30%20w%2026th%20st%2C%20%D0%9D%D1%8C%D1%8E%20%D0%99%D0%BE%D1%80%D0%BA%2C%20%EB%AF%B8%EA%B5%AD) works like magic!
+* We've added a warning when unexpected query parameters are encountered! This is a big deal because it helps catch misspellings of query parameter names, such as `layer` vs `layers`... we've all been there at least once.
+
+### Bug fixes
+* We found an invalid warning when falling back to a coarse-reverse geocoding strategy about `boundary.circle.radius` not being supported, even though the query didn't specify a value for that parameter. We removed the unwanted warning. If you see that warning going forward, consider it valid and revise your query.   
+* We fixed our production configuration to fully enable language headers (they were only partially available previously). Ooops!
+
 ## 6 July 2017
 ## Milestones
 Today's release has no new code, but it's a big milestone nonetheless. For the first time, we are indexing over 500 million (that's _half a billion_) records, all from open data! We're grateful to all the work from contributors of OpenStreetMap, OpenAddresses, Who's on First, and Geonames that have made this possible and are looking forward to reaching the big _one billion_ mark soon!
