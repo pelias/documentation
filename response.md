@@ -2,7 +2,7 @@
 
 When requesting results from Mapzen Search, you will always get back GeoJSON results, unless something goes terribly wrong, in which case you'll get an error message.
 
-  Tip: You can go to http://geojson.org/geojson-spec.html to learn more about the GeoJSON data format specification.
+  Tip: You can go to https://tools.ietf.org/html/rfc7946 to learn more about the GeoJSON data format specification.
 
 The top-level structure to every response looks like this:
 
