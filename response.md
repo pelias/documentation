@@ -79,9 +79,15 @@ The `gid` consists of a `layer` (such as `address` or `country`), an identifier 
 - `gid` strings may not be consistent across releases.
 - You should not attempt to parse `gid` strings for information or store them for future use. You should only use `gid` at the time when you receive the search results. One valid use for the `gid` is to retrieve full details on a particular result from the [/place](place.md) endpoint.
 
+### `name`
+
+The `name` is a short description of the location, such as a business name, a locality name, or part of an address, depending on what is being searched for and what is returned.
+
+For address searches, the `housenumber` and `street` properties are brought together under the `name` property in the local standard format. This saves you from having to reassemble the address yourself, including to determine whether the numbers should be placed before or after the street name.
+
 ### `label`
 
-The `label` is a human-friendly representation of the place, ready to be displayed to an end user.  The label field attempts to use a format that is right for the region the result is in, although Mapzen Search only supports a few countries at the moment.
+The `label` is a human-friendly representation of the place, with the most complete details, that is ready to be displayed to an end user. Examples of a `label` include a business or venue name with its locality, a complete mailing address, or a locality with region and country names. The `label` field attempts to use a format that is right for the region of the result.
 
 ### `confidence`
 
