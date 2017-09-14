@@ -2,10 +2,10 @@
 
 ### New features
 * We've beefed up downloaders for OpenAddresses, OpenStreetMap, and Who's On First to download subsets of data.  
-* The alpha3 flag for country codes have been obsolete for quite some time now but we've removed all vestiges of it.
+* The alpha3 flag for country codes have been obsolete for quite some time now but we've [removed all vestiges of it](https://github.com/pelias/model/pull/71).
 
 ### Bug fixes
-* Some OpenAddresses records have lon/lat at 0/0 meaning that, unless you have a ocean-going yacht and pretty sturdy jet ski, you can't get to addresses there (note to self: start "Pelias for Yachts").  We've now excluded those from the build.  
+* Some OpenAddresses records have lon/lat at 0/0 meaning that, unless you have a ocean-going yacht and pretty sturdy jet ski, you can't get to addresses there (note to self: start "Pelias for Yachts").  We've now [excluded those](https://github.com/pelias/openaddresses/pull/277) from the build.  
 
 ## 22 August 2017
 ### New features
