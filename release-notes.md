@@ -1,7 +1,16 @@
+## 14 September 2017
+
+### New features
+* We've beefed up downloaders for OpenAddresses, OpenStreetMap, and Who's On First to download subsets of data.  
+* The alpha3 flag for country codes have been obsolete for quite some time now but we've [removed all vestiges of it](https://github.com/pelias/model/pull/71).
+
+### Bug fixes
+* Some OpenAddresses records have lon/lat at 0/0 meaning that, unless you have a ocean-going yacht and pretty sturdy jet ski, you can't get to addresses there (note to self: start "Pelias for Yachts").  We've now [excluded those](https://github.com/pelias/openaddresses/pull/277) from the build.  
+
 ## 22 August 2017
 ### New features
-* We now support the ability to specify the admin hierarchy part of an address query in any language 
-(as long as a name in that language can be found in WOF), for example searching for 
+* We now support the ability to specify the admin hierarchy part of an address query in any language
+(as long as a name in that language can be found in WOF), for example searching for
 [30 w 26th st, Нью Йорк, 미국](https://mapzen.com/search/explorer/?query=search&text=30%20w%2026th%20st%2C%20%D0%9D%D1%8C%D1%8E%20%D0%99%D0%BE%D1%80%D0%BA%2C%20%EB%AF%B8%EA%B5%AD) works like magic!
 * We've added a warning when unexpected query parameters are encountered! This is a big deal because it helps catch misspellings of query parameter names, such as `layer` vs `layers`... we've all been there at least once.
 
@@ -50,7 +59,7 @@ Our new Placeholder service queries were working great, except they weren't retu
 ***Warning:*** _We are having some technical difficulties with the polylines data generated from the OSM
 road network. This data is used to populate our street index and interpolation service. Both features will continue working as before, but data will be stale until a fix is implemented.
 We will be using the last known good version, which was built on February 27th, 2017.
-We will definitely keep everyone posted as soon as an updated working version is available. Sorry for any 
+We will definitely keep everyone posted as soon as an updated working version is available. Sorry for any
 inconvenience this may have caused._
 
 ## 6 February 2017
