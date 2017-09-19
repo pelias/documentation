@@ -1,3 +1,8 @@
+## 19 September 2017
+
+### Bug fixes
+* Thanks to [@rabidllama](https://github.com/rabidllama)'s [excellent PR](https://github.com/pelias/api/pull/974), we now support queries with postalcode and region/country combinations.
+
 ## 14 September 2017
 
 ### New features
