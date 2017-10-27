@@ -1,3 +1,10 @@
+## 26 October 2017
+
+### Bug fixes
+
+* The `/place` endpoint would sometimes return records from a [different layer than the one you asked for](https://github.com/pelias/api/pull/1036), but no longer!
+* Asking the `/reverse` endpoint to return venues from Geonames used to return a error message. However, it should work, and now [it does](https://github.com/pelias/api/pull/1045)!
+
 ## 29 September 2017
 
 ### New features
