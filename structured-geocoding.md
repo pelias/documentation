@@ -1,6 +1,6 @@
 # Structured geocoding
 
-With structured geocoding, you can search for the individual parts of a location. Structured geocoding is an option on the [`search` endpoint](search.md), where a query takes the form of https://search.mapzen.com/v1/search/structured.
+With structured geocoding, you can search for the individual parts of a location. Structured geocoding is an option on the [`search` endpoint](search.md), where a query takes the form of `/v1/search/structured`.
 
 For example, you want to find `30 West 26th Street, New York, NY`. With the geocoding parameter for `search`, you can only enter the entire location as one string, such as `text=30 West 26th Street, New York, NY`. However, with `search/structured`, you can specify that this location is composed of a street address, a locality, and a region.
 
@@ -52,7 +52,7 @@ _Examples_
 
 ### neighbourhood
 
-[Neighbourhoods](https://whosonfirst.mapzen.com/spelunker/placetypes/neighbourhood/) are vernacular geographic entities that may not necessarily be official administrative divisions but are important nonetheless.  
+[Neighbourhoods](https://spelunker.whosonfirst.org/placetypes/neighbourhood/) are vernacular geographic entities that may not necessarily be official administrative divisions but are important nonetheless.
 
 _Examples_
 
@@ -62,18 +62,18 @@ _Examples_
 
 ### borough
 
-[Boroughs](https://whosonfirst.mapzen.com/spelunker/placetypes/borough/) are mostly known in the context of New York City, even though they may exist in other cities, such as [Mexico City](https://whosonfirst.mapzen.com/spelunker/id/857683023/descendants/?exclude=nullisland&placetype=borough).
+[Boroughs](https://spelunker.whosonfirst.org/placetypes/borough/) are mostly known in the context of New York City, even though they may exist in other cities, such as [Mexico City](https://spelunker.whosonfirst.org/id/857683023/descendants/?exclude=nullisland&placetype=borough).
 
 _Examples_
 
 * [Manhattan](https://mapzen.com/search/explorer/?query=search/structured&borough=Manhattan&locality=New York)
 * [Iztapalapa](https://mapzen.com/search/explorer/?query=search/structured&borough=Iztapalapa&locality=Mexico City)
 
-A structured geocoding request for `/v1/search/structured?locality=Manhattan&region=NY`, returns boroughs along with localities.  
+A structured geocoding request for `/v1/search/structured?locality=Manhattan&region=NY`, returns boroughs along with localities.
 
 ### locality
 
-[Localities](https://whosonfirst.mapzen.com/spelunker/placetypes/locality/) are equivalent to what are commonly referred to as cities.  
+[Localities](https://spelunker.whosonfirst.org/placetypes/locality/) are equivalent to what are commonly referred to as cities.
 
 _Examples_
 
@@ -83,7 +83,7 @@ _Examples_
 
 ### county
 
-[Counties](https://whosonfirst.mapzen.com/spelunker/placetypes/county/) are administrative divisions between localities and regions.  
+[Counties](https://spelunker.whosonfirst.org/placetypes/county/) are administrative divisions between localities and regions.
 
 _Examples_
 
@@ -91,11 +91,11 @@ _Examples_
 * [Maui](https://mapzen.com/search/explorer/?query=search/structured&county=Maui&region=HI)
 * [Alb-Donau-Kreis](https://mapzen.com/search/explorer/?query=search/structured&county=Alb-Donau-Kreis&country=DEU) in Germany
 
-Counties are not as commonly used in geocoding as localities, but can be useful when attempting to disambiguate between localities. For instance, there are three cities named Red Lion in Pennsylvania but only one in each of three counties. Specifying a county disambiguates this list to a single result.  
+Counties are not as commonly used in geocoding as localities, but can be useful when attempting to disambiguate between localities. For instance, there are three cities named Red Lion in Pennsylvania but only one in each of three counties. Specifying a county disambiguates this list to a single result.
 
 ### region
 
-[Regions](https://whosonfirst.mapzen.com/spelunker/placetypes/region/) are normally the first-level administrative divisions within countries, analogous to states and provinces in the [United States](https://whosonfirst.mapzen.com/spelunker/id/85633793/descendants/?exclude=nullisland&placetype=region) and [Canada](https://whosonfirst.mapzen.com/spelunker/id/85633041/descendants/?exclude=nullisland&placetype=region), respectively, though most other countries contain regions as well.  
+[Regions](https://spelunker.whosonfirst.org/placetypes/region/) are normally the first-level administrative divisions within countries, analogous to states and provinces in the [United States](https://spelunker.whosonfirst.org/id/85633793/descendants/?exclude=nullisland&placetype=region) and [Canada](https://spelunker.whosonfirst.org/id/85633041/descendants/?exclude=nullisland&placetype=region), respectively, though most other countries contain regions as well.
 
 _Examples_
 
@@ -103,41 +103,41 @@ _Examples_
 * [Ontario](https://mapzen.com/search/explorer/?query=search/structured&region=Ontario)
 * [Ardennes](https://mapzen.com/search/explorer/?query=search/structured&region=Ardennes)
 
-Regions in the United States have [common abbreviations](https://en.wikipedia.org/wiki/List_of_U.S._state_abbreviations), such as PA for [Pennsylvania](https://whosonfirst.mapzen.com/spelunker/id/85688481/) and NM for [New Mexico](https://whosonfirst.mapzen.com/spelunker/id/85688493/).  The `region` parameter can be a full name or abbreviation, so specifying `/v1/search/structured?region=NM` is functionality equivalent to `/v1/search/structured?region=New Mexico`.  
+Regions in the United States have [common abbreviations](https://en.wikipedia.org/wiki/List_of_U.S._state_abbreviations), such as PA for [Pennsylvania](https://spelunker.whosonfirst.org/id/85688481/) and NM for [New Mexico](https://spelunker.whosonfirst.org/id/85688493/).  The `region` parameter can be a full name or abbreviation, so specifying `/v1/search/structured?region=NM` is functionality equivalent to `/v1/search/structured?region=New Mexico`.
 
 ### postalcode
 
-[Postal codes](https://whosonfirst.mapzen.com/spelunker/placetypes/postalcode/) are used to aid in sorting mail with the format dictated by an administrative division, which is almost always countries.  Among other reasons, postal codes are unique within a country so they are useful in geocoding as a shorthand for a fairly granular geographical location.
+[Postal codes](https://spelunker.whosonfirst.org/placetypes/postalcode/) are used to aid in sorting mail with the format dictated by an administrative division, which is almost always countries.  Among other reasons, postal codes are unique within a country so they are useful in geocoding as a shorthand for a fairly granular geographical location.
 
 _Examples_
 
-* [90210](https://whosonfirst.mapzen.com/spelunker/id/554783991/)
-* [CV23 9SL](https://whosonfirst.mapzen.com/spelunker/id/454261459/)
-* [5439171](https://whosonfirst.mapzen.com/spelunker/id/538904173/)
+* [90210](https://spelunker.whosonfirst.org/id/554783991/)
+* [CV23 9SL](https://spelunker.whosonfirst.org/id/454261459/)
+* [5439171](https://spelunker.whosonfirst.org/id/538904173/)
 
 Keep in mind that you can search for `postalcode` exclusively. So requests like [/v1/search/structured?postalcode=87801]( https://mapzen.com/search/explorer/?query=search/structured&postalcode=87801) will return matching postalcode records.
 
 ### country
 
-[Countries](https://whosonfirst.mapzen.com/spelunker/placetypes/country/) are the highest-level administrative divisions supported in a search. In addition to full names, countries have common [two-](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) and [three-letter](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3) abbreviations that are also supported values for the `country` parameter.  
+[Countries](https://spelunker.whosonfirst.org/placetypes/country/) are the highest-level administrative divisions supported in a search. In addition to full names, countries have common [two-](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) and [three-letter](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3) abbreviations that are also supported values for the `country` parameter.
 
 _Examples_
 
 * [Liechtenstein](https://mapzen.com/search/explorer/?query=search/structured&country=Liechtenstein)
-* [CMR](https://mapzen.com/search/explorer/?query=search/structured&country=CMR) ([Cameroon](https://whosonfirst.mapzen.com/spelunker/id/85632245/))
+* [CMR](https://mapzen.com/search/explorer/?query=search/structured&country=CMR) ([Cameroon](https://spelunker.whosonfirst.org/id/85632245/))
 * [Bermuda](https://mapzen.com/search/explorer/?query=search/structured&country=Bermuda)
 
 ## Who's On First layer mappings reference
 
-The [Who's on First](https://whosonfirst.mapzen.com/) gazetteer is one of the datasets used as a source of search data. Use this table is a reference between the parameters for structured geocoding and the [types of places in Who's on First](https://whosonfirst.mapzen.com/placetypes/).
+The [Who's on First](https://whosonfirst.org/) gazetteer is one of the datasets used as a source of search data. Use this table is a reference between the parameters for structured geocoding and the [types of places in Who's on First](https://whosonfirst.org/placetypes/).
 
 | Structured geocoding parameter | Who's on First placetype |
 | -------------------- | ------------------------- |
-| `neighbourhood`        | [neighbourhood](https://whosonfirst.mapzen.com/spelunker/placetypes/neighbourhood/)             |
-| `borough`              | [borough](https://whosonfirst.mapzen.com/spelunker/placetypes/borough/)                   |
-| `locality`             | [locality](https://whosonfirst.mapzen.com/spelunker/placetypes/locality/), [localadmin](https://whosonfirst.mapzen.com/spelunker/placetypes/localadmin/) (and [borough](https://whosonfirst.mapzen.com/spelunker/placetypes/borough/) if `borough` parameter is not supplied)      |
-| `county`               | [county](https://whosonfirst.mapzen.com/spelunker/placetypes/county/), [macrocounty](https://whosonfirst.mapzen.com/spelunker/placetypes/macrocounty/)       |
-| `region`               | [region](https://whosonfirst.mapzen.com/spelunker/placetypes/region/), [macroregion](https://whosonfirst.mapzen.com/spelunker/placetypes/macroregion/)       |
-| `country`              | [dependency](https://whosonfirst.mapzen.com/spelunker/placetypes/dependency/), [country](https://whosonfirst.mapzen.com/spelunker/placetypes/country/)       |
+| `neighbourhood`        | [neighbourhood](https://spelunker.whosonfirst.org/placetypes/neighbourhood/)             |
+| `borough`              | [borough](https://spelunker.whosonfirst.org/placetypes/borough/)                   |
+| `locality`             | [locality](https://spelunker.whosonfirst.org/placetypes/locality/), [localadmin](https://spelunker.whosonfirst.org/placetypes/localadmin/) (and [borough](https://spelunker.whosonfirst.org/placetypes/borough/) if `borough` parameter is not supplied)      |
+| `county`               | [county](https://spelunker.whosonfirst.org/placetypes/county/), [macrocounty](https://spelunker.whosonfirst.org/placetypes/macrocounty/)       |
+| `region`               | [region](https://spelunker.whosonfirst.org/placetypes/region/), [macroregion](https://spelunker.whosonfirst.org/placetypes/macroregion/)       |
+| `country`              | [dependency](https://spelunker.whosonfirst.org/placetypes/dependency/), [country](https://spelunker.whosonfirst.org/placetypes/country/)       |
 
-For example, [Peach Bottom, Pennsylvania](https://whosonfirst.mapzen.com/spelunker/id/404487863/) is only a `localadmin` place type and not a `locality` in Who's on First. For simplicity, if a structured geocoding request specifies `locality=Peach Bottom&region=Pennsylvania`, then `Peach Bottom` in both the `locality` and `localadmin` layers are searched.
+For example, [Peach Bottom, Pennsylvania](https://spelunker.whosonfirst.org/id/404487863/) is only a `localadmin` place type and not a `locality` in Who's on First. For simplicity, if a structured geocoding request specifies `locality=Peach Bottom&region=Pennsylvania`, then `Peach Bottom` in both the `locality` and `localadmin` layers are searched.

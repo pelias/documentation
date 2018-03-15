@@ -23,11 +23,11 @@ Over the last few days we have fixed [several](https://github.com/pelias/api/pul
 ## 14 September 2017
 
 ### New features
-* We've beefed up downloaders for OpenAddresses, OpenStreetMap, and Who's On First to download subsets of data.  
+* We've beefed up downloaders for OpenAddresses, OpenStreetMap, and Who's On First to download subsets of data.
 * The alpha3 flag for country codes have been obsolete for quite some time now but we've [removed all vestiges of it](https://github.com/pelias/model/pull/71).
 
 ### Bug fixes
-* Some OpenAddresses records have lon/lat at 0/0 meaning that, unless you have a ocean-going yacht and pretty sturdy jet ski, you can't get to addresses there (note to self: start "Pelias for Yachts").  We've now [excluded those](https://github.com/pelias/openaddresses/pull/277) from the build.  
+* Some OpenAddresses records have lon/lat at 0/0 meaning that, unless you have a ocean-going yacht and pretty sturdy jet ski, you can't get to addresses there (note to self: start "Pelias for Yachts").  We've now [excluded those](https://github.com/pelias/openaddresses/pull/277) from the build.
 
 ## 22 August 2017
 ### New features
@@ -37,7 +37,7 @@ Over the last few days we have fixed [several](https://github.com/pelias/api/pul
 * We've added a warning when unexpected query parameters are encountered! This is a big deal because it helps catch misspellings of query parameter names, such as `layer` vs `layers`... we've all been there at least once.
 
 ### Bug fixes
-* We found an invalid warning when falling back to a coarse-reverse geocoding strategy about `boundary.circle.radius` not being supported, even though the query didn't specify a value for that parameter. We removed the unwanted warning. If you see that warning going forward, consider it valid and revise your query.   
+* We found an invalid warning when falling back to a coarse-reverse geocoding strategy about `boundary.circle.radius` not being supported, even though the query didn't specify a value for that parameter. We removed the unwanted warning. If you see that warning going forward, consider it valid and revise your query.
 * We fixed our production configuration to fully enable language headers (they were only partially available previously). Ooops!
 
 ## 6 July 2017
@@ -90,11 +90,11 @@ We bring you another data update this week, but don't worry, we're busy working 
 
 ## 1 February 2017
 
-This release is just a data refresh since it's hard to keep up with the leaps and bounds that [openaddresses](http://openaddresses.io) is growing by!  
+This release is just a data refresh since it's hard to keep up with the leaps and bounds that [openaddresses](http://openaddresses.io) is growing by!
 
 ## 27 January 2017
 
-Thanks to some wild activity in the [openaddresses](http://openaddresses.io) project, this is the first Mapzen Search build with over 400 million documents!
+Thanks to some wild activity in the [openaddresses](http://openaddresses.io) project, this is the first Pelias build with over 400 million documents!
 
 We are excited to see open data continue to grow and improve and looking forward to the big half billion milestone. :)
 
@@ -135,8 +135,8 @@ This week includes only code changes, no data updates. Our production build fail
 
 ## 18 November 2016
 
-* We've just released beta support for component geocoding so instead of passing in a single input to the `/v1/search` endpoint, the parts of an address can be sent to `/v1/beta/component`!  An example of this is `address=201+Spear+St&locality=San+Francisco&region=CA`.  We haven't officially named this geocoding type yet, so if you have a naming suggestion, please weigh in [here](https://github.com/pelias/pelias/issues/455)!  Our basic design doc for using this new beta feature is [here](https://github.com/pelias/pelias/tree/master/milestones/component_geocoding), please check it out.  We're still working out the final implementation (why it's currently deployed to our `/v1/beta` test bed) so check it out and don't hesitate to [raise any issues](https://github.com/pelias/pelias/issues) you might encounter.  Check out the [acceptance tests](https://github.com/pelias/acceptance-tests/blob/master/test_cases/component_geocoding.json) for some more examples.  
-* We're enabling support for more response scenarios from [libpostal](https://github.com/openvenues/libpostal)!  This release we're adding support for city+country, so requests for Paris, France and Reykjavík, Iceland are a lot cleaner.  
+* We've just released beta support for component geocoding so instead of passing in a single input to the `/v1/search` endpoint, the parts of an address can be sent to `/v1/beta/component`!  An example of this is `address=201+Spear+St&locality=San+Francisco&region=CA`.  We haven't officially named this geocoding type yet, so if you have a naming suggestion, please weigh in [here](https://github.com/pelias/pelias/issues/455)!  Our basic design doc for using this new beta feature is [here](https://github.com/pelias/pelias/tree/master/milestones/component_geocoding), please check it out.  We're still working out the final implementation (why it's currently deployed to our `/v1/beta` test bed) so check it out and don't hesitate to [raise any issues](https://github.com/pelias/pelias/issues) you might encounter.  Check out the [acceptance tests](https://github.com/pelias/acceptance-tests/blob/master/test_cases/component_geocoding.json) for some more examples.
+* We're enabling support for more response scenarios from [libpostal](https://github.com/openvenues/libpostal)!  This release we're adding support for city+country, so requests for Paris, France and Reykjavík, Iceland are a lot cleaner.
 * Speaking of Reykjavík, Iceland, support for inputs containing diacritics has improved.  Now whether the input is Reykjavík, Iceland or Reykjavik, Iceland, results should be the same.
 * Whether your input contains a 2- or 3-character ISO country code (`FRA` vs `FR`), we'll find it!
 
@@ -157,7 +157,7 @@ Another data-only release. Stay tuned for next week!
 
 ## 12 September 2016
 
-* Get excited for the addition of ✨ __STREETS__ ✨! That's right, with this release Mapzen Search gets a brand new `street` layer, which contains OSM street centroids. With this addition, if we can't find the exact address you're looking for we'll return the street record. Stay tuned for an in-depth blog post in the next few days. 👏
+* Get excited for the addition of ✨ __STREETS__ ✨! That's right, with this release Pelias gets a brand new `street` layer, which contains OSM street centroids. With this addition, if we can't find the exact address you're looking for we'll return the street record. Stay tuned for an in-depth blog post in the next few days. 👏
 
 ## 7 September 2016
 
@@ -253,7 +253,7 @@ We also have two **known issues** in this build:
 
 ## 08 April 2016
 
-This release marks the official integration of the Mapzen `Who's on First` data set into Mapzen Search. This data is replacing `Quattroshapes` across the entire service. Any forward usage or references to `Quattroshapes` will be replaced with `WhosOnFirst`. This substitution allows us to fix long-standing encoding issues in administrative hierarchy place-names. We've also added a bounding box for individual features in the results, not only the all-encompassing bounding box at the top level of the geojson results. Also, the all-encompassing bounding box will extend to include the bounding boxes of all the features in the results, not only their centroids.
+This release marks the official integration of the Mapzen `Who's on First` data set into Pelias. This data is replacing `Quattroshapes` across the entire service. Any forward usage or references to `Quattroshapes` will be replaced with `WhosOnFirst`. This substitution allows us to fix long-standing encoding issues in administrative hierarchy place-names. We've also added a bounding box for individual features in the results, not only the all-encompassing bounding box at the top level of the geojson results. Also, the all-encompassing bounding box will extend to include the bounding boxes of all the features in the results, not only their centroids.
 Another major improvement that many have been waiting for is the addition of more filters for the `/autocomplete` endpoint. Users can now ask `/autocomplete` to filter by `layers` and `sources`, as documented [here](https://mapzen.com/documentation/search/autocomplete/#available-autocomplete-parameters).
 See the detailed list of changes below for more specifics.
 

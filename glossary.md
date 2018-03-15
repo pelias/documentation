@@ -1,4 +1,4 @@
-# Mapzen Search glossary
+# Pelias glossary
 
 ## Common search and geocoding terms
 
@@ -7,14 +7,14 @@
 - **coarse geocoding** - adds regions and administrative boundaries to the geocoding process. Coarse forward geocoding limits a search to a particular region, while coarse reverse geocoding converts a geographic coordinate pair into the administrative boundary hierarchy containing it, such as from the neighbourhood to the local administrative area, and on up to the country level.
 - **gazetteer** - a directory of geographical places, with a stable identifier and some number of descriptive properties about that location.
 
-## Mapzen Search API and developer terms
+## Pelias API and developer terms
 
-- **API endpoint** - an architectural style for accessing web resources through a URL. In Mapzen Search, available endpoints include `search`, `reverse`, and `autocomplete`. You can construct a URL to send queries and receive responses from Mapzen Search.
-- **API key** - a code that identifies the developer account without providing a password. Mapzen Search requires an API key to interact with the search service. Sign up for an API key at https://mapzen.com/developers.
+- **API endpoint** - an architectural style for accessing web resources through a URL. In Pelias, available endpoints include `search`, `reverse`, and `autocomplete`. You can construct a URL to send queries and receive responses from Pelias.
+- **API key** - a code that identifies the developer account without providing a password. Pelias requires an API key to interact with the search service. Sign up for an API key at https://mapzen.com/developers.
 - **autocomplete** - enables real-time feedback when entering text for a search, typically, where users start typing and a drop-down list appears where they can choose the term from the list below. Use the `autocomplete` endpoint to do this.
-- **data source** - the datasets available to Mapzen Search. Only data sources that have open-source licenses are used.
+- **data source** - the datasets available to Pelias. Only data sources that have open-source licenses are used.
 - **focus** - option to make places closer to a particular location be prioritized and appear higher in the search results list. After all nearby results have been found, additional results will come from the rest of the world, without any further location-based prioritization.
-- **layer** - types of places available to Mapzen Search and arranged in a hierarchy, such as an address, a venue, a neighbourhood, or a country.
+- **layer** - types of places available to Pelias and arranged in a hierarchy, such as an address, a venue, a neighbourhood, or a country.
 - **`place` search** - get details on a place if you know the data source, the type of place (such as a venue or address), and the identification number.
 - **structured geocoding** - Assigns geographical coordinates to an address, venue, or other location type that has been broken up into its constituent parts. Use the `search/structured` endpoint to do this.
 
@@ -22,5 +22,5 @@
 
 - **bounding box** - a rectangular area defined by two longitudes and two latitudes (the minimum and the maximum latitude, longitude).
 - **cross-origin resource sharing (CORS)** - standard allowing a web browser and server to accept requests across domains. Without CORS, browsers may not allow cross-site requests because they could be malicious.
-- **latitude** - the distance of a point north or south of the equator. In Mapzen Search, latitudes are expressed in decimal degrees.
-- **longitude** - the distance of a point east or west. In Mapzen Search, longitudes are in relation to the Prime Meridian and expressed in decimal degrees.
+- **latitude** - the distance of a point north or south of the equator. In Pelias, latitudes are expressed in decimal degrees.
+- **longitude** - the distance of a point east or west. In Pelias, longitudes are in relation to the Prime Meridian and expressed in decimal degrees.

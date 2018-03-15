@@ -1,6 +1,6 @@
 # Search results
 
-When requesting results from Mapzen Search, you will always get back GeoJSON results, unless something goes terribly wrong, in which case you'll get an error message.
+When requesting results from Pelias, you will always get back GeoJSON results, unless something goes terribly wrong, in which case you'll get an error message.
 
   Tip: You can go to https://tools.ietf.org/html/rfc7946 to learn more about the GeoJSON data format specification.
 
@@ -65,11 +65,11 @@ Additionally, [/reverse](reverse.md) queries will have a `distance` parameter, w
 
 ## `coordinates`
 
-All results returned from Mapzen Search are points, and can be found in the `coordinates` array. Following the [GeoJSON specification](http://geojson.org/geojson-spec.html#positions), these coordinates are in **longitude, latitude** order.
+All results returned from Pelias are points, and can be found in the `coordinates` array. Following the [GeoJSON specification](http://geojson.org/geojson-spec.html#positions), these coordinates are in **longitude, latitude** order.
 
 ### `gid`
 
-All places in Mapzen Search have a global identifier, known as a `gid`. Each matching record returned from a [/search](search.md), [/autocomplete](autocomplete.md), or [/reverse](reverse.md) geocoding request has a `gid` field.
+All places in Pelias have a global identifier, known as a `gid`. Each matching record returned from a [/search](search.md), [/autocomplete](autocomplete.md), or [/reverse](reverse.md) geocoding request has a `gid` field.
 
 The `gid` consists of a `layer` (such as `address` or `country`), an identifier for the original data source (such as `openstreetmap` or `openaddresses`),  and an `id` for the individual record corresponding to the original source identifier, where possible. This information is also available as properties on the individual results as `layer`, `source`, and `source_id`.
 
@@ -97,7 +97,7 @@ For the [/reverse](reverse.md) endpoint, the confidence score is determined sole
 
 For the [/search](search.md) endpoint, it primarily takes into account how well properties in the result match what was expected from parsing the input text. For example, if the input text looks like an address, but the house number of the result doesn't match the house number that was parsed from the input text, the confidence score will be lower.
 
-Additionally, the confidence score can optionally be biased along with other results, like test scores in a classroom might be graded on a curve. This takes into account both the property matches described above and the distance between results. This relative scoring is enabled on Mapzen Search, but can be turned off when hosting your own Pelias instance.
+Additionally, the confidence score can optionally be biased along with other results, like test scores in a classroom might be graded on a curve. This takes into account both the property matches described above and the distance between results. This relative scoring is enabled on Pelias, but can be turned off when hosting your own Pelias instance.
 
 ### `bbox`
 
@@ -105,7 +105,7 @@ Features from Who's on First and OpenStreetMap often have their own `bbox` eleme
 
 ## Result count
 
-By default, Mapzen Search results 10 places, unless otherwise specified. If you want a different number of results, set the `size` parameter to the desired number. This example shows returning only the first result.
+By default, Pelias results 10 places, unless otherwise specified. If you want a different number of results, set the `size` parameter to the desired number. This example shows returning only the first result.
 
 | parameter | value |
 | :--- | :--- |

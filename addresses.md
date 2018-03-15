@@ -32,7 +32,7 @@ When you search for an address and and there is not a precise match, the interpo
 
 One form of address interpolation involves drawing a line that connects between the nearest known house numbers and placing the interpolated address within a range on that line. This process may work if the road is straight, but often results in the interpolated point being placed at a distance offset from the road network on curved sections.
 
-To improve upon the straight line technique, the Mapzen Search interpolation implementation considers the actual shape of the street when locating a point without a matching address. This results in more accurate location estimation because the interpolated addresses points are placed on the road itself, which also makes it easier for routing and turn-by-turn navigation services to calculate directions for that location.
+To improve upon the straight line technique, the Pelias interpolation implementation considers the actual shape of the street when locating a point without a matching address. This results in more accurate location estimation because the interpolated addresses points are placed on the road itself, which also makes it easier for routing and turn-by-turn navigation services to calculate directions for that location.
 
 If the address was derived using this technique, you see `interpolated` for the `match_type`.
 

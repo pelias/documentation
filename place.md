@@ -1,8 +1,8 @@
 # Search an ID to get details on a place
 
-When you know an identification number and the source it came from, you can use Mapzen Search to get details on the location.
+When you know an identification number and the source it came from, you can use Pelias to get details on the location.
 
-The `/place` endpoint accepts Mapzen Search `gid` strings that get returned for every exactly matched record in query responses. These `gid` strings should not be built manually, but rather used directly as-is to lookup additional details on the location that `gid` refers to.
+The `/place` endpoint accepts Pelias `gid` strings that get returned for every exactly matched record in query responses. These `gid` strings should not be built manually, but rather used directly as-is to lookup additional details on the location that `gid` refers to.
 
 For example, this `/place` query looks up the Eiffel Tower in OpenStreetMap (OSM):
 
