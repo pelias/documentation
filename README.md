@@ -11,9 +11,14 @@ Here is where you can find all documentation for the [Pelias geocoder](https://g
 - [Global coverage with prioritized local results](search.md#prioritize-results-by-proximity)
 - [Structured Geocoding](structured-geocoding.md) to find a place with data already separated into housenumber, street, city, etc
 - [Glossary of common terms](glossary.md)
+- [Place endpoint](place.md) for details on a place returned from a previous query
+- [Language support](language-codes.md) for seeing results in different languages
 
 ### Data Sources
 - [Pelias data sources](data-sources.md)
 
 ### Running your own Pelias
 - [Pelias installation guide](https://github.com/pelias/pelias/blob/master/INSTALL.md)
+
+### Pelias project development
+- [Release notes](release-notes.md). See notable changes in Pelias over time
