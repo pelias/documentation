@@ -1,4 +1,4 @@
-# Mapzen Search: Finding places
+# Pelias: Finding places
 
 Geospatial search, commonly referred to as geocoding, is the process of matching an address to its corresponding geographic coordinates.
 
@@ -6,7 +6,7 @@ There's nothing inherent in the language we use to describe a physical address t
 
 Making the leap from text to coordinates is an intricate and challenging process. Lucky for you, Mapzen has done all the hard work and made it accessible though a web service.
 
-All Mapzen Search requests share the same format:
+All Pelias requests share the same format:
 
 ```
    https://search.mapzen.com/v1/search?text=London&api_key=
@@ -17,7 +17,7 @@ All Mapzen Search requests share the same format:
 
 In addition, you can search at `https://search.mapzen.com/v1/search/structured` to look for individual components of a location.
 
-Mapzen Search works over HTTPS and HTTP. You are strongly encouraged to use HTTPS for all requests, especially for queries involving potentially sensitive information, such as a user's location or search query.
+Pelias works over HTTPS and HTTP. You are strongly encouraged to use HTTPS for all requests, especially for queries involving potentially sensitive information, such as a user's location or search query.
 
 ## Search the world
 
@@ -53,7 +53,7 @@ In the example above, you will find the name of each matched locations in a prop
 * YMCA, Jefferson, OH
 * YMCA, Belleville, IL
 
-Spelling matters, but not capitalization when performing a query with Mapzen Search. You can type `ymca`, `YMCA`, or even `yMcA`. See for yourself by comparing the results of the earlier search to the following:
+Spelling matters, but not capitalization when performing a query with Pelias. You can type `ymca`, `YMCA`, or even `yMcA`. See for yourself by comparing the results of the earlier search to the following:
 
 > [/v1/search?api_key=your-mapzen-api-key&___text=yMcA___](https://mapzen.com/search/explorer/?query=search&text=yMcA)
 
@@ -80,7 +80,7 @@ For more information on how to search this way, see [Structured geocoding](struc
 
 ## Set the number of results returned
 
-By default, Mapzen Search results 10 places, unless otherwise specified. If you want a different number of results, set the `size` parameter to the desired number. This example shows returning only the first result.
+By default, Pelias results 10 places, unless otherwise specified. If you want a different number of results, set the `size` parameter to the desired number. This example shows returning only the first result.
 
 | parameter | value |
 | :--- | :--- |
@@ -96,7 +96,7 @@ If you want 25 results, you can build the query where `size` is 25.
 
 ## Narrow your search
 
-If you are looking for places in a particular region, or country, or only want to look in the immediate vicinity of a user with a known location, you can narrow your search to an area. There are different ways of including a region in your query. Mapzen Search supports three types: country, rectangle, and circle.
+If you are looking for places in a particular region, or country, or only want to look in the immediate vicinity of a user with a known location, you can narrow your search to an area. There are different ways of including a region in your query. Pelias supports three types: country, rectangle, and circle.
 
 ### Search within a particular country
 
@@ -210,7 +210,7 @@ You can see the results have fewer than the standard 10 items because there are 
 If you're going to try using multiple boundary types in a single search request, be aware that the results will come from the intersection of all the boundaries. So, if you provide regions that don't overlap, you'll be looking at an empty set of results.
 
 ## Prioritize results by proximity
-Many use cases call for the ability to promote nearby results to the top of the list, while still allowing important matches from farther away to be visible. Mapzen Search allows you to prioritize results within geographic boundaries, including around a point, within a country, or within a region.
+Many use cases call for the ability to promote nearby results to the top of the list, while still allowing important matches from farther away to be visible. Pelias allows you to prioritize results within geographic boundaries, including around a point, within a country, or within a region.
 
 ### Prioritize around a point
 
@@ -229,7 +229,7 @@ To find YMCA again, but this time near a specific coordinate location (represent
 | `focus.point.lat` | -33.856680 |
 | `focus.point.lon` | 151.215281 |
 
-Looking at the results, you can see that the few locations closer to this location show up at the top of the list, sorted by distance. You also still get back a significant amount of remote locations, for a well balanced mix. Because you provided a focus point, Mapzen Search can compute distance from that point for each resulting feature.
+Looking at the results, you can see that the few locations closer to this location show up at the top of the list, sorted by distance. You also still get back a significant amount of remote locations, for a well balanced mix. Because you provided a focus point, Pelias can compute distance from that point for each resulting feature.
 
 * YMCA, Redfern, New South Wales [distance: 3.836]
 * YMCA, St Ives (NSW), New South Wales [distance: 14.844]
@@ -300,15 +300,15 @@ Looking at these results, they are all less than 50 kilometers away from the foc
 
 ## Filter your search
 
-Mapzen Search brings together data from multiple open sources and combines a variety of place types into a single database, allowing you options for selecting the dataset you want to search.
+Pelias brings together data from multiple open sources and combines a variety of place types into a single database, allowing you options for selecting the dataset you want to search.
 
-With Mapzen Search, you can filter by:
+With Pelias, you can filter by:
 
 * `sources`: the originating source of the data
 * `layers`: the kind of place you want to find
 
 ### Filter by data source
-The search examples so far have returned a mix of results from all the data sources available to Mapzen Search. Here are the sources being searched:
+The search examples so far have returned a mix of results from all the data sources available to Pelias. Here are the sources being searched:
 
 | source | name | short name |
 |---|---|---|
@@ -350,10 +350,10 @@ If you wanted to combine several data sources together, set `sources` to a comma
 | `text` | YMCA |
 | `sources` | osm,gn |
 
-Each of these data sources has properties, licenses, and strengths. You can learn more about the [data sources for Mapzen Search](data-sources.md).
+Each of these data sources has properties, licenses, and strengths. You can learn more about the [data sources for Pelias](data-sources.md).
 
 ### Filter by data type
-In Mapzen Search, place types are referred to as `layers`, ranging from fine to coarse. The Mapzen Search layers are derived from the hierarchy created by the gazetteer [Who's on First](https://github.com/whosonfirst/whosonfirst-placetypes/blob/master/README.md) and can be used to help coarse geocoding. Here's a list of the types of places you could find in the results, sorted by granularity:
+In Pelias, place types are referred to as `layers`, ranging from fine to coarse. The Pelias layers are derived from the hierarchy created by the gazetteer [Who's on First](https://github.com/whosonfirst/whosonfirst-placetypes/blob/master/README.md) and can be used to help coarse geocoding. Here's a list of the types of places you could find in the results, sorted by granularity:
 
 |layer|description|
 |----|----|

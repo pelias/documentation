@@ -8,13 +8,13 @@ Fortunately, techniques have since been developed that allow developers to secur
 
 `CORS` is the recommended standard for allowing your web browser and a web server to negotiate and allow requests to be made across domain contexts. `CORS` is supported in modern Chrome, Firefox, Safari, and Internet Explorer (10+) web browsers. It became a [W3C Recommendation](https://www.w3.org/TR/cors/) in 2014.
 
-You don’t need to do anything special to use `CORS` with JavaScript in a modern browser. Your web browser and the Mapzen Search servers will automatically negotiate the cross-origin request. For example, to make a `CORS` request with `jQuery`, you’d make your request like you were performing it within the context of your own domain.
+You don’t need to do anything special to use `CORS` with JavaScript in a modern browser. Your web browser and the Pelias servers will automatically negotiate the cross-origin request. For example, to make a `CORS` request with `jQuery`, you’d make your request like you were performing it within the context of your own domain.
 
 For a full list of supported browsers see: http://caniuse.com/#feat=cors
 
 ### Add a search box to a Leaflet map
 
-You can add a Mapzen Search box to any [Leaflet](http://leafletjs.com/) map.
+You can add a Pelias box to any [Leaflet](http://leafletjs.com/) map.
 
 See the [Mapzen.js documentation](https://mapzen.com/documentation/mapzen-js/search/#add-mapzen-search-box-to-a-map) for instructions. There is also a [tutorial](add-search-to-a-map.md) available.
 
@@ -68,11 +68,11 @@ Also called “JSON with Padding”, `JSONP` is a technique for fooling a web br
 
 Instead of responding with a `JSON` object, the server responds with JavaScript code that calls a client-declared callback function, passing the data as that function’s first parameter.
 
-`JSONP` **is disabled** by default for Mapzen Search, as `CORS` is offered as a more modern alternative.
+`JSONP` **is disabled** by default for Pelias, as `CORS` is offered as a more modern alternative.
 
 You can find more information online by performing a web search for `"CORS vs JSONP"` and `"Security risks with JSONP"`.
 
-If you are having any issues implementing `CORS` with Mapzen Search, open an issue in the [main Pelias GitHub repository](https://github.com/pelias/pelias/issues). Please include the name of any frameworks you are using and some example code.
+If you are having any issues implementing `CORS` with Pelias, open an issue in the [main Pelias GitHub repository](https://github.com/pelias/pelias/issues). Please include the name of any frameworks you are using and some example code.
 
 ---
 

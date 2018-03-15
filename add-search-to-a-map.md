@@ -1,8 +1,8 @@
-# Add the Mapzen Search geocoder to a map
+# Add the Pelias geocoder to a map
 
-[Mapzen Search](https://mapzen.com/products/search/) is a modern, geographic search service based entirely on open-source tools and open data. Use this functionality to enhance any app that has a geographic context, such as ones that help in delivering goods, locating hotels or venues, or providing local weather forecasts.
+[Pelias](https://mapzen.com/products/search/) is a modern, geographic search service based entirely on open-source tools and open data. Use this functionality to enhance any app that has a geographic context, such as ones that help in delivering goods, locating hotels or venues, or providing local weather forecasts.
 
-Through a process known as [geocoding](https://en.wikipedia.org/wiki/Geocoding), Mapzen Search allows you to enter an address or the name of a landmark or business, and the service translates the result into geographic coordinates for mapping. Mapzen Search is built on [Pelias](pelias.io), an open-source geocoding project.
+Through a process known as [geocoding](https://en.wikipedia.org/wiki/Geocoding), Pelias allows you to enter an address or the name of a landmark or business, and the service translates the result into geographic coordinates for mapping. Pelias is built on [Pelias](pelias.io), an open-source geocoding project.
 
 ## Get ready for the tutorial
 
@@ -230,15 +230,15 @@ Now, you will test your search box by finding a few locations. As you type, the 
 
 ## Customize the geocoder
 
-From a technical perspective, Mapzen Search is a web service with that has various API endpoints that allow you to access web resources through a URL. Behind the scenes, the geocoder is constructing a URL with the parameters you specify and sending it to the Mapzen Search web service. The service returns [human-readable JSON](https://en.wikipedia.org/wiki/JSON), short for JavaScript Object Notation.
+From a technical perspective, Pelias is a web service with that has various API endpoints that allow you to access web resources through a URL. Behind the scenes, the geocoder is constructing a URL with the parameters you specify and sending it to the Pelias web service. The service returns [human-readable JSON](https://en.wikipedia.org/wiki/JSON), short for JavaScript Object Notation.
 
-Mapzen.js provides options for customizing the way you interact with the map, and Mapzen Search is also very flexible. Now that you have a map on your page with a Search box, you can add more features to it. You need to modify the line defining the geocoder to include additional parameters.
+Mapzen.js provides options for customizing the way you interact with the map, and Pelias is also very flexible. Now that you have a map on your page with a Search box, you can add more features to it. You need to modify the line defining the geocoder to include additional parameters.
 
-Up to this point, you have been using the Mapzen Search [\autocomplete](https://mapzen.com/documentation/search/autocomplete/) endpoint, which searches on text as you type it. In this section, you will switch to the [\search](https://mapzen.com/documentation/search/search/) endpoint to see how it behaves. The `autocomplete` functionality helps you find partial matches, whereas `search` prioritizes exact words because it assumes you have finished typing when you perform the query.
+Up to this point, you have been using the Pelias [\autocomplete](https://mapzen.com/documentation/search/autocomplete/) endpoint, which searches on text as you type it. In this section, you will switch to the [\search](https://mapzen.com/documentation/search/search/) endpoint to see how it behaves. The `autocomplete` functionality helps you find partial matches, whereas `search` prioritizes exact words because it assumes you have finished typing when you perform the query.
 
 If you look at your browser's developer tools console as you are doing this, you can see the query URL changes from `https://search.mapzen.com/v1/autocomplete?text=` to `https://search.mapzen.com/v1/search?text=` to reflect the `search` endpoint.
 
-Although you will not be using it in this tutorial, [\reverse](https://mapzen.com/documentation/search/reverse/) is another common Mapzen Search endpoint. It performs reverse geocoding to find the address at a given coordinate location. You can find a listing of all the endpoints and parameters in the [Mapzen Search documentation](https://mapzen.com/documentation/search/).
+Although you will not be using it in this tutorial, [\reverse](https://mapzen.com/documentation/search/reverse/) is another common Pelias endpoint. It performs reverse geocoding to find the address at a given coordinate location. You can find a listing of all the endpoints and parameters in the [Pelias documentation](https://mapzen.com/documentation/search/).
 
 1. Add a variable to allow you to set options for the geocoder. Inside the script tags, and above the geocoder line, add this block.
 
@@ -283,11 +283,11 @@ _Tip: You can install a plug-in for your browser to display JSON in a more forma
 
 ## Choose which data sources to search
 
-Mapzen Search uses a [variety of open data sources](https://mapzen.com/documentation/search/data-sources/), including OpenStreetMap. Part of the power of open data is that anyone can change the source data and improve the quality for everyone. If you are unable to find a location, the place could be missing or incorrect in the source datasets.
+Pelias uses a [variety of open data sources](https://mapzen.com/documentation/search/data-sources/), including OpenStreetMap. Part of the power of open data is that anyone can change the source data and improve the quality for everyone. If you are unable to find a location, the place could be missing or incorrect in the source datasets.
 
 You can choose which data sources to search by passing a parameter for the `sources`. In addition, you need to enclose with single quotation marks any parameter names that use the dot notation (such as `boundary.country`) to make sure JavaScript can parse the text correctly.
 
-As you were searching, you might have noticed results that looked similar. Mapzen Search does perform some elimination, but the differing data sources may still cause seemingly matching results to appear. Choosing a particular data source can reduce the occurrence of duplicated entries.
+As you were searching, you might have noticed results that looked similar. Pelias does perform some elimination, but the differing data sources may still cause seemingly matching results to appear. Choosing a particular data source can reduce the occurrence of duplicated entries.
 
 1. Within the `geocoderOptions` block, add the `params:` list and a parameter for `sources:`. Be sure to add a `,` at the end of the `autocomplete: false` line.
 
@@ -305,7 +305,7 @@ As you were searching, you might have noticed results that looked similar. Mapze
 
 ## Prioritize nearby places and filter search results
 
-Mapzen Search provides options for customizing your search parameters, such as limiting the search to the map's extent or prioritizing results near the current view. Right now, you may notice that results from around the world appear in the list.
+Pelias provides options for customizing your search parameters, such as limiting the search to the map's extent or prioritizing results near the current view. Right now, you may notice that results from around the world appear in the list.
 
 Mapzen.js automatically provides a [focus point](https://mapzen.com/documentation/search/search/#prioritize-around-a-point) for you based on the current map view extent. You can add other parameters to filter the search results, such as to limit the results to a particular country or type of result.
 
@@ -327,11 +327,11 @@ Mapzen.js automatically provides a [focus point](https://mapzen.com/documentatio
 
 ## Filter the results by type of place
 
-In Mapzen Search, types of places are referred to as `layers`, and you can use these to filter your results. For example, if your app has an input form where your users should only be able to enter a city, you can use Mapzen Search to limit the results to show only matching city names. This is common in travel apps, such as searching for a hotel or flight, where you enter a destination city.
+In Pelias, types of places are referred to as `layers`, and you can use these to filter your results. For example, if your app has an input form where your users should only be able to enter a city, you can use Pelias to limit the results to show only matching city names. This is common in travel apps, such as searching for a hotel or flight, where you enter a destination city.
 
 In this section, you will filter the results to search only addresses and venues, which include point of interest, landmarks, and businesses.
 
-You can review the [Mapzen Search documentation](https://mapzen.com/documentation/search/search/#filter-by-data-type) to learn the types of `layers` you can use in a search.
+You can review the [Pelias documentation](https://mapzen.com/documentation/search/search/#filter-by-data-type) to learn the types of `layers` you can use in a search.
 
 1. Within the `geocoderOptions` block, add add a `,` at the end of the `'boundary.country: 'USA'` line and then a parameter for `layers: 'address,venue'` on the next line.
 
@@ -350,9 +350,9 @@ You can review the [Mapzen Search documentation](https://mapzen.com/documentatio
 
 ## Tutorial summary
 
-In this tutorial, you learned the basics of adding the Mapzen Search geocoding engine to a map using [Mapzen.js](https://mapzen.com/documentation/mapzen-js/), and making some customizations to improve the search results.
+In this tutorial, you learned the basics of adding the Pelias geocoding engine to a map using [Mapzen.js](https://mapzen.com/documentation/mapzen-js/), and making some customizations to improve the search results.
 
-If you want to learn more about Mapzen Search, review the [documentation](https://mapzen.com/documentation/search).
+If you want to learn more about Pelias, review the [documentation](https://mapzen.com/documentation/search).
 
 Because the geocoder is still under development and considered experimental, if you are getting unexpected search results, please add an issue to the [Pelias GitHub repository](https://github.com/pelias/pelias/issues). The developers can investigate and decide if the problem is caused by software or data, and work to fix it either way.
 

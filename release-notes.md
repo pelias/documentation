@@ -94,7 +94,7 @@ This release is just a data refresh since it's hard to keep up with the leaps an
 
 ## 27 January 2017
 
-Thanks to some wild activity in the [openaddresses](http://openaddresses.io) project, this is the first Mapzen Search build with over 400 million documents!
+Thanks to some wild activity in the [openaddresses](http://openaddresses.io) project, this is the first Pelias build with over 400 million documents!
 
 We are excited to see open data continue to grow and improve and looking forward to the big half billion milestone. :)
 
@@ -157,7 +157,7 @@ Another data-only release. Stay tuned for next week!
 
 ## 12 September 2016
 
-* Get excited for the addition of ✨ __STREETS__ ✨! That's right, with this release Mapzen Search gets a brand new `street` layer, which contains OSM street centroids. With this addition, if we can't find the exact address you're looking for we'll return the street record. Stay tuned for an in-depth blog post in the next few days. 👏
+* Get excited for the addition of ✨ __STREETS__ ✨! That's right, with this release Pelias gets a brand new `street` layer, which contains OSM street centroids. With this addition, if we can't find the exact address you're looking for we'll return the street record. Stay tuned for an in-depth blog post in the next few days. 👏
 
 ## 7 September 2016
 
@@ -253,7 +253,7 @@ We also have two **known issues** in this build:
 
 ## 08 April 2016
 
-This release marks the official integration of the Mapzen `Who's on First` data set into Mapzen Search. This data is replacing `Quattroshapes` across the entire service. Any forward usage or references to `Quattroshapes` will be replaced with `WhosOnFirst`. This substitution allows us to fix long-standing encoding issues in administrative hierarchy place-names. We've also added a bounding box for individual features in the results, not only the all-encompassing bounding box at the top level of the geojson results. Also, the all-encompassing bounding box will extend to include the bounding boxes of all the features in the results, not only their centroids.
+This release marks the official integration of the Mapzen `Who's on First` data set into Pelias. This data is replacing `Quattroshapes` across the entire service. Any forward usage or references to `Quattroshapes` will be replaced with `WhosOnFirst`. This substitution allows us to fix long-standing encoding issues in administrative hierarchy place-names. We've also added a bounding box for individual features in the results, not only the all-encompassing bounding box at the top level of the geojson results. Also, the all-encompassing bounding box will extend to include the bounding boxes of all the features in the results, not only their centroids.
 Another major improvement that many have been waiting for is the addition of more filters for the `/autocomplete` endpoint. Users can now ask `/autocomplete` to filter by `layers` and `sources`, as documented [here](https://mapzen.com/documentation/search/autocomplete/#available-autocomplete-parameters).
 See the detailed list of changes below for more specifics.
 

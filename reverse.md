@@ -2,7 +2,7 @@
 
 Reverse geocoding is used for finding places or addresses near a latitude, longitude pair&mdash;like clicking on a map to see what's there when the map doesn't show it otherwise. For example, picture a map showing building outlines but no labels, then clicking on a building and being shown the name of the business. That's reverse geocoding.
 
-With reverse geocoding with Mapzen Search, you can look up all sorts of information about points on a map, including:
+With reverse geocoding with Pelias, you can look up all sorts of information about points on a map, including:
 
 * addresses
 * points of interest (businesses, museums, parks, and so on)
@@ -20,7 +20,7 @@ The output is the standard GeoJSON format.
 
 ## Reverse geocoding parameters
 
-Like other queries with Mapzen Search, reverse geocoding has optional, additional parameters you can use to refine results.
+Like other queries with Pelias, reverse geocoding has optional, additional parameters you can use to refine results.
 
 Parameter | Type | Required | Default | Example
 --- | --- | --- | --- | ---
@@ -43,7 +43,7 @@ The default value for `size` is `10` and the maximum value is `40`. Specifying a
 
 ### Filter by data source
 
-By default, reverse geocoding returns results from any [data source](data-sources.md) available to Mapzen Search. To filter results by source, specify one or more valid source names in a comma-delimited list using the `sources` parameter. For example, the following request returns only results from OpenStreetMap:
+By default, reverse geocoding returns results from any [data source](data-sources.md) available to Pelias. To filter results by source, specify one or more valid source names in a comma-delimited list using the `sources` parameter. For example, the following request returns only results from OpenStreetMap:
 
 | source | name | short name |
 |---|---|---|
