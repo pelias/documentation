@@ -18,8 +18,7 @@ To focus your search based upon a geographical area, such as the center of the u
 
 From San Francisco:
 
->
-[/v1/autocomplete?api_key=your-mapzen-api-key&__focus.point.lat=37.7&focus.point.lon=-122.4&text=union square__](https://mapzen.com/search/explorer/?query=autocomplete&focus.point.lat=37.7&focus.point.lon=-122.4&text=union square)
+> /v1/autocomplete?__focus.point.lat=37.7&focus.point.lon=-122.4__&text=union square
 
 ```
 1)	Union Square, San Francisco County, CA
@@ -28,8 +27,7 @@ From San Francisco:
 
 From New York City:
 
->
-[/v1/autocomplete?api_key=your-mapzen-api-key&__focus.point.lat=40.7&focus.point.lon=-73.9&text=union square__](https://mapzen.com/search/explorer/?query=autocomplete&focus.point.lat=40.7&focus.point.lon=-73.9&text=union square)
+> /v1/autocomplete?__focus.point.lat=40.7&focus.point.lon=-73.9__&text=union square
 
 ```
 1)	Union Square, New York County, NY
@@ -38,7 +36,7 @@ From New York City:
 
 The `/autocomplete` endpoint can promote nearby results to the top of the list, while still allowing important matches from farther away to be visible. For example, searching `hard rock cafe` with a focus on Berlin:
 
-> [/v1/autocomplete?api_key=your-mapzen-api-key&__focus.point.lat=52.5&focus.point.lon=13.3&text=hard rock cafe__](https://mapzen.com/search/explorer/?query=autocomplete&focus.point.lat=52.5&focus.point.lon=13.3&text=hard rock cafe)
+> /v1/autocomplete?__focus.point.lat=52.5&focus.point.lon=13.3__&text=hard rock cafe
 
 with `focus.point` you will find the Berlin restaurant first:
 ```
@@ -65,7 +63,7 @@ The `sources` parameter allows you to specify from which data sources you'd like
 * `geonames` or `gn`
 * `whosonfirst` or `wof`
 
-> [/v1/autocomplete?api_key=your-mapzen-api-key&__sources=openaddresses__&text=pennsylvania](https://mapzen.com/search/explorer/?query=autocomplete&sources=openaddresses&text=pennsylvania)
+> /v1/autocomplete?__sources=openaddresses__&text=pennsylvania
 
 with `sources=openaddresses` you will only find addresses on Pennsylvania Ave or Street:
 ```
@@ -101,7 +99,7 @@ The type of record is referred to as its `layer`. All records are indexed into t
 |`neighbourhood`|social communities, neighbourhoods|
 |`coarse`|alias for simultaneously using all administrative layers (everything except `venue` and `address`)|
 
-> [/v1/autocomplete?api_key=your-mapzen-api-key&__layers=coarse__&text=starbuck](https://mapzen.com/search/explorer/?query=autocomplete&layers=coarse&text=starbuck)
+> /v1/autocomplete?__layers=coarse__&text=starbuck
 
 with `layers=coarse` you will see only administrative areas with names containing Starbuck
 
@@ -129,7 +127,6 @@ Sometimes your work might require that all the search results be from a particul
 
 | Parameter | Type | Required | Default | Example |
 | --- | --- | --- | --- | --- |
-| `api_key` | string | yes | none | [get yours here](https://mapzen.com/developers) |
 | `text` | string | yes | none | `Union Square` |
 | `focus.point.lat` | floating point number | no | none | `48.581755` |
 | `focus.point.lon` | floating point number | no | none | `7.745843` |
