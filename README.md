@@ -14,7 +14,6 @@ Here is where you can find all documentation for the [Pelias geocoder](https://g
 
 ### Data Sources
 - [Pelias data sources](data-sources.md)
-- [Tools for embedding search](https://mapzen.com/documentation/mapzen-js/search/) in a map
 
 ### Running your own Pelias
 - [Pelias installation guide](https://github.com/pelias/pelias/blob/master/INSTALL.md)
