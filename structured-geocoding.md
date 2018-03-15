@@ -129,7 +129,7 @@ _Examples_
 
 ## Who's On First layer mappings reference
 
-The [Who's on First](https://whosonfirst.org/) gazetteer is one of the datasets used as a source of search data. Use this table is a reference between the parameters for structured geocoding and the [types of places in Who's on First](https://whosonfirst.mapzen.com/placetypes/).
+The [Who's on First](https://whosonfirst.org/) gazetteer is one of the datasets used as a source of search data. Use this table is a reference between the parameters for structured geocoding and the [types of places in Who's on First](https://whosonfirst.org/placetypes/).
 
 | Structured geocoding parameter | Who's on First placetype |
 | -------------------- | ------------------------- |
