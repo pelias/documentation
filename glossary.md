@@ -10,7 +10,6 @@
 ## Pelias API and developer terms
 
 - **API endpoint** - an architectural style for accessing web resources through a URL. In Pelias, available endpoints include `search`, `reverse`, and `autocomplete`. You can construct a URL to send queries and receive responses from Pelias.
-- **API key** - a code that identifies the developer account without providing a password. Pelias requires an API key to interact with the search service. Sign up for an API key at https://mapzen.com/developers.
 - **autocomplete** - enables real-time feedback when entering text for a search, typically, where users start typing and a drop-down list appears where they can choose the term from the list below. Use the `autocomplete` endpoint to do this.
 - **data source** - the datasets available to Pelias. Only data sources that have open-source licenses are used.
 - **focus** - option to make places closer to a particular location be prioritized and appear higher in the search results list. After all nearby results have been found, additional results will come from the rest of the world, without any further location-based prioritization.
