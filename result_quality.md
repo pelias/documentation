@@ -3,11 +3,6 @@
 Each result returned from Pelias contains several different properties to help you programmatically determine if a result is good enough for your purposes.
 
 
-### layer
-This is essentially what type of result was returned, for example whether the result was an address, a city, or a country (a [full list](https://github.com/pelias/documentation/blob/master/search.md#filter-by-data-type) of possible layers can be found in the search endpoint documentation).
-
-The `layers` parameter can be used to filter on this if you know ahead of time what you want. Results returned that are of a different layer than you expect generally mean incorrect results.
-
 ### match\_type
 
 This field is present on queries to the [search](search.md) and [structured search](structured-geocoding.md) endpoints only.
@@ -51,6 +46,12 @@ For **forward geocoding and autocomplete**, several factors affect the score. Th
 
 In all cases, confidence scores for `fallback` results will be reduced.
 
+### layer
+This is essentially what type of result was returned, for example whether the result was an address, a city, or a country (a [full list](https://github.com/pelias/documentation/blob/master/search.md#filter-by-data-type) of possible layers can be found in the search endpoint documentation).
+
+The `layers` parameter can be used to filter out undesired results if you know ahead of time what you want.
+
+Results that have a `layer` value that you did not expect generally represent a fallback scenario, and should be checked carefully.
 
 ### accuracy
 
@@ -59,3 +60,5 @@ The accuracy field gives information on the accuracy of the latitude/longitude p
 `point` results are generally addresses, venues, or interpolated addresses. A point result means the record represents a record that can reasonably be represented by a single latitude/longitude point.
 
 `centroid` results, on the other hand, are records that represent a larger area, such as a city or country. Pelias cannot currently return results with geometries made of polygons or lines, so all such records are estimated with a centroid.
+
+In the future, Pelias will [likely add support for proper complex geometries](https://github.com/pelias/whosonfirst/issues/19).
