@@ -17,7 +17,7 @@ All Pelias requests share the same format:
 
 In the simplest search, you can provide only one parameter, the text you want to match in any part of the location details. To do this, build a query where the `text` parameter is set to the item you want to find.
 
-For example, if you want to find a [YMCA](https://en.wikipedia.org/wiki/YMCA) facility, here's what you'd need to append to the base URL of the service, `search.mapzen.com`.
+For example, if you want to find a [YMCA](https://en.wikipedia.org/wiki/YMCA) facility, here's what you'd need to append to the base URL of the service.
 
 > [/v1/search?__text=YMCA__](http://pelias.github.io/compare/#/v1/search%3Ftext=YMCA)
 
