@@ -13,6 +13,8 @@ Here is where you can find all documentation for the [Pelias geocoder](https://g
 - [Structured Geocoding](structured-geocoding.md) (**/v1/search/structured**) to find a place with data already separated into housenumber, street, city, etc
 - [Place endpoint](place.md) (**/v1/place**) for details on a place returned from a previous query
 
+_Not sure which Endpoint to use? We have a [page](search-workflows.md) for that_
+
 #### Query parameters and options
 - [Global coverage with prioritized local results](search.md#prioritize-results-by-proximity)
 - [Language support](language-codes.md) for seeing results in different languages
