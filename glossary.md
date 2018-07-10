@@ -5,6 +5,7 @@
 - **geocoding** - the process of converting an address or the name of a landmark or business into a latitude, longitude pair. Sometimes referred to as forward geocoding. Use the `search` endpoint to do this.
 - **reverse geocoding** - the process of converting a latitude, longitude pair into the name and address of the nearest place. Use the `reverse` endpoint to do this.
 - **coarse geocoding** - adds regions and administrative boundaries to the geocoding process. Coarse forward geocoding limits a search to a particular region, while coarse reverse geocoding converts a geographic coordinate pair into the administrative boundary hierarchy containing it, such as from the neighbourhood to the local administrative area, and on up to the country level.
+- **administrative area** - a catch-all term for any area that might sub-divide the world, such as a city, neighbourhood, country, continent, etc. Usually, but not always, these correspond to various government administrations, hence administrative area.
 - **gazetteer** - a directory of geographical places, with a stable identifier and some number of descriptive properties about that location.
 
 ## Pelias API and developer terms
