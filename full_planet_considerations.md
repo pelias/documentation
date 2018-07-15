@@ -44,6 +44,20 @@ having as few shards as possible is best. At [geocode.earth](https://geocode.ear
 experimenting with 12 shard builds, and may eventually move to 6. We would appreciate performance
 feedback from anyone doing large builds.
 
+The `elasticsearch` section of `pelias.json` can be used to configure the shard count.
+
+```js
+{
+  "elasticsearch": {
+    "settings": {
+      "index": {
+        "number_of_shards": "5",
+      }
+    }
+  }
+}
+```
+
 ### Force merge your Elasticsearch indices
 
 Pelias Elasticserach indices are generally static, as we do not recommend querying from and
