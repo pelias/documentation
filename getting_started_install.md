@@ -32,4 +32,4 @@ Running Pelias for a city or small country is pretty easy. However, due to the a
 involved, a full planet build is harder to pull off.
 
 See our [full planet build guide](full_planet_considerations.md) for some recommendations on how to
-make it easier and more performant
+make it easier and more performant.
