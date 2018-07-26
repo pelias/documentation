@@ -6,12 +6,6 @@ Attribution is required for many of data providers. Some license information is 
 
 ## OpenAddresses
 
-`sources=openaddresses` | `sources=oa`
-
-Layers:
-
-- `address`
-
 [OpenAddresses](http://openaddresses.io/) is a collection of over 300 million addresses around the world. Data in OpenAddresses only comes from national, state, and local governments, so this data is highly authoritative. Because it consists of entirely bulk imports, OpenAddresses is a large, global, and rapidly growing dataset. Many countries, particularly in Europe, now have every address represented in OpenAddresses.
 
 OpenAddresses is by far the largest dataset by number of records used by Pelias. Even though it only contains address data (as in no building names or other metadata), it's a great resource for global geocoding.
@@ -20,21 +14,6 @@ The license for each individual source within OpenAddresses differs. Many of the
 *Note:* Pelias does _not_ currently return license information directly, but the license and attribution requirements for each source within OpenAddresses can be determined from the machine-readable [state.txt](http://results.openaddresses.io/state.txt) file published on the OpenAddresses website.
 
 ## Who's on First
-
-`sources=whosonfirst` | `sources=wof`
-
-Layers:
-
-- `country`
-- `macroregion`
-- `region`
-- `macrocounty`
-- `county`
-- `localadmin`
-- `locality`
-- `borough`
-- `neighbourhood`
-- `coarse` (alias for simultaneously using all the above)
 
 [Who's on First](https://www.whosonfirst.org/) is an open-data directory of worldwide administrative places. Originally started at Mapzen, it is the primary provider of:
 
@@ -52,14 +31,6 @@ Additionally, for addresses, venues, and points of interest coming from OpenStre
 
 ## OpenStreetMap
 
-`sources=openstreetmap` | `sources=osm`
-
-Layers:
-
-- `address`
-- `venue`
-- `street`
-
 [OpenStreetMap](https://www.openstreetmap.org/) is a community-driven, editable map of the world. It prioritizes local knowledge and individual contributions over bulk imports, which often means it has excellent coverage even in remote areas where no large-scale mapping efforts have been attempted. OpenStreetMap contains information on landmarks, buildings, roads, and natural features.
 
 With its coverage of roads as well as rich metadata, OpenStreetMap is arguably the most valuable dataset used by Pelias for general usage.
@@ -69,20 +40,6 @@ All OpenStreetMap data is licensed under the [ODbL](http://opendatacommons.org/l
 **Note:** There are _two_ importers for OSM data. The main importer, [pelias/openstreetmap](https://github.com/pelias/openstreetmap/), handles venues and addresses. The [pelias/polylines](https://github.com/pelias/polylines) importer handles streets, since dealing with line geometry is a special challenge.
 
 ## Geonames
-
-`sources=geonames` | `sources=gn`
-
-Layers:
-
-- `venue`
-- `country`
-- `macroregion`
-- `region`
-- `county`
-- `localadmin`
-- `locality`
-- `neighbourhood`
-- `coarse` (alias for simultaneously using all the above)
 
 [Geonames](http://www.geonames.org/) is an aggregation of many authoritative and non-authoritative datasets. It contains information on everything from country borders to airport names to geographical features. While Geonames does not contain any shape data (such as country borders), it does have a powerful and well defined hierarchy to describe the relationships between different records. This custom hierarchy makes it harder to use in combination with data from other sources, but the  [Who's On First](https://www.whosonfirst.org) project will help by providing concordance between Geonames and other datasets.
 
@@ -94,8 +51,6 @@ Geonames data is licensed [CC-BY-3.0](http://creativecommons.org/licenses/by/3.0
 Certain data sources used to be supported by Pelias but are no longer offered part of the core service and have been superseded by a new data source.
 
 ## Quattroshapes
-
-`sources=quattroshapes` | `sources=qs`
 
 Quattroshapes used to be supported by Pelias and its use was discontinued in April 2016. The importer can still be found at [pelias-deprecated/quattroshapes](https://github.com/pelias-deprecated/quattroshapes).
 
