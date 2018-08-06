@@ -35,6 +35,7 @@ _Not sure which Endpoint to use? We have a [page](search-workflows.md) for that_
 
 ### Pelias project development
 - [Release notes](release-notes.md). See notable changes in Pelias over time
+- [Development roadmap](development_roadmap.md). Plans for future improvements to Pelias. Read this to see what's coming and how you can help
 
 ### Misc
 - [Glossary of common terms](glossary.md)
