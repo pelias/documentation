@@ -7,7 +7,7 @@ Each result returned from Pelias contains several different properties to help y
 
 This field is present on queries to the [search](search.md) and [structured search](structured-geocoding.md) endpoints only.
 
-There are three possible values: `exact`, `interpolated`, and `fallback`;
+There are three possible values: `exact`, `interpolated`, and `fallback`.
 
 If Pelias found exactly what it believes you were looking for, the `match_type` value will be `exact`.
 
@@ -17,7 +17,7 @@ If Pelias wasn't able to return exactly what it thinks you asked for, it will tr
 
 #### Some examples:
 
-A query for [1600 Pennsylvania Avenue, Seattle, Washington](/v1/search?text=1600 Pennsylvania Avenue, Seattle, WA) returns the city of Seattle, since there is no Pennsylvania Avenue in Seattle. In previous versions of Pelias, this query would return 1600 Pennsylvania Avenue addresses in other parts of the world (such as the famous White House address in Washington, D.C.).
+A query for [1600 Pennsylvania Avenue, Seattle, Washington](http://pelias.github.io/compare/#/v1/search%3Ftext=1600%20Pennsylvania%20Avenue,%20Seattle,%20WA) returns the city of Seattle, since there is no Pennsylvania Avenue in Seattle. In previous versions of Pelias, this query would return 1600 Pennsylvania Avenue addresses in other parts of the world (such as the famous White House address in Washington, D.C.).
 
 A query for [France](http://pelias.github.io/compare/#/v1/search%3Ftext=France) will return one result, with `match_type` `exact`. However, a query for the non-existent city of [Berlin, France](http://pelias.github.io/compare/#/v1/search%3Ftext=France) will also return France, but in this case with a match type of `fallback`. Pelias knows you were looking for something in the country of France called Berlin. It couldn't find it, so instead of returning one of the many [other Berlins](http://pelias.github.io/compare/#/v1/search%3Ftext=berlin), it returns France. This demonstrates that the `match_type` value depends on the query _and_ the result.
 
