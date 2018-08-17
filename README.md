@@ -10,7 +10,7 @@ Here is where you can find all documentation for the [Pelias geocoder](https://g
 - [Forward geocoding](search.md) (**/v1/search**) to find a place by searching for an address or name
 - [Reverse geocoding](reverse.md) (**/v1/reverse**) to find what is located at a certain coordinate location
 - [Autocomplete](autocomplete.md) (**/v1/autocomplete**) to give real-time result suggestions without having to type the whole location
-- [Structured Geocoding](structured-geocoding.md) (**/v1/search/structured**) to find a place with data already separated into housenumber, street, city, etc
+- [Structured Geocoding](structured-geocoding.md) (**/v1/search/structured**) (*beta*) to find a place with data already separated into housenumber, street, city, etc
 - [Place endpoint](place.md) (**/v1/place**) for details on a place returned from a previous query
 
 _Not sure which Endpoint to use? We have a [page](search-workflows.md) for that_
