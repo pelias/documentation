@@ -26,7 +26,7 @@ Parameter | Type | Required | Default | Example
 --- | --- | --- | --- | ---
 `point.lat` | floating point number | yes | none | `48.858268`
 `point.lon` | floating point number | yes | none | `2.294471`
-`boundary.circle.radius` | floating point number | no | 1 | `35` 
+`boundary.circle.radius` | floating point number | no | 1 | `35`
 `size` | integer | no | `10` | `3`
 `layers` | comma-delimited string array | no | none (all layers) | `address,locality`
 `sources` | comma-delimited string array | no | none (all sources) | `oa,gn`

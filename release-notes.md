@@ -68,7 +68,7 @@ Our new Placeholder service queries were working great, except they weren't retu
 ### New features
 * Our first big ticket item is technically a new feature, a code level change, and a bug fix all in one! We've created a standalone microservice whose job it is to handle point-in-polygon requests. So with this release, all reverse queries specifying admin layers will be directed to this new service, instead of going to Elasticsearch like it used to. As a user, you won't see any difference in the interface to these types of requests and you don't have to take any action to use the new functionality. However, faster and better results will be apparent!
 * Our second big ticket item (we know, 2 in one release is awesome sauce!) is the long awaited upgrade to `libpostal 1.0`. This is again a code level change that doesn't have any user interface implications but yield significant improvements in results. We can tell just by the number of [old issues we were able to resolve](https://github.com/pelias/pelias/milestone/49?closed=1) as a result of this upgrade that this is a big moment for the Pelias engine. High-fives all around!
-* You know how we started supporting search queries with only postalcodes in them, like `/v1/search?text=90210`? Well get excited, because we've added the ability to handle postalcode only queries in `structured` search as well! So queries like `/v1/search/structures?postalcode=90210` will now work. More info [here](https://mapzen.com/documentation/search/structured-geocoding/#postalcode).
+* You know how we started supporting search queries with only postalcodes in them, like `/v1/search?text=90210`? Well get excited, because we've added the ability to handle postalcode only queries in `structured` search as well! So queries like `/v1/search/structures?postalcode=90210` will now work. More info [here](structured-geocoding.md#postalcode).
 * We fixed a few minor bugs related to address interpolation. There were cases where the results had a mix of street centroids and addresses and the correct address was not showing up first. More details [here](https://github.com/pelias/pelias/issues/528).
 * There was an [issue with geonames admin records](https://github.com/pelias/pelias/issues/539) having incorrect ids in their admin hierarchy properties. They were basically masquerading as Who's on First ids leading to invalid results and general chaos. Well no more. We fixed it.
 
@@ -142,7 +142,7 @@ This week includes only code changes, no data updates. Our production build fail
 
 ## 24 October 2016
 
-* The `/v1/autocomplete` endpoint now supports [boundary.rect](https://mapzen.com/documentation/search/search/#search-within-a-rectangular-region) just like `/v1/search`
+* The `/v1/autocomplete` endpoint now supports [boundary.rect](search.md#search-within-a-rectangular-region) just like `/v1/search`
 * Labels for administrative areas should be [improved in a few cases](https://github.com/pelias/whosonfirst/pull/139)
 
 ## 10 October 2016
@@ -215,7 +215,7 @@ We also have two **known issues** in this build:
 * As part of the Elasticsearch 2 upgrade we've also improved a few edge cases for searching for numeric values, and with single character tokens. You can [read more](https://github.com/pelias/pelias/issues/325#issuecomment-230724630) in the Github issue for the upgrade.
 * We've also fixed some lingering issues where a few places in Denmark were listed as [being part of Sweden](https://github.com/pelias/pelias/issues/368). This was due to the same data bug as mentioned in our recent [blog post](https://mapzen.com/blog/assult-on-copenhagen/).
 * The OpenAddresses importer now has better [whitespace cleanup](https://github.com/pelias/openaddresses/pull/130), so there won't be any extra spaces in street names.
-* We recently added data to new [layers](https://mapzen.com/documentation/search/search/#filter-by-data-type) in Geonames, but the API didn't know about it, and prevented you from searching for them. We [fixed it](https://github.com/pelias/api/pull/573).
+* We recently added data to new [layers](search.md#filter-by-data-type) in Geonames, but the API didn't know about it, and prevented you from searching for them. We [fixed it](https://github.com/pelias/api/pull/573).
 
 ## 13 June 2016
 
@@ -254,7 +254,7 @@ We also have two **known issues** in this build:
 ## 08 April 2016
 
 This release marks the official integration of the Mapzen `Who's on First` data set into Pelias. This data is replacing `Quattroshapes` across the entire service. Any forward usage or references to `Quattroshapes` will be replaced with `WhosOnFirst`. This substitution allows us to fix long-standing encoding issues in administrative hierarchy place-names. We've also added a bounding box for individual features in the results, not only the all-encompassing bounding box at the top level of the geojson results. Also, the all-encompassing bounding box will extend to include the bounding boxes of all the features in the results, not only their centroids.
-Another major improvement that many have been waiting for is the addition of more filters for the `/autocomplete` endpoint. Users can now ask `/autocomplete` to filter by `layers` and `sources`, as documented [here](https://mapzen.com/documentation/search/autocomplete/#available-autocomplete-parameters).
+Another major improvement that many have been waiting for is the addition of more filters for the `/autocomplete` endpoint. Users can now ask `/autocomplete` to filter by `layers` and `sources`, as documented [here](autocomplete.md#available-autocomplete-parameters).
 See the detailed list of changes below for more specifics.
 
 * Switched from `Quattroshapes` to `WhosOnFirst` as the canonical source for administrative hierarchies and corresponding geometries.

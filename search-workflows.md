@@ -26,7 +26,7 @@ You might have data that is broken up into columns, where each column represents
 
 You should use structured geocoding (`/search/structured`) for this scenario. If you already know which part of the address corresponds to which field, there is no need to concatenate them all together only to need to break them up again to search. This will help avoid potential errors in both the concatenation and the parsing processes.
 
-Your columns might vary depending on your database design or input forms used to collect the data, so it is okay if your columns have different names as the ones in this example. Structured geocoding supports a variety of [address parts](https://mapzen.com/documentation/search/structured-geocoding/#structured-geocoding-parameters) so you can map your columns to each part as needed.
+Your columns might vary depending on your database design or input forms used to collect the data, so it is okay if your columns have different names as the ones in this example. Structured geocoding supports a variety of [address parts](structured-geocoding.md#structured-geocoding-parameters) so you can map your columns to each part as needed.
 
 _Tip: Use filters if you know more information about your data or want to limit the search in some way. You can filter by country, rectangle, or circle. So, for example, notice all the data in the example is in `GBR`. The more specific you can be in your search requests, the less likely you are to receive an unexpected result._
 

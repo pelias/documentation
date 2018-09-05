@@ -124,7 +124,7 @@ To display a Leaflet map on a page, you need a `<div>` element, which is a conta
     </script>
     ```
 
-4. Inside the same `<script>` tag, and after the code you just added for the API key, initialize a map.  
+4. Inside the same `<script>` tag, and after the code you just added for the API key, initialize a map.
 
     ```html
     <script>

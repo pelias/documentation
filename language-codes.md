@@ -30,7 +30,7 @@ You can include the language code in the HTTP request header with the `Accept-La
 
 ## Language properties in the response
 
-The response contains information about the language being returned, which can be helpful for debugging.  
+The response contains information about the language being returned, which can be helpful for debugging.
 
 ```
 {

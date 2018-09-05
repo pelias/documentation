@@ -54,7 +54,7 @@ If the address was derived using this technique, you see `interpolated` for the 
 
 In some scenarios, good matches cannot be found for what you enter, so fallback behavior occurs. Some examples where this occurs includes if a street is misspelled, the street name changes (such as `West Broadway` turns into `East Main Street`), or the street name does not exist in a city.
 
-When this happens, the approach is to first try the most specific combination of analyzed fields, then fall back to coarser combinations until a result is returned. For example, if you enter a street address that is not in the city you specified, the house number and street are dropped, and the search attempts to match the city and state names only.  
+When this happens, the approach is to first try the most specific combination of analyzed fields, then fall back to coarser combinations until a result is returned. For example, if you enter a street address that is not in the city you specified, the house number and street are dropped, and the search attempts to match the city and state names only.
 
 The search currently supports only address points and not house number interpolation. This means that if a house number is not an address point in the data being searched, the behavior is to fall back to the street name. For example, `32 W 26th Street, New York, NY` is not an address point in the available data, but `W 26th Street, New York, NY` does exist. Therefore, only a street result is returned.
 
@@ -64,4 +64,4 @@ If you enter a city that is not found in a particular state, the results will fa
 
 ## Poor address search results
 
-If the search is unable to return any results based on the address, it functions more as a geographic search engine than a geocoder. When this happens, you may see fuzzy text-matching behavior. For example, the input `10 Main Street, United States of America` is parsed as a street and country but the search only supports `United States` and `USA`, so no results would be returned.  In this case, you may see results that match some of the inputs, including `10 Main Street, Fair Haven, VT, USA` and `10 Main Street, Swanland, England, United Kingdom`.  
+If the search is unable to return any results based on the address, it functions more as a geographic search engine than a geocoder. When this happens, you may see fuzzy text-matching behavior. For example, the input `10 Main Street, United States of America` is parsed as a street and country but the search only supports `United States` and `USA`, so no results would be returned.  In this case, you may see results that match some of the inputs, including `10 Main Street, Fair Haven, VT, USA` and `10 Main Street, Swanland, England, United Kingdom`.
