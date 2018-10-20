@@ -83,38 +83,20 @@ At a minimum, you'll need
 
 
 Here's a bash snippet that will download all the repositories (they are all small enough that you don't
-have to worry about the space of the code itself), check out the production branch (which is
-probably the one you want), and install all the node module dependencies.
+have to worry about the space of the code itself) and install all the node module dependencies.
 
 ```bash
 for repository in schema whosonfirst geonames openaddresses openstreetmap polylines api placeholder
 interpolation pip-service; do
 	git clone https://github.com/pelias/${repository}.git # clone from Github
 	pushd $repository > /dev/null                         # switch into importer directory
-	git checkout production                               # or remove this line to stay with master
 	npm install                                           # install npm dependencies
 	popd > /dev/null                                      # return to code directory
 done
 ```
 
-<details>
-  <summary>Not sure which branch to use?</summary>
-
-Pelias uses three diferent branches as part of our release process.
-
-`production` **(recommended)**: contains only code that has been well tested, generally against a
-full-planet build. This is the "safest" branch and it will change the least frequently, although we
-generally release new code at least once a week.
-
-`staging`: these branches contain the code that is currently being tested against a full planet
-build for imminent release. It's useful to track what code will be going out in the next release,
-but not much else.
-
-`master`: master branches contain the latest code that has passed code review, unit/integration
-tests, and is reasonably functional. While we try to avoid it, the nature of the master branch is
-that it will sometimes be broken. That said, these are the branches to use for development of new
-features.
-</details>
+**Note:** Pelas used to use `production` branches for stable development. The
+master branch is [now used for that purpose](https://github.com/pelias/pelias/issues/749).
 
 ### Customize Pelias Config
 
