@@ -38,8 +38,8 @@ used to perform actual geocoding.
 
 ### Shard count
 
-Historically, Mapzen Search has used 24 Elasticsearch shards for its builds. However, our latest
-guidance from the Elasticsearch team is that shards should be no larger than 50GB, but otherwise
+Historically, Mapzen Search has used 24 Elasticsearch shards for its builds. However, the latest
+[guidance from the Elasticsearch team](https://www.elastic.co/blog/how-many-shards-should-i-have-in-my-elasticsearch-cluster) is that shards should be no larger than 50GB, but otherwise
 having as few shards as possible is best. At [geocode.earth](https://geocode.earth) we are
 experimenting with 12 shard builds, and may eventually move to 6. We would appreciate performance
 feedback from anyone doing large builds.
