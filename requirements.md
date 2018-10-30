@@ -6,14 +6,12 @@ install all our dependencies yourself.
 
 ## Node.js
 
-Version 6 or newer
+Most Pelias code is written in Node.js.
 
-Most Pelias code is written in Node.js. Node.js 8 is recommended.
-Node.js 10 is not as well tested with Pelias yet, but should offer notable performance increases and
-may become the recommendation soon.
+Version 8 or newer is required, version 10 is recommended for improved performance.
 
-We will probably drop support for Node.js 6 in the near future, so that we can use the many features
-supported only in version 8 and above.
+Pelias generally only adds support for even numbered [LTS](https://github.com/nodejs/Release#release-schedule) Node.js versions.
+However we gladly accept patches and bug reports regarding issues with any Node.js version that has not reached end-of-life.
 
 ## Elasticsearch
 
