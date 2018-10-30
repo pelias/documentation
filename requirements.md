@@ -25,7 +25,7 @@ Support for [Elasticsearch 5](https://github.com/pelias/pelias/issues/461) is ne
 
 ## SQLite
 
-Version 3.11 or newerr
+Version 3.11 or newer
 
 Some components of Pelias need a relational database, and Elasticsarch does not provide good
 relational support. We use SQLite in these cases since it's simple to manage and quite performant.
