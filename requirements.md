@@ -15,11 +15,13 @@ However we gladly accept patches and bug reports regarding issues with any Node.
 
 ## Elasticsearch
 
-Version 2.3 or 2.4
+Version 2.4 or 5.6
 
 The core data storage for Pelias is Elasticsearch. We recommend the latest in the 2.4 release line.
 
-We do not _yet_ support Elasticsearch 5 or 6, but work is [ongoing](https://github.com/pelias/pelias/issues/461)
+Support for [Elasticsearch 5](https://github.com/pelias/pelias/issues/461) is new and should not yet be considered production-ready.
+
+[Elasticsearch 6](https://github.com/pelias/pelias/issues/719) support will follow once Elasticsearch 5 has been the recommended version for some time.
 
 ## SQLite
 
