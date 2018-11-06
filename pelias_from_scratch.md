@@ -86,8 +86,7 @@ Here's a bash snippet that will download all the repositories (they are all smal
 have to worry about the space of the code itself) and install all the node module dependencies.
 
 ```bash
-for repository in schema whosonfirst geonames openaddresses openstreetmap polylines api placeholder
-interpolation pip-service; do
+for repository in schema whosonfirst geonames openaddresses openstreetmap polylines api placeholder interpolation pip-service; do
 	git clone https://github.com/pelias/${repository}.git # clone from Github
 	pushd $repository > /dev/null                         # switch into importer directory
 	npm install                                           # install npm dependencies
