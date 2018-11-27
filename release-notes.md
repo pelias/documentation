@@ -33,7 +33,7 @@ Over the last few days we have fixed [several](https://github.com/pelias/api/pul
 ### New features
 * We now support the ability to specify the admin hierarchy part of an address query in any language
 (as long as a name in that language can be found in WOF), for example searching for
-[30 w 26th st, Нью Йорк, 미국](https://mapzen.com/search/explorer/?query=search&text=30%20w%2026th%20st%2C%20%D0%9D%D1%8C%D1%8E%20%D0%99%D0%BE%D1%80%D0%BA%2C%20%EB%AF%B8%EA%B5%AD) works like magic!
+[30 w 26th st, Нью Йорк, 미국](http://pelias.github.io/compare/#/v1/search%3Ftext=30%20w%2026th%20st,%20%D0%9D%D1%8C%D1%8E%20%D0%99%D0%BE%D1%80%D0%BA,%20%EB%AF%B8%EA%B5%AD) works like magic!
 * We've added a warning when unexpected query parameters are encountered! This is a big deal because it helps catch misspellings of query parameter names, such as `layer` vs `layers`... we've all been there at least once.
 
 ### Bug fixes
