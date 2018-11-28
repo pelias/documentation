@@ -11,10 +11,10 @@ roughly priority order of major changes we hope to make.
 
 Pelias uses strict geometric boundary decisions to determine what city (and
 other administrative areas) a record belongs to. For various reasons, the real
-world is not often so clear cut.
+world is often not so clear cut.
 
 Often, the city people expect to see for a given place has more to do with the
-nuonces of local postal service delivery than strict borders.
+nuances of local postal service delivery than strict borders.
 
 https://github.com/pelias/pelias/issues/396
 
@@ -79,7 +79,7 @@ usability of the autocomplete endpoint.
 
 Pelias often returns records such as cities, states, countries, etc which have
 polygons associated with them representing their boundaries. Pelias uses these
-polygons for point-in-polygon lookups when necessary, but cannot currnely send
+polygons for point-in-polygon lookups when necessary, but cannot currently send
 these polygons in the response JSON so that users can use that geometry data.
 
 https://github.com/pelias/whosonfirst/issues/19
