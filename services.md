@@ -35,7 +35,7 @@ is required if any support for multiple languages is desired.
 Currently, Placeholder is used only for forward geocoding on the `/v1/search` endpoint. In the
 future, it will also be used for autocomplete.
 
-### Libpostal
+### [Libpostal](https://github.com/pelias/libpostal-service)
 
 Libpostal is a library that provides an address parser using a statistical natural language processing
 model trained on OpenStreetMap, OpenAddresses, and other open data. It is quite good at parsing
@@ -47,6 +47,9 @@ service is fairly expensive to run, even for small installations.
 Unlike the other Pelias services, we didn't actually write a Pelias Libpostal service.  We recommend
 using the [go-whosonfirst-libpostal](https://github.com/whosonfirst/go-whosonfirst-libpostal)
 service created by the [Who's on First](https://whosonfirst.org) team.
+
+For convenience, we've packaged the go-whosonfirst-libpostal service [using Docker](https://github.com/pelias/libpostal-service)
+in a way that fits in well with the rest of the Pelias Docker packages.
 
 ## [Point-in-Polygon (PIP)](https://github.com/pelias/pip-service)
 
