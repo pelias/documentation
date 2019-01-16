@@ -182,7 +182,7 @@ the schema repository can automatically create the Pelias index and configure it
 
 ```bash
 cd schema                      # assuming you have just run the bash snippet to download the repos from earlier
-node scripts/create_index.js
+./bin/create_index
 ```
 The Elasticsearch Schema is analogous to the layout of a table in a traditional relational database,
 like MySQL or PostgreSQL. While Elasticsearch attempts to auto-detect a schema that works when
@@ -214,7 +214,7 @@ to delete the existing Pelias index and re-create it. Here's how:
 ```bash
 # !! WARNING: this will remove all your data from pelias!!
 node scripts/drop_index.js      # it will ask for confirmation first
-node scripts/create_index.js
+./bin/create_index
 ```
 
 When is this necessary? Here's a guideline: when in doubt, delete the index, re-create it, and start
