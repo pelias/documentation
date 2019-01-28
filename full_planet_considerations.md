@@ -4,16 +4,17 @@ Pelias is designed to work with data ranging from a small city to the entire pla
 not require particularly significant resources and should be easy. However, full planet builds
 present many of their own challenges.
 
-Current [full planet builds](https://pelias-dashboard.geocode.earth) weigh in at around 550 million
-documents, and require about 375GB total storage in Elasticsearch.
+Current [full planet builds](https://pelias-dashboard.geocode.earth) weigh in at just under 600 million
+documents, and require about 350GB total storage in Elasticsearch.
 
 Fortunately, because of services like AWS and the scalability of Elasticsearch, full planet builds
 are possible without too much extra effort. The process is no different, it just requires more
 hardware and takes longer.
 
-To set expectations, a cluster of 4 [r4.xlarge](https://aws.amazon.com/ec2/instance-types/) AWS
-instances (30GB RAM each) running Elasticsearch, and one m4.4xlarge instance running the importers
-and PIP service can complete a full planet build in about two days.
+The best performance for full planet import comes on machines with fast, local
+NVMe SSDs, a fast internet connection for downloading data, and many CPUs for paralell processing.
+
+To set expectations, a 36 core machine can complete a Pelias build in about 19 hours.
 
 ## Recommended processes
 
@@ -38,11 +39,14 @@ used to perform actual geocoding.
 
 ### Shard count
 
-Historically, Mapzen Search has used 24 Elasticsearch shards for its builds. However, the latest
-[guidance from the Elasticsearch team](https://www.elastic.co/blog/how-many-shards-should-i-have-in-my-elasticsearch-cluster) is that shards should be no larger than 50GB, but otherwise
-having as few shards as possible is best. At [geocode.earth](https://geocode.earth) we are
-experimenting with 12 shard builds, and may eventually move to 6. We would appreciate performance
-feedback from anyone doing large builds.
+Shard count is a balance between several factors. In general, higher shard
+counts allow more parallelism, at the cost of slightly lower efficiency.
+
+The latest [guidance from the Elasticsearch team](https://www.elastic.co/blog/how-many-shards-should-i-have-in-my-elasticsearch-cluster)
+is that shards should be no larger than 50GB, but otherwise having as few
+shards as possible is best. The most well tested full planet build
+configuration is to use 12 shards. If you run performance comparisons at
+different shard counts, be sure to share your findings!
 
 The `elasticsearch` section of `pelias.json` can be used to configure the shard count.
 
@@ -71,10 +75,10 @@ across a full planet build, a setup like the following should be sufficient.
 
 ### Elasticsearch cluster for importing
 
-The main requirement of Elasticsearch is that it has lots of disk. 400GB across the
-cluster is a good minimum. Increased CPU power is useful to achieve a higher throughput for queries,
-but not as important as RAM.
-
+The main requirement of Elasticsearch is that it has enough disk for a full build. 400GB across the
+cluster is a good minimum. Increased CPU power is useful to achieve a higher
+throughput for queries: a full planet build with all importers running in
+parallel can easily utilize 16 cores ore more.
 
 ### Elasticsearch cluster for querying
 
@@ -82,7 +86,7 @@ For queries, essentially the only bottleneck is CPU, although more RAM is helpfu
 data can be cached. On AWS, `c5` instances are significantly more performant than even the `c4`
 instances, and should be used if high performance is needed.
 
-_Example configuration:_ 4 `c5.4xlarge` (16 CPU, 32GB RAM) to serve 250 RPS
+_Example configuration:_ 4 `c5.2xlarge` (8 CPU, 8GB RAM) to serve 250 RPS
 
 ### Importer machine
 
@@ -90,7 +94,7 @@ The importers are each single-threaded Node.js processes, which require around 8
 each with admin lookup enabled. Faster CPUs will help increase the import speed. Running multiple
 importers in parallel is recommended if the importer machine has enough RAM and CPU to support them.
 
-_Example configuration:_ 1 `c4.4xlarge` (16 CPU, 30GB RAM), running two parallel importers
+_Example configuration:_ 1 `c5.4xlarge` (16 CPU, 32GB RAM), running importers in parallel
 
 ### Pelias services
 
@@ -98,21 +102,21 @@ Each Pelias service has different memory and CPU requirements. Here are some rou
 
 #### API
 RAM: 200MB per instance
-CPU: Single threaded, one instance can serve around 500 RPS
+CPU: Single threaded, one instance can serve at least 500 RPS
 Disk: None
 
 #### Placeholder
 RAM: 200MB per instance
 CPU: Single threaded, supports [clustering](https://nodejs.org/api/cluster.html)
-Disk: Requires about 2GB for a full planet index
+Disk: Requires about 3GB for a full planet index
 
 #### Libpostal
-RAM: 3GB per instance
-CPU: Multi-threaded, but extremely fast. A single core can serve 8000+ RPS
-Disk: about 2-3GB of data storage required
+RAM: 4GB per instance
+CPU: Multi-threaded, and extremely fast. A single core can serve 8000+ RPS
+Disk: about 4GB of data storage required
 
 ### PIP
-RAM: ~6GB
+RAM: ~8GB
 CPU: 2 cores per instance recommended, which is enough to serve 5000-7000 RPS
 
 ### Interpolation
