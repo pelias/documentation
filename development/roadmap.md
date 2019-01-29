@@ -37,15 +37,6 @@ require significant work including testing full planet builds.
 
 https://github.com/pelias/pelias/issues/461
 
-## Improved importer speed
-
-A full planet Pelias build currently generally takes 2-3 days. Many parts of
-this import process can be sped up, and many more parts can be made more easily
-parallelized.
-
-In the near future, our target is for a full planet build to take less than 24
-hours using under $100 of AWS EC2 instances.
-
 ## Expanded input language support
 
 Overall, Pelias has a solid founation of language and internationalization
