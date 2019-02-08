@@ -28,7 +28,8 @@ See our [software requirements](requirements.md) and insure all of them are inst
 
 ### Hardware recommendations
 * At a minimum 50GB disk space to download, extract, and process data
-* Lots of RAM, 8GB is a good minimum for a small import like a single city or small country. A full North America OSM import just fits in 16GB RAM
+* 8GB RAM for a local build, 16GB+ for a full planet build. Pelias needs a little RAM for Elasticsearch, but much more for storing [administrative data](https://github.com/pelias/wof-admin-lookup) during import
+* As many CPUs as you can provide. There's no minimum, but Pelias builds are highly paralellizable, so more CPUs will help make it faster.
 
 ## Choose your datasets
 Pelias can currently import data from [four different sources](data-sources.md), using five different importers.
