@@ -95,7 +95,7 @@ for repository in schema whosonfirst geonames openaddresses openstreetmap polyli
 done
 ```
 
-**Note:** Pelas used to use `production` branches for stable development. The
+**Note:** Pelias used to use `production` branches for stable development. The
 master branch is [now used for that purpose](https://github.com/pelias/pelias/issues/749).
 
 ### Customize Pelias Config
@@ -187,8 +187,7 @@ cd schema                      # assuming you have just run the bash snippet to 
 ```
 The Elasticsearch Schema is analogous to the layout of a table in a traditional relational database,
 like MySQL or PostgreSQL. While Elasticsearch attempts to auto-detect a schema that works when
-inserting new data, this generally leads to non-optimal results. In the case of Pelias, inserting
-data without first applying the Pelias schema will cause all queries to fail completely.
+inserting new data, it doesn't do a great job. Pelias requires specific schema settings or it won't work at all.
 
 ### Run the importers
 
@@ -201,7 +200,7 @@ cd importer_directory; npm start
 ```
 
 Depending on how much data you've imported, now may be a good time to grab a coffee.
-You can expect around 800-2000 inserts per second.
+You can expect up to 7000 records per second to be importer per importer.
 
 The order of imports does not matter. Multiple importers can be run in parallel to speed up the setup process.
 Each of our importers operates independent of the data that is already in Elasticsearch.
@@ -231,10 +230,9 @@ The only time when this isn't necessary is if the following conditions are true:
 
 ## Install and start the Pelias Services
 
-Pelias is made up of several different services, each providing a specific aspect of Pelias's
-functionality.
+Pelias is made up of several different services, each providing specific functionality.
 
-The [list of Pelias services](services.md) descibes the functionality of each service, and can be
+The [list of Pelias services](services.md) describes the functionality of each service, and can be
 used to determine if you need to install that service. It also includes links to setup instructions
 for each service.
 
