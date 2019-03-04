@@ -103,16 +103,16 @@ Distance from `point.lat`/`point.lon` | Confidence score
 This section shows how the various parameters can be combined to form complex use cases.
 
 * All results near the Tower of London
->[/v1/reverse?point.lat=51.5081124&point.lon=-0.0759493](https://mapzen.com/search/explorer/?query=reverse&point.lat=51.5081124&point.lon=-0.0759493)
+>[/v1/reverse?point.lat=51.5081124&point.lon=-0.0759493](https://pelias.github.io/compare/#/v1/reverse%3Fpoint.lat=51.5081124&point.lon=-0.0759493)
 
 * Only OpenStreetMap results near the Tower of London
->[/v1/reverse?point.lat=51.5081124&point.lon=-0.0759493&sources=osm](https://mapzen.com/search/explorer/?query=reverse&point.lat=51.5081124&point.lon=-0.0759493&sources=osm)
+>[/v1/reverse?point.lat=51.5081124&point.lon=-0.0759493&sources=osm](https://pelias.github.io/compare/#/v1/reverse%3Fpoint.lat=51.5081124&point.lon=-0.0759493&sources=osm)
 
 * Only street addresses near the Tower of London
->[/v1/reverse?point.lat=51.5081124&point.lon=-0.0759493&layers=address](https://mapzen.com/search/explorer/?query=reverse&point.lat=51.5081124&point.lon=-0.0759493&layers=address)
+>[/v1/reverse?point.lat=51.5081124&point.lon=-0.0759493&layers=address](https://pelias.github.io/compare/#/v1/reverse%3Fpoint.lat=51.5081124&point.lon=-0.0759493&layers=address)
 
 * Only OpenStreetMap street addresses near the Tower of London
->[/v1/reverse?point.lat=51.5081124&point.lon=-0.0759493&layers=address&sources=osm](https://mapzen.com/search/explorer/?query=reverse&point.lat=51.5081124&point.lon=-0.0759493&layers=address&sources=osm)
+>[/v1/reverse?point.lat=51.5081124&point.lon=-0.0759493&layers=address&sources=osm](https://pelias.github.io/compare/#/v1/reverse%3Fpoint.lat=51.5081124&point.lon=-0.0759493&layers=address&sources=osm)
 
 * Only the first OpenStreetMap address near the Tower of London
->[/v1/reverse?point.lat=51.5081124&point.lon=-0.0759493&layers=address&sources=osm&size=1](https://mapzen.com/search/explorer/?query=reverse&point.lat=51.5081124&point.lon=-0.0759493&layers=address&sources=osm&size=1)
+>[/v1/reverse?point.lat=51.5081124&point.lon=-0.0759493&layers=address&sources=osm&size=1](https://pelias.github.io/compare/#/v1/reverse%3Fpoint.lat=51.5081124&point.lon=-0.0759493&layers=address&sources=osm&size=1)

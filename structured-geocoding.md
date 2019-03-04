@@ -48,9 +48,9 @@ The `address` parameter can contain a full address with house number or only a s
 
 _Examples_
 
-* [201 Spear Street](https://mapzen.com/search/explorer/?query=search/structured&address=201 Spear Street&locality=San Francisco&region=CA)
-* [Rue de Rivoli](https://mapzen.com/search/explorer/?query=search/structured&address=Rue de Rivoli&locality=Paris&region=France)
-* [Přílucká 1](https://mapzen.com/search/explorer/?query=search/structured&address=1 Přílucká&locality=Želechovice nad Dřevnicí)
+* [201 Spear Street](http://pelias.github.io/compare/#/v1/search/structured%3Faddress=201%20Spear%20Street&locality=San%20Francisco&region=CA)
+* [Rue de Rivoli](http://pelias.github.io/compare/#/v1/search/structured%3Faddress=Rue%20de%20Rivoli&locality=Paris&region=France)
+* [Přílucká 1](http://pelias.github.io/compare/#/v1/search/structured%3Faddress=1%20P%C5%99%C3%ADluck%C3%A1&locality=%C5%BDelechovice%20nad%20D%C5%99evnic%C3%AD)
 
 ### neighbourhood
 
@@ -58,9 +58,9 @@ _Examples_
 
 _Examples_
 
-* [Notting Hill](https://mapzen.com/search/explorer/?query=search/structured&neighbourhood=Notting Hill&locality=London) in London
-* [Flatiron District](https://mapzen.com/search/explorer/?query=search/structured&neighbourhood=Flatiron District&borough=Manhattan) in Manhattan
-* [Le Marais](https://mapzen.com/search/explorer/?query=search/structured&neighbourhood=Le Marais&locality=Paris) in Paris
+* [Notting Hill](https://pelias.github.io/compare/#/v1/search/structured%3Fneighbourhood=Notting%20Hill&locality=London) in London
+* [Flatiron District](https://pelias.github.io/compare/#/v1/search/structured%3Fneighbourhood=Flatiron%20District&borough=Manhattan) in Manhattan
+* [Le Marais](https://pelias.github.io/compare/#/v1/search/structured%3Fneighbourhood=Le%20Marais&locality=Paris) in Paris
 
 ### borough
 
@@ -68,8 +68,8 @@ _Examples_
 
 _Examples_
 
-* [Manhattan](https://mapzen.com/search/explorer/?query=search/structured&borough=Manhattan&locality=New York)
-* [Iztapalapa](https://mapzen.com/search/explorer/?query=search/structured&borough=Iztapalapa&locality=Mexico City)
+* [Manhattan](https://pelias.github.io/compare/#/v1/search/structured%3Fborough=Manhattan&locality=New%20York)
+* [Iztapalapa](https://pelias.github.io/compare/#/v1/search/structured%3Fborough=Iztapalapa&locality=Mexico%20City)
 
 A structured geocoding request for `/v1/search/structured?locality=Manhattan&region=NY`, returns boroughs along with localities.
 
@@ -79,9 +79,9 @@ A structured geocoding request for `/v1/search/structured?locality=Manhattan&reg
 
 _Examples_
 
-* [Bangkok](https://mapzen.com/search/explorer/?query=search/structured&locality=Bangkok&country=Thailand)
-* [Caracas](https://mapzen.com/search/explorer/?query=search/structured&locality=Caracas&country=Venezuela)
-* [Truth or Consequences](https://mapzen.com/search/explorer/?query=search/structured&locality=Truth or Consequences&region=NM) in New Mexico
+* [Bangkok](https://pelias.github.io/compare/#/v1/search/structured%3Flocality=Bangkok&country=Thailand)
+* [Caracas](https://pelias.github.io/compare/#/v1/search/structured%3Flocality=Caracas&country=Venezuela)
+* [Truth or Consequences](https://pelias.github.io/compare/#/v1/search/structured%3Flocality=Truth%20or%20Consequences&region=NM) in New Mexico
 
 ### county
 
@@ -89,9 +89,9 @@ _Examples_
 
 _Examples_
 
-* [Bucks](https://mapzen.com/search/explorer/?query=search/structured&county=Bucks&region=PA) in Pennsylvania
-* [Maui](https://mapzen.com/search/explorer/?query=search/structured&county=Maui&region=HI)
-* [Alb-Donau-Kreis](https://mapzen.com/search/explorer/?query=search/structured&county=Alb-Donau-Kreis&country=DEU) in Germany
+* [Bucks](https://pelias.github.io/compare/#/v1/search/structured%3Fcounty=Bucks&region=PA) in Pennsylvania
+* [Maui](https://pelias.github.io/compare/#/v1/search/structured%3Fcounty=Maui&region=HI)
+* [Alb-Donau-Kreis](https://pelias.github.io/compare/#/v1/search/structured%3Fcounty=Alb-Donau-Kreis&country=DEU) in Germany
 
 Counties are not as commonly used in geocoding as localities, but can be useful when attempting to disambiguate between localities. For instance, there are three cities named Red Lion in Pennsylvania but only one in each of three counties. Specifying a county disambiguates this list to a single result.
 
@@ -101,9 +101,9 @@ Counties are not as commonly used in geocoding as localities, but can be useful 
 
 _Examples_
 
-* [Delaware](https://mapzen.com/search/explorer/?query=search/structured&region=Delaware)
-* [Ontario](https://mapzen.com/search/explorer/?query=search/structured&region=Ontario)
-* [Ardennes](https://mapzen.com/search/explorer/?query=search/structured&region=Ardennes)
+* [Delaware](https://pelias.github.io/compare/#/v1/search/structured%3Fregion=Delaware)
+* [Ontario](https://pelias.github.io/compare/#/v1/search/structured%3Fregion=Ontario)
+* [Ardennes](https://pelias.github.io/compare/#/v1/search/structured%3Fregion=Ardennes)
 
 Regions in the United States have [common abbreviations](https://en.wikipedia.org/wiki/List_of_U.S._state_abbreviations), such as PA for [Pennsylvania](https://spelunker.whosonfirst.org/id/85688481/) and NM for [New Mexico](https://spelunker.whosonfirst.org/id/85688493/).  The `region` parameter can be a full name or abbreviation, so specifying `/v1/search/structured?region=NM` is functionality equivalent to `/v1/search/structured?region=New Mexico`.
 
@@ -117,7 +117,7 @@ _Examples_
 * [CV23 9SL](https://spelunker.whosonfirst.org/id/454261459/)
 * [5439171](https://spelunker.whosonfirst.org/id/538904173/)
 
-Keep in mind that you can search for `postalcode` exclusively. So requests like [/v1/search/structured?postalcode=87801]( https://mapzen.com/search/explorer/?query=search/structured&postalcode=87801) will return matching postalcode records.
+Keep in mind that you can search for `postalcode` exclusively. So requests like [/v1/search/structured?postalcode=87801]( https://pelias.github.io/compare/#/v1/search/structured?postalcode=87801) will return matching postalcode records.
 
 ### country
 
@@ -125,9 +125,9 @@ Keep in mind that you can search for `postalcode` exclusively. So requests like 
 
 _Examples_
 
-* [Liechtenstein](https://mapzen.com/search/explorer/?query=search/structured&country=Liechtenstein)
-* [CMR](https://mapzen.com/search/explorer/?query=search/structured&country=CMR) ([Cameroon](https://spelunker.whosonfirst.org/id/85632245/))
-* [Bermuda](https://mapzen.com/search/explorer/?query=search/structured&country=Bermuda)
+* [Liechtenstein](https://pelias.github.io/compare/#/v1/search/structured%3Fcountry=Liechtenstein)
+* [CMR](https://pelias.github.io/compare/#/v1/search/structured%3Fcountry=CMR) ([Cameroon](https://spelunker.whosonfirst.org/id/85632245/))
+* [Bermuda](https://pelias.github.io/compare/#/v1/search/structured%3Fcountry=Bermuda)
 
 ## Who's On First layer mappings reference
 

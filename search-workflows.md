@@ -46,7 +46,7 @@ For coarse reverse, use the `/reverse` endpoint and `layers=coarse` or include a
 
 When you have live users who type things into input fields or search boxes, their activity falls into two scenarios, depending on when your app assumes they are ready to search.
 
-The distinction in the results is visible when you consider the behavior with the text of `lond`. Autocomplete for `lond`, returns `london` (https://mapzen.com/search/explorer/?query=autocomplete&text=lond) because the user is still typing, but `/search` assumes the user is done entering text and returns the city of `Lond` in Pakistan (https://mapzen.com/search/explorer/?query=search&text=lond).
+The distinction in the results is visible when you consider the behavior with the text of `lond`. Autocomplete for `lond`, returns `london` (https://pelias.github.io/compare/#/v1/autocomplete%3Ftext=lond) because the user is still typing, but `/search` assumes the user is done entering text and returns the city of `Lond` in Pakistan (https://pelias.github.io/compare/#/v1/search%3Ftext=lond).
 
 ### ...and want to show feedback as they type (`/autocomplete`)
 
