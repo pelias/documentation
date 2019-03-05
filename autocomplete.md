@@ -137,3 +137,4 @@ Sometimes your work might require that all the search results be from a particul
 | `sources` | string | no | all sources: osm,oa,gn,wof | openstreetmap,wof |
 | `layers` | string | no | all layers: address,venue,neighbourhood,locality,borough,localadmin,county,macrocounty,region,macroregion,country,coarse | address,venue |
 | `boundary.country` | string | no | none | 'GBR' |
+| `boundary.gid` | Pelias `gid` | no | none | `whosonfirst:locality:101748355` |

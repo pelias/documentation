@@ -190,6 +190,29 @@ You can see the results have fewer than the standard 10 items because there are 
 * Pinnacle Jr YMCA, Toronto, Ontario
 * Cooper Koo Family Cherry Street YMCA Centre, Toronto, Ontario
 
+### Search within a parent administrative area
+
+Pelias has a powerful understanding of relationships between places. In particular, it has a concept called the administrative hierarchy: each record in Pelias is listed as belonging to a parent neighbourhood, city, region, country, and other regions. This has many uses, including filtering. The Pelias global id (`gid`) of any record can be used with the `boundary.gid` filter to return only records with a given parent.
+
+For example, finding YMCAs in [Oklahoma](https://en.wikipedia.org/wiki/Oklahoma) with only a bounding box would be challenging: the bounding box would include much of nearby Texas, possibly leading to incorrect results.
+
+With `boundary.gid`, this query can return accurate results.
+
+> [/v1/search?text=YMCA&__boundary.gid=whosonfirst:region:85688585__](http://pelias.github.io/compare/#/v1/search%3Fboundary.gid=whosonfirst:region:85688585&text=ymca)
+
+* YMCA, Stillwater, OK, USA
+* YMCA, Edmond, OK, USA
+* YMCA, Guymon, OK, USA
+* YMCA, Grove, OK, USA
+* YMCA, Midwest City, OK, USA
+* YMCA, Shawnee, OK, USA
+* YMCA, Owasso, OK, USA
+* YMCA, Tulsa, OK, USA
+* YMCA, The Village, OK, USA
+* YMCA, Broken Arrow, OK, USA
+
+In the query above, `whosonfirst:region:85688585`, is the Pelias `gid` for Oklahoma, USA. Currently, all parent records come from the [Who's on First](https://whosonfirst.org/) project. `gid`s for records can be found using either the [Who's on First Spelunker](http://spelunker.whosonfirst.org/), a tool for searching Who's on First data, or from the responses of other Pelias queries. In this case a [search for Oklahoma](http://pelias.github.io/compare/#/v1/search%3Ftext=oklahoma) will return the proper `gid`.
+
 ### Specify multiple boundaries
 
 ![Searching within multiple regions](/images/overlapping_boundaries.gif)
@@ -374,6 +397,7 @@ In Pelias, place types are referred to as `layers`, ranging from fine to coarse.
 | `boundary.circle.lat` | floating point number | no | none | `43.818156` |
 | `boundary.circle.lon` | floating point number | no | none | `-79.186484` |
 | `boundary.circle.radius` | floating point number | no | 50 | `35` |
+| `boundary.gid` | Pelias `gid` | no | none | `whosonfirst:locality:101748355` |
 | `sources` | string | no | all sources: osm,oa,gn,wof | openstreetmap,wof |
 | `layers` | string | no | all layers: address,venue,neighbourhood,locality,borough,localadmin,county,macrocounty,region,macroregion,country,coarse | address,venue |
 | `boundary.country` | string | no | none | 'GBR' |
