@@ -31,6 +31,7 @@ Parameter | Type | Required | Default | Example
 `layers` | comma-delimited string array | no | none (all layers) | `address,locality`
 `sources` | comma-delimited string array | no | none (all sources) | `oa,gn`
 `boundary.country` | <a href="https://en.wikipedia.org/wiki/ISO_3166-1" target="\_blank">ISO-3166 alpha-2 or alpha-3</a> | no | none | `FR`
+`boundary.gid` | Pelias `gid` | no | none | `whosonfirst:locality:101748355`
 
 ### Size
 
@@ -102,17 +103,17 @@ Distance from `point.lat`/`point.lon` | Confidence score
 
 This section shows how the various parameters can be combined to form complex use cases.
 
-* All results near the Tower of London
->[/v1/reverse?point.lat=51.5081124&point.lon=-0.0759493](https://mapzen.com/search/explorer/?query=reverse&point.lat=51.5081124&point.lon=-0.0759493)
+### All results near the Tower of London
+[/v1/reverse?point.lat=51.5081124&point.lon=-0.0759493](https://pelias.github.io/compare/#/v1/reverse%3Fpoint.lat=51.5081124&point.lon=-0.0759493)
 
-* Only OpenStreetMap results near the Tower of London
->[/v1/reverse?point.lat=51.5081124&point.lon=-0.0759493&sources=osm](https://mapzen.com/search/explorer/?query=reverse&point.lat=51.5081124&point.lon=-0.0759493&sources=osm)
+### Only OpenStreetMap results near the Tower of London
+[/v1/reverse?point.lat=51.5081124&point.lon=-0.0759493&sources=osm](https://pelias.github.io/compare/#/v1/reverse%3Fpoint.lat=51.5081124&point.lon=-0.0759493&sources=osm)
 
-* Only street addresses near the Tower of London
->[/v1/reverse?point.lat=51.5081124&point.lon=-0.0759493&layers=address](https://mapzen.com/search/explorer/?query=reverse&point.lat=51.5081124&point.lon=-0.0759493&layers=address)
+### Only street addresses near the Tower of London
+[/v1/reverse?point.lat=51.5081124&point.lon=-0.0759493&layers=address](https://pelias.github.io/compare/#/v1/reverse%3Fpoint.lat=51.5081124&point.lon=-0.0759493&layers=address)
 
-* Only OpenStreetMap street addresses near the Tower of London
->[/v1/reverse?point.lat=51.5081124&point.lon=-0.0759493&layers=address&sources=osm](https://mapzen.com/search/explorer/?query=reverse&point.lat=51.5081124&point.lon=-0.0759493&layers=address&sources=osm)
+### Only OpenStreetMap street addresses near the Tower of London
+[/v1/reverse?point.lat=51.5081124&point.lon=-0.0759493&layers=address&sources=osm](https://pelias.github.io/compare/#/v1/reverse%3Fpoint.lat=51.5081124&point.lon=-0.0759493&layers=address&sources=osm)
 
-* Only the first OpenStreetMap address near the Tower of London
->[/v1/reverse?point.lat=51.5081124&point.lon=-0.0759493&layers=address&sources=osm&size=1](https://mapzen.com/search/explorer/?query=reverse&point.lat=51.5081124&point.lon=-0.0759493&layers=address&sources=osm&size=1)
+### Only the first OpenStreetMap address near the Tower of London
+[/v1/reverse?point.lat=51.5081124&point.lon=-0.0759493&layers=address&sources=osm&size=1](https://pelias.github.io/compare/#/v1/reverse%3Fpoint.lat=51.5081124&point.lon=-0.0759493&layers=address&sources=osm&size=1)

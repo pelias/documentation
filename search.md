@@ -78,11 +78,11 @@ By default, Pelias results up to 10 places, unless otherwise specified. If you w
 | `text` | YMCA |
 | `size` | 1 |
 
-> [/v1/search?text=YMCA&__size=1__](https://mapzen.com/search/explorer/?query=search&text=YMCA&size=1)
+> [/v1/search?text=YMCA&__size=1__](https://pelias.github.io/compare/#/v1/search%3Fsize=1&text=ymca)
 
 If you want 25 results, you can build the query where `size` is 25.
 
-> [/v1/search?text=YMCA&__size=25__](https://mapzen.com/search/explorer/?query=search&text=YMCA&size=25)
+> [/v1/search?text=YMCA&__size=25__](https://pelias.github.io/compare/#/v1/search%3Fsize=25&text=ymca)
 
 ## Narrow your search
 
@@ -96,7 +96,7 @@ Sometimes your work might require that all the search results be from a particul
 
 Now, you want to search for YMCA again, but this time only in Great Britain. To do this, you will need to know that the alpha-3 code for Great Britain is GBR and set the parameters like this:
 
-> [/v1/search?text=YMCA&__boundary.country=GBR__](https://mapzen.com/search/explorer/?query=search&text=YMCA&boundary.country=GBR)
+> [/v1/search?text=YMCA&__boundary.country=GBR__](https://pelias.github.io/compare/#/v1/search%3Fboundary.country=GBR&text=ymca)
 
 | parameter | value |
 | :--- | :--- |
@@ -118,7 +118,7 @@ Note that all the results are within Great Britain:
 
 If you try the same search request with different country codes, the results change to show YMCA locations within this region.
 
-> [/v1/search?text=YMCA&__boundary.country=USA__](https://mapzen.com/search/explorer/?query=search&text=YMCA&boundary.country=USA)
+> [/v1/search?text=YMCA&__boundary.country=USA__](https://pelias.github.io/compare/#/v1/search%3Fboundary.country=USA&text=ymca)
 
 Results in the United States:
 
@@ -143,7 +143,7 @@ For example, to find a YMCA within the state of Texas, you can set the `boundary
 
 Tip: You can look up a bounding box for a known region with this [web tool](http://boundingbox.klokantech.com/).
 
-> [/v1/search?text=YMCA&__boundary.rect.min_lat=25.84&boundary.rect.min_lon=-106.65&boundary.rect.max_lat=36.5&boundary.rect.max_lon=-93.51__](https://mapzen.com/search/explorer/?query=search&text=YMCA&boundary.rect.min_lat=25.84&boundary.rect.min_lon=-106.65&boundary.rect.max_lat=36.5&boundary.rect.max_lon=-93.51)
+> [/v1/search?text=YMCA&__boundary.rect.min_lat=25.84&boundary.rect.min_lon=-106.65&boundary.rect.max_lat=36.5&boundary.rect.max_lon=-93.51__](https://pelias.github.io/compare/#/v1/search%3Fboundary.rect.min_lat=25.84&boundary.rect.min_lon=-106.65&boundary.rect.max_lat=36.5&boundary.rect.max_lon=-93.51&text=ymca)
 
 | parameter | value |
 | :--- | :--- |
@@ -172,7 +172,7 @@ Sometimes you don't have a rectangle to work with, but rather you have a point o
 
 In this example, you want to find all YMCA locations within a 35-kilometer radius of a location in Ontario, Canada. This time, you can use the `boundary.circle.*` parameter group, where `boundary.circle.lat` and `boundary.circle.lon` is your location in Ontario and `boundary.circle.radius` is the acceptable distance from that location. Note that the `boundary.circle.radius` parameter is always specified in kilometers.
 
-> [/v1/search?text=YMCA&__boundary.circle.lon=-79.186484&boundary.circle.lat=43.818156&boundary.circle.radius=35__](https://mapzen.com/search/explorer/?query=search&text=YMCA&boundary.circle.lon=-79.186484&boundary.circle.lat=43.818156&boundary.circle.radius=35)
+> [/v1/search?text=YMCA&__boundary.circle.lon=-79.186484&boundary.circle.lat=43.818156&boundary.circle.radius=35__](https://pelias.github.io/compare/#/v1/search%3Fboundary.circle.lon=-79.186484&boundary.circle.lat=43.818156&boundary.circle.radius=35&text=ycma)
 
 | parameter | value |
 | :--- | :--- |
@@ -190,6 +190,29 @@ You can see the results have fewer than the standard 10 items because there are 
 * Pinnacle Jr YMCA, Toronto, Ontario
 * Cooper Koo Family Cherry Street YMCA Centre, Toronto, Ontario
 
+### Search within a parent administrative area
+
+Pelias has a powerful understanding of relationships between places. In particular, it has a concept called the administrative hierarchy: each record in Pelias is listed as belonging to a parent neighbourhood, city, region, country, and other regions. This has many uses, including filtering. The Pelias global id (`gid`) of any record can be used with the `boundary.gid` filter to return only records with a given parent.
+
+For example, finding YMCAs in [Oklahoma](https://en.wikipedia.org/wiki/Oklahoma) with only a bounding box would be challenging: the bounding box would include much of nearby Texas, possibly leading to incorrect results.
+
+With `boundary.gid`, this query can return accurate results.
+
+> [/v1/search?text=YMCA&__boundary.gid=whosonfirst:region:85688585__](http://pelias.github.io/compare/#/v1/search%3Fboundary.gid=whosonfirst:region:85688585&text=ymca)
+
+* YMCA, Stillwater, OK, USA
+* YMCA, Edmond, OK, USA
+* YMCA, Guymon, OK, USA
+* YMCA, Grove, OK, USA
+* YMCA, Midwest City, OK, USA
+* YMCA, Shawnee, OK, USA
+* YMCA, Owasso, OK, USA
+* YMCA, Tulsa, OK, USA
+* YMCA, The Village, OK, USA
+* YMCA, Broken Arrow, OK, USA
+
+In the query above, `whosonfirst:region:85688585`, is the Pelias `gid` for Oklahoma, USA. Currently, all parent records come from the [Who's on First](https://whosonfirst.org/) project. `gid`s for records can be found using either the [Who's on First Spelunker](http://spelunker.whosonfirst.org/), a tool for searching Who's on First data, or from the responses of other Pelias queries. In this case a [search for Oklahoma](http://pelias.github.io/compare/#/v1/search%3Ftext=oklahoma) will return the proper `gid`.
+
 ### Specify multiple boundaries
 
 ![Searching within multiple regions](/images/overlapping_boundaries.gif)
@@ -203,11 +226,11 @@ Many use cases call for the ability to promote nearby results to the top of the 
 
 ![Searching around a point](/images/focus_point.png)
 
-By specifying a `focus.point`, nearby places will be scored higher depending on how close they are to the `focus.point` so that places with higher scores will appear higher in the results list. The effect of this scoring boost diminishes to zero after 100 kilometers away from the `focus.point`. After all the nearby results have been found, additional results will come from the rest of the world, without any further location-based prioritization.
+By specifying a `focus.point`, results will be sorted in part by their proximity to the given coordinate. All else being equal, results closes to the point will show up higher. However, unlike a `boundary.circle` query, important results far from the given coordinate may still be returned. This allows, for example, [a query for places called Paris with a `focus.point` value in Texas to return both Paris, TX and Paris, France](http://pelias.github.io/compare/#/v1/autocomplete%3Ffocus.point.lat=33.7568&focus.point.lon=-95.5362&layers=locality&sources=wof&text=paris).
 
-To find YMCA again, but this time near a specific coordinate location (representing the Sydney Opera House) in Sydney, Australia, use `focus.point`.
+To find YMCAs again, but this time near a specific coordinate location (representing the Sydney Opera House) in Sydney, Australia, use `focus.point`.
 
-> [/v1/search?text=YMCA&__focus.point.lat=-33.856680&focus.point.lon=151.215281__](https://mapzen.com/search/explorer/?query=search&text=YMCA&focus.point.lat=-33.856680&focus.point.lon=151.215281)
+> [/v1/search?text=YMCA&__focus.point.lat=-33.856680&focus.point.lon=151.215281__](https://pelias.github.io/compare/#/v1/search%3Ffocus.point.lat=-33.856680&focus.point.lon=151.215281&text=ymca)
 
 | parameter | value |
 | :--- | :--- |
@@ -236,7 +259,7 @@ Now that you have seen how to use boundary and focus to narrow and sort your res
 
 Going back to the YMCA search you conducted with a focus around a point in Sydney, the results came back from distant parts of the world, as expected. But say you wanted to only see results from the country in which your focus point lies. You can combine that same focus point in Sydney with the country boundary of Australia like this.
 
-> [/v1/search?text=YMCA&__focus.point.lat=-33.856680&focus.point.lon=151.215281__](https://mapzen.com/search/explorer/?query=search&text=YMCA&focus.point.lat=-33.856680&focus.point.lon=151.215281)
+> [/v1/search?text=YMCA&__focus.point.lat=-33.856680&focus.point.lon=151.215281__](https://pelias.github.io/compare/#/v1/search%3Ffocus.point.lat=-33.856680&focus.point.lon=151.215281&text=ymca)
 
 | parameter | value |
 | :--- | :--- |
@@ -262,7 +285,7 @@ The results below look different from the ones you saw before with only a focus 
 
 If you are looking for the nearest YMCA locations, and are willing to travel no farther than 50 kilometers from your current location, you likely would want the results to be sorted by distance from current location to make your selection process easier. You can get this behavior by using `focus.point` in combination with `boundary.circle.*`. You can use the `focus.point.*` values as the `boundary.circle.lat` and `boundary.circle.lon`, and add the required `boundary.circle.radius` value in kilometers.
 
-> [/v1/search?text=YMCA&focus.point.lat=-33.856680&focus.point.lon=151.215281&__boundary.circle.lat=-33.856680&boundary.circle.lon=151.215281&boundary.circle.radius=50__](https://mapzen.com/search/explorer/?query=search&text=YMCA&focus.point.lat=-33.856680&focus.point.lon=151.215281&boundary.circle.lat=-33.856680&boundary.circle.lon=151.215281&boundary.circle.radius=50)
+> [/v1/search?text=YMCA&focus.point.lat=-33.856680&focus.point.lon=151.215281&__boundary.circle.lat=-33.856680&boundary.circle.lon=151.215281&boundary.circle.radius=50__](https://pelias.github.io/compare/#/v1/search%3Ffocus.point.lat=-33.856680&focus.point.lon=151.215281&boundary.circle.lat=-33.856680&boundary.circle.lon=151.215281&boundary.circle.radius=50&text=ymca)
 
 | parameter | value |
 | :--- | :--- |
@@ -303,7 +326,7 @@ The search examples so far have returned a mix of results from all the data sour
 
 If you use the `sources` parameter, you can choose which of these data sources to include in your search. So if you're only interested in finding a YMCA in data from OpenAddresses, for example, you can build a query specifying that data source.
 
-> [/v1/search?text=YMCA&__sources=oa__](https://mapzen.com/search/explorer/?query=search&text=YMCA&sources=oa)
+> [/v1/search?text=YMCA&__sources=oa__](https://pelias.github.io/compare/#/v1/search%3Fsources=oa&text=ymca)
 
 | parameter | value |
 | :--- | :--- |
@@ -325,7 +348,7 @@ Because OpenAddresses is, as the name suggests, only address data, here's what y
 
 If you wanted to combine several data sources together, set `sources` to a comma separated list of desired source names. Note that the order of the comma separated values does not impact sorting order of the results; they are still sorted based on the linguistic match quality to `text` and distance from `focus`, if you specified one.
 
-> [/v1/search?text=YMCA&__sources=osm,gn__](https://mapzen.com/search/explorer/?query=search&text=YMCA&sources=oa)
+> [/v1/search?text=YMCA&__sources=osm,gn__](https://pelias.github.io/compare/#/v1/search%3Fsources=osm,gn&text=ymca)
 
 | parameter | value |
 | :--- | :--- |
@@ -353,7 +376,7 @@ In Pelias, place types are referred to as `layers`, ranging from fine to coarse.
 |`country`|places that issue passports, nations, nation-states|
 |`coarse`|alias for simultaneously using all administrative layers (everything except `venue` and `address`)|
 
-> [/v1/search?text=YMCA&__layers=venue,address__](https://mapzen.com/search/explorer/?query=search&text=YMCA&layers=venue,address)
+> [/v1/search?text=YMCA&__layers=venue,address__](https://pelias.github.io/compare/#/v1/search%3Flayers=venue,address&text=ymca)
 
 | parameter | value |
 | :--- | :--- |
@@ -374,6 +397,7 @@ In Pelias, place types are referred to as `layers`, ranging from fine to coarse.
 | `boundary.circle.lat` | floating point number | no | none | `43.818156` |
 | `boundary.circle.lon` | floating point number | no | none | `-79.186484` |
 | `boundary.circle.radius` | floating point number | no | 50 | `35` |
+| `boundary.gid` | Pelias `gid` | no | none | `whosonfirst:locality:101748355` |
 | `sources` | string | no | all sources: osm,oa,gn,wof | openstreetmap,wof |
 | `layers` | string | no | all layers: address,venue,neighbourhood,locality,borough,localadmin,county,macrocounty,region,macroregion,country,coarse | address,venue |
 | `boundary.country` | string | no | none | 'GBR' |
