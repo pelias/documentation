@@ -203,9 +203,9 @@ Many use cases call for the ability to promote nearby results to the top of the 
 
 ![Searching around a point](/images/focus_point.png)
 
-By specifying a `focus.point`, nearby places will be scored higher depending on how close they are to the `focus.point` so that places with higher scores will appear higher in the results list. The effect of this scoring boost diminishes to zero after 100 kilometers away from the `focus.point`. After all the nearby results have been found, additional results will come from the rest of the world, without any further location-based prioritization.
+By specifying a `focus.point`, results will be sorted in part by their proximity to the given coordinate. All else being equal, results closes to the point will show up higher. However, unlike a `boundary.circle` query, important results far from the given coordinate may still be returned. This allows, for example, [a query for places called Paris with a `focus.point` value in Texas to return both Paris, TX and Paris, France](http://pelias.github.io/compare/#/v1/autocomplete%3Ffocus.point.lat=33.7568&focus.point.lon=-95.5362&layers=locality&sources=wof&text=paris).
 
-To find YMCA again, but this time near a specific coordinate location (representing the Sydney Opera House) in Sydney, Australia, use `focus.point`.
+To find YMCAs again, but this time near a specific coordinate location (representing the Sydney Opera House) in Sydney, Australia, use `focus.point`.
 
 > [/v1/search?text=YMCA&__focus.point.lat=-33.856680&focus.point.lon=151.215281__](https://pelias.github.io/compare/#/v1/search%3Ffocus.point.lat=-33.856680&focus.point.lon=151.215281&text=ymca)
 
