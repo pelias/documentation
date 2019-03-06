@@ -258,7 +258,7 @@ locally and on their default ports.
       "pip": {
         "url": "http://localhost:3102"
       },
-      "interpolation"
+      "interpolation": {
         "url": "http://localhost:3000"
       }
     }
