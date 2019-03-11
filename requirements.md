@@ -1,4 +1,4 @@
-# Pelias Sofware requirements
+# Pelias Software requirements
 
 This is the list of all software requirements for Pelias. We highly recommend using our
 [Docker images](https://hub.docker.com/r/pelias/) to avoid having to even attempt to correctly
