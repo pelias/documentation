@@ -1,6 +1,6 @@
 # Structured geocoding
 
->**Note:** The structured endpoint is in _beta_. You may expereience issues as the structured endpoint has not been as thoroughly tested as the [`search` endpoint](search.md).
+>**Note:** The structured endpoint is in _beta_. You may experience issues as the structured endpoint has not been as thoroughly tested as the [`search` endpoint](search.md).
 
 With structured geocoding, you can search for the individual parts of a location. Structured geocoding is an option on the [`search` endpoint](search.md), where a query takes the form of `/v1/search/structured`.
 
@@ -117,7 +117,7 @@ _Examples_
 * [CV23 9SL](https://spelunker.whosonfirst.org/id/454261459/)
 * [5439171](https://spelunker.whosonfirst.org/id/538904173/)
 
-Keep in mind that you can search for `postalcode` exclusively. So requests like [/v1/search/structured?postalcode=87801]( https://pelias.github.io/compare/#/v1/search/structured?postalcode=87801) will return matching postalcode records.
+Keep in mind that you can search for `postalcode` exclusively. So requests like [/v1/search/structured?postalcode=87801]( https://pelias.github.io/compare/#/v1/search/structured%3Fpostalcode=87801) will return matching postalcode records.
 
 ### country
 
