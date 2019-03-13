@@ -78,7 +78,7 @@ across a full planet build, a setup like the following should be sufficient.
 The main requirement of Elasticsearch is that it has enough disk for a full build. 400GB across the
 cluster is a good minimum. Increased CPU power is useful to achieve a higher
 throughput for queries: a full planet build with all importers running in
-parallel can easily utilize 16 cores ore more.
+parallel can easily utilize 16 cores or more.
 
 ### Elasticsearch cluster for querying
 
