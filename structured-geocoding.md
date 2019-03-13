@@ -117,7 +117,7 @@ _Examples_
 * [CV23 9SL](https://spelunker.whosonfirst.org/id/454261459/)
 * [5439171](https://spelunker.whosonfirst.org/id/538904173/)
 
-Keep in mind that you can search for `postalcode` exclusively. So requests like [/v1/search/structured?postalcode=87801]( https://pelias.github.io/compare/#/v1/search/structured?postalcode=87801) will return matching postalcode records.
+Keep in mind that you can search for `postalcode` exclusively. So requests like [/v1/search/structured%3Fpostalcode=87801]( https://pelias.github.io/compare/#/v1/search/structured?postalcode=87801) will return matching postalcode records.
 
 ### country
 
