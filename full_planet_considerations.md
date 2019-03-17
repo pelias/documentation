@@ -11,19 +11,22 @@ Fortunately, because of services like AWS and the scalability of Elasticsearch, 
 are possible without too much extra effort. The process is no different, it just requires more
 hardware and takes longer.
 
-The best performance for full planet import comes on machines with fast, local
+The best performance for full planet import comes when using a single machine with fast, local
 NVMe SSDs, a fast internet connection for downloading data, and many CPUs for paralell processing.
 
-To set expectations, a 36 core machine can complete a Pelias build in about 19 hours.
+To set expectations, a 36 core machine can complete a Pelias build in about 16 hours.
 
 ## Recommended processes
 
 ### Use Docker containers and orchestration
 
-We strongly recommend using Docker to run Pelias. All our services include Dockerfiles and the
-resulting images are pushed to [Docker Hub](https://hub.docker.com/r/pelias/) by our CI. Using these
-images will drastically reduce the amount of work it takes to set up Pelias and will ensure you are
-on a known good configuration, minimizing the number of issues you will encounter.
+We strongly recommend using Docker (either through our provided
+[pelias/docker](http://github.com/pelias/docker/) repository or otherwise) to
+run Pelias. All our services include Dockerfiles and the resulting images are
+pushed to [Docker Hub](https://hub.docker.com/r/pelias/) by our CI. Using these
+images will drastically reduce the amount of work it takes to set up Pelias and
+will ensure you are on a known good configuration, minimizing the number of
+issues you will encounter.
 
 Additionally, there are many great tools for managing container workloads. Simple ones like
 [docker-compose](https://github.com/pelias/docker/) can be used for small installations, and more
@@ -75,7 +78,7 @@ across a full planet build, a setup like the following should be sufficient.
 
 ### Elasticsearch cluster for importing
 
-The main requirement of Elasticsearch is that it has enough disk for a full build. 400GB across the
+The main requirement of Elasticsearch is that it has enough disk for a full build. 600GB across the
 cluster is a good minimum. Increased CPU power is useful to achieve a higher
 throughput for queries: a full planet build with all importers running in
 parallel can easily utilize 16 cores or more.
@@ -86,7 +89,7 @@ For queries, essentially the only bottleneck is CPU, although more RAM is helpfu
 data can be cached. On AWS, `c5` instances are significantly more performant than even the `c4`
 instances, and should be used if high performance is needed.
 
-_Example configuration:_ 4 `c5.2xlarge` (8 CPU, 8GB RAM) to serve 250 RPS
+_Example configuration:_ 2 `m5.2xlarge` (8 CPU, 32GB RAM) to serve 250 RPS
 
 ### Importer machine
 
@@ -94,7 +97,7 @@ The importers are each single-threaded Node.js processes, which require around 8
 each with admin lookup enabled. Faster CPUs will help increase the import speed. Running multiple
 importers in parallel is recommended if the importer machine has enough RAM and CPU to support them.
 
-_Example configuration:_ 1 `c5.4xlarge` (16 CPU, 32GB RAM), running importers in parallel
+_Example configuration:_ 1 `c5.9xlarge` (36 CPU, 72GB RAM), running all importers in parallel
 
 ### Pelias services
 
