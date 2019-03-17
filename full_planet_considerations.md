@@ -101,26 +101,27 @@ _Example configuration:_ 1 `c5.4xlarge` (16 CPU, 32GB RAM), running importers in
 Each Pelias service has different memory and CPU requirements. Here are some rough guidelines:
 
 #### API
-RAM: 200MB per instance
-CPU: Single threaded, one instance can serve at least 500 RPS
-Disk: None
+
+* RAM: 200MB per instance
+* CPU: Single threaded, one instance can serve at least 500 RPS
+* Disk: None
 
 #### Placeholder
-RAM: 200MB per instance
-CPU: Single threaded, supports [clustering](https://nodejs.org/api/cluster.html)
-Disk: Requires about 3GB for a full planet index
+* RAM: 200MB per instance
+* CPU: Single threaded, supports [clustering](https://nodejs.org/api/cluster.html)
+* Disk: Requires about 3GB for a full planet index
 
 #### Libpostal
-RAM: 4GB per instance
-CPU: Multi-threaded, and extremely fast. A single core can serve 8000+ RPS
-Disk: about 4GB of data storage required
+* RAM: 4GB per instance
+* CPU: Multi-threaded, and extremely fast. A single core can serve 8000+ RPS
+* Disk: about 4GB of data storage required
 
 ### PIP
-RAM: ~8GB
-CPU: 2 cores per instance recommended, which is enough to serve 5000-7000 RPS
+* RAM: ~8GB
+* CPU: 2 cores per instance recommended, which is enough to serve 5000-7000 RPS
 
 ### Interpolation
-RAM: 3GB per instance currently (please follow our efforts to [un-bundle
+* RAM: 3GB per instance currently (please follow our efforts to [un-bundle
 libpostal](https://github.com/pelias/interpolation/issues/106) from the interpolation service)
-CPU: Single core. One instance can serve around 200RPS
-Disk: 40GB needed for a full planet interpolation dataset
+* CPU: Single core. One instance can serve around 200RPS
+* Disk: 40GB needed for a full planet interpolation dataset
