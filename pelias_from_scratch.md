@@ -200,7 +200,7 @@ cd importer_directory; npm start
 ```
 
 Depending on how much data you've imported, now may be a good time to grab a coffee.
-You can expect up to 7000 records per second to be importer per importer.
+You can expect up to 7000 records per second per importer.
 
 The order of imports does not matter. Multiple importers can be run in parallel to speed up the setup process.
 Each of our importers operates independent of the data that is already in Elasticsearch.
@@ -236,7 +236,7 @@ The [list of Pelias services](services.md) describes the functionality of each s
 used to determine if you need to install that service. It also includes links to setup instructions
 for each service.
 
-When in doubt, install everything except the interpolation engine (it requires a long download or
+When in doubt, install everything except the interpolation engine (it requires a long download and
 build process).
 
 ### Configure `pelias.json` for services
