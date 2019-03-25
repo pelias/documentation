@@ -98,6 +98,7 @@ The type of record is referred to as its `layer`. All records are indexed into t
 |`borough`| a local administrative boundary, currently only used for New York City|
 |`neighbourhood`|social communities, neighbourhoods|
 |`coarse`|alias for simultaneously using all administrative layers (everything except `venue` and `address`)|
+|`postalcode`|postal code used by mail services|
 
 > /v1/autocomplete?__layers=coarse__&text=starbuck
 
@@ -135,6 +136,6 @@ Sometimes your work might require that all the search results be from a particul
 | `boundary.rect.min_lat` | floating point number | no | none | `35.53308` |
 | `boundary.rect.max_lat` | floating point number | no | none | `35.81346` |
 | `sources` | string | no | all sources: osm,oa,gn,wof | openstreetmap,wof |
-| `layers` | string | no | all layers: address,venue,neighbourhood,locality,borough,localadmin,county,macrocounty,region,macroregion,country,coarse | address,venue |
+| `layers` | string | no | all layers: address,venue,neighbourhood,locality,borough,localadmin,county,macrocounty,region,macroregion,country,coarse,postalcode | address,venue |
 | `boundary.country` | string | no | none | 'GBR' |
 | `boundary.gid` | Pelias `gid` | no | none | `whosonfirst:locality:101748355` |
