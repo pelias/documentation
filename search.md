@@ -375,6 +375,7 @@ In Pelias, place types are referred to as `layers`, ranging from fine to coarse.
 |`macroregion`|a related group of regions. Mostly in Europe|
 |`country`|places that issue passports, nations, nation-states|
 |`coarse`|alias for simultaneously using all administrative layers (everything except `venue` and `address`)|
+|`postalcode`|postal code used by mail services|
 
 > [/v1/search?text=YMCA&__layers=venue,address__](https://pelias.github.io/compare/#/v1/search%3Flayers=venue,address&text=ymca)
 
@@ -399,6 +400,6 @@ In Pelias, place types are referred to as `layers`, ranging from fine to coarse.
 | `boundary.circle.radius` | floating point number | no | 50 | `35` |
 | `boundary.gid` | Pelias `gid` | no | none | `whosonfirst:locality:101748355` |
 | `sources` | string | no | all sources: osm,oa,gn,wof | openstreetmap,wof |
-| `layers` | string | no | all layers: address,venue,neighbourhood,locality,borough,localadmin,county,macrocounty,region,macroregion,country,coarse | address,venue |
+| `layers` | string | no | all layers: address,venue,neighbourhood,locality,borough,localadmin,county,macrocounty,region,macroregion,country,coarse,postalcode | address,venue |
 | `boundary.country` | string | no | none | 'GBR' |
 | `size` | integer | no | 10 | 20 |
