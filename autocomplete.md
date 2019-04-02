@@ -6,11 +6,49 @@ To build a query with autocomplete, you need a `text` parameter, representing wh
 
 ## User experience guidelines
 
-There are two user experience pitfalls to watch out for when implementing a client-side typeahead solution:
+There are several user experience pitfalls to watch out for when implementing a client-side typeahead solution:
 
-**Requests must be throttled.** Since autocomplete requests generally correspond directly to user input, it's important to account for fast typers and throttle requests when using the autocomplete endpoint. Some devices and networks (for example, mobile phones on a slow connection) may respond poorly when too many requests are sent too quickly, so be sure to do some testing on your own. [Learn more in this interactive demo.](http://jsfiddle.net/missinglink/19e2r2we/)
+### Requests must be throttled
 
-**Responses are asynchronous.** This means you cannot be sure responses will be returned in the same order they were requested. If you were to send two queries synchronously, first `'Lo'` then `'London'`, you may find the `'London'` response would arrive before the `'Lo'` response. This will result in a quick flash of `'London'` results followed by the results for `'Lo'`, which can confuse the user.
+Since autocomplete requests generally correspond directly to user input, it's important to account for fast typers and throttle requests. Some devices and networks (for example, mobile phones on a slow connection) may respond poorly when too many requests are sent too quickly, so be sure to do some testing on your own. [Learn more in this interactive demo.](http://jsfiddle.net/missinglink/19e2r2we/)
+
+Our testing shows that between 5 and 10 requests per second is the range with the best balance of
+resource usage and autocomplete responsiveness.
+
+Many Pelias services also enforce hard per-second rate limits, so setting a client-side throttle can
+help you avoid exceeding those limits. It's better to send fewer requests on your own terms than
+rely on a server's rate limiting to decide which requests will receive a complete response.
+
+### Account for asynchronous, out of order responses
+
+You cannot be sure responses will be returned in the same order they were requested. If you were to
+send two queries synchronously, first `'Lo'` then `'London'`, you may find the `'London'` response
+would arrive before the `'Lo'` response. This will result in a quick flash of `'London'` results
+followed by the results for `'Lo'`, which can confuse the user.
+
+Autocomplete requests with more characters typed will often return faster, since the search space of
+the query is smaller, so this is not an edge case.
+
+### Use search even with autocomplete
+
+While the autocomplete endpoint is designed specifically for use with user-entered inputs, the
+search endpoint can still be useful in certain situations. A common paradigm is to send an
+autocomplete request on key presses (throttling appropriately as described earlier), but sending a
+_search_ request when the user hits the `enter` key or a submit button.
+
+This approach allows for the speed and partial-input handling of the autocomplete endpoint to be
+used when needed, and the accuracy and additional functionality of the search endpoint to be used
+when possible.
+
+In our experience, most users have been trained by other websites that submit buttons paired with an
+autocomplete interface will trigger a "more in depth" search, and so will naturally use this
+ability.
+
+### Use a pre-written client library if possible
+
+If you are already using [Leaflet](https://leafletjs.com/), we recommend using the Nextzen (previously Mapzen)
+[leaflet-geocoder](https://github.com/nextzen/leaflet-geocoder) plugin. This plugin follows all the
+autocomplete guidelines listed here and has been well vetted by many members of our community.
 
 ## Global scope, local focus
 
