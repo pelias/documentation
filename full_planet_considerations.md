@@ -16,7 +16,8 @@ NVMe SSDs, a fast internet connection for downloading data, and many CPUs for pa
 
 To set expectations, a 36 core machine can complete a Pelias build in about 16 hours.
 
-A 16 core machine with 64 Gb ram and SSD can complete a Pelias build in a week.
+A 16 core machine with 64 Gb ram and a 1Tb EBS volume can complete a Pelias build in a week.
+Including the elasticsearch index, the data takes about 750Gb. 
 
 ## Recommended processes
 
