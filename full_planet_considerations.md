@@ -16,6 +16,8 @@ NVMe SSDs, a fast internet connection for downloading data, and many CPUs for pa
 
 To set expectations, a 36 core machine can complete a Pelias build in about 16 hours.
 
+A 16 core machine with 64 Gb ram and SSD can complete a Pelias build in a week.
+
 ## Recommended processes
 
 ### Use Docker containers and orchestration
@@ -64,6 +66,18 @@ The `elasticsearch` section of `pelias.json` can be used to configure the shard 
   }
 }
 ```
+
+### Heap Size 
+
+The elasticsearch heap size can be set in docker-compose.yaml .
+
+```
+  elasticsearch:
+    environment: [ "ES_JAVA_OPTS=-Xmx8g" ]
+```
+
+The  [recommendations](https://www.elastic.co/guide/en/elasticsearch/guide/current/heap-sizing.html) call for allocating half the ram for elasticsearch, 
+but don't go over 31Gb. 
 
 ### Force merge your Elasticsearch indices
 
