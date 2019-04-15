@@ -50,6 +50,21 @@ If you are already using [Leaflet](https://leafletjs.com/), we recommend using t
 [leaflet-geocoder](https://github.com/nextzen/leaflet-geocoder) plugin. This plugin follows all the
 autocomplete guidelines listed here and has been well vetted by many members of our community.
 
+## Set the number of results returned
+
+By default, Pelias results up to 10 places, unless otherwise specified. If you want a different number of results, set the `size` parameter to the desired number. This example shows returning only the first result.
+
+| parameter | value |
+| :--- | :--- |
+| `text` | YMCA |
+| `size` | 1 |
+
+> [/v1/autocomplete?text=YMCA&__size=1__](https://pelias.github.io/compare/#/v1/autocomplete%3Fsize=1&text=ymca)
+
+If you want 25 results, you can build the query where `size` is 25.
+
+> [/v1/autocomplete?text=YMCA&__size=25__](https://pelias.github.io/compare/#/v1/autocomplete%3Fsize=25&text=ymca)
+
 ## Global scope, local focus
 
 To focus your search based upon a geographical area, such as the center of the user's map or at the device's GPS location, supply the parameters `focus.point.lat` and `focus.point.lon`. This boosts locally relevant results higher. For example, if you search for `Union Square`:
@@ -177,3 +192,4 @@ Sometimes your work might require that all the search results be from a particul
 | `layers` | string | no | all layers: address,venue,neighbourhood,locality,borough,localadmin,county,macrocounty,region,macroregion,country,coarse,postalcode | address,venue |
 | `boundary.country` | string | no | none | 'GBR' |
 | `boundary.gid` | Pelias `gid` | no | none | `whosonfirst:locality:101748355` |
+| `size` | integer | no | 10 | 20 |
