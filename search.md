@@ -172,7 +172,7 @@ Sometimes you don't have a rectangle to work with, but rather you have a point o
 
 In this example, you want to find all YMCA locations within a 35-kilometer radius of a location in Ontario, Canada. This time, you can use the `boundary.circle.*` parameter group, where `boundary.circle.lat` and `boundary.circle.lon` is your location in Ontario and `boundary.circle.radius` is the acceptable distance from that location. Note that the `boundary.circle.radius` parameter is always specified in kilometers.
 
-> [/v1/search?text=YMCA&__boundary.circle.lon=-79.186484&boundary.circle.lat=43.818156&boundary.circle.radius=35__](https://pelias.github.io/compare/#/v1/search%3Fboundary.circle.lon=-79.186484&boundary.circle.lat=43.818156&boundary.circle.radius=35&text=ycma)
+> [/v1/search?text=YMCA&__boundary.circle.lon=-79.186484&boundary.circle.lat=43.818156&boundary.circle.radius=35__](https://pelias.github.io/compare/#/v1/search%3Fboundary.circle.lon=-79.186484&boundary.circle.lat=43.818156&boundary.circle.radius=35&text=ymca)
 
 | parameter | value |
 | :--- | :--- |
