@@ -30,7 +30,7 @@ Parameter | Type | Required | Default | Example
 `size` | integer | no | `10` | `3`
 `layers` | comma-delimited string array | no | none (all layers) | `address,locality`
 `sources` | comma-delimited string array | no | none (all sources) | `oa,gn`
-`boundary.country` | <a href="https://en.wikipedia.org/wiki/ISO_3166-1" target="\_blank">ISO-3166 alpha-2 or alpha-3</a> | no | none | `FR`
+`boundary.country` | comma separated list of <a href="https://en.wikipedia.org/wiki/ISO_3166-1" target="\_blank">ISO-3166 alpha-2 or alpha-3</a> | no | none | `FR,GBR`
 `boundary.gid` | Pelias `gid` | no | none | `whosonfirst:locality:101748355`
 
 ### Size

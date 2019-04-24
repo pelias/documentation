@@ -175,7 +175,7 @@ with `layers=venue` you will see only the venues by that name
 
 ![Searching in a country](/images/world_country.png)
 
-Sometimes your work might require that all the search results be from a particular country. To do this, you can set the `boundary.country` parameter value to the alpha-2 or alpha-3 [ISO-3166 country code](https://en.wikipedia.org/wiki/ISO_3166-1).
+Sometimes your work might require that all the search results be from a particular country or a list of countries. To do this, you can set the `boundary.country` parameter value to a comma separated list of alpha-2 or alpha-3 [ISO-3166 country code](https://en.wikipedia.org/wiki/ISO_3166-1).
 
 ## Available autocomplete parameters
 
@@ -190,6 +190,6 @@ Sometimes your work might require that all the search results be from a particul
 | `boundary.rect.max_lat` | floating point number | no | none | `35.81346` |
 | `sources` | string | no | all sources: osm,oa,gn,wof | openstreetmap,wof |
 | `layers` | string | no | all layers: address,venue,neighbourhood,locality,borough,localadmin,county,macrocounty,region,macroregion,country,coarse,postalcode | address,venue |
-| `boundary.country` | string | no | none | 'GBR' |
+| `boundary.country` | string | no | none | 'GBR,FRA' |
 | `boundary.gid` | Pelias `gid` | no | none | `whosonfirst:locality:101748355` |
 | `size` | integer | no | 10 | 20 |
