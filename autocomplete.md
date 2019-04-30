@@ -171,6 +171,32 @@ with `layers=venue` you will see only the venues by that name
 3) Starbucks, Austin, TX, USA
 ```
 
+### Search within a circular region
+
+![Searching within a circle](/images/world_circle.png)
+
+Sometimes you don't have a rectangle to work with, but rather you have a point on earth&mdash;for example, your location coordinates&mdash;and a maximum distance within which acceptable results can be located.
+
+In this example, you want to find all YMCA locations within a 35-kilometer radius of a location in Ontario, Canada. This time, you can use the `boundary.circle.*` parameter group, where `boundary.circle.lat` and `boundary.circle.lon` is your location in Ontario and `boundary.circle.radius` is the acceptable distance from that location. Note that the `boundary.circle.radius` parameter is always specified in kilometers.
+
+> [/v1/autocomplete?text=YMCA&__boundary.circle.lon=-79.186484&boundary.circle.lat=43.818156&boundary.circle.radius=35__](https://pelias.github.io/compare/#/v1/autocomplete%3Fboundary.circle.lon=-79.186484&boundary.circle.lat=43.818156&boundary.circle.radius=35&text=ymca)
+
+| parameter | value |
+| :--- | :--- |
+| `text` | YMCA |
+| `boundary.circle.lat` | 43.818156 |
+| `boundary.circle.lon` | -79.186484 |
+| `boundary.circle.radius` | 35 |
+
+You can see the results have fewer than the standard 10 items because there are not that many YMCA locations in the specified radius:
+
+* YMCA, Toronto, Ontario
+* YMCA, Markham, Ontario
+* YMCA, Toronto, Ontario
+* Metro Central YMCA, Toronto, Ontario
+* Pinnacle Jr YMCA, Toronto, Ontario
+* Cooper Koo Family Cherry Street YMCA Centre, Toronto, Ontario
+
 ### Country
 
 ![Searching in a country](/images/world_country.png)
@@ -188,6 +214,9 @@ Sometimes your work might require that all the search results be from a particul
 | `boundary.rect.max_lon` | floating point number | no | none | `140.1471` |
 | `boundary.rect.min_lat` | floating point number | no | none | `35.53308` |
 | `boundary.rect.max_lat` | floating point number | no | none | `35.81346` |
+| `boundary.circle.lat` | floating point number | no | none | `43.818156` |
+| `boundary.circle.lon` | floating point number | no | none | `-79.186484` |
+| `boundary.circle.radius` | floating point number | no | 50 | `35` |
 | `sources` | string | no | all sources: osm,oa,gn,wof | openstreetmap,wof |
 | `layers` | string | no | all layers: address,venue,neighbourhood,locality,borough,localadmin,county,macrocounty,region,macroregion,country,coarse,postalcode | address,venue |
 | `boundary.country` | string | no | none | 'GBR,FRA' |
