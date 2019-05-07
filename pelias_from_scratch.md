@@ -167,7 +167,7 @@ As you can see, the default datapaths are meant to be changed.
 
 ### Install Elasticsearch
 
-Please refer to the [official 2.4 install docs](https://www.elastic.co/guide/en/elasticsearch/reference/2.4/setup.html) for how to install Elasticsearch.
+Please refer to the [official 5.6 install docs](https://www.elastic.co/guide/en/elasticsearch/reference/5.6/setup.html) for how to install Elasticsearch.
 
 Be sure to modify the Elasticsearch [heap size](https://www.elastic.co/guide/en/elasticsearch/guide/2.x/heap-sizing.html) as appropriate to your machine.
 
