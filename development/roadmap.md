@@ -28,14 +28,14 @@ autocomplete endpoint. Some features to implement:
 - Better multi-language search support
 - Improved handling of synonyms/abbreviations
 
-## Elasticsearch 5 Support
+## Elasticsearch 6 Support
 
-Pelias is currently only compatible and well tested on Elasticsearch 2. While
-the code changes required to support Elasticsearch 5 are minimal, testing and
-validating Elasticsearch 5 as the default version is not complete and will
-require significant work including testing full planet builds.
+Pelias is currently only compatible and well tested on Elasticsearch 2 and 5.
+Elasticsearch 6 does come with some breaking changes that will require
+development work, but comes with performance and feature improvements we'd like
+to take advantage of.
 
-https://github.com/pelias/pelias/issues/461
+https://github.com/pelias/pelias/issues/719
 
 ## Expanded input language support
 
