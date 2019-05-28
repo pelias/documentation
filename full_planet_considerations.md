@@ -12,7 +12,7 @@ are possible without too much extra effort. The process is no different, it just
 hardware and takes longer.
 
 The best performance for full planet import comes when using a single machine with fast, local
-NVMe SSDs, a fast internet connection for downloading data, and many CPUs for paralell processing.
+NVMe SSDs, a fast internet connection for downloading data, and many CPUs for parallel processing.
 
 To set expectations, a 36 core machine can complete a Pelias build in about 16 hours.
 
