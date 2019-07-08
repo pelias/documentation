@@ -21,6 +21,7 @@ _Not sure which Endpoint to use? We have a [page](search-workflows.md) for that_
 
 #### Response Properties
 
+- [Full list of response properties](response.md)
 - [Confidence scores, match\_types and other tools for determining result quality](result_quality.md)
 
 ### Data Sources
