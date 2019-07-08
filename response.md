@@ -71,7 +71,9 @@ All results returned from Pelias are points, and can be found in the `coordinate
 
 All places in Pelias have a global identifier, known as a `gid`. Each matching record returned from a [/search](search.md), [/autocomplete](autocomplete.md), or [/reverse](reverse.md) geocoding request has a `gid` field.
 
-The `gid` consists of a `layer` (such as `address` or `country`), an identifier for the original data source (such as `openstreetmap` or `openaddresses`),  and an `id` for the individual record corresponding to the original source identifier, where possible. This information is also available as properties on the individual results as `layer`, `source`, and `source_id`.
+The `gid` consists of an identifier for the original data source (such as `openstreetmap` or `openaddresses`),  a `layer` (such as `address` or `country`), and an `id` for the individual record corresponding to the original source identifier, where possible. This information is also available as properties on the individual results as `layer`, `source`, and `source_id`.
+
+While useful for identifying a specific record at a particular time, `gid`s can not always be relied upon to be valid over the course of days, months, or years, as many data sources do not have stable IDs.
 
 #### :warning: Follow these guidelines regarding the `gid`:
 
