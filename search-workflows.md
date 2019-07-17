@@ -52,8 +52,6 @@ The distinction in the results is visible when you consider the behavior with th
 
 When you are searching for a hotel in a particular city, for example, you often see a list of matching results appear after each character as you type. In your own app, if you want your users to enter text and see real-time results as they type, use `/autocomplete`. This type-ahead functionality helps users find what they are looking for, without requiring them to fully specify their search term. Typically, your users start typing and a drop-down list appears where they can choose the term from the list.
 
-Because `/autocomplete` results in many more individual requests to get a good result, autocomplete has higher free rate limits and lower per-request prices than `/search`.
-
 ### ...and want to search only when they finish typing (`/search`)
 
 If you want the search to occur only when specifically executed, such as when your users press Enter, use `/search`. A search operates under the assumption that the input text is complete. A common design pattern is for an app to use autocomplete for the initial type-ahead behavior, and then switch to a `/search` when the user presses Enter or clicks an entry from the list.
