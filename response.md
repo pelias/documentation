@@ -111,7 +111,6 @@ By default, Pelias results 10 places, unless otherwise specified. If you want a 
 
 | parameter | value |
 | :--- | :--- |
-| `api_key` | [get yours here](https://mapzen.com/developers) |
 | `text` | YMCA |
 | `size` | 1 |
 
