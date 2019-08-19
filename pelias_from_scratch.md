@@ -95,9 +95,6 @@ for repository in schema whosonfirst geonames openaddresses openstreetmap polyli
 done
 ```
 
-**Note:** Pelias used to use `production` branches for stable development. The
-master branch is [now used for that purpose](https://github.com/pelias/pelias/issues/749).
-
 ### Customize Pelias Config
 
 Nearly all configuration for Pelias is driven through a single config file: `pelias.json`. By
