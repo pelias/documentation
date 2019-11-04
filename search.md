@@ -355,10 +355,14 @@ If you wanted to combine several data sources together, set `sources` to a comma
 | `text` | YMCA |
 | `sources` | osm,gn |
 
-Each of these data sources has properties, licenses, and strengths. You can learn more about the [data sources for Pelias](data-sources.md).
+Each of the data sources supported by Pelias can have different properties, licenses, and strengths. You can learn more on the [data sources for Pelias](data-sources.md) page.
 
 ### Filter by data type
-In Pelias, place types are referred to as `layers`, ranging from fine to coarse. The Pelias layers are derived from the hierarchy created by the gazetteer [Who's on First](https://github.com/whosonfirst/whosonfirst-placetypes/blob/master/README.md) and can be used to help coarse geocoding. Here's a list of the types of places you could find in the results, sorted by granularity:
+In Pelias, different types of results are given different `layer` values. This helps us differentiate, for example, an address from a point of interest from a country.
+
+The Pelias layers are derived from the hierarchy created by the gazetteer [Who's on First](https://github.com/whosonfirst/whosonfirst-placetypes/blob/master/README.md) and can be used to help you filter for just the types of results you want.
+
+Here's a list of the types of places you could find in the results, sorted by granularity:
 
 |layer|description|
 |----|----|
