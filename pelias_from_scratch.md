@@ -215,20 +215,21 @@ node scripts/drop_index.js      # it will ask for confirmation first
 ```
 
 When is this necessary? Here's a guideline: when in doubt, delete the index, re-create it, and start
-fresh.
-
-This is because Elasticsearch has no analog to a schema migration like a relational database, and
-all the importers start over when re-run.
+fresh. That's always the safest approach.
 
 The only time when restarting importers without deleting is recommended is if all the following conditions are true:
-1. You are trying to re-import the exact same data again (for example, because the build failed, or
-   you are testing changes to an importer)
-2. The Pelias schema has not changed
-3. You are not concerned with ensuring maximum performance. Elasticsearch
-   internally does not actually perform updates: it deletes old versions of a
-   record and creates a new one. So re-writing the same or similar documents
-   repeatedly can create a larger Elasticsearch index that has slightly worse
-   performance
+1. **You are trying to re-import the exact same data again.** For example, because the build failed, or
+   you are testing changes to an importer. Pelias importers will not create
+   duplicate records if importing the same data, however, they can't account
+   for changes in the data itself.
+2. **The Pelias schema has not changed.** Elasticsearch has no concept similar
+   to a schema migration from a traditional database, so any schema changes
+   require deleting and re-importing all data.
+3. **You are not concerned with ensuring maximum performance when performing
+   queries.** Elasticsearch internally does not actually perform updates: it
+   deletes old versions of a record and creates a new one. So re-writing the
+   same or similar documents repeatedly can create a larger Elasticsearch index
+   that has slightly worse performance.
 
 ## Install and start the Pelias Services
 
