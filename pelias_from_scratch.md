@@ -220,10 +220,15 @@ fresh.
 This is because Elasticsearch has no analog to a schema migration like a relational database, and
 all the importers start over when re-run.
 
-The only time when this isn't necessary is if the following conditions are true:
+The only time when restarting importers without deleting is recommended is if all the following conditions are true:
 1. You are trying to re-import the exact same data again (for example, because the build failed, or
    you are testing changes to an importer)
 2. The Pelias schema has not changed
+3. You are not concerned with ensuring maximum performance. Elasticsearch
+   internally does not actually perform updates: it deletes old versions of a
+   record and creates a new one. So re-writing the same or similar documents
+   repeatedly can create a larger Elasticsearch index that has slightly worse
+   performance
 
 ## Install and start the Pelias Services
 
