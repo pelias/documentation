@@ -50,28 +50,9 @@ Spelling matters, but not capitalization when performing a query with Pelias. Yo
 
 Note that the results are spread out throughout the world because you have not given your current location or provided any other geographic context in which to search.
 
-## Search for a component of a location
-
-With the `text` parameter, your search is composed of all the items in one string. With [structured geocoding](structured-geocoding.md), you can search for individual components of a location.
-
-Structured geocoding accepts one or more of the following parameters:
-
-* address
-* neighbourhood
-* borough
-* locality
-* county
-* region
-* postalcode
-* country
-
-Structured geocoding also supports the other parameters from `search`, allowing you to filter and prioritize your results.
-
-For more information on how to search this way, see [Structured geocoding](structured-geocoding.md).
-
 ## Set the number of results returned
 
-By default, Pelias results up to 10 places, unless otherwise specified. If you want a different number of results, set the `size` parameter to the desired number. This example shows returning only the first result.
+By default, Pelias returns up to 10 results. If you want a different number, set the `size` parameter to the desired number. This example shows returning only the first result.
 
 | parameter | value |
 | :--- | :--- |
