@@ -4,8 +4,8 @@ Pelias is designed to work with data ranging from a small city to the entire pla
 not require particularly significant resources and should be easy. However, full planet builds
 present many of their own challenges.
 
-Current [full planet builds](https://pelias-dashboard.geocode.earth) weigh in at just under 600 million
-documents, and require about 350GB total storage in Elasticsearch.
+Current [full planet builds](https://pelias-dashboard.geocode.earth) weigh in at over 600 million
+documents, and require about 450GB total storage in Elasticsearch.
 
 Fortunately, because of services like AWS and the scalability of Elasticsearch, full planet builds
 are possible without too much extra effort. The process is no different, it just requires more
