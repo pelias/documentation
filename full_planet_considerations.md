@@ -74,7 +74,7 @@ The elasticsearch heap size can be set in docker-compose.yaml.
     environment: [ "ES_JAVA_OPTS=-Xmx8g" ]
 ```
 
-8GB is a well proven heap size for a full planet build. It meets the official [recommendations]((https://www.elastic.co/guide/en/elasticsearch/guide/current/heap-sizing.html) from Elastic: big enough to fit all required data, but small enough to avoid long garbage collection times, and under the 31GB threshold where JVM memory usage becomes less efficient.
+8GB is a well proven heap size for a full planet build. It meets the official [recommendations](https://www.elastic.co/guide/en/elasticsearch/guide/current/heap-sizing.html) from Elastic: big enough to fit all required data, but small enough to avoid long garbage collection times, and under the 31GB threshold where JVM memory usage becomes less efficient.
 
 ### Force merge your Elasticsearch indices
 
