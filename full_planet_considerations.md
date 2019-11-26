@@ -123,19 +123,20 @@ Each Pelias service has different memory and CPU requirements. Here are some rou
 #### Placeholder
 * RAM: 200MB per instance
 * CPU: Single threaded, supports [clustering](https://nodejs.org/api/cluster.html)
-* Disk: Requires about 3GB for a full planet index
+* Disk: Requires about 5GB for a full planet SQLite DB
 
 #### Libpostal
-* RAM: 4GB per instance
+* RAM: 3GB per instance
 * CPU: Multi-threaded, and extremely fast. A single core can serve 8000+ RPS
 * Disk: about 4GB of data storage required
 
 ### PIP
 * RAM: ~8GB
-* CPU: 2 cores per instance recommended, which is enough to serve 5000-7000 RPS
+* CPU: 2 cores per instance recommended. Cannot effectively use more than 2 cores, but will serve at least 7000RPS
+* Disk: A full planet Who's on First SQLite DB requires about 30GB
 
 ### Interpolation
 * RAM: 3GB per instance currently (please follow our efforts to [un-bundle
 libpostal](https://github.com/pelias/interpolation/issues/106) from the interpolation service)
 * CPU: Single core. One instance can serve around 200RPS
-* Disk: 40GB needed for a full planet interpolation dataset
+* Disk: 50GB needed for a full planet interpolation dataset
