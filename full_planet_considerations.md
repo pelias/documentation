@@ -82,6 +82,8 @@ Pelias Elasticserach indices are generally static, as we do not recommend queryi
 importing to an Elasticsearch cluster simultaneously. In such cases, the highest levels of
 performance can be achieved by [force-merging](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-forcemerge.html) the Elasticsearch index.
 
+This process takes a while, around 5 hours in our experience, but for a snapshot that will be queried heavily later, it can be worth it.
+
 ## Recommended hardware
 
 For a production ready instance of Pelias, capable of supporting a few hundred queries per second
