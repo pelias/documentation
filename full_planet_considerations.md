@@ -37,7 +37,7 @@ installations. Pelias is extensively tested on both.
 
 The requirements for performant and reliable Elasticsearch clusters are very different for importing
 new data compared to serving queries. It is _highly_ recommended to use one cluster to do imports,
-save the resulting Elasticsearch index into a snapshot, and then load that snapshot into the cluster
+save the resulting Elasticsearch index into a [snapshot](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-snapshots.html), and then load that snapshot into the cluster
 used to perform actual geocoding.
 
 ### Shard count
