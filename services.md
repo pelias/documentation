@@ -8,7 +8,7 @@ to a particular task.
 Here's a list of which services provide which features in Pelias. If you don't need everything Pelias
 does, you may be able to get by without installing and running all the Pelias services
 
-| Service       | /v1/search   | /v1/autocomplete | /v1/reverse  | /v1/reverse (coarse) | Multiple language support (any endpoint) |
+| Service       | /v1/search   | /v1/autocomplete | /v1/reverse  | /v1/reverse (coarse) | Changing the display language of results (any endpoint) |
 | ------        | -----        | -----            | ---------    | -------              | ----- |
 | API           | **required** | **required**     | **required** | **required**         | **required** |
 | Placeholder   | **required** |                  |              |                      | **required** |
