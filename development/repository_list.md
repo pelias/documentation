@@ -4,11 +4,11 @@ This is a list of all active Pelias repositories. It can be useful for tracking 
 
 ## services
 - [ ] api
-- [ ] document-service
 - [ ] pip-service
 - [ ] placeholder
 - [ ] interpolation
 - [ ] libpostal-service
+- [ ] spatial
 
 ## importers
 - [ ] whosonfirst
@@ -22,6 +22,8 @@ This is a list of all active Pelias repositories. It can be useful for tracking 
 ## support modules
 - [ ] query
 - [ ] pbf2json
+- [ ] parser
+- [ ] blacklist-stream
 - [ ] logger
 - [ ] dbclient
 - [ ] config
@@ -36,6 +38,8 @@ This is a list of all active Pelias repositories. It can be useful for tracking 
 - [ ] model
 - [ ] polygon-lookup
 - [ ] analysis
+- [ ] lastline
+- [ ] categories
 
 ## testing
 - [ ] acceptance-tests
@@ -43,15 +47,25 @@ This is a list of all active Pelias repositories. It can be useful for tracking 
 - [ ] fuzzy-tests
 
 ## meta
-- [ ] dockerfiles
 - [ ] dashboard
 - [ ] compare
 - [ ] pelias
-- [ ] baseimage
 - [ ] documentation
+- [ ] ci-tools
+
+# docker
+- [ ] docker
+- [ ] docker-baseimage
+- [ ] docker-libpostal_baseimage
+
+# web modules
+- [ ] leaflet-plugin
 
 ## deployment
 - [ ] kubernetes
+- [ ] packer-elasticsearch
+- [ ] terraform-elasticsearch
+- [ ] elasticsearch-health-logger
 
 ## misc
 - [ ] mars-importer
