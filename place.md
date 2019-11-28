@@ -20,7 +20,13 @@ To search for more than one `/place` in a request, join multiple values together
 
 The results are returned in the order requested.
 
-### Error handling
+## Gets the categories in responses
+
+You can get some metadata from places such as categories. Categories let you know how to classify an element. For example the `Château de Versailles` (`Palace of Versailles`) in OpenStreetMap is classified as `entertainment`.
+
+> [/v1/place?__categories&ids=openstreetmap:venue:relation/1149002__](https://pelias.github.io/compare/#/v1/place%3Fcategories&ids=openstreetmap:venue:relation/1149002)
+
+## Error handling
 
 If you enter a valid `gid` that cannot be found or has "expired" due to a newer build, you may get empty results. The request will NOT return an error.
 
@@ -28,8 +34,15 @@ If the structure of your `gid` is invalid, an error will be returned as part of 
 
 Keep in mind that if you enter a `gid` that cannot be found in a list of multiple IDs, then the `features` array in the response contains a different number of elements than the number of requests. For example, your request may have three IDs requested but only two results returned. The reason for this is that the `features` section of the response is GeoJSON-compliant, and JSON does not allow a way to convey an exception condition (not even an empty JSON element, `{}`). For this reason, if your application is dependent upon the results mapping directly to the individual input requests in order, then you'll have to do your own bookkeeping to handle exception conditions.
 
-### :warning: Datasets without stable IDs
+## :warning: Datasets without stable IDs
 
 Due to the ever-changing nature of most open-datasets used by Pelias, some `gids` can change merely by importing newer data.
 
 Both Geonames and Who's on First have excellent, stable IDs and should not cause trouble. However, OpenAddresses and OpenStreetMap do _not_ have stable IDs. Be careful.
+
+## Available places parameters
+
+| Parameter | Type | Required | Default | Example |
+| --- | --- | --- | --- | --- |
+| `gid` | string | yes | none | `whosonfirst:borough:421205771` |
+| `categories` | none | no | none | Check only if the query parameter is present |
