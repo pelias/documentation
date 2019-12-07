@@ -8,7 +8,7 @@ install all our dependencies yourself.
 
 Most Pelias code is written in Node.js.
 
-Version 8 or newer is required, version 10 is recommended for improved performance.
+Version 10 or newer is required, version 12 is recommended for improved performance.
 
 Pelias generally only adds support for even numbered [LTS](https://github.com/nodejs/Release#release-schedule) Node.js versions.
 However we gladly accept patches and bug reports regarding issues with any Node.js version that has not reached end-of-life.
