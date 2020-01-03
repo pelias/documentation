@@ -18,16 +18,6 @@ nuances of local postal service delivery than strict borders.
 
 https://github.com/pelias/pelias/issues/396
 
-## Improved Autocomplete
-
-Pelias has recently made many improvements to the search endpoint (which
-supports only completed inputs), but has not brought all of them to the
-autocomplete endpoint. Some features to implement:
-
-- Drop the requirement of commas to separate address components
-- Better multi-language search support
-- Improved handling of synonyms/abbreviations
-
 ## Elasticsearch 6 Support
 
 Pelias is currently only compatible and well tested on Elasticsearch 2 and 5.
