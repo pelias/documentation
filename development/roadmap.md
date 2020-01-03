@@ -28,16 +28,16 @@ https://github.com/pelias/pelias/issues/719
 
 ## Expanded input language support
 
-Overall, Pelias has a solid founation of language and internationalization
+Overall, Pelias has a solid foundation of language and internationalization
 support. The Pelias data schema allows for records to have multiple name
-values. These might include names in different langages, alternate names,
+values. These might include names in different languages, alternate names,
 colloquial names, or common abbreviations (for example airport codes).
 
 However, not all data importers currently add multiple names, even when they
-are available in the source data. Futhermore, not all our queries use these
+are available in the source data. Furthermore, not all our queries use these
 alternate names effectively.
 
-Pelias currently supports querying for administrative areas in many languges on
+Pelias currently supports querying for administrative areas in many languages on
 the `/v1/search` endpoint.
 
 For autocomplete, the queries are not currently able to utilize multiple
