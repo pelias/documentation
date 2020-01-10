@@ -15,13 +15,11 @@ However we gladly accept patches and bug reports regarding issues with any Node.
 
 ## Elasticsearch
 
-Version 6.8
+Version 6.8 or 7.X
 
 The core data storage for Pelias is Elasticsearch. We recommend the latest in the 6.8 release line.
 
-Support for Elasticsearch 5.6 has been officially deprecated, we are only planning to support backwards compatibility until January 2020.
-
-[Elasticsearch 7](https://github.com/pelias/pelias/issues/831) support is currently in progress, which will require making breaking changes that will not allow Elasticsearch 5.x suppport to continue.
+Support for Elasticsearch 5.6 has been removed in order to support Elasticsearch 7.
 
 ## SQLite
 
