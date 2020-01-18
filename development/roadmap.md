@@ -18,14 +18,6 @@ nuances of local postal service delivery than strict borders.
 
 https://github.com/pelias/pelias/issues/396
 
-## Elasticsearch 7 Support
-
-Pelias currently supports Elasticsearch 6. As part of our usual upgrade cycle
-we want to add support for ES7 to stay with the latest supported version of
-Elasticsearch.
-
-https://github.com/pelias/pelias/issues/719
-
 ## Expanded input language support
 
 Overall, Pelias has a solid foundation of language and internationalization
