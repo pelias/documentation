@@ -6,10 +6,6 @@ not require particularly significant resources and should work out of the box on
 Current [full planet builds](https://pelias-dashboard.geocode.earth) weigh in at over 600 million
 documents, and require about 450GB total storage in Elasticsearch.
 
-Fortunately, because of services like AWS and the scalability of Elasticsearch, full planet builds
-are possible without too much extra effort. The process is no different, it just requires more
-hardware and takes longer.
-
 The best performance for full planet import comes when using a single machine with fast, local
 NVMe SSDs, a fast internet connection for downloading data, and many CPUs for parallel processing.
 
