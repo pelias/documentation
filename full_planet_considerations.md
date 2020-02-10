@@ -1,8 +1,7 @@
 # Considerations for full-planet builds
 
 Pelias is designed to work with data ranging from a small city to the entire planet. Small cities do
-not require particularly significant resources and should be easy. However, full planet builds
-present many of their own challenges.
+not require particularly significant resources and should work out of the box on even modest personal computers. However, full planet builds present many of their own challenges and require planning regarding compute infrastructure in order to have success.
 
 Current [full planet builds](https://pelias-dashboard.geocode.earth) weigh in at over 600 million
 documents, and require about 450GB total storage in Elasticsearch.
