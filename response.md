@@ -59,7 +59,7 @@ Each item in this list will contain all the information needed to find it in hum
     },
 ```
 
-Additionally, [/reverse](reverse.md) queries will have a `distance` parameter, which is the distance, in meters, from the query point.
+Additionally, [/reverse](reverse.md) queries will have a `distance` parameter, which is the distance, in kilometers, from the query point.
 
 ## Notable features
 

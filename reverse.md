@@ -88,7 +88,7 @@ Note that `UK` is not a valid ISO 3166-1 alpha-2 country code.
 
 ## Distance and confidence scores for the results
 
-Each result returned has a distance from the query point (in meters) and an associated confidence score. Confidence scores are calculated based on the distance from the result to the supplied `point.lat` and `point.lon`. Confidence scoring for reverse geocode results is likely to change with different data sources and layers.
+Each result returned has a distance from the query point (in kilometers) and an associated confidence score. Confidence scores are calculated based on the distance from the result to the supplied `point.lat` and `point.lon`. Confidence scoring for reverse geocode results is likely to change with different data sources and layers.
 
 Distance from `point.lat`/`point.lon` | Confidence score
 --- | ---
