@@ -8,7 +8,7 @@ The `/place` endpoint accepts Pelias `gid` strings that get returned for every e
 
 For example, this `/place` query looks up the Eiffel Tower in OpenStreetMap (OSM):
 
-> [/v1/place?__ids=openstreetmap:venue:way:5013364__](https://pelias.github.io/compare/#/v1/place%3Fids=openstreetmap:venue:way:5013364)
+> [/v1/place?__ids=openstreetmap:venue:way/5013364__](https://pelias.github.io/compare/#/v1/place%3Fids=openstreetmap:venue:way/5013364)
 
 Note that you need an actual `gid` value to make a `/place` search. For example, if you search for an address and the result is [interpolated](addresses.md#address-interpolation), then there is no discrete `gid` to use for a `/place` search because interpolated results may be from multiple data sources.
 
@@ -16,7 +16,7 @@ Note that you need an actual `gid` value to make a `/place` search. For example,
 
 To search for more than one `/place` in a request, join multiple values together and separate them with a comma. For example, this `/place` query looks up the Eiffel Tower in OpenStreetMap and the borough of Manhattan in Who's on First:
 
-> [/v1/place?__ids=openstreetmap:venue:way:5013364,whosonfirst:borough:421205771__](https://pelias.github.io/compare/#/v1/place%3Fids=openstreetmap:venue:way:5013364,whosonfirst:borough:421205771)
+> [/v1/place?__ids=openstreetmap:venue:way/5013364,whosonfirst:borough:421205771__](https://pelias.github.io/compare/#/v1/place%3Fids=openstreetmap:venue:way/5013364,whosonfirst:borough:421205771)
 
 The results are returned in the order requested.
 
