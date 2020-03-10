@@ -1,3 +1,20 @@
+# Pelias Release Notes
+
+Pelias release notes are now published on a per-repository basis on GitHub.
+
+For example, you can view the release notes for the Pelias API at https://github.com/pelias/api/releases.
+
+Here are some of the major Pelias repositories and their release notes:
+
+- [API](https://github.com/pelias/api/releases)
+- [Elasticsearch schema](https://github.com/pelias/schema/releases)
+- [OpenStreetMap importer](https://github.com/pelias/openstreetmap/releases)
+- [OpenAddresses importer](https://github.com/pelias/openaddresses/releases)
+- [Who's on First importer](https://github.com/pelias/whosonfirst/releases)
+- [CSV importer](https://github.com/pelias/csv-importer/releases)
+
+# Historical release notes
+
 ## 26 October 2017
 
 ### Bug fixes
