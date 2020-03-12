@@ -39,7 +39,6 @@ This is a list of all active Pelias repositories. It can be useful for tracking 
 - [ ] polygon-lookup
 - [ ] analysis
 - [ ] lastline
-- [ ] categories
 
 ## testing
 - [ ] acceptance-tests
