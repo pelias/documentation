@@ -6,20 +6,28 @@ install all our dependencies yourself.
 
 ## Node.js
 
-Most Pelias code is written in Node.js.
+Version 10 or Version 12
 
-Version 10 or newer is required, version 12 is recommended for improved performance.
+Version 12 is recommended for best performance.
+
+Most Pelias code is written in Node.js, so this is one of the most core dependencies of the project.
 
 Pelias generally only adds support for even numbered [LTS](https://github.com/nodejs/Release#release-schedule) Node.js versions.
 However we gladly accept patches and bug reports regarding issues with any Node.js version that has not reached end-of-life.
 
+We recommend you always use the _latest_ minor and patch release of whichever major release line you
+choose.
+
+We strive to support any minor or patch version of our supported major release lines of Node.js, but on occasion this may not be possible and we'll offer additional guidance.
+
 ## Elasticsearch
 
-Version 6.8 or 7.X
+Version 6.8+ or 7.5+
 
-The core data storage for Pelias is Elasticsearch. We recommend the latest in the 6.8 release line.
+We recommend the latest in the 6.8 release line.
 
-Support for Elasticsearch 5.6 has been removed in order to support Elasticsearch 7.
+The core data storage for Pelias is Elasticsearch, and Elasticsearch makes major breaking changes
+from release to release, so it's important to track these versions carefully.
 
 ## SQLite
 
