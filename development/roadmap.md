@@ -7,17 +7,6 @@ As an open-source project, we don't usually have a timeline or estimate for
 when items on our roadmap will be completed, but this document does serve as a
 roughly priority order of major changes we hope to make.
 
-## Solve the "postal cities" challenge
-
-Pelias uses strict geometric boundary decisions to determine what city (and
-other administrative areas) a record belongs to. For various reasons, the real
-world is often not so clear cut.
-
-Often, the city people expect to see for a given place has more to do with the
-nuances of local postal service delivery than strict borders.
-
-https://github.com/pelias/pelias/issues/396
-
 ## Expanded input language support
 
 Overall, Pelias has a solid foundation of language and internationalization
