@@ -50,12 +50,3 @@ administrative area names.
 
 Additionally, due to limitations in the polylines data format, no streets
 imported from OSM include alternate names, even if they are available in OSM.
-
-## Support for returning polygon data
-
-Pelias often returns records such as cities, states, countries, etc which have
-polygons associated with them representing their boundaries. Pelias uses these
-polygons for point-in-polygon lookups when necessary, but cannot currently send
-these polygons in the response JSON so that users can use that geometry data.
-
-https://github.com/pelias/whosonfirst/issues/19
