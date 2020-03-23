@@ -16,6 +16,21 @@ and not a result of a concerted effort.
 By adding such a feature in a deliberate way we can greatly increase the
 usability of the autocomplete endpoint.
 
+## Integrate the new Spatial service for improved geospatial capabilities
+
+Pelias currently has a component called the [PIP
+service](https://github.com/pelias/pip-service) for performing point in polygon
+calculations, but it's architecture and capabilities have become a huge
+limiting factor for Pelias.
+
+Over the past year, we have been working on a more powerful and efficient
+replacement, the [Spatial service](https://github.com/pelias/spatial).
+
+The spatial service will allow advanced functionality such as custom
+administrative areas, using administrative data from OpenStreetMap, [returning
+polygon data in Pelias responses](https://github.com/pelias/whosonfirst/issues/19),
+or [adding postalcodes to more records based on a geometry](https://github.com/pelias/pelias/issues/111).
+
 ## Expanded input language support
 
 Overall, Pelias has a solid foundation of language and internationalization
