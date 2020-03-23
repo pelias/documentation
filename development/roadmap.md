@@ -7,6 +7,15 @@ As an open-source project, we don't usually have a timeline or estimate for
 when items on our roadmap will be completed, but this document does serve as a
 roughly priority order of major changes we hope to make.
 
+## Fuzzy matching/typo correction for autocomplete
+
+The Pelias autocomplete endpoint currently supports extremely limited typo
+correction. However, this support is really a result of implementation details,
+and not a result of a concerted effort.
+
+By adding such a feature in a deliberate way we can greatly increase the
+usability of the autocomplete endpoint.
+
 ## Expanded input language support
 
 Overall, Pelias has a solid foundation of language and internationalization
@@ -26,15 +35,6 @@ administrative area names.
 
 Additionally, due to limitations in the polylines data format, no streets
 imported from OSM include alternate names, even if they are available in OSM.
-
-## Fuzzy matching/typo correction for autocomplete
-
-The Pelias autocomplete endpoint currently supports extremely limited typo
-correction. However, this support is really a result of implementation details,
-and not a result of a concerted effort.
-
-By adding such a feature in a deliberate way we can greatly increase the
-usability of the autocomplete endpoint.
 
 ## Support for returning polygon data
 
