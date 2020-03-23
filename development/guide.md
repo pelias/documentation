@@ -50,103 +50,29 @@ the change.
 
 ### Releases are driven by commit messages
 
-We use the wonderful [Semantic Release](https://github.com/semantic-release/semantic-release))
-project to manage releasing new versions of all our projects.
+We manage Pelias releases through commit message contents using [Semantic Release](https://github.com/semantic-release/semantic-release).
 
-Semantic Release looks for a [certain commit message format](https://github.com/semantic-release/semantic-release#commit-message-format) to decide when to release.
-
-To help you decide which one to use, we'll list our general guidelines below. Feel free to include
-these in your commit messages if you feel confident. If not, the core team will take care of it.
-
-The general format is:
-
-```
-type(component): Message
-```
-
-Where `type` is one of the below commit message types, `component` is a description of what area of
-the codebase affects, and `Message` is a normal commit message.
-
-#### Chores
-
-[Chores](https://blog.carbonfive.com/2020/02/24/what-are-these-chores-doing-in-my-backlog/) are
-anything that don't affect the behavior of Pelias code, but help keep the project a healthy and
-efficient place to work.
-
-Another way to look at chores is they are changes to the codebase that would not warrant a new
-release at all.
-
-Good examples include:
-
-- Fixing typos in documentation
-- Updating settings in our CI infrastructure
-- Removing dead or unused code
-
-A commit message for a chore looks like this:
-
-```
-chore(CI): Remove deprecated Travis CI configuration option
-```
-
-#### Bug fixes
-
-Bug fixes correct existing errors in the behavior of code.
-
-A bugfix commit looks something like this:
-
-```
-fix(query): Ensure Elasticsearch queries handle empty value
-```
-
-#### Features
-
-Features are the good stuff! They add new behavior that helps the project or improve how it behaves.
-
-A feature commit usually looks like this:
-
-```
-feat(sql): Improve performance of SQL queries
-```
-
-#### Breaking Changes
-
-Any of the above types of commits can also be marked as a breaking change. Breaking changes are used
-to signal to users or modules that depend on the software that a backwards-incompatible change has
-been made. In Pelias, this will trigger a new _major version_ release.
-
-Breaking changes are created by ensuring that the term `BREAKING CHANGE:` occurs in the _body_ of
-the commit message. This means you can't trigger a breaking change with something like `git commit
--m "my commit message"`, you have to run `git commit` and let it open your editor to write the
-commit message.
-
-Also, note the colon at the end of the string. We've often missed breaking changes because we only
-wrote `BREAKING CHANGE`.
-
-A breaking change commit looks like this:
-
-
-```
-feat(services): Add support for libpostal service
-
-BREAKING CHANGE: this project now requires the Libpostal Service to be present in order to work
-```
+If you'd like, you can help us make that task easier by following our [release
+tagging guide](./tagging_releases.md). But don't worry too much about it, the core
+team can always make any needed tags before merging your pull request.
 
 ## Best practices for Pull Requests
 
-#### Reach out to us first before doing a lot of work
+### Reach out to us first before doing a lot of work
 
 Nothing makes us more sad than saying no to a pull request that someone worked hard on.
 
 If you're ever in doubt about whether or not making a change is worthwhile, ask us first. Open an
 issue, email the core team, etc.
 
-We'll discuss with you what makes sense and why, give you context about our ideas for the project
-going forward that might influence your work, and discuss any plans you have before you proceed.
+We'll discuss what makes sense and why, give you context about our ideas for
+the project going forward that might influence your work, and discuss any plans
+you have before you proceed.
 
 We're also happy to review "draft" or unfinished PRs before they are done, so we can give input on
 whether or not a particular approach is looking promising.
 
-#### Keep your pull requests small
+### Keep your pull requests small
 
 We always appreciate small pull requests that focus on a specific change. This makes it easier to
 test and review.
@@ -154,7 +80,7 @@ test and review.
 Whenever possible, we support your efforts to split one large pull request into several smaller
 ones.
 
-#### Rebase against master
+### Rebase against master
 
 If other changes have been made while your Pull Request is in progress, please occasionally update
 your PR to rebase against those new changes.
@@ -165,8 +91,28 @@ that its easy to figure out how and why changes came in when working in the futu
 
 You can generally do this with `git rebase origin master`.
 
-#### Allow changes to your pull requests
+### Allow changes to your pull requests
 
 GitHub allows maintainers to make changes to a pull request created by another user. Please [enable
 this
 functionality](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/allowing-changes-to-a-pull-request-branch-created-from-a-fork) as we often want to make little changes to your pull request rather than go back and forth over them.
+
+## Commonly used tools
+
+As a large project with many smaller components, we try to keep the Pelias
+development process as consistent as possible.
+
+This section lists various tools and utilities that are common in Pelias. Where
+possible, use these tools.
+
+If one of these tools isn't suitable for a particular purpose, ideally we would
+settle on a new option for the entire project.
+
+| Functionality | Pelias Standard |
+| --- | --- |
+| Javascript Linting | [JSHint](https://github.com/jshint/jshint/) |
+| Test framework | [Tape](https://github.com/substack/tape) |
+| Node.js stream library | [through2](https://github.com/rvagg/through2) |
+| General utility library | [lodash](https://github.com/lodash/lodash) |
+| SQLite library | [better-sqlite3](https://github.com/JoshuaWise/better-sqlite3) |
+
