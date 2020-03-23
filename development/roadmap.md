@@ -1,7 +1,9 @@
 # Development Roadmap
 
-Pelias has a long list of features and improvements we wish to make. This is
-where we keep track of them!
+Pelias has a long list of features and improvements we wish to make. While we
+track most of them in [GitHub issues](https://github.com/pelias/pelias/issues),
+this document records high level priorities for the development of the project
+as a whole.
 
 As an open-source project, we don't usually have a timeline or estimate for
 when items on our roadmap will be completed, but this document does serve as a
