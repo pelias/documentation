@@ -31,6 +31,7 @@ With a regular `search` query, you would need to concatenate these columns into 
 
 You can use structured geocoding to search for the following parameters:
 
+* venue
 * address
 * neighbourhood
 * borough
@@ -41,6 +42,28 @@ You can use structured geocoding to search for the following parameters:
 * country
 
 Note that the other [`search` parameters](search.md/#available-search-parameters) can also be combined with these, allowing you to filter and prioritize your results.
+
+
+### venue
+
+[Venues](https://spelunker.whosonfirst.org/placetypes/venue/) are "things with walls, often but mostly things that people stand around together. Things with walls might be public (a bar) or private (your apartment) by default."
+
+_Examples_
+
+* [Pacific Pinball Museum](https://pelias.github.io/compare/#/v1/search/structured?venue=Pacific+Pinball+Museum&locality=alameda&debug=0)
+* [Berlinische Galerie](https://pelias.github.io/compare/#/v1/search/structured?venue=berlinische+galerie&locality=berlin&debug=0)
+* [Stuyvesant High School](https://pelias.github.io/compare/#/v1/search/structured?venue=stuyvesant+high+school&locality=new+york&region=ny&debug=0)
+
+### address
+
+The `address` parameter can contain a full address with house number or only a street name.
+
+_Examples_
+
+* [201 Spear Street](http://pelias.github.io/compare/#/v1/search/structured%3Faddress=201%20Spear%20Street&locality=San%20Francisco&region=CA)
+* [Rue de Rivoli](http://pelias.github.io/compare/#/v1/search/structured%3Faddress=Rue%20de%20Rivoli&locality=Paris&region=France)
+* [Přílucká 1](http://pelias.github.io/compare/#/v1/search/structured%3Faddress=1%20P%C5%99%C3%ADluck%C3%A1&locality=%C5%BDelechovice%20nad%20D%C5%99evnic%C3%AD)
+
 
 ### address
 
@@ -135,6 +158,7 @@ The [Who's on First](https://whosonfirst.org/) gazetteer is one of the datasets 
 
 | Structured geocoding parameter | Who's on First placetype |
 | -------------------- | ------------------------- |
+| `venue`        | [venue](https://spelunker.whosonfirst.org/placetypes/venue/)             |
 | `neighbourhood`        | [neighbourhood](https://spelunker.whosonfirst.org/placetypes/neighbourhood/)             |
 | `borough`              | [borough](https://spelunker.whosonfirst.org/placetypes/borough/)                   |
 | `locality`             | [locality](https://spelunker.whosonfirst.org/placetypes/locality/), [localadmin](https://spelunker.whosonfirst.org/placetypes/localadmin/) (and [borough](https://spelunker.whosonfirst.org/placetypes/borough/) if `borough` parameter is not supplied)      |
