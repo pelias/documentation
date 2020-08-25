@@ -164,7 +164,7 @@ As you can see, the default datapaths are meant to be changed.
 
 ### Install Elasticsearch
 
-Please refer to the [official 6.8 install docs](https://www.elastic.co/guide/en/elasticsearch/reference/6.8/setup.html) for how to install Elasticsearch.
+Please refer to the [official Elasticsearch install docs](https://www.elastic.co/guide/en/elasticsearch/reference/current/setup.html) for how to install Elasticsearch.
 
 Be sure to modify the Elasticsearch [heap size](https://www.elastic.co/guide/en/elasticsearch/guide/master/heap-sizing.html) as appropriate to your machine.
 
