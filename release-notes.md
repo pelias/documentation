@@ -4,8 +4,8 @@ Pelias as a whole operates on a rolling-release process where we generally recom
 
 In general, it's safe to mix and match newer and older versions of different components, or upgrade one component at a time.
 
-We try to avoid it, but when there is a breaking change in one component
-results in a, we publish a new _major version_ of that component.
+We try to avoid it, but when there is a breaking change in one component, we
+publish a new _major version_ of that component.
 
 Each component has its own release nots published on GitHub.
 
