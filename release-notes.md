@@ -7,7 +7,7 @@ In general, it's safe to mix and match newer and older versions of different com
 We try to avoid it, but when there is a breaking change in one component, we
 publish a new _major version_ of that component.
 
-Each component has its own release nots published on GitHub.
+Each component has its own release notes published on GitHub.
 
 For example, you can view the release notes for the Pelias API at https://github.com/pelias/api/releases.
 
