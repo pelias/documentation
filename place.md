@@ -20,7 +20,7 @@ To search for more than one `/place` in a request, join multiple values together
 
 The results are returned in the order requested.
 
-## Gets the categories in responses
+## Return categories in responses
 
 You can get some metadata from places such as categories. Categories let you know how to classify an element. For example the `Château de Versailles` (`Palace of Versailles`) in OpenStreetMap is classified as `entertainment`.
 
