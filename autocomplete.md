@@ -219,6 +219,6 @@ Sometimes your work might require that all the search results be from a particul
 | `boundary.circle.radius` | floating point number | no | 50 | `35` |
 | `sources` | string | no | all sources: osm,oa,gn,wof | openstreetmap,wof |
 | `layers` | string | no | all layers: address,venue,neighbourhood,locality,borough,localadmin,county,macrocounty,region,macroregion,country,coarse,postalcode | address,venue |
-| `boundary.country` | string | no | none | 'GBR,FRA' |
+| `boundary.country` | string | no | none | `GBR,FRA` |
 | `boundary.gid` | Pelias `gid` | no | none | `whosonfirst:locality:101748355` |
 | `size` | integer | no | 10 | 20 |
