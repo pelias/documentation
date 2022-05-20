@@ -8,9 +8,7 @@ Through a process known as [geocoding](https://en.wikipedia.org/wiki/Geocoding),
 
 In this tutorial, you will learn how to make a map with a search box that allows you to enter addresses and place names and locate them on a map. To complete the tutorial, you should have some familiarity with HTML and JavaScript, although all the source code is provided. You can use any text editor and operating system, but must keep an Internet connection while you are working.
 
-You also need a Mapzen API key, which you can get by following the steps in the Mapzen [developer overview](https://mapzen.com/documentation/overview/).
-
-To get started making your map, you will need to use a text editor to update the HTML. See some of Mapzen's [suggested text editors](https://mapzen.com/documentation/guides/install-text-editor/) in the developer guide documentation.
+You also need a Geocode API key, which you can get by following the steps in the Geocode [developer overview]([https://mapzen.com/documentation/overview/](https://geocode.earth/docs/guides/quickstart/)).
 
 ## Create an HTML page
 
@@ -64,13 +62,18 @@ A cascading style sheet (CSS) is used to style a webpage, including layout and f
 
 The [Leaflet JavaScript library](http://leafletjs.com/) provides tools for building an interactive map for web and mobile devices. Leaflet is extensible, and developers have built additional tools for Leaflet maps.
 
-The [Mapzen.js library](https://www.mapzen.com/documentation/mapzen-js/) simplifies the process of using Mapzen's maps within Leaflet. Mapzen.js contains all the Leaflet functionality, as well as additional tools for working with Mapzen maps and search.
+The [Pelias Leaflet Plugin](://github.com/pelias/leaflet-plugin) simplifies the process of using Geocode's maps within Leaflet. It contains all the Leaflet functionality, as well as additional tools for working with the Geocode maps and search.
 
-1. In `index.html`, at the bottom of the `<head>` section, add references to the Mapzen.js CSS and JavaScript files.
+1. In `index.html`, at the bottom of the `<head>` section, add references to leaflet and the Geocode.js CSS and JavaScript files.
 
     ```html
-    <link rel="stylesheet" href="https://mapzen.com/js/mapzen.css">
-    <script src="https://mapzen.com/js/mapzen.min.js"></script>
+<!-- Load Leaflet from CDN -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.3/leaflet.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.3/leaflet.js"></script>
+
+<!-- Load geocoding plugin after Leaflet -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-geocoder-mapzen/1.9.4/leaflet-geocoder-mapzen.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-geocoder-mapzen/1.9.4/leaflet-geocoder-mapzen.js"></script>
     ```
 
 2. Save your edits and refresh the browser. The webpage should still appear empty because you have not added any code to interact with these references.
@@ -83,15 +86,20 @@ After adding these, your index.html file should look something like this.
   <head>
   <title>My Geocoding Map</title>
   <meta charset="utf-8">
-  <link rel="stylesheet" href="https://mapzen.com/js/mapzen.css">
-  <script src="https://mapzen.com/js/mapzen.min.js"></script>
+<!-- Load Leaflet from CDN -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.3/leaflet.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.3/leaflet.js"></script>
+
+<!-- Load geocoding plugin after Leaflet -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-geocoder-mapzen/1.9.4/leaflet-geocoder-mapzen.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-geocoder-mapzen/1.9.4/leaflet-geocoder-mapzen.js"></script>
 </head>
 <body>
 </body>
 </html>
 ```
 
-Note that you are linking to a website that is serving the Mapzen.js CSS and JavaScript, but you can also [view, download, and contribute to the source code](https://github.com/mapzen/mapzen.js) if you want to access the contents of the library.
+Note that you are linking to a website that is serving the CSS and JavaScript, but you can also [view, download, and contribute to the source code](https://github.com/pelias/leaflet-plugin) if you want to access the contents of the library.
 
 ## Add a map to the page
 
@@ -116,11 +124,14 @@ To display a Leaflet map on a page, you need a `<div>` element, which is a conta
     <div id='map'></div>
     ```
 
-3. Directly after the `<div>`, add this JavaScript code within a `<script>` tag to set the API key for the map.
+3. Directly after the `<div>`, add this JavaScript code within a `<script>` tag to set your geocoder URL and the API key, if needed, for the map.
 
     ```js
     <script>
-      L.Mapzen.apiKey = "your-mapzen-api-key";
+      var options = {
+        url: "http://your-pelias-geocoder"
+        }
+        L.control.geocoder('<your-api-key>').addTo(map);
     </script>
     ```
 
@@ -128,8 +139,6 @@ To display a Leaflet map on a page, you need a `<div>` element, which is a conta
 
     ```html
     <script>
-      L.Mapzen.apiKey = "your-mapzen-api-key";
-
       var map = L.Mapzen.map("map", {
         center: [47.61033,-122.31801],
         zoom: 16,
@@ -151,8 +160,13 @@ Your index.html should look something like this:
   <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <link rel="stylesheet" href="https://mapzen.com/js/mapzen.css">
-    <script src="https://mapzen.com/js/mapzen.min.js"></script>
+    <!-- Load Leaflet from CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.3/leaflet.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.3/leaflet.js"></script>
+    <!-- Load geocoding plugin after Leaflet -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-geocoder-mapzen/1.9.4/leaflet-geocoder-mapzen.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-geocoder-mapzen/1.9.4/leaflet-geocoder-mapzen.js"></script>
+  </head>
 
     <style>
       #map {
@@ -167,12 +181,17 @@ Your index.html should look something like this:
   <body>
     <div id='map'></div>
     <script>
-      L.Mapzen.apiKey = "your-mapzen-api-key";
-
-      var map = L.Mapzen.map("map", {
-        center: [47.61033,-122.31801],
-        zoom: 16,
-      });
+        var options = {
+            url: "http://your-pelias-geocoder"
+            }
+        
+        L.control.geocoder('<your-api-key>', {
+            params: {
+                sources: 'whosonfirst',
+                'boundary.country': 'AUS'
+                    },
+            placeholder: 'Results via Who’s on First in Australia'
+        }).addTo(map);
     </script>
   </body>
 </html>
