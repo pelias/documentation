@@ -30,7 +30,7 @@ _Tip: The end of this page has a finished version of the code that you can use t
     </html>
     ```
 
-    These form the basic structure of an HTML document. `<!DOCTYPE html>` goes at the top of every HTML page and indicates that it is written for HTML5, and the `<html>` tags tell your browser that the content is HTML. The `<head>` tag contains the title for the page and other metadata about the page, while the `<body>` is where you add the code and the rest of the content on your page. There are many [web tutorials](http://www.w3schools.com/html/default.asp) available to help you experiment with and learn more about HTML documents and the tags in them.
+    These form the basic structure of an HTML document. `<!DOCTYPE html>` goes at the top of every HTML page and indicates that it is written for HTML5, and the `<html>` tags tell your browser that the content is HTML. The `<head>` tag contains the title for the page and other metadata about the page, while the `<body>` is where you add the code and the rest of the content on your page. There are many [web tutorials](http://www.w3schools.com/html/default.asp) available to help you experiment with and learn more about HTML documents and the [tags](https://www.scaler.com/topics/html/html-tags/) in them.
 
 2. In the `<head>` tag, add a title, such as `<title>My Geocoding Map</title>`.
 3. On the next line, add a metadata tag so you can properly display diacritics and characters from different languages.
