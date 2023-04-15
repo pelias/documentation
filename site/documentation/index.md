@@ -32,8 +32,8 @@ _Not sure which Endpoint to use? We have a [page](search-workflows.md) for that_
 - [Software Requirements](requirements.md) A list of all software requirements for Pelias
 
 ## Pelias project development
-- [Release notes](release-notes.md). See notable changes in Pelias over time
-- [Development roadmap](development/roadmap.md). Plans for future improvements to Pelias. Read this to see what's coming and how you can help
+- [Release notes](/release-notes.md). See notable changes in Pelias over time
+- [Development roadmap](/development/roadmap.md). Plans for future improvements to Pelias. Read this to see what's coming and how you can help
 
 ## Misc
 - [Glossary of common terms](glossary.md)

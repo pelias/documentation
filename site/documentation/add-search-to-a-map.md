@@ -2,7 +2,7 @@
 
 [Pelias](https://mapzen.com/products/search/) is a modern, geographic search service based entirely on open-source tools and open data. Use this functionality to enhance any app that has a geographic context, such as ones that help in delivering goods, locating hotels or venues, or providing local weather forecasts.
 
-Through a process known as [geocoding](https://en.wikipedia.org/wiki/Geocoding), Pelias allows you to enter an address or the name of a landmark or business, and the service translates the result into geographic coordinates for mapping. Pelias is built on [Pelias](pelias.io), an open-source geocoding project.
+Through a process known as [geocoding](https://en.wikipedia.org/wiki/Geocoding), Pelias allows you to enter an address or the name of a landmark or business, and the service translates the result into geographic coordinates for mapping. Pelias is built on [Pelias](https://pelias.io), an open-source geocoding project.
 
 ## Get ready for the tutorial
 

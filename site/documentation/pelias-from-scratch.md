@@ -295,6 +295,6 @@ for the city of London.
 [http://localhost:3100/v1/reverse?point.lon=-73.986027&point.lat=40.748517](http://localhost:3100/v1/reverse?point.lon=-73.986027&point.lat=40.748517): a reverse geocode for results near the Empire State Building in New York City.
 
 For information on everything Pelias can do, see our [documentation
-index](../../README.md).
+index](/).
 
 Happy geocoding!
