@@ -42,7 +42,7 @@ _Tip: The end of this page has a finished version of the code that you can use t
 4. Name your the document `index.html` (where the file name is `index` and the type is `.html`) and save it.
 5. Drag your index.html file onto a web browser tab. It should show your title, `My Geocoding Map`, but the web page canvas will be blank.
 
-    ![Blank html page](images/geocoder-blank-tab.png)
+    ![Blank html page](../assets/images/geocoder-blank-tab.png)
 
 Your HTML should look like this:
 
@@ -182,7 +182,7 @@ At this point, you have a map! You should see a map, zoom controls, and attribut
 
 To recap how you created this, you added references to the Mapzen JS and CSS files, a map `<div>` with a declared width, and assigned the `map` value to `L.Mapzen.map`.
 
-![Leaflet canvas map with controls and attribution](images/basic-webmap.png)
+![Leaflet canvas map with controls and attribution](../assets/images/basic-webmap.png)
 
 ## Add the Search box
 
@@ -197,7 +197,7 @@ So far, you have referenced the necessary files, initialized Leaflet with a map 
 
 2. Save your edits and refresh the browser. You should see search button in the left corner. If you want to expand the button to a box, you can change this behavior in the geocoder options.
 
-    ![Search icon on the map canvas](images/geocoder-search-icon.png)
+    ![Search icon on the map canvas](../assets/images/geocoder-search-icon.png)
 
 Your `<body>` section should look like this:
 
@@ -224,7 +224,7 @@ Now, you will test your search box by finding a few locations. As you type, the 
 1. On the map, type `Seattle University` in the Search box.
 2. In the results list, find the entry for `Seattle University` and click it to zoom and add a point to the map at that location. (The point is only on your map, and does not update OpenStreetMap.)
 
-    ![Entering an address to find on the map](images/geocoder-address-search.png)
+    ![Entering an address to find on the map](../assets/images/geocoder-address-search.png)
 
 3. Search for other addresses or places to experiment with the search function and get an idea of the results it returns. For example, you might try looking for a point of interest in Seattle, your work address, or a city outside the United States.
 
@@ -279,7 +279,7 @@ geocoder.addTo(map);
 
 _Tip: You can install a plug-in for your browser to display JSON in a more formatted manner. You can search the web store for your browser to find and install applicable products._
 
-![Search endpoint query in the browser developer console](images/developer-console.png)
+![Search endpoint query in the browser developer console](../assets/images/developer-console.png)
 
 ## Choose which data sources to search
 

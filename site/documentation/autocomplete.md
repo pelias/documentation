@@ -173,7 +173,7 @@ with `layers=venue` you will see only the venues by that name
 
 ### Search within a circular region
 
-![Searching within a circle](/images/world_circle.png)
+![Searching within a circle](/site/assets/images/world_circle.png)
 
 Sometimes you don't have a rectangle to work with, but rather you have a point on earth&mdash;for example, your location coordinates&mdash;and a maximum distance within which acceptable results can be located.
 
@@ -199,7 +199,7 @@ You can see the results have fewer than the standard 10 items because there are 
 
 ### Country
 
-![Searching in a country](/images/world_country.png)
+![Searching in a country](/site/assets/images/world_country.png)
 
 Sometimes your work might require that all the search results be from a particular country or a list of countries. To do this, you can set the `boundary.country` parameter value to a comma separated list of alpha-2 or alpha-3 [ISO-3166 country code](https://en.wikipedia.org/wiki/ISO_3166-1).
 

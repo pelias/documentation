@@ -1,0 +1,99 @@
+site_name: Pelias Geocoder
+docs_dir: site
+site_dir: generated
+theme:
+  name: material
+  font:
+    text: Inter
+    code: JetBrains Mono
+  logo: assets/Pelias-Logo_horizontal_secondary.png
+  favicon: assets/favicon_64x64.png
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.top
+    - toc.follow
+    - search.suggest
+    - search.highlight
+    - content.tabs.link
+    - content.code.annotation
+    - content.code.copy
+    - navigation.footer
+  palette:
+
+    # Palette toggle for light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to dark mode
+
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/weather-night
+        name: Switch to light mode
+
+extra_css:
+  - stylesheets/extra.css
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/pelias/
+    - icon: fontawesome/brands/twitter
+      link: https://twitter.com/pelias_geocoder
+    - icon: fontawesome/brands/gitter
+      link: https://gitter.im/pelias/pelias
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - admonition
+  - footnotes
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.mark
+  - attr_list
+
+nav:
+  - Home:
+    - 'home/index.md'
+    - Fun Facts: 'home/fun-facts.md'
+  - Documentation:
+      - 'documentation/index.md'
+      - Getting Started: 'documentation/getting-started-install.md'
+      - Add Search to a Map: 'documentation/add-search-to-a-map.md'
+      - Forward Geocoding: 'documentation/search.md'
+      - Reverse Geocoding: 'documentation/reverse.md'
+      - Autocomplete: 'documentation/autocomplete.md'
+      - Structured Geocoding: 'documentation/structured-geocoding.md'
+      - Place Endpoint: 'documentation/place.md'
+      - Search Workflows: 'documentation/search-workflows.md'
+      - Search Response: 'documentation/response.md'
+      - Result Quality: 'documentation/result-quality.md'
+      - Searching Address: 'documentation/addresses.md'
+      - Data Sources: 'documentation/data-sources.md'
+      - Pelias from Scratch: 'documentation/pelias-from-scratch.md'
+      - Full Planet Build: 'documentation/full-planet-considerations.md'
+      - Language Support: 'documentation/language-codes.md'
+      - Requirements: 'documentation/requirements.md'
+      - Pelias Services: 'documentation/services.md'
+      - CORS: 'documentation/use-cors.md'
+      - HTTP status codes: 'documentation/http-status-codes.md'
+      - Glossary: 'documentation/glossary.md'
+  - Development:
+      - Repository List: 'development/repository-list.md'
+      - Roadmap: 'development/roadmap.md'
+  - Code of Conduct: 'code-of-conduct.md'
+  - Contribute: 'contributing.md'
+  - Release Notes: 'release-notes.md'
+  - Get an API Key: 'https://geocode.earth/'
+
+copyright: Pelias is a free open source project.
