@@ -9,14 +9,14 @@ A modular, open-source geocoder built on top of Elasticsearch for fast and accur
 <h3 align="center">A modular, open-source search engine for our world.</h3>
 <p align="center">Pelias is a geocoder powered completely by open data, available freely to everyone.</p>
 <p align="center">
-<a href="https://en.wikipedia.org/wiki/MIT_License"><img src="https://assets/img.shields.io/github/license/pelias/api?style=flat&color=orange" /></a>
-<a href="https://hub.docker.com/u/pelias"><img src="https://assets/img.shields.io/docker/pulls/pelias/api?style=flat&color=informational" /></a>
-<a href="https://gitter.im/pelias/pelias"><img src="https://assets/img.shields.io/gitter/room/pelias/pelias?style=flat&color=yellow" /></a>
+<a href="https://en.wikipedia.org/wiki/MIT_License"><img src="https://img.shields.io/github/license/pelias/api?style=flat&color=orange" /></a>
+<a href="https://hub.docker.com/u/pelias"><img src="https://img.shields.io/docker/pulls/pelias/api?style=flat&color=informational" /></a>
+<a href="https://gitter.im/pelias/pelias"><img src="https://img.shields.io/gitter/room/pelias/pelias?style=flat&color=yellow" /></a>
 </p>
 <p align="center">
 	<a href="https://github.com/pelias/docker">Local Installation</a> ·
         <a href="https://geocode.earth">Cloud Webservice</a> ·
-	<a href="/docs">Documentation</a> ·
+	<a href="/documentation">Documentation</a> ·
 	<a href="https://gitter.im/pelias/pelias">Community Chat</a>
 </p>
 
