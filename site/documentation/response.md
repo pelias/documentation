@@ -1,4 +1,4 @@
-# Search results
+# Search Response
 
 When requesting results from Pelias, you will always get back GeoJSON results, unless something goes terribly wrong, in which case you'll get an error message.
 

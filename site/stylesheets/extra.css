@@ -1,0 +1,38 @@
+@font-face {
+  font-family: "Metropolis";
+  src: url("./metropolis/Metropolis-Regular.otf");
+}
+
+.md-ellipsis {
+  font-family: Metropolis, "Inter", --apple-system, sans-serif;
+}
+
+:root {
+  --md-primary-fg-color:        #6563CB;
+  --md-primary-fg-color--light: #6563CB;
+  --md-primary-fg-color--dark:  #9897f0;
+  font-variant-ligatures: normal !important;
+}
+
+/*[data-md-color-scheme=default] {*/
+/*    --md-primary-fg-color: #6563CB;*/
+/*}*/
+
+[data-md-color-scheme=slate] {
+    --md-typeset-a-color:  #9897f0;
+}
+
+/* increase logo size */
+.md-header__button.md-logo img, .md-header__button.md-logo svg {
+    height: 1.5rem;
+}
+
+/*aligning images*/
+.center {
+    display: block;
+    margin: 0 auto;
+}
+
+.right {
+    float: right;
+}

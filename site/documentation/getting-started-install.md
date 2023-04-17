@@ -16,7 +16,7 @@ The Pelias docker installation should work great for any small area, and is grea
 different Pelias services during development. However, we understand not everyone can or wants to
 use Docker, and that people want more details on how things work.
 
-For this, we have our [from scratch installation guide](pelias_from_scratch.md)
+For this, we have our [from scratch installation guide](pelias-from-scratch.md)
 
 ### Installing in production?
 
@@ -31,5 +31,5 @@ if you have something to share or want to get started.
 Running Pelias for a city or small country is pretty easy. However, due to the amount of data
 involved, a full planet build is harder to pull off.
 
-See our [full planet build guide](full_planet_considerations.md) for some recommendations on how to
+See our [full planet build guide](full-planet-considerations.md) for some recommendations on how to
 make it easier and more performant.
