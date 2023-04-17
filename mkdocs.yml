@@ -63,6 +63,9 @@ markdown_extensions:
   - attr_list
 
 nav:
+  - Pelias:
+    - "index.md"
+    - "fun-facts.md"
   - Documentation:
       - 'documentation/index.md'
       - Getting Started: 'documentation/getting-started-install.md'
@@ -90,7 +93,6 @@ nav:
       - Roadmap: 'development/roadmap.md'
       - Code of Conduct: 'development/code-of-conduct.md'
   - Contribute: 'contributing.md'
-  - Fun Facts: 'fun-facts.md'
   - Release Notes: 'release-notes.md'
   - Get an API Key: 'https://geocode.earth/'
 
