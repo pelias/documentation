@@ -62,21 +62,27 @@ Without specifying further, reverse geocoding doesn't restrict results to a part
 
 Here are all the supported layers and their meanings.
 
-|layer|description|
+||layer|description|
 |----|----|
 |`venue`|points of interest, businesses, things with walls|
 |`address`|places with a street address|
 |`street`|streets,roads,highways|
-|`country`|places that issue passports, nations, nation-states|
-|`macroregion`|a related group of regions. Mostly in Europe|
-|`region`|states and provinces|
-|`macrocounty`|a related group of counties. Mostly in Europe.|
-|`county`|official governmental area; usually bigger than a locality, almost always smaller than a region|
+|`neighbourhood`|social communities, neighbourhoods|
+|`borough`|a local administrative boundary|
 |`locality`|towns, hamlets, cities|
 |`localadmin`|local administrative boundaries|
-|`borough`| a local administrative boundary, currently only used for New York City|
-|`neighbourhood`|social communities, neighbourhoods|
-|`coarse`|alias for simultaneously using all administrative layers (everything except `venue` and `address`)|
+|`county`|official governmental area; usually bigger than a locality, almost always smaller than a region|
+|`macrocounty`|a related group of counties. Mostly in Europe.|
+|`region`|states and provinces|
+|`macroregion`|a related group of regions. Mostly in Europe|
+|`dependency`|places that issue passports, dependent on a parent country or member of an empire such as French Polynesia member of French empire|
+|`country`|places that issue passports, nations, nation-states|
+|`empire`|contains one country and many dependencies|
+|`continent`|eight continents on earth|
+|`marinearea`|water areas smaller than oceans|
+|`ocean`|seven oceans on earth|
+|`coarse`|alias for simultaneously using all administrative layers (everything except `venue`, `address` and `street`)|
+|`postalcode`|postal code used by mail services|
 
 ### Filter by country
 
