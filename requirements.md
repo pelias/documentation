@@ -22,7 +22,7 @@ We strive to support any minor or patch version of our supported major release l
 
 Version 7.5+
 
-We recommend the latest in the Elasticsearch 7 release line.
+We recommend the latest in the Elasticsearch 7 release line. Elasticsearch 8 is also supported.
 
 The core data storage for Pelias is Elasticsearch, and Elasticsearch makes major breaking changes
 from release to release, so it's important to track these versions carefully.
