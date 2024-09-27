@@ -351,15 +351,20 @@ Here's a list of the types of places you could find in the results, sorted by gr
 |`address`|places with a street address|
 |`street`|streets,roads,highways|
 |`neighbourhood`|social communities, neighbourhoods|
-|`borough`|a local administrative boundary, currently only used for New York City|
-|`localadmin`|local administrative boundaries|
+|`borough`|a local administrative boundary|
 |`locality`|towns, hamlets, cities|
+|`localadmin`|local administrative boundaries|
 |`county`|official governmental area; usually bigger than a locality, almost always smaller than a region|
 |`macrocounty`|a related group of counties. Mostly in Europe.|
 |`region`|states and provinces|
 |`macroregion`|a related group of regions. Mostly in Europe|
+|`dependency`|places that issue passports, dependent on a parent country or member of an empire such as French Polynesia member of French empire|
 |`country`|places that issue passports, nations, nation-states|
-|`coarse`|alias for simultaneously using all administrative layers (everything except `venue` and `address`)|
+|`empire`|contains one country and many dependencies|
+|`continent`|eight continents on earth|
+|`marinearea`|water areas smaller than oceans|
+|`ocean`|seven oceans on earth|
+|`coarse`|alias for simultaneously using all administrative layers (everything except `venue`, `address` and `street`)|
 |`postalcode`|postal code used by mail services|
 
 > [/v1/search?text=YMCA&__layers=venue,address__](https://pelias.github.io/compare/#/v1/search%3Flayers=venue,address&text=ymca)
