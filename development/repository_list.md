@@ -32,7 +32,6 @@ This is a list of all active Pelias repositories. It can be useful for tracking 
 - [ ] microservice-wrapper
 - [ ] mock-logger
 - [ ] labels
-- [ ] categories
 - [ ] wof-admin-lookup
 - [ ] fuzzy-tester
 - [ ] model
