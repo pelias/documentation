@@ -128,9 +128,10 @@ Each Pelias service has different memory and CPU requirements. Here are some rou
 * Disk: about 4GB of data storage required
 
 ### PIP
-* RAM: ~8GB
+* RAM: ~12GB
 * CPU: 2 cores per instance recommended. Cannot effectively use more than 2 cores, but will serve at least 7000RPS
 * Disk: A full planet Who's on First SQLite DB requires about 30GB
+* Long startup time: it will take 10-20 minutes of loading and processing Who's on First data for the PIP service to be ready to serve requests
 
 ### Interpolation
 * RAM: 3GB per instance currently (please follow our efforts to [un-bundle
