@@ -29,11 +29,10 @@ Placeholder is used specifically to handle the relational component of geocoding
 understands, for example, that Paris is a city in a country called France, but that there is another
 city called Paris in the state of Texas, USA.
 
+Placeholder is a key component for forward geocoding on the `/v1/search` and `/v1/search/structured` endpoints.
+
 Placeholder also stores the translations of administrative areas in multiple languages. Therefore it
 is required if any support for multiple languages is desired.
-
-Currently, Placeholder is used only for forward geocoding on the `/v1/search` endpoint. In the
-future, it will also be used for autocomplete.
 
 ### [Libpostal](https://github.com/pelias/libpostal-service)
 
@@ -61,5 +60,4 @@ given point lies in a particular polygon. Thus, it's highly recommended for reve
 
 The interpolation service combines street geometries with known addresses and address ranges, to
 allow estimating the position of addresses that might exist, but aren't in existing open
-data sources. It is only used by the `/v1/search` endpoint, but [autocomplete support may be added in
-the future](https://github.com/pelias/interpolation/issues/131).
+data sources. It is only used by the `/v1/search` and `/v1/search/structured` endpoints.
