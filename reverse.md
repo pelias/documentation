@@ -99,6 +99,15 @@ Distance from `point.lat`/`point.lon` | Confidence score
 &lt; 1km | 0.6
 &gt;= 1km | 0.5
 
+## Return categories in responses
+
+Categories may be retrieved by using the `categories` parameter. Examples include: health,food,retail,cafe
+> [/v1/reverse?__categories&point.lat=26.3622924&point.lon=-80.1355797__](https://pelias.github.io/compare/#/v1/reverse?categories&point.lat=26.3622924&point.lon=-80.1355797)
+
+Multiple categories may be supplied in a single request. This can be useful when a single location contains many businesses of different categories.
+> [/v1/reverse?__categories=health,food&point.lat=26.3622924&point.lon=-80.1355797__](https://pelias.github.io/compare/#/v1/reverse?categories=health&point.lat=26.3622924&point.lon=-80.1355797)
+
+
 ## Example requests
 
 This section shows how the various parameters can be combined to form complex use cases.
