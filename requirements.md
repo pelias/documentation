@@ -6,7 +6,7 @@ install all our dependencies yourself.
 
 ## Node.js
 
-Version 12
+Version 20 or newer
 
 Most Pelias code is written in Node.js, so this is one of the most core dependencies of the project.
 
