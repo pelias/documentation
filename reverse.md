@@ -26,12 +26,14 @@ Parameter | Type | Required | Default | Example
 --- | --- | --- | --- | ---
 `point.lat` | floating point number | yes | none | `48.858268`
 `point.lon` | floating point number | yes | none | `2.294471`
-`boundary.circle.radius` | floating point number | no | 1 | `35`
+`boundary.circle.radius` | floating point number | no | 1 | `5`
 `size` | integer | no | `10` | `3`
 `layers` | comma-delimited string array | no | none (all layers) | `address,locality`
 `sources` | comma-delimited string array | no | none (all sources) | `oa,gn`
 `boundary.country` | comma separated list of <a href="https://en.wikipedia.org/wiki/ISO_3166-1" target="\_blank">ISO-3166 alpha-2 or alpha-3</a> | no | none | `FR,GBR`
 `boundary.gid` | Pelias `gid` | no | none | `whosonfirst:locality:101748355`
+
+Note that `boundary.circle.radius` is limited to a radius of 5km to conserve disk I/O.
 
 ### Size
 
