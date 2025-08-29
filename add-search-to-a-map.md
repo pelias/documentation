@@ -8,9 +8,7 @@ Through a process known as [geocoding](https://en.wikipedia.org/wiki/Geocoding),
 
 In this tutorial, you will learn how to make a map with a search box that allows you to enter addresses and place names and locate them on a map. To complete the tutorial, you should have some familiarity with HTML and JavaScript, although all the source code is provided. You can use any text editor and operating system, but must keep an Internet connection while you are working.
 
-You also need a Mapzen API key, which you can get by following the steps in the Mapzen [developer overview](https://mapzen.com/documentation/overview/).
-
-To get started making your map, you will need to use a text editor to update the HTML. See some of Mapzen's [suggested text editors](https://mapzen.com/documentation/guides/install-text-editor/) in the developer guide documentation.
+You also need a Geocode API key, which you can get by following the steps in the Geocode [developer overview](https://geocode.earth/docs/guides/quickstart/).
 
 ## Create an HTML page
 
@@ -64,13 +62,18 @@ A cascading style sheet (CSS) is used to style a webpage, including layout and f
 
 The [Leaflet JavaScript library](http://leafletjs.com/) provides tools for building an interactive map for web and mobile devices. Leaflet is extensible, and developers have built additional tools for Leaflet maps.
 
-The [Mapzen.js library](https://www.mapzen.com/documentation/mapzen-js/) simplifies the process of using Mapzen's maps within Leaflet. Mapzen.js contains all the Leaflet functionality, as well as additional tools for working with Mapzen maps and search.
+The [Pelias Leaflet Plugin](://github.com/pelias/leaflet-plugin) simplifies the process of using Geocode's maps within Leaflet. It contains all the Leaflet functionality, as well as additional tools for working with the Geocode maps and search.
 
-1. In `index.html`, at the bottom of the `<head>` section, add references to the Mapzen.js CSS and JavaScript files.
+1. In `index.html`, at the bottom of the `<head>` section, add references to leaflet and the Geocode.js CSS and JavaScript files.
 
     ```html
-    <link rel="stylesheet" href="https://mapzen.com/js/mapzen.css">
-    <script src="https://mapzen.com/js/mapzen.min.js"></script>
+<!-- Load Leaflet from CDN -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.3/leaflet.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.3/leaflet.js"></script>
+
+<!-- Load geocoding plugin after Leaflet -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-geocoder-mapzen/1.9.4/leaflet-geocoder-mapzen.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-geocoder-mapzen/1.9.4/leaflet-geocoder-mapzen.js"></script>
     ```
 
 2. Save your edits and refresh the browser. The webpage should still appear empty because you have not added any code to interact with these references.
@@ -83,15 +86,20 @@ After adding these, your index.html file should look something like this.
   <head>
   <title>My Geocoding Map</title>
   <meta charset="utf-8">
-  <link rel="stylesheet" href="https://mapzen.com/js/mapzen.css">
-  <script src="https://mapzen.com/js/mapzen.min.js"></script>
+<!-- Load Leaflet from CDN -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.3/leaflet.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.3/leaflet.js"></script>
+
+<!-- Load geocoding plugin after Leaflet -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-geocoder-mapzen/1.9.4/leaflet-geocoder-mapzen.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-geocoder-mapzen/1.9.4/leaflet-geocoder-mapzen.js"></script>
 </head>
 <body>
 </body>
 </html>
 ```
 
-Note that you are linking to a website that is serving the Mapzen.js CSS and JavaScript, but you can also [view, download, and contribute to the source code](https://github.com/mapzen/mapzen.js) if you want to access the contents of the library.
+Note that you are linking to a website that is serving the CSS and JavaScript, but you can also [view, download, and contribute to the source code](https://github.com/pelias/leaflet-plugin) if you want to access the contents of the library.
 
 ## Add a map to the page
 
@@ -116,11 +124,14 @@ To display a Leaflet map on a page, you need a `<div>` element, which is a conta
     <div id='map'></div>
     ```
 
-3. Directly after the `<div>`, add this JavaScript code within a `<script>` tag to set the API key for the map.
+3. Directly after the `<div>`, add this JavaScript code within a `<script>` tag to set your geocoder URL and the API key, if needed, for the map.
 
     ```js
     <script>
-      L.Mapzen.apiKey = "your-mapzen-api-key";
+      var options = {
+        url: "http://your-pelias-geocoder"
+        }
+        L.control.geocoder('<your-api-key>').addTo(map);
     </script>
     ```
 
@@ -128,16 +139,12 @@ To display a Leaflet map on a page, you need a `<div>` element, which is a conta
 
     ```html
     <script>
-      L.Mapzen.apiKey = "your-mapzen-api-key";
-
-      var map = L.Mapzen.map("map", {
-        center: [47.61033,-122.31801],
-        zoom: 16,
-      });
+  var map = L.map('map').setView([40.7259, -73.9805], 12);
+  L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addT(map);
     </script>
     ```
 
-    `L.xxxxx` is a convention used with the Leaflet API. The `center: [47.61033,-122.31801]` parameter sets the center point of the map, in decimal degrees, at the location of a building at Seattle University.
+    `L.xxxxx` is a convention used with the Leaflet API. The `setView: [40.7259, -73.9805]` parameter sets the view point of the map, in decimal degrees (WGS84), at the center of New York City.
 
     The next line sets the `zoom` level, which is like a map scale or resolution, where a smaller value shows a larger area in less detail, and a larger zoom level value depicts smaller area in great detail.
 
@@ -151,8 +158,13 @@ Your index.html should look something like this:
   <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <link rel="stylesheet" href="https://mapzen.com/js/mapzen.css">
-    <script src="https://mapzen.com/js/mapzen.min.js"></script>
+    <!-- Load Leaflet from CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.3/leaflet.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.3/leaflet.js"></script>
+    <!-- Load geocoding plugin after Leaflet -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-geocoder-mapzen/1.9.4/leaflet-geocoder-mapzen.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-geocoder-mapzen/1.9.4/leaflet-geocoder-mapzen.js"></script>
+  </head>
 
     <style>
       #map {
@@ -167,12 +179,17 @@ Your index.html should look something like this:
   <body>
     <div id='map'></div>
     <script>
-      L.Mapzen.apiKey = "your-mapzen-api-key";
-
-      var map = L.Mapzen.map("map", {
-        center: [47.61033,-122.31801],
-        zoom: 16,
-      });
+        var options = {
+            url: "http://your-pelias-geocoder"
+            }
+        
+        L.control.geocoder('<your-api-key>', {
+            params: {
+                sources: 'whosonfirst',
+                'boundary.country': 'AUS'
+                    },
+            placeholder: 'Results via Who’s on First in Australia'
+        }).addTo(map);
     </script>
   </body>
 </html>
@@ -243,17 +260,17 @@ Although you will not be using it in this tutorial, [\reverse](https://mapzen.co
 1. Add a variable to allow you to set options for the geocoder. Inside the script tags, and above the geocoder line, add this block.
 
     ```js
-    var geocoderOptions = {
+    var options = {
       autocomplete: false
     };
     ```
 
     You are setting `autocomplete: false` to specify that the Search box should not suggest potential text matches as you type. Autocomplete is enabled by default, so adding this means that you will turn it off.
 
-2. Modify the existing geocoder code to pass in the `geocoderOptions` you set.
+2. Modify the existing geocoder code to pass in the `options` you set.
 
     ```js
-    var geocoder = L.Mapzen.geocoder(geocoderOptions);
+    L.control.geocoder('<your-api-key>', options).addTo(map);
     ```
 
 3. Save your edits and refresh the browser.
@@ -262,11 +279,11 @@ Although you will not be using it in this tutorial, [\reverse](https://mapzen.co
 The code from this section should look something like this.
 
 ```js
-var geocoderOptions = {
+var options = {
   autocomplete: false
 };
 
-var geocoder = L.Mapzen.geocoder(geocoderOptions);
+L.control.geocoder('<your-api-key>', options).addTo(map);
 geocoder.addTo(map);
 ```
 
@@ -274,7 +291,7 @@ geocoder.addTo(map);
 
 1. Open your browser's developer tools console. In Chrome, you can do this by clicking the menu in the corner, pointing to More Tools, and clicking Developer Tools.
 2. Click the Network tab to see the Internet traffic, including the queries to the Mapzen servers.
-3. Click the Headers tab for more information about the request, including the full URL. For example, the URL might look something like `https://search.mapzen.com/v1/search?text=901%2012th%20avenue&focus.point.lat=47.61032944737081&focus.point.lon=-122.31800079345703&api_key=your-mapzen-api-key`
+3. Click the Headers tab for more information about the request, including the full URL. For example, the URL might look something like `https://api.geocode.earth/v1/autocomplete?api_key=<your-api-key>&text=Berlin&size=5`
 4. Paste this URL into a new browser tab and use your own API key to see the JSON response, which can be mapped.
 
 _Tip: You can install a plug-in for your browser to display JSON in a more formatted manner. You can search the web store for your browser to find and install applicable products._
@@ -283,16 +300,16 @@ _Tip: You can install a plug-in for your browser to display JSON in a more forma
 
 ## Choose which data sources to search
 
-Pelias uses a [variety of open data sources](https://mapzen.com/documentation/search/data-sources/), including OpenStreetMap. Part of the power of open data is that anyone can change the source data and improve the quality for everyone. If you are unable to find a location, the place could be missing or incorrect in the source datasets.
+Pelias uses a [variety of open data sources](https://github.com/pelias/documentation/blob/master/data-sources.md), including OpenStreetMap. Part of the power of open data is that anyone can change the source data and improve the quality for everyone. If you are unable to find a location, the place could be missing or incorrect in the source datasets.
 
 You can choose which data sources to search by passing a parameter for the `sources`. In addition, you need to enclose with single quotation marks any parameter names that use the dot notation (such as `boundary.country`) to make sure JavaScript can parse the text correctly.
 
 As you were searching, you might have noticed results that looked similar. Pelias does perform some elimination, but the differing data sources may still cause seemingly matching results to appear. Choosing a particular data source can reduce the occurrence of duplicated entries.
 
-1. Within the `geocoderOptions` block, add the `params:` list and a parameter for `sources:`. Be sure to add a `,` at the end of the `autocomplete: false` line.
+1. Within the `options` block, add the `params:` list and a parameter for `sources:`. Be sure to add a `,` at the end of the `autocomplete: false` line.
 
     ```js
-    var geocoderOptions = {
+    var options = {
       autocomplete: false,
       params: {
         sources: 'osm'
@@ -307,12 +324,12 @@ As you were searching, you might have noticed results that looked similar. Pelia
 
 Pelias provides options for customizing your search parameters, such as limiting the search to the map's extent or prioritizing results near the current view. Right now, you may notice that results from around the world appear in the list.
 
-Mapzen.js automatically provides a [focus point](https://mapzen.com/documentation/search/search/#prioritize-around-a-point) for you based on the current map view extent. You can add other parameters to filter the search results, such as to limit the results to a particular country or type of result.
+Mapzen.js automatically provides a [focus point](https://github.com/pelias/documentation/blob/master/search.md#prioritize-around-a-point) for you based on the current map view extent. You can add other parameters to filter the search results, such as to limit the results to a particular country or type of result.
 
-1. Within the `geocoderOptions` block, add add a `,` at the end of the `sources: 'osm'` line and then a parameter for `'boundary.country': 'USA'` on the next line. You need to enclose with single quotation marks any parameter names that use the dot notation (such as `boundary.country`) to make sure JavaScript can parse the text correctly.
+1. Within the `options` block, add add a `,` at the end of the `sources: 'osm'` line and then a parameter for `'boundary.country': 'USA'` on the next line. You need to enclose with single quotation marks any parameter names that use the dot notation (such as `boundary.country`) to make sure JavaScript can parse the text correctly.
 
     ```js
-    var geocoderOptions = {
+    var options = {
       autocomplete: false,
       params: {
         sources: 'osm',
@@ -331,12 +348,12 @@ In Pelias, types of places are referred to as `layers`, and you can use these to
 
 In this section, you will filter the results to search only addresses and venues, which include point of interest, landmarks, and businesses.
 
-You can review the [Pelias documentation](https://mapzen.com/documentation/search/search/#filter-by-data-type) to learn the types of `layers` you can use in a search.
+You can review the [Pelias documentation](https://github.com/pelias/documentation/blob/master/search.md#filter-by-data-type) to learn the types of `layers` you can use in a search.
 
-1. Within the `geocoderOptions` block, add add a `,` at the end of the `'boundary.country: 'USA'` line and then a parameter for `layers: 'address,venue'` on the next line.
+1. Within the `options` block, add add a `,` at the end of the `'boundary.country: 'USA'` line and then a parameter for `layers: 'address,venue'` on the next line.
 
     ```js
-    var geocoderOptions = {
+    var options = {
       autocomplete: false,
       params: {
         sources: 'osm',
@@ -350,9 +367,9 @@ You can review the [Pelias documentation](https://mapzen.com/documentation/searc
 
 ## Tutorial summary
 
-In this tutorial, you learned the basics of adding the Pelias geocoding engine to a map using [Mapzen.js](https://mapzen.com/documentation/mapzen-js/), and making some customizations to improve the search results.
+In this tutorial, you learned the basics of adding the Pelias geocoding engine to a map using [Mapzen.js](https://github.com/pelias/leaflet-plugin/), and making some customizations to improve the search results.
 
-If you want to learn more about Pelias, review the [documentation](https://mapzen.com/documentation/search).
+If you want to learn more about Pelias, review the [documentation](https://github.com/pelias/documentation/blob/master/search.md).
 
 Because the geocoder is still under development and considered experimental, if you are getting unexpected search results, please add an issue to the [Pelias GitHub repository](https://github.com/pelias/pelias/issues). The developers can investigate and decide if the problem is caused by software or data, and work to fix it either way.
 
@@ -366,8 +383,10 @@ You can refer to this HTML if you want to review your work or troubleshoot an er
   <head>
     <title>My Geocoding Map</title>
     <meta charset="utf-8">
-      <link rel="stylesheet" href="https://mapzen.com/js/mapzen.css">
-      <script src="https://mapzen.com/js/mapzen.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.3/leaflet.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.3/leaflet.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-geocoder-mapzen/1.9.4/leaflet-geocoder-mapzen.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-geocoder-mapzen/1.9.4/leaflet-geocoder-mapzen.js"></script>
     <style>
       #map {
         height: 100%;
@@ -380,29 +399,15 @@ You can refer to this HTML if you want to review your work or troubleshoot an er
   <body>
     <div id='map'></div>
     <script>
-      // Set the global API key
-      L.Mapzen.apiKey = "your-mapzen-api-key";
-
-      // Add a map to the #map div
-      // Center on the Pigott building at Seattle University
-      var map = L.Mapzen.map("map", {
-        center: [47.61033,-122.31801],
-        zoom: 16,
-      });
-
-      // Disable autocomplete and set parameters for the search query
-      var geocoderOptions = {
-        autocomplete: false,
-        params: {
-          sources: 'osm',
-          'boundary.country': 'USA',
-          layers: 'address,venue'
-        }
-      };
-
-      // Add the geocoder to the map, set parameters for geocoder options
-      var geocoder = L.Mapzen.geocoder(geocoderOptions);
-      geocoder.addTo(map);
+      // This is an example of Leaflet usage; you should modify this for your needs.
+      var map = L.map('map').setView([40.7259, -73.9805], 12);
+      L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+      //Set and modify the options for your own geocoder
+      var options = {
+      url: "http://your-pelias-geocoder"
+      }
+      //Add everything to the leaflet map.
+      L.control.geocoder('<your-api-key>').addTo(map);
 
     </script>
   </body>
