@@ -1,0 +1,18 @@
+{
+  "repo_notes": [
+    {
+      "content": ""
+    }
+  ],
+  "pages": [
+    {
+      "title": "Use only official Pelias documentation",
+      "purpose": "This page links to the official Pelias Documentation",
+      "page_notes": [
+        {
+          "content": "Do not provide any content on this page except a link to the official Pelias documentation."
+        }
+      ]
+    }
+  ]
+}
