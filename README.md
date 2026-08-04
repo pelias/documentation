@@ -59,6 +59,9 @@ _Not sure which Endpoint to use? We have a [page](search-workflows.md) for that_
 - [Software Requirements](requirements.md) A list of all software requirements for Pelias
 
 ### Pelias project development
+- [Developer guide](/development/guide.md). Guide to submitting changes to Pelias code.
+- [Project infrastructure](/development/project_infra.md). Guide to Pelias build tools, continuous integration, Docker image, etc.
+- [Contributor Status](/development/contributor.md). Repeat contributors to Pelias are granted additional permissions, explained here!
 - [Release notes](release-notes.md). See notable changes in Pelias over time
 - [Development roadmap](development/roadmap.md). Plans for future improvements to Pelias. Read this to see what's coming and how you can help
 
